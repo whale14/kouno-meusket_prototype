@@ -1,8 +1,6 @@
-# test_project
+# 미어켓 프로젝트
 
-A new Flutter project.
-
-## Getting Started
+//## Getting Started
 
 This project is a starting point for a Flutter application.
 
