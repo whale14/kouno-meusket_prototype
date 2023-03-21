@@ -12,9 +12,9 @@ import 'package:test_project/presentation/event/users/users_event.dart';
 import 'package:test_project/presentation/state/users/users_state.dart';
 import 'package:test_project/presentation/vm/test_view_model.dart';
 
-import '../../domain/model/users/users.dart';
-import '../match_page.dart';
-import '../post_webview.dart';
+import '../../../domain/model/users/users.dart';
+import '../../match_page.dart';
+import '../../post_webview.dart';
 
 class BodyReq extends StatefulWidget {
   final String userId;

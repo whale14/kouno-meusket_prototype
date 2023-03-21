@@ -40,6 +40,7 @@ class RequestViewModel with ChangeNotifier {
 
   Future _acceptRequest(String idx, String workerIdx) async{
     await _errandRepository.acceptRequest(idx, workerIdx);
+    // String roomIdx = await _errandRepository.createChatRoom(idx);
   }
 
   Future _getRequests(String idx) async{

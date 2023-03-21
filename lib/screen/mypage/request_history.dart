@@ -49,8 +49,6 @@ class _RequestHistoryState extends State<RequestHistory> {
 
   Future _initialize() async {
     await _getSharedIdx();
-    //문제없음
-    Logger().d('tappedIndex:$_tappedIndex');
     await _getMyRequests(_tappedIndex);
   }
 

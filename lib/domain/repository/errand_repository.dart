@@ -21,4 +21,7 @@ abstract class ErrandRepository {
   Future acceptRequest(String idx, String workerIdx);
 
   Future updateLocation(String idx, double latitude, double longitude);
+
+  Future<String> createChatRoom(String reqIdx);
+
 }

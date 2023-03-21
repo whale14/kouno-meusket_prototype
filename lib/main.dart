@@ -3,11 +3,14 @@ import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:test_project/data/repository/chat_repository_impl.dart';
 import 'package:test_project/data/repository/test_repository_impl.dart';
+import 'package:test_project/data/source/remote/chat_api.dart';
 import 'package:test_project/data/source/remote/test_api.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
 import 'package:http/http.dart' as http;
 import 'package:test_project/config/shared_preferences.dart';
+import 'package:test_project/presentation/vm/chat_view_model.dart';
 import 'package:test_project/presentation/vm/request_view_model.dart';
 import 'package:test_project/screen/home_screen.dart';
 import 'package:logger/logger.dart';
@@ -35,6 +38,7 @@ void main() async {
     providers: [
       ChangeNotifierProvider(create: (_) => TestViewModel(ErrandRepositoryImpl(ErrandApi()))),
       ChangeNotifierProvider(create: (_) => RequestViewModel(ErrandRepositoryImpl(ErrandApi()))),
+      ChangeNotifierProvider(create: (_) => ChatViewModel(ChatRepositoryImpl(ChatApi()))),
     ],
     child: const MyApp(),
   ));

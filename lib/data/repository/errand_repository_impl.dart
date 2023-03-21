@@ -86,4 +86,11 @@ class ErrandRepositoryImpl implements ErrandRepository {
     await api.updateLocation(idx, latitude, longitude);
   }
 
+  @override
+  Future<String> createChatRoom(String reqIdx) async{
+    // TODO: implement createChatRoom
+    final result = await api.createChatRoom(reqIdx);
+    return result;
+  }
+
 }
