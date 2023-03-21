@@ -20,7 +20,7 @@ class _BodyChatState extends State<BodyChat> {
 
     // chat room list view
     return ListView.builder(itemBuilder: (context, index) {
-
+      return ListTile(); // 스윗 깃 공유 테스트
     },);
   }
 }
