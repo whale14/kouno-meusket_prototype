@@ -165,8 +165,8 @@ class _RequestHistoryState extends State<RequestHistory> {
 
   void _connect(String idx) {
     socket = IO.io(
-      // 'http://192.168.100.42:3000', //5층 ip
-      'http://192.168.101.2:3000', // 3층 ip
+      'http://192.168.100.42:3000', //5층 ip
+      // 'http://192.168.101.2:3000', // 3층 ip
       <String, dynamic>{
         'transports': ['websocket']
       },

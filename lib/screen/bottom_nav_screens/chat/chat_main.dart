@@ -57,7 +57,11 @@ class _BodyChatState extends State<BodyChat> {
         return ListTile(
           title: Text(chatRoom.subject),
           subtitle: Text('last time: ${chatRoom.time}'),
-          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ChattingScreen(chatRoom),)),
+          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ChattingScreen(chatRoom),)).then((value) {
+            setState(() {
+              initialize = _initialize();
+            });
+          }),
         ); // 스윗 깃 공유 테스트
       },
     );

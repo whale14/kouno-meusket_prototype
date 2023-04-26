@@ -87,6 +87,7 @@ class MyApp extends StatelessWidget {
             // Notice that the counter didn't reset back to zero; the application
             // is not restarcsted.
             primarySwatch: Colors.orange,
+            iconTheme: IconThemeData(color: Colors.orange),
             appBarTheme: const AppBarTheme(centerTitle: true, titleTextStyle: TextStyle(color: Colors.orange))),
         home: FutureBuilder(
             future: sharedPreferencesService.isLoggedIn(),
