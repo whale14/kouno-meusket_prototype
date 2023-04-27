@@ -26,4 +26,12 @@ class ChatApi {
     final response = await _client.post(Uri.parse(url), body: data);
     return response;
   }
+
+  Future updateChatRead(String chatIdx) async{
+    String url = '$baseUrl/update_chat_read.php';
+    Map<String, dynamic> data = {
+      'idx':chatIdx,
+    };
+    await _client.post(Uri.parse(url), body: data);
+  }
 }

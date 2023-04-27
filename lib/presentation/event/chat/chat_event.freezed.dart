@@ -20,18 +20,21 @@ mixin _$ChatEvent<T> {
   TResult when<TResult extends Object?>({
     required TResult Function(String idx) getChatRooms,
     required TResult Function(String roomIdx) getChatContents,
+    required TResult Function(ChatContent chatContent) updateChatRead,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String idx)? getChatRooms,
     TResult? Function(String roomIdx)? getChatContents,
+    TResult? Function(ChatContent chatContent)? updateChatRead,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String idx)? getChatRooms,
     TResult Function(String roomIdx)? getChatContents,
+    TResult Function(ChatContent chatContent)? updateChatRead,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$ChatEvent<T> {
   TResult map<TResult extends Object?>({
     required TResult Function(GetChatRooms<T> value) getChatRooms,
     required TResult Function(GetChatContents<T> value) getChatContents,
+    required TResult Function(UpdateChatRead<T> value) updateChatRead,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetChatRooms<T> value)? getChatRooms,
     TResult? Function(GetChatContents<T> value)? getChatContents,
+    TResult? Function(UpdateChatRead<T> value)? updateChatRead,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetChatRooms<T> value)? getChatRooms,
     TResult Function(GetChatContents<T> value)? getChatContents,
+    TResult Function(UpdateChatRead<T> value)? updateChatRead,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,6 +146,7 @@ class _$GetChatRooms<T> implements GetChatRooms<T> {
   TResult when<TResult extends Object?>({
     required TResult Function(String idx) getChatRooms,
     required TResult Function(String roomIdx) getChatContents,
+    required TResult Function(ChatContent chatContent) updateChatRead,
   }) {
     return getChatRooms(idx);
   }
@@ -149,6 +156,7 @@ class _$GetChatRooms<T> implements GetChatRooms<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String idx)? getChatRooms,
     TResult? Function(String roomIdx)? getChatContents,
+    TResult? Function(ChatContent chatContent)? updateChatRead,
   }) {
     return getChatRooms?.call(idx);
   }
@@ -158,6 +166,7 @@ class _$GetChatRooms<T> implements GetChatRooms<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String idx)? getChatRooms,
     TResult Function(String roomIdx)? getChatContents,
+    TResult Function(ChatContent chatContent)? updateChatRead,
     required TResult orElse(),
   }) {
     if (getChatRooms != null) {
@@ -171,6 +180,7 @@ class _$GetChatRooms<T> implements GetChatRooms<T> {
   TResult map<TResult extends Object?>({
     required TResult Function(GetChatRooms<T> value) getChatRooms,
     required TResult Function(GetChatContents<T> value) getChatContents,
+    required TResult Function(UpdateChatRead<T> value) updateChatRead,
   }) {
     return getChatRooms(this);
   }
@@ -180,6 +190,7 @@ class _$GetChatRooms<T> implements GetChatRooms<T> {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetChatRooms<T> value)? getChatRooms,
     TResult? Function(GetChatContents<T> value)? getChatContents,
+    TResult? Function(UpdateChatRead<T> value)? updateChatRead,
   }) {
     return getChatRooms?.call(this);
   }
@@ -189,6 +200,7 @@ class _$GetChatRooms<T> implements GetChatRooms<T> {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetChatRooms<T> value)? getChatRooms,
     TResult Function(GetChatContents<T> value)? getChatContents,
+    TResult Function(UpdateChatRead<T> value)? updateChatRead,
     required TResult orElse(),
   }) {
     if (getChatRooms != null) {
@@ -274,6 +286,7 @@ class _$GetChatContents<T> implements GetChatContents<T> {
   TResult when<TResult extends Object?>({
     required TResult Function(String idx) getChatRooms,
     required TResult Function(String roomIdx) getChatContents,
+    required TResult Function(ChatContent chatContent) updateChatRead,
   }) {
     return getChatContents(roomIdx);
   }
@@ -283,6 +296,7 @@ class _$GetChatContents<T> implements GetChatContents<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String idx)? getChatRooms,
     TResult? Function(String roomIdx)? getChatContents,
+    TResult? Function(ChatContent chatContent)? updateChatRead,
   }) {
     return getChatContents?.call(roomIdx);
   }
@@ -292,6 +306,7 @@ class _$GetChatContents<T> implements GetChatContents<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String idx)? getChatRooms,
     TResult Function(String roomIdx)? getChatContents,
+    TResult Function(ChatContent chatContent)? updateChatRead,
     required TResult orElse(),
   }) {
     if (getChatContents != null) {
@@ -305,6 +320,7 @@ class _$GetChatContents<T> implements GetChatContents<T> {
   TResult map<TResult extends Object?>({
     required TResult Function(GetChatRooms<T> value) getChatRooms,
     required TResult Function(GetChatContents<T> value) getChatContents,
+    required TResult Function(UpdateChatRead<T> value) updateChatRead,
   }) {
     return getChatContents(this);
   }
@@ -314,6 +330,7 @@ class _$GetChatContents<T> implements GetChatContents<T> {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetChatRooms<T> value)? getChatRooms,
     TResult? Function(GetChatContents<T> value)? getChatContents,
+    TResult? Function(UpdateChatRead<T> value)? updateChatRead,
   }) {
     return getChatContents?.call(this);
   }
@@ -323,6 +340,7 @@ class _$GetChatContents<T> implements GetChatContents<T> {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetChatRooms<T> value)? getChatRooms,
     TResult Function(GetChatContents<T> value)? getChatContents,
+    TResult Function(UpdateChatRead<T> value)? updateChatRead,
     required TResult orElse(),
   }) {
     if (getChatContents != null) {
@@ -338,5 +356,156 @@ abstract class GetChatContents<T> implements ChatEvent<T> {
   String get roomIdx;
   @JsonKey(ignore: true)
   _$$GetChatContentsCopyWith<T, _$GetChatContents<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateChatReadCopyWith<T, $Res> {
+  factory _$$UpdateChatReadCopyWith(
+          _$UpdateChatRead<T> value, $Res Function(_$UpdateChatRead<T>) then) =
+      __$$UpdateChatReadCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({ChatContent chatContent});
+
+  $ChatContentCopyWith<$Res> get chatContent;
+}
+
+/// @nodoc
+class __$$UpdateChatReadCopyWithImpl<T, $Res>
+    extends _$ChatEventCopyWithImpl<T, $Res, _$UpdateChatRead<T>>
+    implements _$$UpdateChatReadCopyWith<T, $Res> {
+  __$$UpdateChatReadCopyWithImpl(
+      _$UpdateChatRead<T> _value, $Res Function(_$UpdateChatRead<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? chatContent = null,
+  }) {
+    return _then(_$UpdateChatRead<T>(
+      null == chatContent
+          ? _value.chatContent
+          : chatContent // ignore: cast_nullable_to_non_nullable
+              as ChatContent,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ChatContentCopyWith<$Res> get chatContent {
+    return $ChatContentCopyWith<$Res>(_value.chatContent, (value) {
+      return _then(_value.copyWith(chatContent: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UpdateChatRead<T> implements UpdateChatRead<T> {
+  const _$UpdateChatRead(this.chatContent);
+
+  @override
+  final ChatContent chatContent;
+
+  @override
+  String toString() {
+    return 'ChatEvent<$T>.updateChatRead(chatContent: $chatContent)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateChatRead<T> &&
+            (identical(other.chatContent, chatContent) ||
+                other.chatContent == chatContent));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, chatContent);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateChatReadCopyWith<T, _$UpdateChatRead<T>> get copyWith =>
+      __$$UpdateChatReadCopyWithImpl<T, _$UpdateChatRead<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String idx) getChatRooms,
+    required TResult Function(String roomIdx) getChatContents,
+    required TResult Function(ChatContent chatContent) updateChatRead,
+  }) {
+    return updateChatRead(chatContent);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String idx)? getChatRooms,
+    TResult? Function(String roomIdx)? getChatContents,
+    TResult? Function(ChatContent chatContent)? updateChatRead,
+  }) {
+    return updateChatRead?.call(chatContent);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String idx)? getChatRooms,
+    TResult Function(String roomIdx)? getChatContents,
+    TResult Function(ChatContent chatContent)? updateChatRead,
+    required TResult orElse(),
+  }) {
+    if (updateChatRead != null) {
+      return updateChatRead(chatContent);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetChatRooms<T> value) getChatRooms,
+    required TResult Function(GetChatContents<T> value) getChatContents,
+    required TResult Function(UpdateChatRead<T> value) updateChatRead,
+  }) {
+    return updateChatRead(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetChatRooms<T> value)? getChatRooms,
+    TResult? Function(GetChatContents<T> value)? getChatContents,
+    TResult? Function(UpdateChatRead<T> value)? updateChatRead,
+  }) {
+    return updateChatRead?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetChatRooms<T> value)? getChatRooms,
+    TResult Function(GetChatContents<T> value)? getChatContents,
+    TResult Function(UpdateChatRead<T> value)? updateChatRead,
+    required TResult orElse(),
+  }) {
+    if (updateChatRead != null) {
+      return updateChatRead(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateChatRead<T> implements ChatEvent<T> {
+  const factory UpdateChatRead(final ChatContent chatContent) =
+      _$UpdateChatRead<T>;
+
+  ChatContent get chatContent;
+  @JsonKey(ignore: true)
+  _$$UpdateChatReadCopyWith<T, _$UpdateChatRead<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

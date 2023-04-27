@@ -24,8 +24,7 @@ mixin _$ChatRoom {
   int get reqIdx => throw _privateConstructorUsedError;
   String get subject => throw _privateConstructorUsedError;
   String get time => throw _privateConstructorUsedError;
-  int get isRequesterRead => throw _privateConstructorUsedError;
-  int get isWorkerRead => throw _privateConstructorUsedError;
+  int get stackedMessages => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,12 +38,7 @@ abstract class $ChatRoomCopyWith<$Res> {
       _$ChatRoomCopyWithImpl<$Res, ChatRoom>;
   @useResult
   $Res call(
-      {int idx,
-      int reqIdx,
-      String subject,
-      String time,
-      int isRequesterRead,
-      int isWorkerRead});
+      {int idx, int reqIdx, String subject, String time, int stackedMessages});
 }
 
 /// @nodoc
@@ -64,8 +58,7 @@ class _$ChatRoomCopyWithImpl<$Res, $Val extends ChatRoom>
     Object? reqIdx = null,
     Object? subject = null,
     Object? time = null,
-    Object? isRequesterRead = null,
-    Object? isWorkerRead = null,
+    Object? stackedMessages = null,
   }) {
     return _then(_value.copyWith(
       idx: null == idx
@@ -84,13 +77,9 @@ class _$ChatRoomCopyWithImpl<$Res, $Val extends ChatRoom>
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as String,
-      isRequesterRead: null == isRequesterRead
-          ? _value.isRequesterRead
-          : isRequesterRead // ignore: cast_nullable_to_non_nullable
-              as int,
-      isWorkerRead: null == isWorkerRead
-          ? _value.isWorkerRead
-          : isWorkerRead // ignore: cast_nullable_to_non_nullable
+      stackedMessages: null == stackedMessages
+          ? _value.stackedMessages
+          : stackedMessages // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -104,12 +93,7 @@ abstract class _$$_ChatRoomCopyWith<$Res> implements $ChatRoomCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int idx,
-      int reqIdx,
-      String subject,
-      String time,
-      int isRequesterRead,
-      int isWorkerRead});
+      {int idx, int reqIdx, String subject, String time, int stackedMessages});
 }
 
 /// @nodoc
@@ -127,8 +111,7 @@ class __$$_ChatRoomCopyWithImpl<$Res>
     Object? reqIdx = null,
     Object? subject = null,
     Object? time = null,
-    Object? isRequesterRead = null,
-    Object? isWorkerRead = null,
+    Object? stackedMessages = null,
   }) {
     return _then(_$_ChatRoom(
       idx: null == idx
@@ -147,13 +130,9 @@ class __$$_ChatRoomCopyWithImpl<$Res>
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
               as String,
-      isRequesterRead: null == isRequesterRead
-          ? _value.isRequesterRead
-          : isRequesterRead // ignore: cast_nullable_to_non_nullable
-              as int,
-      isWorkerRead: null == isWorkerRead
-          ? _value.isWorkerRead
-          : isWorkerRead // ignore: cast_nullable_to_non_nullable
+      stackedMessages: null == stackedMessages
+          ? _value.stackedMessages
+          : stackedMessages // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -167,8 +146,7 @@ class _$_ChatRoom implements _ChatRoom {
       required this.reqIdx,
       required this.subject,
       required this.time,
-      required this.isRequesterRead,
-      required this.isWorkerRead});
+      required this.stackedMessages});
 
   factory _$_ChatRoom.fromJson(Map<String, dynamic> json) =>
       _$$_ChatRoomFromJson(json);
@@ -182,13 +160,11 @@ class _$_ChatRoom implements _ChatRoom {
   @override
   final String time;
   @override
-  final int isRequesterRead;
-  @override
-  final int isWorkerRead;
+  final int stackedMessages;
 
   @override
   String toString() {
-    return 'ChatRoom(idx: $idx, reqIdx: $reqIdx, subject: $subject, time: $time, isRequesterRead: $isRequesterRead, isWorkerRead: $isWorkerRead)';
+    return 'ChatRoom(idx: $idx, reqIdx: $reqIdx, subject: $subject, time: $time, stackedMessages: $stackedMessages)';
   }
 
   @override
@@ -200,16 +176,14 @@ class _$_ChatRoom implements _ChatRoom {
             (identical(other.reqIdx, reqIdx) || other.reqIdx == reqIdx) &&
             (identical(other.subject, subject) || other.subject == subject) &&
             (identical(other.time, time) || other.time == time) &&
-            (identical(other.isRequesterRead, isRequesterRead) ||
-                other.isRequesterRead == isRequesterRead) &&
-            (identical(other.isWorkerRead, isWorkerRead) ||
-                other.isWorkerRead == isWorkerRead));
+            (identical(other.stackedMessages, stackedMessages) ||
+                other.stackedMessages == stackedMessages));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, idx, reqIdx, subject, time, isRequesterRead, isWorkerRead);
+  int get hashCode =>
+      Object.hash(runtimeType, idx, reqIdx, subject, time, stackedMessages);
 
   @JsonKey(ignore: true)
   @override
@@ -231,8 +205,7 @@ abstract class _ChatRoom implements ChatRoom {
       required final int reqIdx,
       required final String subject,
       required final String time,
-      required final int isRequesterRead,
-      required final int isWorkerRead}) = _$_ChatRoom;
+      required final int stackedMessages}) = _$_ChatRoom;
 
   factory _ChatRoom.fromJson(Map<String, dynamic> json) = _$_ChatRoom.fromJson;
 
@@ -245,9 +218,7 @@ abstract class _ChatRoom implements ChatRoom {
   @override
   String get time;
   @override
-  int get isRequesterRead;
-  @override
-  int get isWorkerRead;
+  int get stackedMessages;
   @override
   @JsonKey(ignore: true)
   _$$_ChatRoomCopyWith<_$_ChatRoom> get copyWith =>

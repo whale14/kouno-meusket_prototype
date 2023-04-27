@@ -5,4 +5,6 @@ abstract class ChatRepository {
   Future<List<ChatRoom>> getChatRooms(String idx);
 
   Future<List<ChatContent>> getChatContents(String roomIdx);
+
+  Future updateChatRead(String chatIdx);
 }

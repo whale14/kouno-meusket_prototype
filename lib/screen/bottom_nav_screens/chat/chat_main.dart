@@ -54,17 +54,49 @@ class _BodyChatState extends State<BodyChat> {
       itemCount: _chatRoomState.chatRooms.length,
       itemBuilder: (context, index) {
         final chatRoom = _chatRoomState.chatRooms[index];
-        return ListTile(
-          title: Text(chatRoom.subject),
-          subtitle: Text('last time: ${chatRoom.time}'),
-          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ChattingScreen(chatRoom),)).then((value) {
-            setState(() {
-              initialize = _initialize();
-            });
-          }),
-        ); // 스윗 깃 공유 테스트
+        if (chatRoom.stackedMessages != 0) {
+          return Container(
+            margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+            decoration: const BoxDecoration(
+              border: Border(bottom: BorderSide(color: Colors.grey))
+            ),
+            child: ListTile(
+              title: Text(chatRoom.subject),
+              subtitle: Text('last time: ${chatRoom.time}'),
+              trailing: Container(
+                  decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.orange,),
+                  padding: const EdgeInsets.all(7),
+                  child: Text(
+                    chatRoom.stackedMessages.toString(),
+                    style: const TextStyle(color: Colors.white),
+                  )),
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ChattingScreen(chatRoom),
+                  )).then((value) {
+                setState(() {
+                  initialize = _initialize();
+                });
+              }),
+            ),
+          );
+        } else {
+          return ListTile(
+            title: Text(chatRoom.subject),
+            subtitle: Text('last time: ${chatRoom.time}'),
+            onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChattingScreen(chatRoom),
+                )).then((value) {
+              setState(() {
+                initialize = _initialize();
+              });
+            }),
+          );
+        }
       },
     );
   }
-
 }

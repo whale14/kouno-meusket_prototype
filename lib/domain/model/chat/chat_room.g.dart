@@ -11,8 +11,7 @@ _$_ChatRoom _$$_ChatRoomFromJson(Map<String, dynamic> json) => _$_ChatRoom(
       reqIdx: json['reqIdx'] as int,
       subject: json['subject'] as String,
       time: json['time'] as String,
-      isRequesterRead: json['isRequesterRead'] as int,
-      isWorkerRead: json['isWorkerRead'] as int,
+      stackedMessages: json['stackedMessages'] as int,
     );
 
 Map<String, dynamic> _$$_ChatRoomToJson(_$_ChatRoom instance) =>
@@ -21,6 +20,5 @@ Map<String, dynamic> _$$_ChatRoomToJson(_$_ChatRoom instance) =>
       'reqIdx': instance.reqIdx,
       'subject': instance.subject,
       'time': instance.time,
-      'isRequesterRead': instance.isRequesterRead,
-      'isWorkerRead': instance.isWorkerRead,
+      'stackedMessages': instance.stackedMessages,
     };

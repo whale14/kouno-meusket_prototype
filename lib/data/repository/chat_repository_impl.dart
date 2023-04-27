@@ -29,4 +29,10 @@ class ChatRepositoryImpl implements ChatRepository {
     return json.map((e) => ChatRoom.fromJson(e)).toList();
   }
 
+  @override
+  Future updateChatRead(String chatIdx) async{
+    // TODO: implement updateChatRead
+    await api.updateChatRead(chatIdx);
+  }
+
 }

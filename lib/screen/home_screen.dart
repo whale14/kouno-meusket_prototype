@@ -36,7 +36,7 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
   late TestViewModel _viewModel;
   late UserState _state;
 
-  bool workstate = false;
+  bool workState = false;
 
   late double latitude, longitude;
 
@@ -54,14 +54,6 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
     socket.close();
   }
   void _connect() {
-    socket = IO.io(
-      'http://192.168.100.42:3000', //5층 ip
-      // 'http://192.168.101.2:3000', // 3층 ip
-      <String, dynamic>{
-        'transports': ['websocket']
-      },
-    );
-
     socket.connect();
     socket.on('workerLocation', (data) {
       String jsonLocation = jsonEncode(data[0]);
@@ -73,9 +65,11 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
 
     //헬퍼 idx 보내기
     socket.on('event', (data) async{
-      Logger().d('$data');
-      await _getCurrentLocation();
-      _viewModel.onUserEvent(UserEvent.updateLocation(idx!,latitude, longitude));
+      if(workState) {
+        Logger().d('$data');
+        await _getCurrentLocation();
+        _viewModel.onUserEvent(UserEvent.updateLocation(idx!, latitude, longitude));
+      }
     });
   }
 
@@ -107,7 +101,7 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
     _getCurrentLocation();
     _getSharedPreferences();
     _getUser = getUser();
-
+    _connect();
   }
 
   Future _getSharedPreferences() async{
@@ -134,25 +128,19 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
 
 
     _state = _viewModel.userState;
-    Logger().d('!!!!!!!!HomeSreen - userState : ${_state}');
-
-    if(workstate) {
-      _connect();
-    } else {
-      _disConnect();
-    }
+    Logger().d('!!!!!!!!HomeSreen - userState : $_state');
 
     return Scaffold(
           appBar: AppBar(
             title: Text(_barTitles[_bottomNavIndex]),
             actions: <Widget>[
               Switch(
-                value: workstate,
+                value: workState,
                 onChanged: (value) {
                   setState(() {
-                    workstate = value;
+                    workState = value;
                   });
-                  Logger().d(workstate);
+                  Logger().d(workState);
               },
               ),
               TextButton(onPressed: (){
@@ -196,6 +184,13 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
     setState(() {
       _bottomNavIndex = index;
     });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _disConnect();
+    super.dispose();
   }
 }
 // class HomeScreen extends StatelessWidget {

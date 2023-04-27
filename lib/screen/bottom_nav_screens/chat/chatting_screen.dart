@@ -73,6 +73,28 @@ class _ChattingScreenState extends State<ChattingScreen> {
   Widget build(BuildContext context) {
     _viewModel = context.watch<ChatViewModel>();
     _state = _viewModel.chatContentState;
+
+    socket.on("loadChatMessage", (data) {
+      setState(() {
+        initialize = _initialize();
+      });
+      var jsonData = jsonEncode(data);
+      Map<String, dynamic> jsonMap = jsonDecode(jsonData);
+      Logger().d("result: ${jsonMap['result']}, userIdx: ${jsonMap['userId']}");
+      if (idx != jsonMap['userId']) {
+      } else {
+        Logger().d("같아 아무것도 안할거야");
+      }
+    });
+
+    socket.on("readChat", (userIdx) {
+      if(userIdx != idx) {
+        setState(() {
+          initialize = _initialize();
+        });
+      }
+    });
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -99,6 +121,10 @@ class _ChattingScreenState extends State<ChattingScreen> {
                     itemCount: docs.length,
                     itemBuilder: (context, index) {
                       final chatContent = docs[index];
+                      if (chatContent.isRead == 0 && chatContent.userIdx.toString() != idx) {
+                        _viewModel.onChatEvent(ChatEvent.updateChatRead(chatContent));
+                        socket.emit("readChat", idx!);
+                      }
                       return chatBubble(chatContent);
                     },
                   ),
@@ -202,7 +228,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
                 )),
                 IconButton(
                     onPressed: _userTypeMessage.trim().isEmpty ? null : () => sendMessage(widget.chatRoom.idx.toString(), idx!, _userTypeMessage),
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.send,
                     ))
               ],
@@ -218,19 +244,6 @@ class _ChattingScreenState extends State<ChattingScreen> {
 
     //채팅 소켓연결
     socket.emit('sendMessage', {'roomIdx': roomIdx, 'message': message, 'userIdx': myIdx});
-    socket.on("loadChatMessage", (data) {
-      setState(() {
-        initialize = _initialize();
-      });
-      var jsonData = jsonEncode(data);
-      Map<String, dynamic> jsonMap = jsonDecode(jsonData);
-      Logger().d("result: ${jsonMap['result']}, userIdx: ${jsonMap['userId']}");
-      if(idx != jsonMap['userId']) {
-
-      } else {
-        Logger().d("같아 아무것도 안할거야");
-      }
-    });
   }
 
   @override
@@ -248,31 +261,10 @@ class _ChattingScreenState extends State<ChattingScreen> {
     Color color = Colors.grey;
     Alignment alignment = Alignment.center;
     MainAxisAlignment rowAlign = MainAxisAlignment.center;
-    Widget bubbleReadCheck;
+    Widget bubble;
 
-    if(chatContent.isRead == 0) {
-
-    } else {
-      bubbleReadCheck = Row(
-        mainAxisAlignment: rowAlign,
-        children: [
-          Container(
-            padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-            decoration: BoxDecoration(
-              color: color,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Text(
-              chatContent.content,
-            ),
-          ),
-          const Text("1")
-        ],
-      );
-    }
-
-    if(chatContent.userIdx != 0) {
-      if(chatContent.userIdx.toString() == idx) {
+    if (chatContent.userIdx != 0) {
+      if (chatContent.userIdx.toString() == idx) {
         color = Colors.orange;
         alignment = Alignment.centerRight;
         rowAlign = MainAxisAlignment.end;
@@ -281,30 +273,12 @@ class _ChattingScreenState extends State<ChattingScreen> {
         alignment = Alignment.centerLeft;
         rowAlign = MainAxisAlignment.start;
       }
-    }
 
-
-    if(chatContent.isRead == 0) {
       return Align(
         alignment: alignment,
         child: Padding(
           padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-          child: Row(
-            mainAxisAlignment: rowAlign,
-            children: [
-              Container(
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                decoration: BoxDecoration(
-                  color: color,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Text(
-                  chatContent.content,
-                ),
-              ),
-              const Text("1")
-            ],
-          ),
+          child: bubbleReadCheck(chatContent, color, rowAlign),
         ),
       );
     } else {
@@ -322,6 +296,51 @@ class _ChattingScreenState extends State<ChattingScreen> {
               chatContent.content,
             ),
           ),
+        ),
+      );
+    }
+  }
+
+  Widget bubbleReadCheck(ChatContent chatContent, Color color, MainAxisAlignment rowAlign) {
+    if (chatContent.isRead == 0) {
+      if (chatContent.userIdx.toString() == idx) {
+        return Row(
+          mainAxisAlignment: rowAlign,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            const Text("1", style: TextStyle(color: Colors.orange),),
+            Container(
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+              decoration: BoxDecoration(
+                color: color,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Text(
+                chatContent.content,
+              ),
+            ),
+          ],
+        );
+      } else { return Container(
+          padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Text(
+            chatContent.content,
+          ),
+        );
+      }
+    } else {
+      return Container(
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Text(
+          chatContent.content,
         ),
       );
     }

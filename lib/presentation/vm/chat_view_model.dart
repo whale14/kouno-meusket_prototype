@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:test_project/domain/model/chat/chat_content.dart';
 import 'package:test_project/presentation/event/chat/chat_event.dart';
 
 import '../../domain/repository/chat_repository.dart';
@@ -16,7 +17,7 @@ class ChatViewModel with ChangeNotifier {
   ChatViewModel(this._chatRepository);
 
   Future onChatEvent(ChatEvent event) async{
-   await event.when(getChatRooms: _getChatRooms, getChatContents: _getChatContents);
+   await event.when(getChatRooms: _getChatRooms, getChatContents: _getChatContents, updateChatRead: _updateChatRead);
   }
 
   Future _getChatRooms(String idx) async{
@@ -35,5 +36,9 @@ class ChatViewModel with ChangeNotifier {
       chatContents: await result,
     );
     notifyListeners();
+  }
+
+  _updateChatRead(ChatContent chatContent) async{
+    await _chatRepository.updateChatRead(chatContent.idx.toString());
   }
 }
