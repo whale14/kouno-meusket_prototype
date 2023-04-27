@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
@@ -97,64 +99,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
                     itemCount: docs.length,
                     itemBuilder: (context, index) {
                       final chatContent = docs[index];
-                      if (chatContent.userIdx == 0) {
-                        //가운데 정렬
-                        return Align(
-                          child: Padding(
-                            padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                            child: Container(
-                              width: 200,
-                              alignment: Alignment.center,
-                              padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                              decoration: BoxDecoration(
-                                color: Colors.grey,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Text(
-                                chatContent.content,
-                              ),
-                            ),
-                          ),
-                        );
-                      } else {
-                        if (chatContent.userIdx.toString() == idx) {
-                          //오른쪽 정렬
-                          return Align(
-                            alignment: Alignment.centerRight,
-                            child: Padding(
-                              padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                              child: Container(
-                                padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                decoration: BoxDecoration(
-                                  color: Colors.orange,
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Text(
-                                  chatContent.content,
-                                ),
-                              ),
-                            ),
-                          );
-                        } else {
-                          //왼쪽 정렬
-                          return Align(
-                            alignment: Alignment.centerLeft,
-                            child: Padding(
-                              padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                              child: Container(
-                                padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                decoration: BoxDecoration(
-                                  color: Colors.grey,
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Text(
-                                  chatContent.content,
-                                ),
-                              ),
-                            ),
-                          );
-                        }
-                      }
+                      return chatBubble(chatContent);
                     },
                   ),
                 );
@@ -277,7 +222,14 @@ class _ChattingScreenState extends State<ChattingScreen> {
       setState(() {
         initialize = _initialize();
       });
-      Logger().d(data);
+      var jsonData = jsonEncode(data);
+      Map<String, dynamic> jsonMap = jsonDecode(jsonData);
+      Logger().d("result: ${jsonMap['result']}, userIdx: ${jsonMap['userId']}");
+      if(idx != jsonMap['userId']) {
+
+      } else {
+        Logger().d("같아 아무것도 안할거야");
+      }
     });
   }
 
@@ -290,5 +242,88 @@ class _ChattingScreenState extends State<ChattingScreen> {
     sendTextController.dispose();
     scrollController.dispose();
     super.dispose();
+  }
+
+  Widget chatBubble(ChatContent chatContent) {
+    Color color = Colors.grey;
+    Alignment alignment = Alignment.center;
+    MainAxisAlignment rowAlign = MainAxisAlignment.center;
+    Widget bubbleReadCheck;
+
+    if(chatContent.isRead == 0) {
+
+    } else {
+      bubbleReadCheck = Row(
+        mainAxisAlignment: rowAlign,
+        children: [
+          Container(
+            padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Text(
+              chatContent.content,
+            ),
+          ),
+          const Text("1")
+        ],
+      );
+    }
+
+    if(chatContent.userIdx != 0) {
+      if(chatContent.userIdx.toString() == idx) {
+        color = Colors.orange;
+        alignment = Alignment.centerRight;
+        rowAlign = MainAxisAlignment.end;
+      } else {
+        color = Colors.grey;
+        alignment = Alignment.centerLeft;
+        rowAlign = MainAxisAlignment.start;
+      }
+    }
+
+
+    if(chatContent.isRead == 0) {
+      return Align(
+        alignment: alignment,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+          child: Row(
+            mainAxisAlignment: rowAlign,
+            children: [
+              Container(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                decoration: BoxDecoration(
+                  color: color,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Text(
+                  chatContent.content,
+                ),
+              ),
+              const Text("1")
+            ],
+          ),
+        ),
+      );
+    } else {
+      return Align(
+        alignment: alignment,
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+          child: Container(
+            padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Text(
+              chatContent.content,
+            ),
+          ),
+        ),
+      );
+    }
   }
 }
