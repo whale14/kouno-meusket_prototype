@@ -20,8 +20,9 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class TabPage extends StatefulWidget {
   final String userId;
+  final String category;
 
-  const TabPage(this.userId, {Key? key}) : super(key: key);
+  const TabPage(this.userId, this.category, {Key? key}) : super(key: key);
   @override
   State<TabPage> createState() => _TabPageState();
 }
@@ -80,7 +81,7 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
     longitude = position.longitude;
   }
 
-  late Future _getUser;
+  late Future initialize;
   // final List _pages = [
   //   const BodyReq(),
   //   const BodyHelper(),
@@ -98,21 +99,25 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _getCurrentLocation();
-    _getSharedPreferences();
-    _getUser = getUser();
+    initialize = _initialize();
     _connect();
+
+  }
+
+  Future _initialize() async{
+    await _getCurrentLocation();
+    await _getSharedPreferences();
+    await _getUser();
+    socket.emit('joinUser', ('user${idx!}'));
   }
 
   Future _getSharedPreferences() async{
     final SharedPreferences prefs = await _prefs;
-    setState(() {
-      idx = prefs.getString('idx');
-    });
+    idx = prefs.getString('idx');
     Logger().d("!!!!!!!!!!!!!!!myIdx: $idx}");
   }
 
-  Future getUser() async{
+  Future _getUser() async{
     await _viewModel.onUserEvent(UserEvent.getUser(widget.userId));
   }
 
@@ -125,13 +130,12 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
     // _getSharedPreferences();
     // _viewModel.onUserEvent(UserEvent.getUser(widget.userId));
     // _getUser;
-
-
     _state = _viewModel.userState;
     Logger().d('!!!!!!!!HomeSreen - userState : $_state');
 
     return Scaffold(
           appBar: AppBar(
+            leading: IconButton(onPressed: () => Navigator.pop(context), icon: Icon(Icons.home, color: Colors.white,),),
             title: Text(_barTitles[_bottomNavIndex]),
             actions: <Widget>[
               Switch(
@@ -157,10 +161,10 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
             ],
           ),
           body: [
-            BodyReq(_userId),
+            BodyReq(_userId, socket, widget.category),
             const BodyHelper(),
             const BodyShopping(),
-            const BodyChat()
+            BodyChat(socket)
           ][_bottomNavIndex],//_pages[_bottomNavIndex],
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,

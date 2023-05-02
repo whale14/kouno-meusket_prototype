@@ -25,6 +25,8 @@ mixin _$ChatRoom {
   String get subject => throw _privateConstructorUsedError;
   String get time => throw _privateConstructorUsedError;
   int get stackedMessages => throw _privateConstructorUsedError;
+  int get workerIdx => throw _privateConstructorUsedError;
+  int get requesterIdx => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +40,13 @@ abstract class $ChatRoomCopyWith<$Res> {
       _$ChatRoomCopyWithImpl<$Res, ChatRoom>;
   @useResult
   $Res call(
-      {int idx, int reqIdx, String subject, String time, int stackedMessages});
+      {int idx,
+      int reqIdx,
+      String subject,
+      String time,
+      int stackedMessages,
+      int workerIdx,
+      int requesterIdx});
 }
 
 /// @nodoc
@@ -59,6 +67,8 @@ class _$ChatRoomCopyWithImpl<$Res, $Val extends ChatRoom>
     Object? subject = null,
     Object? time = null,
     Object? stackedMessages = null,
+    Object? workerIdx = null,
+    Object? requesterIdx = null,
   }) {
     return _then(_value.copyWith(
       idx: null == idx
@@ -81,6 +91,14 @@ class _$ChatRoomCopyWithImpl<$Res, $Val extends ChatRoom>
           ? _value.stackedMessages
           : stackedMessages // ignore: cast_nullable_to_non_nullable
               as int,
+      workerIdx: null == workerIdx
+          ? _value.workerIdx
+          : workerIdx // ignore: cast_nullable_to_non_nullable
+              as int,
+      requesterIdx: null == requesterIdx
+          ? _value.requesterIdx
+          : requesterIdx // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -93,7 +111,13 @@ abstract class _$$_ChatRoomCopyWith<$Res> implements $ChatRoomCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int idx, int reqIdx, String subject, String time, int stackedMessages});
+      {int idx,
+      int reqIdx,
+      String subject,
+      String time,
+      int stackedMessages,
+      int workerIdx,
+      int requesterIdx});
 }
 
 /// @nodoc
@@ -112,6 +136,8 @@ class __$$_ChatRoomCopyWithImpl<$Res>
     Object? subject = null,
     Object? time = null,
     Object? stackedMessages = null,
+    Object? workerIdx = null,
+    Object? requesterIdx = null,
   }) {
     return _then(_$_ChatRoom(
       idx: null == idx
@@ -134,6 +160,14 @@ class __$$_ChatRoomCopyWithImpl<$Res>
           ? _value.stackedMessages
           : stackedMessages // ignore: cast_nullable_to_non_nullable
               as int,
+      workerIdx: null == workerIdx
+          ? _value.workerIdx
+          : workerIdx // ignore: cast_nullable_to_non_nullable
+              as int,
+      requesterIdx: null == requesterIdx
+          ? _value.requesterIdx
+          : requesterIdx // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -146,7 +180,9 @@ class _$_ChatRoom implements _ChatRoom {
       required this.reqIdx,
       required this.subject,
       required this.time,
-      required this.stackedMessages});
+      required this.stackedMessages,
+      required this.workerIdx,
+      required this.requesterIdx});
 
   factory _$_ChatRoom.fromJson(Map<String, dynamic> json) =>
       _$$_ChatRoomFromJson(json);
@@ -161,10 +197,14 @@ class _$_ChatRoom implements _ChatRoom {
   final String time;
   @override
   final int stackedMessages;
+  @override
+  final int workerIdx;
+  @override
+  final int requesterIdx;
 
   @override
   String toString() {
-    return 'ChatRoom(idx: $idx, reqIdx: $reqIdx, subject: $subject, time: $time, stackedMessages: $stackedMessages)';
+    return 'ChatRoom(idx: $idx, reqIdx: $reqIdx, subject: $subject, time: $time, stackedMessages: $stackedMessages, workerIdx: $workerIdx, requesterIdx: $requesterIdx)';
   }
 
   @override
@@ -177,13 +217,17 @@ class _$_ChatRoom implements _ChatRoom {
             (identical(other.subject, subject) || other.subject == subject) &&
             (identical(other.time, time) || other.time == time) &&
             (identical(other.stackedMessages, stackedMessages) ||
-                other.stackedMessages == stackedMessages));
+                other.stackedMessages == stackedMessages) &&
+            (identical(other.workerIdx, workerIdx) ||
+                other.workerIdx == workerIdx) &&
+            (identical(other.requesterIdx, requesterIdx) ||
+                other.requesterIdx == requesterIdx));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, idx, reqIdx, subject, time, stackedMessages);
+  int get hashCode => Object.hash(runtimeType, idx, reqIdx, subject, time,
+      stackedMessages, workerIdx, requesterIdx);
 
   @JsonKey(ignore: true)
   @override
@@ -205,7 +249,9 @@ abstract class _ChatRoom implements ChatRoom {
       required final int reqIdx,
       required final String subject,
       required final String time,
-      required final int stackedMessages}) = _$_ChatRoom;
+      required final int stackedMessages,
+      required final int workerIdx,
+      required final int requesterIdx}) = _$_ChatRoom;
 
   factory _ChatRoom.fromJson(Map<String, dynamic> json) = _$_ChatRoom.fromJson;
 
@@ -219,6 +265,10 @@ abstract class _ChatRoom implements ChatRoom {
   String get time;
   @override
   int get stackedMessages;
+  @override
+  int get workerIdx;
+  @override
+  int get requesterIdx;
   @override
   @JsonKey(ignore: true)
   _$$_ChatRoomCopyWith<_$_ChatRoom> get copyWith =>

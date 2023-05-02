@@ -24,6 +24,7 @@ import 'package:provider/provider.dart';
 import 'package:test_project/data/source/remote/errand_api.dart';
 import 'package:test_project/presentation/vm/test_view_model.dart';
 import 'package:test_project/screen/join_page.dart';
+import 'package:test_project/screen/look_around.dart';
 
 import 'firebase_options.dart';
 
@@ -94,16 +95,16 @@ class MyApp extends StatelessWidget {
             builder: (context, snapshot) {
               Logger().d("isLoggedIn? : ${snapshot.data}");
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               } else {
                 if (snapshot.hasData && snapshot.data == true) {
                   return FutureBuilder(
                     future: sharedPreferencesService.getUserId(),
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
-                        return CircularProgressIndicator();
+                        return const CircularProgressIndicator();
                       } else {
-                        return TabPage(snapshot.data!);
+                        return LookAround(snapshot.data!);
                       }
                     },
                   );
@@ -153,7 +154,7 @@ class _LoginPageState extends State<LoginPage> {
           onPressed: () {
             signInWithKakao(context);
           },
-          child: Text("kakao login")),
+          child: const Text("kakao login")),
     ));
   }
 }

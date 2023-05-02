@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
 import 'package:test_project/presentation/state/users/users_state.dart';
 import 'package:test_project/screen/home_screen.dart';
+import 'package:test_project/screen/look_around.dart';
 
 import '../config/shared_preferences.dart';
 import '../data/repository/errand_repository_impl.dart';
@@ -81,7 +82,7 @@ class _JoinPageState extends State<JoinPage> {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => TabPage(_userId),
+                        builder: (context) => LookAround(_userId),
                       ));
                 }),
           ],

@@ -12,6 +12,8 @@ class ChatRoom with _$ChatRoom {
     required String subject,
     required String time,
     required int stackedMessages,
+    required int workerIdx,
+    required int requesterIdx
   }) = _ChatRoom;
 
   factory ChatRoom.fromJson(Map<String, dynamic> json) => _$ChatRoomFromJson(json);

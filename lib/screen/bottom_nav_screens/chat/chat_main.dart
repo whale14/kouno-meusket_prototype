@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:socket_io_client/src/socket.dart';
 import 'package:test_project/presentation/event/chat/chat_event.dart';
 import 'package:test_project/presentation/state/chat/chat_room_state.dart';
 import 'package:test_project/presentation/vm/chat_view_model.dart';
@@ -10,7 +11,9 @@ import '../../../domain/model/chat/chat_room.dart';
 import 'chatting_screen.dart';
 
 class BodyChat extends StatefulWidget {
-  const BodyChat({Key? key}) : super(key: key);
+  final Socket socket;
+
+  const BodyChat(this.socket, {Key? key}) : super(key: key);
 
   @override
   State<BodyChat> createState() => _BodyChatState();
@@ -28,6 +31,7 @@ class _BodyChatState extends State<BodyChat> {
     // TODO: implement initState
     super.initState();
     initialize = _initialize();
+    roomNotification();
   }
 
   Future _initialize() async {
@@ -45,10 +49,18 @@ class _BodyChatState extends State<BodyChat> {
     await _viewModel.onChatEvent(ChatEvent.getChatRooms(idx!));
   }
 
+  void roomNotification() {
+    widget.socket.on('notificationChatRoom', (data) {
+      _getMyChatRooms();
+      Logger().d(data);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     _viewModel = context.watch<ChatViewModel>();
     _chatRoomState = _viewModel.chatRoomState;
+
     // chat room list view
     return ListView.builder(
       itemCount: _chatRoomState.chatRooms.length,
@@ -57,14 +69,15 @@ class _BodyChatState extends State<BodyChat> {
         if (chatRoom.stackedMessages != 0) {
           return Container(
             margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-            decoration: const BoxDecoration(
-              border: Border(bottom: BorderSide(color: Colors.grey))
-            ),
+            decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: Colors.grey))),
             child: ListTile(
               title: Text(chatRoom.subject),
               subtitle: Text('last time: ${chatRoom.time}'),
               trailing: Container(
-                  decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.orange,),
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.orange,
+                  ),
                   padding: const EdgeInsets.all(7),
                   child: Text(
                     chatRoom.stackedMessages.toString(),
@@ -73,7 +86,7 @@ class _BodyChatState extends State<BodyChat> {
               onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ChattingScreen(chatRoom),
+                    builder: (context) => ChattingScreen(chatRoom, widget.socket),
                   )).then((value) {
                 setState(() {
                   initialize = _initialize();
@@ -83,20 +96,29 @@ class _BodyChatState extends State<BodyChat> {
           );
         } else {
           return ListTile(
-            title: Text(chatRoom.subject),
-            subtitle: Text('last time: ${chatRoom.time}'),
-            onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ChattingScreen(chatRoom),
-                )).then((value) {
-              setState(() {
-                initialize = _initialize();
-              });
-            }),
-          );
+              title: Text(chatRoom.subject),
+              subtitle: Text('last time: ${chatRoom.time}'),
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ChattingScreen(chatRoom, widget.socket),
+                  ))
+              //     .then((value) {
+              //   setState(() {
+              //     initialize = _initialize();
+              //   });
+              // }),
+              );
         }
       },
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    Logger().d('chatMain dispose');
+    widget.socket.clearListeners();
+    super.dispose();
   }
 }
