@@ -29,6 +29,8 @@ mixin _$Users {
   String get updateAt => throw _privateConstructorUsedError;
   int get doingState => throw _privateConstructorUsedError;
   int get accountState => throw _privateConstructorUsedError;
+  int get isRequesterRegist => throw _privateConstructorUsedError;
+  int get isWorkerRegist => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +51,9 @@ abstract class $UsersCopyWith<$Res> {
       String createAt,
       String updateAt,
       int doingState,
-      int accountState});
+      int accountState,
+      int isRequesterRegist,
+      int isWorkerRegist});
 }
 
 /// @nodoc
@@ -74,6 +78,8 @@ class _$UsersCopyWithImpl<$Res, $Val extends Users>
     Object? updateAt = null,
     Object? doingState = null,
     Object? accountState = null,
+    Object? isRequesterRegist = null,
+    Object? isWorkerRegist = null,
   }) {
     return _then(_value.copyWith(
       idx: null == idx
@@ -112,6 +118,14 @@ class _$UsersCopyWithImpl<$Res, $Val extends Users>
           ? _value.accountState
           : accountState // ignore: cast_nullable_to_non_nullable
               as int,
+      isRequesterRegist: null == isRequesterRegist
+          ? _value.isRequesterRegist
+          : isRequesterRegist // ignore: cast_nullable_to_non_nullable
+              as int,
+      isWorkerRegist: null == isWorkerRegist
+          ? _value.isWorkerRegist
+          : isWorkerRegist // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -131,7 +145,9 @@ abstract class _$$_UsersCopyWith<$Res> implements $UsersCopyWith<$Res> {
       String createAt,
       String updateAt,
       int doingState,
-      int accountState});
+      int accountState,
+      int isRequesterRegist,
+      int isWorkerRegist});
 }
 
 /// @nodoc
@@ -152,6 +168,8 @@ class __$$_UsersCopyWithImpl<$Res> extends _$UsersCopyWithImpl<$Res, _$_Users>
     Object? updateAt = null,
     Object? doingState = null,
     Object? accountState = null,
+    Object? isRequesterRegist = null,
+    Object? isWorkerRegist = null,
   }) {
     return _then(_$_Users(
       idx: null == idx
@@ -190,6 +208,14 @@ class __$$_UsersCopyWithImpl<$Res> extends _$UsersCopyWithImpl<$Res, _$_Users>
           ? _value.accountState
           : accountState // ignore: cast_nullable_to_non_nullable
               as int,
+      isRequesterRegist: null == isRequesterRegist
+          ? _value.isRequesterRegist
+          : isRequesterRegist // ignore: cast_nullable_to_non_nullable
+              as int,
+      isWorkerRegist: null == isWorkerRegist
+          ? _value.isWorkerRegist
+          : isWorkerRegist // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -206,7 +232,9 @@ class _$_Users implements _Users {
       required this.createAt,
       required this.updateAt,
       required this.doingState,
-      required this.accountState});
+      required this.accountState,
+      required this.isRequesterRegist,
+      required this.isWorkerRegist});
 
   factory _$_Users.fromJson(Map<String, dynamic> json) =>
       _$$_UsersFromJson(json);
@@ -229,10 +257,14 @@ class _$_Users implements _Users {
   final int doingState;
   @override
   final int accountState;
+  @override
+  final int isRequesterRegist;
+  @override
+  final int isWorkerRegist;
 
   @override
   String toString() {
-    return 'Users(idx: $idx, id: $id, name: $name, latitude: $latitude, longitude: $longitude, createAt: $createAt, updateAt: $updateAt, doingState: $doingState, accountState: $accountState)';
+    return 'Users(idx: $idx, id: $id, name: $name, latitude: $latitude, longitude: $longitude, createAt: $createAt, updateAt: $updateAt, doingState: $doingState, accountState: $accountState, isRequesterRegist: $isRequesterRegist, isWorkerRegist: $isWorkerRegist)';
   }
 
   @override
@@ -254,13 +286,28 @@ class _$_Users implements _Users {
             (identical(other.doingState, doingState) ||
                 other.doingState == doingState) &&
             (identical(other.accountState, accountState) ||
-                other.accountState == accountState));
+                other.accountState == accountState) &&
+            (identical(other.isRequesterRegist, isRequesterRegist) ||
+                other.isRequesterRegist == isRequesterRegist) &&
+            (identical(other.isWorkerRegist, isWorkerRegist) ||
+                other.isWorkerRegist == isWorkerRegist));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, idx, id, name, latitude,
-      longitude, createAt, updateAt, doingState, accountState);
+  int get hashCode => Object.hash(
+      runtimeType,
+      idx,
+      id,
+      name,
+      latitude,
+      longitude,
+      createAt,
+      updateAt,
+      doingState,
+      accountState,
+      isRequesterRegist,
+      isWorkerRegist);
 
   @JsonKey(ignore: true)
   @override
@@ -286,7 +333,9 @@ abstract class _Users implements Users {
       required final String createAt,
       required final String updateAt,
       required final int doingState,
-      required final int accountState}) = _$_Users;
+      required final int accountState,
+      required final int isRequesterRegist,
+      required final int isWorkerRegist}) = _$_Users;
 
   factory _Users.fromJson(Map<String, dynamic> json) = _$_Users.fromJson;
 
@@ -308,6 +357,10 @@ abstract class _Users implements Users {
   int get doingState;
   @override
   int get accountState;
+  @override
+  int get isRequesterRegist;
+  @override
+  int get isWorkerRegist;
   @override
   @JsonKey(ignore: true)
   _$$_UsersCopyWith<_$_Users> get copyWith =>

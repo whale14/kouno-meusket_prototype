@@ -20,7 +20,7 @@ UserState<T> _$UserStateFromJson<T>(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserState<T> {
-  List<Users> get user => throw _privateConstructorUsedError;
+  Users? get user => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +35,9 @@ abstract class $UserStateCopyWith<T, $Res> {
           UserState<T> value, $Res Function(UserState<T>) then) =
       _$UserStateCopyWithImpl<T, $Res, UserState<T>>;
   @useResult
-  $Res call({List<Users> user, bool isLoading});
+  $Res call({Users? user, bool isLoading});
+
+  $UsersCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -51,19 +53,31 @@ class _$UserStateCopyWithImpl<T, $Res, $Val extends UserState<T>>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
+    Object? user = freezed,
     Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
-      user: null == user
+      user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as List<Users>,
+              as Users?,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UsersCopyWith<$Res>? get user {
+    if (_value.user == null) {
+      return null;
+    }
+
+    return $UsersCopyWith<$Res>(_value.user!, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
   }
 }
 
@@ -75,7 +89,10 @@ abstract class _$$_UserStateCopyWith<T, $Res>
       __$$_UserStateCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({List<Users> user, bool isLoading});
+  $Res call({Users? user, bool isLoading});
+
+  @override
+  $UsersCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -89,14 +106,14 @@ class __$$_UserStateCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? user = null,
+    Object? user = freezed,
     Object? isLoading = null,
   }) {
     return _then(_$_UserState<T>(
-      user: null == user
-          ? _value._user
+      user: freezed == user
+          ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as List<Users>,
+              as Users?,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -108,21 +125,13 @@ class __$$_UserStateCopyWithImpl<T, $Res>
 /// @nodoc
 @JsonSerializable()
 class _$_UserState<T> implements _UserState<T> {
-  _$_UserState({final List<Users> user = const [], this.isLoading = false})
-      : _user = user;
+  _$_UserState({this.user, this.isLoading = false});
 
   factory _$_UserState.fromJson(Map<String, dynamic> json) =>
       _$$_UserStateFromJson(json);
 
-  final List<Users> _user;
   @override
-  @JsonKey()
-  List<Users> get user {
-    if (_user is EqualUnmodifiableListView) return _user;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_user);
-  }
-
+  final Users? user;
   @override
   @JsonKey()
   final bool isLoading;
@@ -137,15 +146,14 @@ class _$_UserState<T> implements _UserState<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UserState<T> &&
-            const DeepCollectionEquality().equals(other._user, _user) &&
+            (identical(other.user, user) || other.user == user) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_user), isLoading);
+  int get hashCode => Object.hash(runtimeType, user, isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -162,14 +170,14 @@ class _$_UserState<T> implements _UserState<T> {
 }
 
 abstract class _UserState<T> implements UserState<T> {
-  factory _UserState({final List<Users> user, final bool isLoading}) =
+  factory _UserState({final Users? user, final bool isLoading}) =
       _$_UserState<T>;
 
   factory _UserState.fromJson(Map<String, dynamic> json) =
       _$_UserState<T>.fromJson;
 
   @override
-  List<Users> get user;
+  Users? get user;
   @override
   bool get isLoading;
   @override

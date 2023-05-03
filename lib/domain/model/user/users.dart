@@ -15,7 +15,9 @@ class Users with _$Users {
     required String createAt,
     required String updateAt,
     required int doingState,
-    required int accountState
+    required int accountState,
+    required int isRequesterRegist,
+    required int isWorkerRegist
   }) = _Users;
 
   factory Users.fromJson(Map<String, dynamic> json) => _$UsersFromJson(json);

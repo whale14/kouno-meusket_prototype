@@ -25,6 +25,11 @@ mixin _$UsersEvent {
     required TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)
         insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +41,11 @@ mixin _$UsersEvent {
     TResult? Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
         insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +56,11 @@ mixin _$UsersEvent {
     TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
         insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +69,11 @@ mixin _$UsersEvent {
     required TResult Function(GetAroundHelpers value) getAroundHelpers,
     required TResult Function(Insert value) insert,
     required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +81,10 @@ mixin _$UsersEvent {
     TResult? Function(GetAroundHelpers value)? getAroundHelpers,
     TResult? Function(Insert value)? insert,
     TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,6 +92,10 @@ mixin _$UsersEvent {
     TResult Function(GetAroundHelpers value)? getAroundHelpers,
     TResult Function(Insert value)? insert,
     TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -162,6 +190,11 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     required TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)
         insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
   }) {
     return getAroundHelpers(id);
   }
@@ -176,6 +209,11 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     TResult? Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
         insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
   }) {
     return getAroundHelpers?.call(id);
   }
@@ -189,6 +227,11 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
         insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
     required TResult orElse(),
   }) {
     if (getAroundHelpers != null) {
@@ -203,6 +246,11 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     required TResult Function(GetAroundHelpers value) getAroundHelpers,
     required TResult Function(Insert value) insert,
     required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
   }) {
     return getAroundHelpers(this);
   }
@@ -213,6 +261,10 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     TResult? Function(GetAroundHelpers value)? getAroundHelpers,
     TResult? Function(Insert value)? insert,
     TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
   }) {
     return getAroundHelpers?.call(this);
   }
@@ -223,6 +275,10 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     TResult Function(GetAroundHelpers value)? getAroundHelpers,
     TResult Function(Insert value)? insert,
     TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
     required TResult orElse(),
   }) {
     if (getAroundHelpers != null) {
@@ -336,6 +392,11 @@ class _$Insert implements Insert {
     required TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)
         insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
   }) {
     return insert(id, name, latitude, longitude);
   }
@@ -350,6 +411,11 @@ class _$Insert implements Insert {
     TResult? Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
         insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
   }) {
     return insert?.call(id, name, latitude, longitude);
   }
@@ -363,6 +429,11 @@ class _$Insert implements Insert {
     TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
         insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
     required TResult orElse(),
   }) {
     if (insert != null) {
@@ -377,6 +448,11 @@ class _$Insert implements Insert {
     required TResult Function(GetAroundHelpers value) getAroundHelpers,
     required TResult Function(Insert value) insert,
     required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
   }) {
     return insert(this);
   }
@@ -387,6 +463,10 @@ class _$Insert implements Insert {
     TResult? Function(GetAroundHelpers value)? getAroundHelpers,
     TResult? Function(Insert value)? insert,
     TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
   }) {
     return insert?.call(this);
   }
@@ -397,6 +477,10 @@ class _$Insert implements Insert {
     TResult Function(GetAroundHelpers value)? getAroundHelpers,
     TResult Function(Insert value)? insert,
     TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
     required TResult orElse(),
   }) {
     if (insert != null) {
@@ -550,6 +634,11 @@ class _$InsertRequest implements InsertRequest {
     required TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)
         insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
   }) {
     return insertRequest(
         reqIdx, categoryIdx, title, content, address, latitude, longitude);
@@ -565,6 +654,11 @@ class _$InsertRequest implements InsertRequest {
     TResult? Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
         insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
   }) {
     return insertRequest?.call(
         reqIdx, categoryIdx, title, content, address, latitude, longitude);
@@ -579,6 +673,11 @@ class _$InsertRequest implements InsertRequest {
     TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
         insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
     required TResult orElse(),
   }) {
     if (insertRequest != null) {
@@ -594,6 +693,11 @@ class _$InsertRequest implements InsertRequest {
     required TResult Function(GetAroundHelpers value) getAroundHelpers,
     required TResult Function(Insert value) insert,
     required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
   }) {
     return insertRequest(this);
   }
@@ -604,6 +708,10 @@ class _$InsertRequest implements InsertRequest {
     TResult? Function(GetAroundHelpers value)? getAroundHelpers,
     TResult? Function(Insert value)? insert,
     TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
   }) {
     return insertRequest?.call(this);
   }
@@ -614,6 +722,10 @@ class _$InsertRequest implements InsertRequest {
     TResult Function(GetAroundHelpers value)? getAroundHelpers,
     TResult Function(Insert value)? insert,
     TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
     required TResult orElse(),
   }) {
     if (insertRequest != null) {
@@ -642,5 +754,740 @@ abstract class InsertRequest implements UsersEvent {
   String get longitude;
   @JsonKey(ignore: true)
   _$$InsertRequestCopyWith<_$InsertRequest> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetUserCopyWith<$Res> {
+  factory _$$GetUserCopyWith(_$GetUser value, $Res Function(_$GetUser) then) =
+      __$$GetUserCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$GetUserCopyWithImpl<$Res>
+    extends _$UsersEventCopyWithImpl<$Res, _$GetUser>
+    implements _$$GetUserCopyWith<$Res> {
+  __$$GetUserCopyWithImpl(_$GetUser _value, $Res Function(_$GetUser) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$GetUser(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetUser implements GetUser {
+  const _$GetUser(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'UsersEvent.getUser(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetUser &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetUserCopyWith<_$GetUser> get copyWith =>
+      __$$GetUserCopyWithImpl<_$GetUser>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) getAroundHelpers,
+    required TResult Function(
+            String id, String name, double latitude, double longitude)
+        insert,
+    required TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)
+        insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
+  }) {
+    return getUser(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? getAroundHelpers,
+    TResult? Function(
+            String id, String name, double latitude, double longitude)?
+        insert,
+    TResult? Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
+  }) {
+    return getUser?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? getAroundHelpers,
+    TResult Function(String id, String name, double latitude, double longitude)?
+        insert,
+    TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
+    required TResult orElse(),
+  }) {
+    if (getUser != null) {
+      return getUser(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAroundHelpers value) getAroundHelpers,
+    required TResult Function(Insert value) insert,
+    required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
+  }) {
+    return getUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult? Function(Insert value)? insert,
+    TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
+  }) {
+    return getUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult Function(Insert value)? insert,
+    TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
+    required TResult orElse(),
+  }) {
+    if (getUser != null) {
+      return getUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetUser implements UsersEvent {
+  const factory GetUser(final String id) = _$GetUser;
+
+  String get id;
+  @JsonKey(ignore: true)
+  _$$GetUserCopyWith<_$GetUser> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateLocationCopyWith<$Res> {
+  factory _$$UpdateLocationCopyWith(
+          _$UpdateLocation value, $Res Function(_$UpdateLocation) then) =
+      __$$UpdateLocationCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String idx, double latitude, double longitude});
+}
+
+/// @nodoc
+class __$$UpdateLocationCopyWithImpl<$Res>
+    extends _$UsersEventCopyWithImpl<$Res, _$UpdateLocation>
+    implements _$$UpdateLocationCopyWith<$Res> {
+  __$$UpdateLocationCopyWithImpl(
+      _$UpdateLocation _value, $Res Function(_$UpdateLocation) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idx = null,
+    Object? latitude = null,
+    Object? longitude = null,
+  }) {
+    return _then(_$UpdateLocation(
+      null == idx
+          ? _value.idx
+          : idx // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as double,
+      null == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as double,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateLocation implements UpdateLocation {
+  const _$UpdateLocation(this.idx, this.latitude, this.longitude);
+
+  @override
+  final String idx;
+  @override
+  final double latitude;
+  @override
+  final double longitude;
+
+  @override
+  String toString() {
+    return 'UsersEvent.updateLocation(idx: $idx, latitude: $latitude, longitude: $longitude)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateLocation &&
+            (identical(other.idx, idx) || other.idx == idx) &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, idx, latitude, longitude);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateLocationCopyWith<_$UpdateLocation> get copyWith =>
+      __$$UpdateLocationCopyWithImpl<_$UpdateLocation>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) getAroundHelpers,
+    required TResult Function(
+            String id, String name, double latitude, double longitude)
+        insert,
+    required TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)
+        insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
+  }) {
+    return updateLocation(idx, latitude, longitude);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? getAroundHelpers,
+    TResult? Function(
+            String id, String name, double latitude, double longitude)?
+        insert,
+    TResult? Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
+  }) {
+    return updateLocation?.call(idx, latitude, longitude);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? getAroundHelpers,
+    TResult Function(String id, String name, double latitude, double longitude)?
+        insert,
+    TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
+    required TResult orElse(),
+  }) {
+    if (updateLocation != null) {
+      return updateLocation(idx, latitude, longitude);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAroundHelpers value) getAroundHelpers,
+    required TResult Function(Insert value) insert,
+    required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
+  }) {
+    return updateLocation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult? Function(Insert value)? insert,
+    TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
+  }) {
+    return updateLocation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult Function(Insert value)? insert,
+    TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
+    required TResult orElse(),
+  }) {
+    if (updateLocation != null) {
+      return updateLocation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateLocation implements UsersEvent {
+  const factory UpdateLocation(
+          final String idx, final double latitude, final double longitude) =
+      _$UpdateLocation;
+
+  String get idx;
+  double get latitude;
+  double get longitude;
+  @JsonKey(ignore: true)
+  _$$UpdateLocationCopyWith<_$UpdateLocation> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RequesterRegistrationCopyWith<$Res> {
+  factory _$$RequesterRegistrationCopyWith(_$RequesterRegistration value,
+          $Res Function(_$RequesterRegistration) then) =
+      __$$RequesterRegistrationCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String idx});
+}
+
+/// @nodoc
+class __$$RequesterRegistrationCopyWithImpl<$Res>
+    extends _$UsersEventCopyWithImpl<$Res, _$RequesterRegistration>
+    implements _$$RequesterRegistrationCopyWith<$Res> {
+  __$$RequesterRegistrationCopyWithImpl(_$RequesterRegistration _value,
+      $Res Function(_$RequesterRegistration) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idx = null,
+  }) {
+    return _then(_$RequesterRegistration(
+      null == idx
+          ? _value.idx
+          : idx // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RequesterRegistration implements RequesterRegistration {
+  const _$RequesterRegistration(this.idx);
+
+  @override
+  final String idx;
+
+  @override
+  String toString() {
+    return 'UsersEvent.requesterRegistration(idx: $idx)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RequesterRegistration &&
+            (identical(other.idx, idx) || other.idx == idx));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, idx);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RequesterRegistrationCopyWith<_$RequesterRegistration> get copyWith =>
+      __$$RequesterRegistrationCopyWithImpl<_$RequesterRegistration>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) getAroundHelpers,
+    required TResult Function(
+            String id, String name, double latitude, double longitude)
+        insert,
+    required TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)
+        insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
+  }) {
+    return requesterRegistration(idx);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? getAroundHelpers,
+    TResult? Function(
+            String id, String name, double latitude, double longitude)?
+        insert,
+    TResult? Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
+  }) {
+    return requesterRegistration?.call(idx);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? getAroundHelpers,
+    TResult Function(String id, String name, double latitude, double longitude)?
+        insert,
+    TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
+    required TResult orElse(),
+  }) {
+    if (requesterRegistration != null) {
+      return requesterRegistration(idx);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAroundHelpers value) getAroundHelpers,
+    required TResult Function(Insert value) insert,
+    required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
+  }) {
+    return requesterRegistration(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult? Function(Insert value)? insert,
+    TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
+  }) {
+    return requesterRegistration?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult Function(Insert value)? insert,
+    TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
+    required TResult orElse(),
+  }) {
+    if (requesterRegistration != null) {
+      return requesterRegistration(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RequesterRegistration implements UsersEvent {
+  const factory RequesterRegistration(final String idx) =
+      _$RequesterRegistration;
+
+  String get idx;
+  @JsonKey(ignore: true)
+  _$$RequesterRegistrationCopyWith<_$RequesterRegistration> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$WorkerRegistrationCopyWith<$Res> {
+  factory _$$WorkerRegistrationCopyWith(_$WorkerRegistration value,
+          $Res Function(_$WorkerRegistration) then) =
+      __$$WorkerRegistrationCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String idx});
+}
+
+/// @nodoc
+class __$$WorkerRegistrationCopyWithImpl<$Res>
+    extends _$UsersEventCopyWithImpl<$Res, _$WorkerRegistration>
+    implements _$$WorkerRegistrationCopyWith<$Res> {
+  __$$WorkerRegistrationCopyWithImpl(
+      _$WorkerRegistration _value, $Res Function(_$WorkerRegistration) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idx = null,
+  }) {
+    return _then(_$WorkerRegistration(
+      null == idx
+          ? _value.idx
+          : idx // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$WorkerRegistration implements WorkerRegistration {
+  const _$WorkerRegistration(this.idx);
+
+  @override
+  final String idx;
+
+  @override
+  String toString() {
+    return 'UsersEvent.workerRegistration(idx: $idx)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WorkerRegistration &&
+            (identical(other.idx, idx) || other.idx == idx));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, idx);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WorkerRegistrationCopyWith<_$WorkerRegistration> get copyWith =>
+      __$$WorkerRegistrationCopyWithImpl<_$WorkerRegistration>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) getAroundHelpers,
+    required TResult Function(
+            String id, String name, double latitude, double longitude)
+        insert,
+    required TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)
+        insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
+  }) {
+    return workerRegistration(idx);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? getAroundHelpers,
+    TResult? Function(
+            String id, String name, double latitude, double longitude)?
+        insert,
+    TResult? Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
+  }) {
+    return workerRegistration?.call(idx);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? getAroundHelpers,
+    TResult Function(String id, String name, double latitude, double longitude)?
+        insert,
+    TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
+    required TResult orElse(),
+  }) {
+    if (workerRegistration != null) {
+      return workerRegistration(idx);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAroundHelpers value) getAroundHelpers,
+    required TResult Function(Insert value) insert,
+    required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
+  }) {
+    return workerRegistration(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult? Function(Insert value)? insert,
+    TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
+  }) {
+    return workerRegistration?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult Function(Insert value)? insert,
+    TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
+    required TResult orElse(),
+  }) {
+    if (workerRegistration != null) {
+      return workerRegistration(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WorkerRegistration implements UsersEvent {
+  const factory WorkerRegistration(final String idx) = _$WorkerRegistration;
+
+  String get idx;
+  @JsonKey(ignore: true)
+  _$$WorkerRegistrationCopyWith<_$WorkerRegistration> get copyWith =>
       throw _privateConstructorUsedError;
 }

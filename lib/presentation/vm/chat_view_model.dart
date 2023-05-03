@@ -38,7 +38,7 @@ class ChatViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  _updateChatRead(ChatContent chatContent) async{
+  Future _updateChatRead(ChatContent chatContent) async{
     await _chatRepository.updateChatRead(chatContent.idx.toString());
   }
 }

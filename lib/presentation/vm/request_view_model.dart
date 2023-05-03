@@ -45,7 +45,7 @@ class RequestViewModel with ChangeNotifier {
 
   Future _getRequests(String idx) async{
     final result = _errandRepository.getRequests(idx);
-
+    Logger().d("!!!!!!!!!!!!!logger");
     _requestState = requestState.copyWith(
       requests: await result,
     );

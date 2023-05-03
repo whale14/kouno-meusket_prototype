@@ -12,7 +12,7 @@ import 'package:test_project/screen/look_around.dart';
 import '../config/shared_preferences.dart';
 import '../data/repository/errand_repository_impl.dart';
 import '../data/source/remote/errand_api.dart';
-import '../presentation/vm/test_view_model.dart';
+import '../presentation/vm/user_view_model.dart';
 
 class JoinPage extends StatefulWidget {
   final String userId;
@@ -54,7 +54,7 @@ class _JoinPageState extends State<JoinPage> {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<TestViewModel>();
+    final viewModel = context.watch<UserViewModel>();
     _userId = widget.userId;
     return Scaffold(
       body: Center(

@@ -9,9 +9,9 @@ import 'package:provider/provider.dart';
 import 'package:socket_io_client/src/socket.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
 import 'package:test_project/presentation/state/users/users_state.dart';
-import 'package:test_project/presentation/vm/test_view_model.dart';
+import 'package:test_project/presentation/vm/user_view_model.dart';
 
-import '../../../domain/model/users/users.dart';
+import '../../../domain/model/user/users.dart';
 import '../../match_page.dart';
 import '../../post_webview.dart';
 
@@ -19,8 +19,9 @@ class BodyReq extends StatefulWidget {
   final String userId;
   final Socket socket;
   final String category;
+  final Users user;
 
-  const BodyReq(this.userId, this.socket, this.category, {Key? key}) : super(key: key);
+  const BodyReq(this.userId, this.socket, this.category, this.user, {Key? key}) : super(key: key);
 
   @override
   State<BodyReq> createState() => _BodyReqState();
@@ -53,7 +54,7 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
 
   late List<Users> _usersList;
   late String _userId;
-  late TestViewModel _viewModel;
+  late UserViewModel _viewModel;
   late UsersState _state;
   NLatLng latLng = const NLatLng(37.565, 126.983);
   final Completer<NaverMapController> mapControllerCompleter = Completer();
@@ -103,7 +104,7 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    _viewModel = context.watch<TestViewModel>();
+    _viewModel = context.watch<UserViewModel>();
     _state = _viewModel.usersState;
 
     Logger().d("userId(req page) : $_userId");
@@ -167,6 +168,7 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
                 Align(
                   alignment: Alignment(Alignment.topRight.x - 0.1, Alignment.topRight.y + 0.05),
                   child: FloatingActionButton(
+                    heroTag: "search filter",
                     onPressed: () {
                       showDialog(
                         context: context,
@@ -209,8 +211,8 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
                                               _gender = value!;
                                             });
                                           },
-
-                                        ),Text("무관"),
+                                        ),
+                                        Text("무관"),
                                         Radio(
                                           value: '남자',
                                           groupValue: _gender,
@@ -219,8 +221,8 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
                                               _gender = value!;
                                             });
                                           },
-
-                                        ),Text("남자"),
+                                        ),
+                                        Text("남자"),
                                         Radio(
                                           value: '여자',
                                           groupValue: _gender,
@@ -229,8 +231,8 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
                                               _gender = value!;
                                             });
                                           },
-
-                                        ),Text("여자"),
+                                        ),
+                                        Text("여자"),
                                       ],
                                     )
                                   ],
@@ -250,160 +252,190 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
                 Align(
                   alignment: Alignment(Alignment.bottomRight.x - 0.1, Alignment.bottomRight.y - 0.05),
                   child: FloatingActionButton.extended(
+                    heroTag: "write request",
                     onPressed: () {
-                      showModalBottomSheet(
+                      if (widget.user.isRequesterRegist == 0) {
+                        //요청신원 등록
+                        showDialog(
                           context: context,
                           builder: (context) {
-                            return StatefulBuilder(builder: (context, setState) {
-                              return Wrap(
+                            return AlertDialog(
+                              title: Text("요청자 신원등록"),
+                              content: Wrap(
                                 children: [
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      AppBar(
-                                        backgroundColor: Colors.white,
-                                        title: const Text('카테고리 선택', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
-                                      ),
-                                      const SizedBox(
-                                        height: 20,
-                                      ),
-                                      Container(
-                                        padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                                        child: Column(
-                                          children: [
-                                            DropdownButton2(
-                                              hint: const Text('select item'),
-                                              isExpanded: true,
-                                              items: items.map<DropdownMenuItem<String>>((String value) {
-                                                return DropdownMenuItem<String>(value: value, child: Text(value));
-                                              }).toList(),
-                                              value: _selectedCategory,
-                                              onChanged: (value) {
-                                                setState(() {
-                                                  _selectedCategory = value as String;
-                                                });
-                                              },
-                                            ),
-                                            //title
-                                            Padding(
-                                              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                                              child: TextField(
-                                                controller: _titleController,
-                                                decoration: const InputDecoration(
-                                                    hintText: '   제목을 입력해 주세요.',
-                                                    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.orange))),
+                                  Text("심부름 요청서를 작성하려면 요청자 신원을 등록해야합니다."),
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                                    child: Text("등록하시겠습니까?", style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),),
+                                  )
+                                ],
+                              ),
+                              actions: [
+                                TextButton(onPressed: () {
+                                  _viewModel.onUsersEvent(UsersEvent.requesterRegistration(widget.user.idx.toString())).then((value) => Navigator.pop(context));
+                                }, child: Text("등록")),
+                                TextButton(onPressed: () => Navigator.pop(context), child: Text("취소", style: TextStyle(color: Colors.grey),)),
+                              ],
+                            );
+                          },
+                        );
+                      } else {
+                        showModalBottomSheet(
+                            context: context,
+                            builder: (context) {
+                              return StatefulBuilder(builder: (context, setState) {
+                                return Wrap(
+                                  children: [
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        AppBar(
+                                          backgroundColor: Colors.white,
+                                          title: const Text('카테고리 선택', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
+                                        ),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        Container(
+                                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                          child: Column(
+                                            children: [
+                                              DropdownButton2(
+                                                hint: const Text('select item'),
+                                                isExpanded: true,
+                                                items: items.map<DropdownMenuItem<String>>((String value) {
+                                                  return DropdownMenuItem<String>(value: value, child: Text(value));
+                                                }).toList(),
+                                                value: _selectedCategory,
+                                                onChanged: (value) {
+                                                  setState(() {
+                                                    _selectedCategory = value as String;
+                                                  });
+                                                },
                                               ),
-                                            ),
-                                            // content
-                                            Padding(
-                                              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                                              child: TextField(
-                                                controller: _contentController,
-                                                minLines: 2,
-                                                maxLines: 3,
-                                                keyboardType: TextInputType.multiline,
-                                                decoration: const InputDecoration(
-                                                    hintText: '   심부름 내용을 입력해 주세요.',
-                                                    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.orange))),
+                                              //title
+                                              Padding(
+                                                padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                                                child: TextField(
+                                                  controller: _titleController,
+                                                  decoration: const InputDecoration(
+                                                      hintText: '   제목을 입력해 주세요.',
+                                                      enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.orange))),
+                                                ),
                                               ),
-                                            ),
+                                              // content
+                                              Padding(
+                                                padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                                                child: TextField(
+                                                  controller: _contentController,
+                                                  minLines: 2,
+                                                  maxLines: 3,
+                                                  keyboardType: TextInputType.multiline,
+                                                  decoration: const InputDecoration(
+                                                      hintText: '   심부름 내용을 입력해 주세요.',
+                                                      enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.orange))),
+                                                ),
+                                              ),
 
-                                            Padding(
-                                              padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
-                                              child: Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                children: [
-                                                  Container(
-                                                      padding: EdgeInsets.all(9),
-                                                      decoration: BoxDecoration(
-                                                        border: Border.all(color: Colors.orange),
-                                                      ),
-                                                      child: const Text('목적지 주소')),
-                                                  Expanded(
-                                                    child: Container(
+                                              Padding(
+                                                padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                                                child: Row(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    Container(
                                                         padding: EdgeInsets.all(9),
                                                         decoration: BoxDecoration(
                                                           border: Border.all(color: Colors.orange),
                                                         ),
-                                                        child: Text(address)),
-                                                  ),
+                                                        child: const Text('목적지 주소')),
+                                                    Expanded(
+                                                      child: Container(
+                                                          padding: EdgeInsets.all(9),
+                                                          decoration: BoxDecoration(
+                                                            border: Border.all(color: Colors.orange),
+                                                          ),
+                                                          child: Text(address)),
+                                                    ),
+                                                    MaterialButton(
+                                                      child: const Text('search Post'),
+                                                      color: Colors.orange,
+                                                      onPressed: () => Navigator.of(context)
+                                                          .push(MaterialPageRoute(
+                                                        builder: (context) => PostWebView(),
+                                                      ))
+                                                          .then((value) {
+                                                        if (value != null) {
+                                                          String jsonValue = jsonEncode(value);
+                                                          Map<String, dynamic> jsonMap = jsonDecode(jsonValue);
+                                                          Logger().d('return post value : $jsonMap');
+                                                          setState(() {
+                                                            address = jsonMap['address'];
+                                                            reqLat = jsonMap['latitude'];
+                                                            reqLng = jsonMap['longitude'];
+                                                          });
+                                                        }
+                                                      }),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Column(
+                                                children: [
+                                                  const SizedBox(height: 20),
                                                   MaterialButton(
-                                                    child: const Text('search Post'),
-                                                    color: Colors.orange,
-                                                    onPressed: () => Navigator.of(context)
-                                                        .push(MaterialPageRoute(
-                                                      builder: (context) => PostWebView(),
-                                                    ))
-                                                        .then((value) {
-                                                      if (value != null) {
-                                                        String jsonValue = jsonEncode(value);
-                                                        Map<String, dynamic> jsonMap = jsonDecode(jsonValue);
-                                                        Logger().d('return post value : $jsonMap');
-                                                        setState(() {
-                                                          address = jsonMap['address'];
-                                                          reqLat = jsonMap['latitude'];
-                                                          reqLng = jsonMap['longitude'];
-                                                        });
-                                                      }
-                                                    }),
-                                                  ),
+                                                      color: Colors.orange,
+                                                      child: const Text('요청하기'),
+                                                      onPressed: () {
+                                                        Logger().d('category: $_selectedCategory, '
+                                                            'title: ${_titleController.value.text}, '
+                                                            'content: ${_contentController.value.text}, '
+                                                            'address: $address, '
+                                                            'latitude: $reqLat'
+                                                            'longitude: $reqLng');
+                                                        var title = _titleController.value.text;
+                                                        var content = _contentController.value.text;
+                                                        int category = 0;
+                                                        int i = 0;
+                                                        for (String item in items) {
+                                                          if (_selectedCategory == item) {
+                                                            category = i;
+                                                            Logger().d('categoryIdx: $category');
+                                                          }
+                                                          i++;
+                                                        }
+                                                        _viewModel.onUsersEvent(
+                                                            UsersEvent.insertRequest(_myIdx, category.toString(), title, content, address, reqLat, reqLng));
+                                                        showDialog(
+                                                            context: context,
+                                                            builder: (context) => AlertDialog(
+                                                                  title: const Text('insert Request'),
+                                                                  content: Text('success'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                        onPressed: () {
+                                                                          Navigator.of(context).pop();
+                                                                          Navigator.of(context).pop();
+                                                                        },
+                                                                        child: const Text('ok'))
+                                                                  ],
+                                                                ));
+                                                      }),
                                                 ],
                                               ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
-                                              child: MaterialButton(
-                                                  color: Colors.orange,
-                                                  child: const Text('요청하기'),
-                                                  onPressed: () {
-                                                    Logger().d('category: $_selectedCategory, '
-                                                        'title: ${_titleController.value.text}, '
-                                                        'content: ${_contentController.value.text}, '
-                                                        'address: $address, '
-                                                        'latitude: $reqLat'
-                                                        'longitude: $reqLng');
-                                                    var title = _titleController.value.text;
-                                                    var content = _contentController.value.text;
-                                                    int category = 0;
-                                                    int i = 0;
-                                                    for (String item in items) {
-                                                      if (_selectedCategory == item) {
-                                                        category = i;
-                                                        Logger().d('categoryIdx: $category');
-                                                      }
-                                                      i++;
-                                                    }
-                                                    _viewModel.onUsersEvent(
-                                                        UsersEvent.insertRequest(_myIdx, category.toString(), title, content, address, reqLat, reqLng));
-                                                    showDialog(
-                                                        context: context,
-                                                        builder: (context) => AlertDialog(
-                                                              title: const Text('insert Request'),
-                                                              content: Text('success'),
-                                                              actions: [
-                                                                TextButton(
-                                                                    onPressed: () {
-                                                                      Navigator.of(context).pop();
-                                                                      Navigator.of(context).pop();
-                                                                    },
-                                                                    child: const Text('ok'))
-                                                              ],
-                                                            ));
-                                                  }),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        height: 100,
-                                      )
-                                    ],
-                                  )
-                                ],
-                              );
+                                        SizedBox(
+                                          height: 100,
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                );
+                              });
                             });
-                          });
+                      }
                     },
                     label: const Text('요청서 작성', style: TextStyle(color: Colors.white, fontSize: 24)),
                     icon: const Icon(

@@ -4,9 +4,8 @@ import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test_project/data/repository/chat_repository_impl.dart';
-import 'package:test_project/data/repository/test_repository_impl.dart';
+import 'package:test_project/data/repository/user_repository_impl.dart';
 import 'package:test_project/data/source/remote/chat_api.dart';
-import 'package:test_project/data/source/remote/test_api.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
 import 'package:http/http.dart' as http;
 import 'package:test_project/config/shared_preferences.dart';
@@ -22,10 +21,10 @@ import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:test_project/data/source/remote/errand_api.dart';
-import 'package:test_project/presentation/vm/test_view_model.dart';
+import 'package:test_project/presentation/vm/user_view_model.dart';
 import 'package:test_project/screen/join_page.dart';
 import 'package:test_project/screen/look_around.dart';
-
+import 'package:test_project/data/source/remote/user_api.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -37,9 +36,10 @@ void main() async {
   KakaoSdk.init(nativeAppKey: '64ba3b8a596d221c8216b7ce7f89af66');
   runApp(MultiProvider(
     providers: [
-      ChangeNotifierProvider(create: (_) => TestViewModel(ErrandRepositoryImpl(ErrandApi()))),
+      ChangeNotifierProvider(create: (_) => UserViewModel(UserRepositoryImpl(UserAPI()))),
       ChangeNotifierProvider(create: (_) => RequestViewModel(ErrandRepositoryImpl(ErrandApi()))),
       ChangeNotifierProvider(create: (_) => ChatViewModel(ChatRepositoryImpl(ChatApi()))),
+
     ],
     child: const MyApp(),
   ));

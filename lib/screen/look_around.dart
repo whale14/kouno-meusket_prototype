@@ -1,5 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
+import 'package:provider/provider.dart';
+import 'package:test_project/presentation/event/users/users_event.dart';
+import 'package:test_project/presentation/state/users/user_state.dart';
+import 'package:test_project/presentation/vm/user_view_model.dart';
 
 import 'home_screen.dart';
 
@@ -13,43 +17,82 @@ class LookAround extends StatefulWidget {
 }
 
 class _LookAroundState extends State<LookAround> {
-  var categories = ["배달/구매 대행", "청소/가사 도움", "운반/수리", "동행/돌봄", "단기 알바", "기타"];
+
+  late Future initialize;
+
+  late UserState _userState;
+  late UserViewModel _userViewModel;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Logger().d("initState");
+    initialize = _initialize();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  Future<void> _initialize() async{
+    await _userViewModel.onUsersEvent(UsersEvent.getUser(widget.userId));
+  }
 
   @override
   Widget build(BuildContext context) {
+    _userViewModel = context.watch<UserViewModel>();
+    _userState = _userViewModel.userState;
+
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            appBarLA(),
-            walletContainer(),
-            Container(
-              height: 200,
-              width: double.maxFinite,
-              decoration: BoxDecoration(color: Colors.orange),
-              child: Text("광고광고"),
-            ),
-            workContainer(),
-            Container(
-              width: double.maxFinite,
-              margin: EdgeInsets.only(top: 20),
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(color: Colors.orange),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+        child: FutureBuilder(
+          future: initialize,
+          builder: (context, snapShot) {
+            if(snapShot.connectionState == ConnectionState.done) {
+              Logger().d("user: ${_userState.user}");
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('미어켓은 안전합니다.', style: TextStyle(fontSize: 24),),
-                  SizedBox(height: 20,),
-                  Text('1. 부름이와 드림이들의 철저한 신원 인증'),
-                  Text('2. 전문가들의 자격증 진위여부 확인'),
-                  Text('3. 신뢰할만한 신원 인증 시스템'),
-
+                  appBarLA(),
+                  walletContainer(),
+                  Container(
+                    height: 200,
+                    width: double.maxFinite,
+                    decoration: BoxDecoration(color: Colors.orange),
+                    child: Text("광고광고"),
+                  ),
+                  workContainer(),
+                  Container(
+                    width: double.maxFinite,
+                    margin: EdgeInsets.only(top: 20),
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(color: Colors.orange),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '미어켓은 안전합니다.',
+                          style: TextStyle(fontSize: 24),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text('1. 부름이와 드림이들의 철저한 신원 인증'),
+                        Text('2. 전문가들의 자격증 진위여부 확인'),
+                        Text('3. 신뢰할만한 신원 인증 시스템'),
+                      ],
+                    ),
+                  ),
+                  footer()
                 ],
-              ),
-            ),
-            footer()
-          ],
+              );
+            } else {
+              return const Center(child: CircularProgressIndicator());
+            }
+          }
         ),
       ),
     );
@@ -88,7 +131,7 @@ class _LookAroundState extends State<LookAround> {
             child: Row(
               children: [
                 Icon(
-                  CupertinoIcons.person_crop_circle,
+                  Icons.person,
                   size: 44,
                 ),
                 Container(
@@ -97,7 +140,7 @@ class _LookAroundState extends State<LookAround> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "아이디",
+                        "id",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       Text(
@@ -128,54 +171,53 @@ class _LookAroundState extends State<LookAround> {
   }
 
   Widget workContainer() {
+    final categories = ["배달/구매 대행", "청소/가사 도움", "운반/수리", "동행/돌봄", "단기 알바", "기타"];
     return Container(
       padding: EdgeInsets.all(20),
-      child: Expanded(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Expanded(child: Text("미어켓만의 특별한 서비스")),
-                TextButton(
-                  onPressed: () {},
-                  child: Text("전체보기"),
-                )
-              ],
-            ),
-            GridView.builder(
-              primary: false,
-              itemCount: categories.length,
-              shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 10, mainAxisSpacing: 10),
-              itemBuilder: (context, index) {
-                return Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      InkWell(
-                          child: Container(
-                            height: 80,
-                            margin: EdgeInsets.only(bottom: 10),
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.orange,
-                            ),
-                            child: Text("image"),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(child: Text("미어켓만의 특별한 서비스")),
+              TextButton(
+                onPressed: () {},
+                child: Text("전체보기"),
+              )
+            ],
+          ),
+          GridView.builder(
+            primary: false,
+            itemCount: categories.length,
+            shrinkWrap: true,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 10, mainAxisSpacing: 10),
+            itemBuilder: (context, index) {
+              return Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    InkWell(
+                        child: Container(
+                          height: 80,
+                          margin: EdgeInsets.only(bottom: 10),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.orange,
                           ),
-                          onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => TabPage(widget.userId, categories[index]),
-                              ))),
-                      Text(categories[index])
-                    ],
-                  ),
-                );
-              },
-            )
-          ],
-        ),
+                          child: Text("image"),
+                        ),
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => TabPage(widget.userId, categories[index]),
+                            ))),
+                    Text(categories[index])
+                  ],
+                ),
+              );
+            },
+          )
+        ],
       ),
     );
   }
@@ -188,22 +230,34 @@ class _LookAroundState extends State<LookAround> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("고객센터", style: TextStyle(fontSize: 24),),
-          SizedBox(height: 20,),
-          Row(children: [
-            Expanded(child: Text("카카오톡 문의 하기")),
-            Expanded(child: Text("카카오톡 채널")),
-          ],),
-          Row(children: [
-            Expanded(child: Text("이메일 문의 하기")),
-            Expanded(child: Text("help@meusket.com")),
-          ],),
-          Row(children: [
-            Expanded(child: Text("상담/문의 시간")),
-            Expanded(child: Text("10:00 ~ 17:00")),
-          ],)
+          Text(
+            "고객센터",
+            style: TextStyle(fontSize: 24),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            children: [
+              Expanded(child: Text("카카오톡 문의 하기")),
+              Expanded(child: Text("카카오톡 채널")),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(child: Text("이메일 문의 하기")),
+              Expanded(child: Text("help@meusket.com")),
+            ],
+          ),
+          Row(
+            children: [
+              Expanded(child: Text("상담/문의 시간")),
+              Expanded(child: Text("10:00 ~ 17:00")),
+            ],
+          )
         ],
       ),
     );
   }
 }
+

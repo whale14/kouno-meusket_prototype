@@ -16,6 +16,8 @@ _$_Users _$$_UsersFromJson(Map<String, dynamic> json) => _$_Users(
       updateAt: json['updateAt'] as String,
       doingState: json['doingState'] as int,
       accountState: json['accountState'] as int,
+      isRequesterRegist: json['isRequesterRegist'] as int,
+      isWorkerRegist: json['isWorkerRegist'] as int,
     );
 
 Map<String, dynamic> _$$_UsersToJson(_$_Users instance) => <String, dynamic>{
@@ -28,4 +30,6 @@ Map<String, dynamic> _$$_UsersToJson(_$_Users instance) => <String, dynamic>{
       'updateAt': instance.updateAt,
       'doingState': instance.doingState,
       'accountState': instance.accountState,
+      'isRequesterRegist': instance.isRequesterRegist,
+      'isWorkerRegist': instance.isWorkerRegist,
     };
