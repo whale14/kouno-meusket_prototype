@@ -74,48 +74,49 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final SharedPreferencesService sharedPreferencesService = SharedPreferencesService();
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-            // This is the theme of your application.
-            //
-            // Try running your application with "flutter run". You'll see the
-            // application has a blue toolbar. Then, without quitting the app, try
-            // changing the primarySwatch below to Colors.green and then invoke
-            // "hot reload" (press "r" in the console where you ran "flutter run",
-            // or simply save your changes to "hot reload" in a Flutter IDE).
-            // Notice that the counter didn't reset back to zero; the application
-            // is not restarcsted.
-            primarySwatch: Colors.orange,
-            iconTheme: IconThemeData(color: Colors.orange),
-            appBarTheme: const AppBarTheme(centerTitle: true, titleTextStyle: TextStyle(color: Colors.orange))),
-        home: FutureBuilder(
-            future: sharedPreferencesService.isLoggedIn(),
-            builder: (context, snapshot) {
-              Logger().d("isLoggedIn? : ${snapshot.data}");
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
-              } else {
-                if (snapshot.hasData && snapshot.data == true) {
-                  return FutureBuilder(
-                    future: sharedPreferencesService.getUserId(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const CircularProgressIndicator();
-                      } else {
-                        return LookAround(snapshot.data!);
-                      }
-                    },
-                  );
-                } else {
-                  return const LoginPage();
-                }
-              }
-            }) //TabPage(),
-        );
+      title: 'Flutter Demo',
+      theme: ThemeData(
+          primarySwatch: Colors.orange,
+          iconTheme: IconThemeData(color: Colors.orange),
+          appBarTheme: const AppBarTheme(centerTitle: true, titleTextStyle: TextStyle(color: Colors.orange))),
+      home: SplashScreen(), //TabPage(),
+    );
   }
 }
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+  }
+
+  void moveScreen() async {
+    await SharedPreferencesService().isLoggedIn().then((value) async{
+      if(value) {
+        String userId = await SharedPreferencesService().getUserId();
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LookAround(userId),));
+      } else {
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage(),));
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    moveScreen();
+    return const Scaffold(body: Center(child: CircularProgressIndicator()));
+  }
+}
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

@@ -1,16 +1,13 @@
 import 'dart:convert';
-
 import 'package:geolocator/geolocator.dart';
-import 'package:kakao_flutter_sdk_user/src/model/user.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test_project/domain/model/user/users.dart';
-
+import 'package:test_project/presentation/state/users/user_state.dart';
 import 'package:test_project/presentation/vm/user_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import '../presentation/event/users/users_event.dart';
-import '../presentation/state/users/user_state.dart';
+import 'package:test_project/presentation/event/users/users_event.dart';
 import 'bottom_nav_screens/chat/chat_main.dart';
 import 'bottom_nav_screens/work/work_main.dart';
 import 'bottom_nav_screens/request/req_main.dart';
@@ -22,8 +19,8 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 class TabPage extends StatefulWidget {
   final String userId;
   final String category;
-
-  const TabPage(this.userId, this.category, {Key? key}) : super(key: key);
+  final Users user;
+  const TabPage(this.userId, this.category, this.user, {Key? key}) : super(key: key);
 
   @override
   State<TabPage> createState() => _TabPageState();
@@ -32,13 +29,13 @@ class TabPage extends StatefulWidget {
 class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-  late String? idx;
   int _bottomNavIndex = 0;
   int _preIndex = 0;
-  late String _userId;
 
   late UserViewModel _viewModel;
   late UserState _state;
+
+  late Users _user;
 
   bool workState = false;
 
@@ -73,7 +70,7 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
       if (workState) {
         Logger().d('$data');
         await _getCurrentLocation();
-        _viewModel.onUsersEvent(UsersEvent.updateLocation(idx!, latitude, longitude));
+        _viewModel.onUsersEvent(UsersEvent.updateLocation(_user.idx.toString(), latitude, longitude));
       }
     });
   }
@@ -104,38 +101,25 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _user = widget.user;
     initialize = _initialize();
     _connect();
   }
 
   Future _initialize() async {
     await _getCurrentLocation();
-    await _getSharedPreferences();
-    await _getUser();
-    socket.emit('joinUser', ('user${idx!}'));
-  }
-
-  Future _getSharedPreferences() async {
-    final SharedPreferences prefs = await _prefs;
-    idx = prefs.getString('idx');
-    Logger().d("!!!!!!!!!!!!!!!myIdx: $idx}");
-  }
-
-  Future _getUser() async {
-    await _viewModel.onUsersEvent(UsersEvent.getUser(widget.userId));
+    await _viewModel.onUsersEvent(UsersEvent.getUser(_user.id));
+    socket.emit('joinUser', ('user${_user.idx}'));
   }
 
   @override
   Widget build(BuildContext context) {
     String title = '제목';
-    _userId = widget.userId;
-    Logger().d("user : $_userId");
     _viewModel = context.watch<UserViewModel>();
+    _state = _viewModel.userState;
     // _getSharedPreferences();
     // _viewModel.onUserEvent(UserEvent.getUser(widget.userId));
     // _getUser;
-    _state = _viewModel.userState;
-    Logger().d('!!!!!!!!HomeSreen - userState : $_state');
 
     return FutureBuilder(
         future: initialize,
@@ -175,7 +159,7 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
                       )),
                   IconButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const MyPageScreen()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => MyPageScreen(_user)));
                     },
                     icon: Icon(Icons.account_circle),
                     color: Colors.white,
@@ -183,9 +167,8 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
                 ],
               ),
               body: [
-                BodyReq(_userId, socket, widget.category, _state.user!),
+                BodyReq(_user.id, socket, widget.category, _state.user!),
                 workerTab(_state.user!),
-                // BodyHelper(_state.user!),
                 const BodyShopping(),
                 BodyChat(socket)
               ][_bottomNavIndex], //_pages[_bottomNavIndex],
@@ -238,7 +221,9 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
         ),
         actions: [
           TextButton(onPressed: () {
-            _viewModel.onUsersEvent(UsersEvent.workerRegistration(user.idx.toString())).then((value) => _onItemTapped(_preIndex));
+            _viewModel.onUsersEvent(UsersEvent.workerRegistration(user.idx.toString())).then((value) {
+              _onItemTapped(_preIndex);
+            });
           }, child: Text("등록")),
           TextButton(
               onPressed: () {

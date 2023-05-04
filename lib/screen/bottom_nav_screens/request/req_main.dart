@@ -8,6 +8,7 @@ import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:provider/provider.dart';
 import 'package:socket_io_client/src/socket.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
+import 'package:test_project/presentation/state/users/user_state.dart';
 import 'package:test_project/presentation/state/users/users_state.dart';
 import 'package:test_project/presentation/vm/user_view_model.dart';
 
@@ -42,6 +43,7 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
   late String dropdownValue;
   late String reqLat;
   late String reqLng;
+  late Users _user;
   String address = 'input address';
 
   //tabBar controller
@@ -53,9 +55,9 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
   late int tappedHelperIdx;
 
   late List<Users> _usersList;
-  late String _userId;
   late UserViewModel _viewModel;
-  late UsersState _state;
+  late UsersState _usersState;
+  late UserState _userState;
   NLatLng latLng = const NLatLng(37.565, 126.983);
   final Completer<NaverMapController> mapControllerCompleter = Completer();
 
@@ -85,12 +87,12 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
     // TODO: implement initState
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
-    _userId = widget.userId;
+    _user = widget.user;
     initialize = _initialize();
   }
 
   Future _getHelpers() async {
-    await _viewModel.onUsersEvent(UsersEvent.getAroundHelpers(_userId));
+    await _viewModel.onUsersEvent(UsersEvent.getAroundHelpers(_user.id));
   }
 
   Future<void> _initialize() async {
@@ -99,15 +101,15 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
       clientId: 'w1vo0mp1hb',
       onAuthFailed: (ex) => print("!!!!!!naver map auth error : $ex !!!!!!"),
     );
+    await _viewModel.onUsersEvent(UsersEvent.getUser(_user.id));
     await _getHelpers();
   }
 
   @override
   Widget build(BuildContext context) {
     _viewModel = context.watch<UserViewModel>();
-    _state = _viewModel.usersState;
-
-    Logger().d("userId(req page) : $_userId");
+    _usersState = _viewModel.usersState;
+    _userState = _viewModel.userState;
 
     return Column(
       children: [
@@ -117,8 +119,8 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
                 future: initialize,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
-                    _usersList = _state.users;
-                    _myIdx = _state.myIdx;
+                    _usersList = _usersState.users;
+                    _myIdx = _usersState.myIdx;
                     Logger().d(_myIdx);
                     return NaverMap(
                       options: const NaverMapViewOptions(indoorEnable: true, locationButtonEnable: true, consumeSymbolTapEvents: false),
@@ -128,9 +130,9 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
 
                         controller.latLngToScreenLocation(latLng);
                         markerList = [];
-                        Logger().d("state : ${_state.users}");
+                        Logger().d("state : ${_usersState.users}");
                         for (int i = 0; i < _usersList.length; i++) {
-                          if (_usersList[i].id != _userId) {
+                          if (_usersList[i].id != _user.id) {
                             markerList.add(NMarker(id: _usersList[i].idx.toString(), position: NLatLng(_usersList[i].latitude, _usersList[i].longitude)));
                           }
                         }
@@ -161,7 +163,7 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
                   }
                 }),
 
-            //요청서 작성 버튼
+            //플로팅 버튼(검색필터, 요청서작성)
             floatingActionButton: Stack(
               alignment: Alignment.center,
               children: [
@@ -254,7 +256,7 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
                   child: FloatingActionButton.extended(
                     heroTag: "write request",
                     onPressed: () {
-                      if (widget.user.isRequesterRegist == 0) {
+                      if (_userState.user!.isRequesterRegist == 0) {
                         //요청신원 등록
                         showDialog(
                           context: context,
@@ -272,7 +274,9 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
                               ),
                               actions: [
                                 TextButton(onPressed: () {
-                                  _viewModel.onUsersEvent(UsersEvent.requesterRegistration(widget.user.idx.toString())).then((value) => Navigator.pop(context));
+                                  _viewModel.onUsersEvent(UsersEvent.requesterRegistration(widget.user.idx.toString())).then((value) {
+                                    Navigator.pop(context);
+                                  });
                                 }, child: Text("등록")),
                                 TextButton(onPressed: () => Navigator.pop(context), child: Text("취소", style: TextStyle(color: Colors.grey),)),
                               ],
@@ -468,7 +472,7 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => MatchPage(userId: _userId, helperId: tappedHelperIdx),
+                builder: (context) => MatchPage(userId: _user.id, helperId: tappedHelperIdx),
               ));
           // Navigator.pop(context);
         },

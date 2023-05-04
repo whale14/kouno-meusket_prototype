@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
 import 'package:test_project/presentation/state/users/user_state.dart';
 import 'package:test_project/presentation/vm/user_view_model.dart';
+import 'package:test_project/screen/mypage/my_page_screen.dart';
 
 import 'home_screen.dart';
 
@@ -17,34 +18,38 @@ class LookAround extends StatefulWidget {
 }
 
 class _LookAroundState extends State<LookAround> {
-
   late Future initialize;
 
   late UserState _userState;
   late UserViewModel _userViewModel;
+  late String _userId;
 
+
+  Future<void> _initialize() async{
+
+    try{
+      await _userViewModel.onUsersEvent(UsersEvent.getUser(_userId));
+    } catch(e) {
+      Logger().d("error!!!!!!! $e");
+    }
+    // Logger().d("viewmodle : ${_userViewModel.toString()}");
+    Logger().d("!!!!!!!!!!!!!!!!!!!!!!");
+
+  }
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    Logger().d("initState");
-    initialize = _initialize();
-  }
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      initialize = _initialize();
+    });
 
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
   }
-
-  Future<void> _initialize() async{
-    await _userViewModel.onUsersEvent(UsersEvent.getUser(widget.userId));
-  }
-
   @override
   Widget build(BuildContext context) {
     _userViewModel = context.watch<UserViewModel>();
     _userState = _userViewModel.userState;
+    _userId = widget.userId;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -52,7 +57,9 @@ class _LookAroundState extends State<LookAround> {
           future: initialize,
           builder: (context, snapShot) {
             if(snapShot.connectionState == ConnectionState.done) {
-              Logger().d("user: ${_userState.user}");
+              _userState = _userViewModel.userState;
+              Logger().d("user: ${_userState.user}, ${_userViewModel}");
+
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -111,7 +118,7 @@ class _LookAroundState extends State<LookAround> {
       ),
       actions: [
         TextButton(
-          onPressed: () {},
+          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MyPageScreen(_userState.user!),)),
           child: Text(
             "마이페이지",
             style: TextStyle(color: Colors.black),
@@ -140,7 +147,7 @@ class _LookAroundState extends State<LookAround> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "id",
+                        _userState.user!.name,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       Text(
@@ -209,7 +216,7 @@ class _LookAroundState extends State<LookAround> {
                         onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => TabPage(widget.userId, categories[index]),
+                              builder: (context) => TabPage(widget.userId, categories[index], _userState.user!),
                             ))),
                     Text(categories[index])
                   ],
@@ -259,5 +266,12 @@ class _LookAroundState extends State<LookAround> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
 }
 

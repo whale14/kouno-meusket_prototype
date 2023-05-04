@@ -51,12 +51,11 @@ class UserViewModel with ChangeNotifier {
   }
 
   Future _getUser(String id) async {
-    Logger().d("vm(user):");
     _userState = userState.copyWith(isLoading: true);
     notifyListeners();
 
     final result = _userRepository.getUser(id);
-    // Logger().d("vm(user):$result");
+    Logger().d("vm(user):$result");
 
     _userState = userState.copyWith(
       isLoading: false,
