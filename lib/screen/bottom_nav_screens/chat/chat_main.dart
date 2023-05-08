@@ -68,7 +68,6 @@ class _BodyChatState extends State<BodyChat> {
         final chatRoom = _chatRoomState.chatRooms[index];
         if (chatRoom.stackedMessages != 0) {
           return Container(
-            margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
             decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: Colors.grey))),
             child: ListTile(
               title: Text(chatRoom.subject),
@@ -87,28 +86,27 @@ class _BodyChatState extends State<BodyChat> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => ChattingScreen(chatRoom, widget.socket),
-                  )).then((value) {
-                setState(() {
-                  initialize = _initialize();
-                });
-              }),
+                  )).then((value) => _viewModel.onChatEvent(ChatEvent.getChatRooms(idx!)))
             ),
           );
         } else {
-          return ListTile(
-              title: Text(chatRoom.subject),
-              subtitle: Text('last time: ${chatRoom.time}'),
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ChattingScreen(chatRoom, widget.socket),
-                  ))
-              //     .then((value) {
-              //   setState(() {
-              //     initialize = _initialize();
-              //   });
-              // }),
-              );
+          return Container(
+            decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: Colors.grey))),
+            child: ListTile(
+                title: Text(chatRoom.subject),
+                subtitle: Text('last time: ${chatRoom.time}'),
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ChattingScreen(chatRoom, widget.socket),
+                    )).then((value) => _viewModel.onChatEvent(ChatEvent.getChatRooms(idx!)))
+                //     .then((value) {
+                //   setState(() {
+                //     initialize = _initialize();
+                //   });
+                // }),
+                ),
+          );
         }
       },
     );

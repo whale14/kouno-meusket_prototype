@@ -69,12 +69,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
     _state = _chatViewModel.chatContentState;
     loadChatMessage();
     readChatMessage();
-    return WillPopScope(
-      onWillPop: () async{
-        Navigator.pop(context, widget.socket);
-        return false;
-      },
-      child: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: const Text(
             'CHATTING',
@@ -140,8 +135,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
             )
           ],
         ),
-      ),
-    );
+      );
   }
 
   sendMessage(String roomIdx, String myIdx, String message) {
@@ -246,13 +240,12 @@ class _ChattingScreenState extends State<ChattingScreen> {
 
   void loadChatMessage() {
     widget.socket.on("loadChatMessage", (data) {
-      setState(() {
-        initialize = _initialize();
-      });
+
       var jsonData = jsonEncode(data);
       Map<String, dynamic> jsonMap = jsonDecode(jsonData);
       Logger().d("result: ${jsonMap['result']}, userIdx: ${jsonMap['userIdx']}");
       if (idx != jsonMap['userId']) {
+        _chatViewModel.onChatEvent(ChatEvent.getChatContents(widget.chatRoom.idx.toString()));
       } else {
         Logger().d("같아 아무것도 안할거야");
       }
@@ -271,14 +264,13 @@ class _ChattingScreenState extends State<ChattingScreen> {
 
   @override
   void dispose() {
-    // TODO: implement disposere
+    // TODO: implement disposer
 
     //방 나가기
     widget.socket.emit("leaveChatRoom", widget.chatRoom.idx.toString());
     widget.socket.clearListeners();
     sendTextController.dispose();
     scrollController.dispose();
-    Navigator.pop(context);
     super.dispose();
   }
 }
