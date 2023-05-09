@@ -1,9 +1,9 @@
-import 'package:test_project/domain/model/user/users.dart';
+import 'package:test_project/domain/model/user/user.dart';
 
 abstract class UserRepository {
-  Future<Users> getUser(String id);
+  Future<User> getUser(String id);
 
-  Future<List<Users>> getAroundHelpers();
+  Future<List<User>> getAroundHelpers();
 
   Future updateLocation(String idx, double latitude, double longitude);
 
@@ -18,4 +18,6 @@ abstract class UserRepository {
   Future getUserFromIdx(String idx);
 
   Future workerRegistration(String idx);
+
+  Future updateUserInfo(String idx, String fileName);
 }

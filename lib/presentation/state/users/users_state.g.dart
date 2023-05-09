@@ -9,7 +9,7 @@ part of 'users_state.dart';
 _$_UsersState _$$_UsersStateFromJson(Map<String, dynamic> json) =>
     _$_UsersState(
       users: (json['users'] as List<dynamic>?)
-              ?.map((e) => Users.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => User.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       isLoading: json['isLoading'] as bool? ?? false,

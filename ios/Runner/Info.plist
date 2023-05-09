@@ -52,5 +52,11 @@
     <string>w1vo0mp1hb</string>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string></string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>using PhotoLibrary</string>
+    <key>NSCameraUsageDescription</key>
+    <string>using camera</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>using microphone</string>
 </dict>
 </plist>

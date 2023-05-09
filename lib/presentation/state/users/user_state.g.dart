@@ -10,7 +10,7 @@ _$_UserState<T> _$$_UserStateFromJson<T>(Map<String, dynamic> json) =>
     _$_UserState<T>(
       user: json['user'] == null
           ? null
-          : Users.fromJson(json['user'] as Map<String, dynamic>),
+          : User.fromJson(json['user'] as Map<String, dynamic>),
       isLoading: json['isLoading'] as bool? ?? false,
     );
 

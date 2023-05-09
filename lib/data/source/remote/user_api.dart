@@ -110,4 +110,15 @@ class UserAPI {
     await _client.post(Uri.parse(url), body: data);
   }
 
+  Future updateUserInfo(String idx, String fileName) async{
+    String url = '$baseUrl/update_user_info.php';
+    String imageUrl = '192.168.100.100:8080/';
+    Map<String, dynamic> data = {
+      'idx': idx,
+      'fileName' : fileName
+    };
+    final response = await _client.post(Uri.parse(url), body: data);
+
+  }
+
 }

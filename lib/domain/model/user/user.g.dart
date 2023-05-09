@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'users.dart';
+part of 'user.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Users _$$_UsersFromJson(Map<String, dynamic> json) => _$_Users(
+_$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       idx: json['idx'] as int,
       id: json['id'] as String,
       name: json['name'] as String,
@@ -18,9 +18,11 @@ _$_Users _$$_UsersFromJson(Map<String, dynamic> json) => _$_Users(
       accountState: json['accountState'] as int,
       isRequesterRegist: json['isRequesterRegist'] as int,
       isWorkerRegist: json['isWorkerRegist'] as int,
+      bio: json['bio'] as String?,
+      profileImageUrl: json['profileImageUrl'] as String?,
     );
 
-Map<String, dynamic> _$$_UsersToJson(_$_Users instance) => <String, dynamic>{
+Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'idx': instance.idx,
       'id': instance.id,
       'name': instance.name,
@@ -32,4 +34,6 @@ Map<String, dynamic> _$$_UsersToJson(_$_Users instance) => <String, dynamic>{
       'accountState': instance.accountState,
       'isRequesterRegist': instance.isRequesterRegist,
       'isWorkerRegist': instance.isWorkerRegist,
+      'bio': instance.bio,
+      'profileImageUrl': instance.profileImageUrl,
     };

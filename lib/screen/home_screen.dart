@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:test_project/domain/model/user/users.dart';
+import 'package:test_project/domain/model/user/user.dart';
 import 'package:test_project/presentation/state/users/user_state.dart';
 import 'package:test_project/presentation/vm/user_view_model.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 class TabPage extends StatefulWidget {
   final String userId;
   final String category;
-  final Users user;
+  final User user;
   const TabPage(this.userId, this.category, this.user, {Key? key}) : super(key: key);
 
   @override
@@ -35,7 +35,7 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
   late UserViewModel _viewModel;
   late UserState _state;
 
-  late Users _user;
+  late User _user;
 
   bool workState = false;
 
@@ -206,7 +206,7 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  Widget workerTab(Users user) {
+  Widget workerTab(User user) {
     if (user.isWorkerRegist == 0) {
       return AlertDialog(
         title: Text("부름이 등록"),

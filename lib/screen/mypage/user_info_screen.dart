@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
-import 'package:test_project/domain/model/user/users.dart';
+import 'package:test_project/domain/model/user/user.dart';
 import 'package:test_project/presentation/state/users/user_state.dart';
 import 'package:test_project/presentation/vm/user_view_model.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:test_project/screen/mypage/update_user_info.dart';
 
 class UserInfoScreen extends StatefulWidget {
-  final Users user;
+  final User user;
 
   const UserInfoScreen(this.user, {Key? key}) : super(key: key);
 
@@ -16,7 +17,7 @@ class UserInfoScreen extends StatefulWidget {
 }
 
 class _UserInfoScreenState extends State<UserInfoScreen> with TickerProviderStateMixin {
-  late Users _user;
+  late User _user;
   late UserViewModel _viewModel;
   late UserState _state;
 
@@ -192,7 +193,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> with TickerProviderStat
     );
   }
 
-  Widget infoHeader(Users user) => Container(
+  Widget infoHeader(User user) => Container(
         child: Column(
           children: [
             Container(
@@ -247,7 +248,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> with TickerProviderStat
                   ),
                   Text("bio(한줄소개)"),
                   MaterialButton(
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateUserInfo(),)),
                       color: Colors.orange,
                       child: Container(alignment: Alignment.center, width: double.maxFinite, child: const Text("회원정보 수정")))
                 ],

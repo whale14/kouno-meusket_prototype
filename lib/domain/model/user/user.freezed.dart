@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'users.dart';
+part of 'user.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Users _$UsersFromJson(Map<String, dynamic> json) {
-  return _Users.fromJson(json);
+User _$UserFromJson(Map<String, dynamic> json) {
+  return _User.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Users {
+mixin _$User {
   int get idx => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
@@ -31,16 +31,18 @@ mixin _$Users {
   int get accountState => throw _privateConstructorUsedError;
   int get isRequesterRegist => throw _privateConstructorUsedError;
   int get isWorkerRegist => throw _privateConstructorUsedError;
+  String? get bio => throw _privateConstructorUsedError;
+  String? get profileImageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UsersCopyWith<Users> get copyWith => throw _privateConstructorUsedError;
+  $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UsersCopyWith<$Res> {
-  factory $UsersCopyWith(Users value, $Res Function(Users) then) =
-      _$UsersCopyWithImpl<$Res, Users>;
+abstract class $UserCopyWith<$Res> {
+  factory $UserCopyWith(User value, $Res Function(User) then) =
+      _$UserCopyWithImpl<$Res, User>;
   @useResult
   $Res call(
       {int idx,
@@ -53,13 +55,15 @@ abstract class $UsersCopyWith<$Res> {
       int doingState,
       int accountState,
       int isRequesterRegist,
-      int isWorkerRegist});
+      int isWorkerRegist,
+      String? bio,
+      String? profileImageUrl});
 }
 
 /// @nodoc
-class _$UsersCopyWithImpl<$Res, $Val extends Users>
-    implements $UsersCopyWith<$Res> {
-  _$UsersCopyWithImpl(this._value, this._then);
+class _$UserCopyWithImpl<$Res, $Val extends User>
+    implements $UserCopyWith<$Res> {
+  _$UserCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -80,6 +84,8 @@ class _$UsersCopyWithImpl<$Res, $Val extends Users>
     Object? accountState = null,
     Object? isRequesterRegist = null,
     Object? isWorkerRegist = null,
+    Object? bio = freezed,
+    Object? profileImageUrl = freezed,
   }) {
     return _then(_value.copyWith(
       idx: null == idx
@@ -126,14 +132,22 @@ class _$UsersCopyWithImpl<$Res, $Val extends Users>
           ? _value.isWorkerRegist
           : isWorkerRegist // ignore: cast_nullable_to_non_nullable
               as int,
+      bio: freezed == bio
+          ? _value.bio
+          : bio // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profileImageUrl: freezed == profileImageUrl
+          ? _value.profileImageUrl
+          : profileImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_UsersCopyWith<$Res> implements $UsersCopyWith<$Res> {
-  factory _$$_UsersCopyWith(_$_Users value, $Res Function(_$_Users) then) =
-      __$$_UsersCopyWithImpl<$Res>;
+abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
+  factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
+      __$$_UserCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -147,13 +161,15 @@ abstract class _$$_UsersCopyWith<$Res> implements $UsersCopyWith<$Res> {
       int doingState,
       int accountState,
       int isRequesterRegist,
-      int isWorkerRegist});
+      int isWorkerRegist,
+      String? bio,
+      String? profileImageUrl});
 }
 
 /// @nodoc
-class __$$_UsersCopyWithImpl<$Res> extends _$UsersCopyWithImpl<$Res, _$_Users>
-    implements _$$_UsersCopyWith<$Res> {
-  __$$_UsersCopyWithImpl(_$_Users _value, $Res Function(_$_Users) _then)
+class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
+    implements _$$_UserCopyWith<$Res> {
+  __$$_UserCopyWithImpl(_$_User _value, $Res Function(_$_User) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -170,8 +186,10 @@ class __$$_UsersCopyWithImpl<$Res> extends _$UsersCopyWithImpl<$Res, _$_Users>
     Object? accountState = null,
     Object? isRequesterRegist = null,
     Object? isWorkerRegist = null,
+    Object? bio = freezed,
+    Object? profileImageUrl = freezed,
   }) {
-    return _then(_$_Users(
+    return _then(_$_User(
       idx: null == idx
           ? _value.idx
           : idx // ignore: cast_nullable_to_non_nullable
@@ -216,14 +234,22 @@ class __$$_UsersCopyWithImpl<$Res> extends _$UsersCopyWithImpl<$Res, _$_Users>
           ? _value.isWorkerRegist
           : isWorkerRegist // ignore: cast_nullable_to_non_nullable
               as int,
+      bio: freezed == bio
+          ? _value.bio
+          : bio // ignore: cast_nullable_to_non_nullable
+              as String?,
+      profileImageUrl: freezed == profileImageUrl
+          ? _value.profileImageUrl
+          : profileImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_Users implements _Users {
-  _$_Users(
+class _$_User implements _User {
+  _$_User(
       {required this.idx,
       required this.id,
       required this.name,
@@ -234,10 +260,11 @@ class _$_Users implements _Users {
       required this.doingState,
       required this.accountState,
       required this.isRequesterRegist,
-      required this.isWorkerRegist});
+      required this.isWorkerRegist,
+      required this.bio,
+      required this.profileImageUrl});
 
-  factory _$_Users.fromJson(Map<String, dynamic> json) =>
-      _$$_UsersFromJson(json);
+  factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
   @override
   final int idx;
@@ -261,17 +288,21 @@ class _$_Users implements _Users {
   final int isRequesterRegist;
   @override
   final int isWorkerRegist;
+  @override
+  final String? bio;
+  @override
+  final String? profileImageUrl;
 
   @override
   String toString() {
-    return 'Users(idx: $idx, id: $id, name: $name, latitude: $latitude, longitude: $longitude, createAt: $createAt, updateAt: $updateAt, doingState: $doingState, accountState: $accountState, isRequesterRegist: $isRequesterRegist, isWorkerRegist: $isWorkerRegist)';
+    return 'User(idx: $idx, id: $id, name: $name, latitude: $latitude, longitude: $longitude, createAt: $createAt, updateAt: $updateAt, doingState: $doingState, accountState: $accountState, isRequesterRegist: $isRequesterRegist, isWorkerRegist: $isWorkerRegist, bio: $bio, profileImageUrl: $profileImageUrl)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Users &&
+            other is _$_User &&
             (identical(other.idx, idx) || other.idx == idx) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
@@ -290,7 +321,10 @@ class _$_Users implements _Users {
             (identical(other.isRequesterRegist, isRequesterRegist) ||
                 other.isRequesterRegist == isRequesterRegist) &&
             (identical(other.isWorkerRegist, isWorkerRegist) ||
-                other.isWorkerRegist == isWorkerRegist));
+                other.isWorkerRegist == isWorkerRegist) &&
+            (identical(other.bio, bio) || other.bio == bio) &&
+            (identical(other.profileImageUrl, profileImageUrl) ||
+                other.profileImageUrl == profileImageUrl));
   }
 
   @JsonKey(ignore: true)
@@ -307,24 +341,26 @@ class _$_Users implements _Users {
       doingState,
       accountState,
       isRequesterRegist,
-      isWorkerRegist);
+      isWorkerRegist,
+      bio,
+      profileImageUrl);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UsersCopyWith<_$_Users> get copyWith =>
-      __$$_UsersCopyWithImpl<_$_Users>(this, _$identity);
+  _$$_UserCopyWith<_$_User> get copyWith =>
+      __$$_UserCopyWithImpl<_$_User>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UsersToJson(
+    return _$$_UserToJson(
       this,
     );
   }
 }
 
-abstract class _Users implements Users {
-  factory _Users(
+abstract class _User implements User {
+  factory _User(
       {required final int idx,
       required final String id,
       required final String name,
@@ -335,9 +371,11 @@ abstract class _Users implements Users {
       required final int doingState,
       required final int accountState,
       required final int isRequesterRegist,
-      required final int isWorkerRegist}) = _$_Users;
+      required final int isWorkerRegist,
+      required final String? bio,
+      required final String? profileImageUrl}) = _$_User;
 
-  factory _Users.fromJson(Map<String, dynamic> json) = _$_Users.fromJson;
+  factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
   int get idx;
@@ -362,7 +400,10 @@ abstract class _Users implements Users {
   @override
   int get isWorkerRegist;
   @override
+  String? get bio;
+  @override
+  String? get profileImageUrl;
+  @override
   @JsonKey(ignore: true)
-  _$$_UsersCopyWith<_$_Users> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
 }

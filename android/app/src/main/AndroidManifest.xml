@@ -15,7 +15,8 @@
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true"
-        android:label="test_project">
+        android:label="test_project"
+        android:requestLegacyExternalStorage="true">
 
 
         <activity

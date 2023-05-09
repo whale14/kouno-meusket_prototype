@@ -30,6 +30,7 @@ mixin _$UsersEvent {
         updateLocation,
     required TResult Function(String idx) requesterRegistration,
     required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +47,7 @@ mixin _$UsersEvent {
         updateLocation,
     TResult? Function(String idx)? requesterRegistration,
     TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +63,7 @@ mixin _$UsersEvent {
         updateLocation,
     TResult Function(String idx)? requesterRegistration,
     TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -74,6 +77,7 @@ mixin _$UsersEvent {
     required TResult Function(RequesterRegistration value)
         requesterRegistration,
     required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserInfo value) updateUserInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -85,6 +89,7 @@ mixin _$UsersEvent {
     TResult? Function(UpdateLocation value)? updateLocation,
     TResult? Function(RequesterRegistration value)? requesterRegistration,
     TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserInfo value)? updateUserInfo,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -96,6 +101,7 @@ mixin _$UsersEvent {
     TResult Function(UpdateLocation value)? updateLocation,
     TResult Function(RequesterRegistration value)? requesterRegistration,
     TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserInfo value)? updateUserInfo,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -195,6 +201,7 @@ class _$GetAroundHelpers implements GetAroundHelpers {
         updateLocation,
     required TResult Function(String idx) requesterRegistration,
     required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserInfo,
   }) {
     return getAroundHelpers(id);
   }
@@ -214,6 +221,7 @@ class _$GetAroundHelpers implements GetAroundHelpers {
         updateLocation,
     TResult? Function(String idx)? requesterRegistration,
     TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserInfo,
   }) {
     return getAroundHelpers?.call(id);
   }
@@ -232,6 +240,7 @@ class _$GetAroundHelpers implements GetAroundHelpers {
         updateLocation,
     TResult Function(String idx)? requesterRegistration,
     TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserInfo,
     required TResult orElse(),
   }) {
     if (getAroundHelpers != null) {
@@ -251,6 +260,7 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     required TResult Function(RequesterRegistration value)
         requesterRegistration,
     required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserInfo value) updateUserInfo,
   }) {
     return getAroundHelpers(this);
   }
@@ -265,6 +275,7 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     TResult? Function(UpdateLocation value)? updateLocation,
     TResult? Function(RequesterRegistration value)? requesterRegistration,
     TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserInfo value)? updateUserInfo,
   }) {
     return getAroundHelpers?.call(this);
   }
@@ -279,6 +290,7 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     TResult Function(UpdateLocation value)? updateLocation,
     TResult Function(RequesterRegistration value)? requesterRegistration,
     TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserInfo value)? updateUserInfo,
     required TResult orElse(),
   }) {
     if (getAroundHelpers != null) {
@@ -397,6 +409,7 @@ class _$Insert implements Insert {
         updateLocation,
     required TResult Function(String idx) requesterRegistration,
     required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserInfo,
   }) {
     return insert(id, name, latitude, longitude);
   }
@@ -416,6 +429,7 @@ class _$Insert implements Insert {
         updateLocation,
     TResult? Function(String idx)? requesterRegistration,
     TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserInfo,
   }) {
     return insert?.call(id, name, latitude, longitude);
   }
@@ -434,6 +448,7 @@ class _$Insert implements Insert {
         updateLocation,
     TResult Function(String idx)? requesterRegistration,
     TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserInfo,
     required TResult orElse(),
   }) {
     if (insert != null) {
@@ -453,6 +468,7 @@ class _$Insert implements Insert {
     required TResult Function(RequesterRegistration value)
         requesterRegistration,
     required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserInfo value) updateUserInfo,
   }) {
     return insert(this);
   }
@@ -467,6 +483,7 @@ class _$Insert implements Insert {
     TResult? Function(UpdateLocation value)? updateLocation,
     TResult? Function(RequesterRegistration value)? requesterRegistration,
     TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserInfo value)? updateUserInfo,
   }) {
     return insert?.call(this);
   }
@@ -481,6 +498,7 @@ class _$Insert implements Insert {
     TResult Function(UpdateLocation value)? updateLocation,
     TResult Function(RequesterRegistration value)? requesterRegistration,
     TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserInfo value)? updateUserInfo,
     required TResult orElse(),
   }) {
     if (insert != null) {
@@ -639,6 +657,7 @@ class _$InsertRequest implements InsertRequest {
         updateLocation,
     required TResult Function(String idx) requesterRegistration,
     required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserInfo,
   }) {
     return insertRequest(
         reqIdx, categoryIdx, title, content, address, latitude, longitude);
@@ -659,6 +678,7 @@ class _$InsertRequest implements InsertRequest {
         updateLocation,
     TResult? Function(String idx)? requesterRegistration,
     TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserInfo,
   }) {
     return insertRequest?.call(
         reqIdx, categoryIdx, title, content, address, latitude, longitude);
@@ -678,6 +698,7 @@ class _$InsertRequest implements InsertRequest {
         updateLocation,
     TResult Function(String idx)? requesterRegistration,
     TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserInfo,
     required TResult orElse(),
   }) {
     if (insertRequest != null) {
@@ -698,6 +719,7 @@ class _$InsertRequest implements InsertRequest {
     required TResult Function(RequesterRegistration value)
         requesterRegistration,
     required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserInfo value) updateUserInfo,
   }) {
     return insertRequest(this);
   }
@@ -712,6 +734,7 @@ class _$InsertRequest implements InsertRequest {
     TResult? Function(UpdateLocation value)? updateLocation,
     TResult? Function(RequesterRegistration value)? requesterRegistration,
     TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserInfo value)? updateUserInfo,
   }) {
     return insertRequest?.call(this);
   }
@@ -726,6 +749,7 @@ class _$InsertRequest implements InsertRequest {
     TResult Function(UpdateLocation value)? updateLocation,
     TResult Function(RequesterRegistration value)? requesterRegistration,
     TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserInfo value)? updateUserInfo,
     required TResult orElse(),
   }) {
     if (insertRequest != null) {
@@ -831,6 +855,7 @@ class _$GetUser implements GetUser {
         updateLocation,
     required TResult Function(String idx) requesterRegistration,
     required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserInfo,
   }) {
     return getUser(id);
   }
@@ -850,6 +875,7 @@ class _$GetUser implements GetUser {
         updateLocation,
     TResult? Function(String idx)? requesterRegistration,
     TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserInfo,
   }) {
     return getUser?.call(id);
   }
@@ -868,6 +894,7 @@ class _$GetUser implements GetUser {
         updateLocation,
     TResult Function(String idx)? requesterRegistration,
     TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserInfo,
     required TResult orElse(),
   }) {
     if (getUser != null) {
@@ -887,6 +914,7 @@ class _$GetUser implements GetUser {
     required TResult Function(RequesterRegistration value)
         requesterRegistration,
     required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserInfo value) updateUserInfo,
   }) {
     return getUser(this);
   }
@@ -901,6 +929,7 @@ class _$GetUser implements GetUser {
     TResult? Function(UpdateLocation value)? updateLocation,
     TResult? Function(RequesterRegistration value)? requesterRegistration,
     TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserInfo value)? updateUserInfo,
   }) {
     return getUser?.call(this);
   }
@@ -915,6 +944,7 @@ class _$GetUser implements GetUser {
     TResult Function(UpdateLocation value)? updateLocation,
     TResult Function(RequesterRegistration value)? requesterRegistration,
     TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserInfo value)? updateUserInfo,
     required TResult orElse(),
   }) {
     if (getUser != null) {
@@ -1027,6 +1057,7 @@ class _$UpdateLocation implements UpdateLocation {
         updateLocation,
     required TResult Function(String idx) requesterRegistration,
     required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserInfo,
   }) {
     return updateLocation(idx, latitude, longitude);
   }
@@ -1046,6 +1077,7 @@ class _$UpdateLocation implements UpdateLocation {
         updateLocation,
     TResult? Function(String idx)? requesterRegistration,
     TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserInfo,
   }) {
     return updateLocation?.call(idx, latitude, longitude);
   }
@@ -1064,6 +1096,7 @@ class _$UpdateLocation implements UpdateLocation {
         updateLocation,
     TResult Function(String idx)? requesterRegistration,
     TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserInfo,
     required TResult orElse(),
   }) {
     if (updateLocation != null) {
@@ -1083,6 +1116,7 @@ class _$UpdateLocation implements UpdateLocation {
     required TResult Function(RequesterRegistration value)
         requesterRegistration,
     required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserInfo value) updateUserInfo,
   }) {
     return updateLocation(this);
   }
@@ -1097,6 +1131,7 @@ class _$UpdateLocation implements UpdateLocation {
     TResult? Function(UpdateLocation value)? updateLocation,
     TResult? Function(RequesterRegistration value)? requesterRegistration,
     TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserInfo value)? updateUserInfo,
   }) {
     return updateLocation?.call(this);
   }
@@ -1111,6 +1146,7 @@ class _$UpdateLocation implements UpdateLocation {
     TResult Function(UpdateLocation value)? updateLocation,
     TResult Function(RequesterRegistration value)? requesterRegistration,
     TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserInfo value)? updateUserInfo,
     required TResult orElse(),
   }) {
     if (updateLocation != null) {
@@ -1210,6 +1246,7 @@ class _$RequesterRegistration implements RequesterRegistration {
         updateLocation,
     required TResult Function(String idx) requesterRegistration,
     required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserInfo,
   }) {
     return requesterRegistration(idx);
   }
@@ -1229,6 +1266,7 @@ class _$RequesterRegistration implements RequesterRegistration {
         updateLocation,
     TResult? Function(String idx)? requesterRegistration,
     TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserInfo,
   }) {
     return requesterRegistration?.call(idx);
   }
@@ -1247,6 +1285,7 @@ class _$RequesterRegistration implements RequesterRegistration {
         updateLocation,
     TResult Function(String idx)? requesterRegistration,
     TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserInfo,
     required TResult orElse(),
   }) {
     if (requesterRegistration != null) {
@@ -1266,6 +1305,7 @@ class _$RequesterRegistration implements RequesterRegistration {
     required TResult Function(RequesterRegistration value)
         requesterRegistration,
     required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserInfo value) updateUserInfo,
   }) {
     return requesterRegistration(this);
   }
@@ -1280,6 +1320,7 @@ class _$RequesterRegistration implements RequesterRegistration {
     TResult? Function(UpdateLocation value)? updateLocation,
     TResult? Function(RequesterRegistration value)? requesterRegistration,
     TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserInfo value)? updateUserInfo,
   }) {
     return requesterRegistration?.call(this);
   }
@@ -1294,6 +1335,7 @@ class _$RequesterRegistration implements RequesterRegistration {
     TResult Function(UpdateLocation value)? updateLocation,
     TResult Function(RequesterRegistration value)? requesterRegistration,
     TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserInfo value)? updateUserInfo,
     required TResult orElse(),
   }) {
     if (requesterRegistration != null) {
@@ -1390,6 +1432,7 @@ class _$WorkerRegistration implements WorkerRegistration {
         updateLocation,
     required TResult Function(String idx) requesterRegistration,
     required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserInfo,
   }) {
     return workerRegistration(idx);
   }
@@ -1409,6 +1452,7 @@ class _$WorkerRegistration implements WorkerRegistration {
         updateLocation,
     TResult? Function(String idx)? requesterRegistration,
     TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserInfo,
   }) {
     return workerRegistration?.call(idx);
   }
@@ -1427,6 +1471,7 @@ class _$WorkerRegistration implements WorkerRegistration {
         updateLocation,
     TResult Function(String idx)? requesterRegistration,
     TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserInfo,
     required TResult orElse(),
   }) {
     if (workerRegistration != null) {
@@ -1446,6 +1491,7 @@ class _$WorkerRegistration implements WorkerRegistration {
     required TResult Function(RequesterRegistration value)
         requesterRegistration,
     required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserInfo value) updateUserInfo,
   }) {
     return workerRegistration(this);
   }
@@ -1460,6 +1506,7 @@ class _$WorkerRegistration implements WorkerRegistration {
     TResult? Function(UpdateLocation value)? updateLocation,
     TResult? Function(RequesterRegistration value)? requesterRegistration,
     TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserInfo value)? updateUserInfo,
   }) {
     return workerRegistration?.call(this);
   }
@@ -1474,6 +1521,7 @@ class _$WorkerRegistration implements WorkerRegistration {
     TResult Function(UpdateLocation value)? updateLocation,
     TResult Function(RequesterRegistration value)? requesterRegistration,
     TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserInfo value)? updateUserInfo,
     required TResult orElse(),
   }) {
     if (workerRegistration != null) {
@@ -1489,5 +1537,200 @@ abstract class WorkerRegistration implements UsersEvent {
   String get idx;
   @JsonKey(ignore: true)
   _$$WorkerRegistrationCopyWith<_$WorkerRegistration> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateUserInfoCopyWith<$Res> {
+  factory _$$UpdateUserInfoCopyWith(
+          _$UpdateUserInfo value, $Res Function(_$UpdateUserInfo) then) =
+      __$$UpdateUserInfoCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String idx, String fileName});
+}
+
+/// @nodoc
+class __$$UpdateUserInfoCopyWithImpl<$Res>
+    extends _$UsersEventCopyWithImpl<$Res, _$UpdateUserInfo>
+    implements _$$UpdateUserInfoCopyWith<$Res> {
+  __$$UpdateUserInfoCopyWithImpl(
+      _$UpdateUserInfo _value, $Res Function(_$UpdateUserInfo) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idx = null,
+    Object? fileName = null,
+  }) {
+    return _then(_$UpdateUserInfo(
+      null == idx
+          ? _value.idx
+          : idx // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == fileName
+          ? _value.fileName
+          : fileName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateUserInfo implements UpdateUserInfo {
+  const _$UpdateUserInfo(this.idx, this.fileName);
+
+  @override
+  final String idx;
+  @override
+  final String fileName;
+
+  @override
+  String toString() {
+    return 'UsersEvent.updateUserInfo(idx: $idx, fileName: $fileName)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateUserInfo &&
+            (identical(other.idx, idx) || other.idx == idx) &&
+            (identical(other.fileName, fileName) ||
+                other.fileName == fileName));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, idx, fileName);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateUserInfoCopyWith<_$UpdateUserInfo> get copyWith =>
+      __$$UpdateUserInfoCopyWithImpl<_$UpdateUserInfo>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) getAroundHelpers,
+    required TResult Function(
+            String id, String name, double latitude, double longitude)
+        insert,
+    required TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)
+        insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserInfo,
+  }) {
+    return updateUserInfo(idx, fileName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? getAroundHelpers,
+    TResult? Function(
+            String id, String name, double latitude, double longitude)?
+        insert,
+    TResult? Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserInfo,
+  }) {
+    return updateUserInfo?.call(idx, fileName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? getAroundHelpers,
+    TResult Function(String id, String name, double latitude, double longitude)?
+        insert,
+    TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserInfo,
+    required TResult orElse(),
+  }) {
+    if (updateUserInfo != null) {
+      return updateUserInfo(idx, fileName);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAroundHelpers value) getAroundHelpers,
+    required TResult Function(Insert value) insert,
+    required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserInfo value) updateUserInfo,
+  }) {
+    return updateUserInfo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult? Function(Insert value)? insert,
+    TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserInfo value)? updateUserInfo,
+  }) {
+    return updateUserInfo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult Function(Insert value)? insert,
+    TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserInfo value)? updateUserInfo,
+    required TResult orElse(),
+  }) {
+    if (updateUserInfo != null) {
+      return updateUserInfo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateUserInfo implements UsersEvent {
+  const factory UpdateUserInfo(final String idx, final String fileName) =
+      _$UpdateUserInfo;
+
+  String get idx;
+  String get fileName;
+  @JsonKey(ignore: true)
+  _$$UpdateUserInfoCopyWith<_$UpdateUserInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }

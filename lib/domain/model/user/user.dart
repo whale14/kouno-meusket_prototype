@@ -1,12 +1,13 @@
+import 'package:json_annotation/json_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'users.freezed.dart';
+part 'user.freezed.dart';
 
-part 'users.g.dart';
+part 'user.g.dart';
 
 @freezed
-class Users with _$Users {
-  factory Users({
+class User with _$User {
+  factory User({
     required int idx,
     required String id,
     required String name,
@@ -17,8 +18,10 @@ class Users with _$Users {
     required int doingState,
     required int accountState,
     required int isRequesterRegist,
-    required int isWorkerRegist
-  }) = _Users;
+    required int isWorkerRegist,
+    required String? bio,
+    required String? profileImageUrl
+  }) = _User;
 
-  factory Users.fromJson(Map<String, dynamic> json) => _$UsersFromJson(json);
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 }

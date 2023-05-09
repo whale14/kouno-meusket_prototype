@@ -20,7 +20,7 @@ UsersState _$UsersStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UsersState {
-  List<Users> get users => throw _privateConstructorUsedError;
+  List<User> get users => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   String get myIdx => throw _privateConstructorUsedError;
 
@@ -36,7 +36,7 @@ abstract class $UsersStateCopyWith<$Res> {
           UsersState value, $Res Function(UsersState) then) =
       _$UsersStateCopyWithImpl<$Res, UsersState>;
   @useResult
-  $Res call({List<Users> users, bool isLoading, String myIdx});
+  $Res call({List<User> users, bool isLoading, String myIdx});
 }
 
 /// @nodoc
@@ -60,7 +60,7 @@ class _$UsersStateCopyWithImpl<$Res, $Val extends UsersState>
       users: null == users
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
-              as List<Users>,
+              as List<User>,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -81,7 +81,7 @@ abstract class _$$_UsersStateCopyWith<$Res>
       __$$_UsersStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Users> users, bool isLoading, String myIdx});
+  $Res call({List<User> users, bool isLoading, String myIdx});
 }
 
 /// @nodoc
@@ -103,7 +103,7 @@ class __$$_UsersStateCopyWithImpl<$Res>
       users: null == users
           ? _value._users
           : users // ignore: cast_nullable_to_non_nullable
-              as List<Users>,
+              as List<User>,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -120,7 +120,7 @@ class __$$_UsersStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_UsersState implements _UsersState {
   _$_UsersState(
-      {final List<Users> users = const [],
+      {final List<User> users = const [],
       this.isLoading = false,
       this.myIdx = ''})
       : _users = users;
@@ -128,10 +128,10 @@ class _$_UsersState implements _UsersState {
   factory _$_UsersState.fromJson(Map<String, dynamic> json) =>
       _$$_UsersStateFromJson(json);
 
-  final List<Users> _users;
+  final List<User> _users;
   @override
   @JsonKey()
-  List<Users> get users {
+  List<User> get users {
     if (_users is EqualUnmodifiableListView) return _users;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_users);
@@ -181,7 +181,7 @@ class _$_UsersState implements _UsersState {
 
 abstract class _UsersState implements UsersState {
   factory _UsersState(
-      {final List<Users> users,
+      {final List<User> users,
       final bool isLoading,
       final String myIdx}) = _$_UsersState;
 
@@ -189,7 +189,7 @@ abstract class _UsersState implements UsersState {
       _$_UsersState.fromJson;
 
   @override
-  List<Users> get users;
+  List<User> get users;
   @override
   bool get isLoading;
   @override

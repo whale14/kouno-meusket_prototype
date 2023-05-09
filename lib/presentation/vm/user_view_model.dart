@@ -14,13 +14,22 @@ class UserViewModel with ChangeNotifier {
 
   // TestState get testState => _testState;
   UserState get userState => _userState;
+
   UsersState get usersState => _usersState;
 
   UserViewModel(this._userRepository);
 
-  Future onUsersEvent(UsersEvent event) async{
+  Future onUsersEvent(UsersEvent event) async {
     // event.when(getTests: _getTests);
-    await event.when(getAroundHelpers: _getAroundHelpers, insert: _insert, insertRequest: _insertRequest, getUser: _getUser, updateLocation: _updateLocation, requesterRegistration: _requesterRegistration, workerRegistration: _workerRegistration);
+    await event.when(
+        getAroundHelpers: _getAroundHelpers,
+        insert: _insert,
+        insertRequest: _insertRequest,
+        getUser: _getUser,
+        updateLocation: _updateLocation,
+        requesterRegistration: _requesterRegistration,
+        workerRegistration: _workerRegistration,
+        updateUserInfo: _updateUserInfo);
   }
 
   Future _insert(String id, String name, double latitude, double longitude) async {
@@ -64,27 +73,32 @@ class UserViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Future _updateLocation(String idx, double latitude, double longitude) async{
+  Future _updateLocation(String idx, double latitude, double longitude) async {
     await _userRepository.updateLocation(idx, latitude, longitude);
   }
 
-  Future _requesterRegistration(String idx) async{
+  Future _requesterRegistration(String idx) async {
     await _userRepository.requestRegistration(idx);
     final result = _userRepository.getUserFromIdx(idx);
 
-    _userState = userState.copyWith(
-      user: await result
-    );
+    _userState = userState.copyWith(user: await result);
     notifyListeners();
   }
 
-  Future _workerRegistration(String idx) async{
+  Future _workerRegistration(String idx) async {
     await _userRepository.workerRegistration(idx);
     final result = _userRepository.getUserFromIdx(idx);
 
-    _userState = userState.copyWith(
-        user: await result
-    );
+    _userState = userState.copyWith(user: await result);
+    notifyListeners();
+  }
+
+  Future _updateUserInfo(String idx, String fileName) async {
+    await _userRepository.updateUserInfo(idx, fileName);
+
+    final result = _userRepository.getUserFromIdx(idx);
+
+    _userState = userState.copyWith(user: await result);
     notifyListeners();
   }
 }

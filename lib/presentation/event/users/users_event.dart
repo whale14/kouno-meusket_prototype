@@ -12,5 +12,6 @@ class UsersEvent with _$UsersEvent {
   const factory UsersEvent.updateLocation(String idx, double latitude, double longitude) = UpdateLocation;
   const factory UsersEvent.requesterRegistration(String idx) = RequesterRegistration;
   const factory UsersEvent.workerRegistration(String idx) = WorkerRegistration;
+  const factory UsersEvent.updateUserInfo(String idx, String fileName) = UpdateUserInfo;
 
 }

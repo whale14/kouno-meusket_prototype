@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:test_project/domain/model/user/users.dart';
+import 'package:test_project/domain/model/user/user.dart';
 import 'package:test_project/presentation/event/request/request_event.dart';
 import 'package:test_project/presentation/state/request/request_state.dart';
 import 'package:test_project/presentation/vm/request_view_model.dart';
 
 class BodyHelper extends StatefulWidget {
-  final Users user;
+  final User user;
 
   const BodyHelper(this.user, {Key? key}) : super(key: key);
 

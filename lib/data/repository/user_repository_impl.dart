@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:logger/logger.dart';
 import 'package:test_project/data/source/remote/user_api.dart';
-import 'package:test_project/domain/model/user/users.dart';
+import 'package:test_project/domain/model/user/user.dart';
 import 'package:test_project/domain/repository/user_repository.dart';
 
 
@@ -13,12 +13,12 @@ class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl(this.api);
 
   @override
-  Future<List<Users>> getAroundHelpers() async {
+  Future<List<User>> getAroundHelpers() async {
     // TODO: implement getAroundHelpers
     final response = await api.getAroundHelpers();
     Logger().d("getAH_repo_res:${response.body}");
     final Iterable json = jsonDecode(response.body);
-    return json.map((e) => Users.fromJson(e)).toList();
+    return json.map((e) => User.fromJson(e)).toList();
   }
 
   @override
@@ -45,12 +45,12 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<Users> getUser(String id) async {
+  Future<User> getUser(String id) async {
     // TODO: implement getAroundHelpers
     final response = await api.getUser(id);
     Logger().d("id : $id, getUser_repo_res:${response.body}");
     final Iterable json = jsonDecode(response.body);
-    return Users.fromJson(json.first);
+    return User.fromJson(json.first);
   }
 
   @override
@@ -71,12 +71,18 @@ class UserRepositoryImpl implements UserRepository {
     final response = await api.getUserFromIdx(idx);
     Logger().d("id : $idx, getUser_repo_res:${response.body}");
     final Iterable json = jsonDecode(response.body);
-    return Users.fromJson(json.first);
+    return User.fromJson(json.first);
   }
 
   @override
   Future workerRegistration(String idx) async{
     // TODO: implement workerRegistration
     await api.workerRegistration(idx);
+  }
+
+  @override
+  Future updateUserInfo(String idx, String fileName) async{
+    // TODO: implement updateUserInfo
+    await api.updateUserInfo(idx, fileName);
   }
 }

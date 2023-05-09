@@ -20,7 +20,7 @@ UserState<T> _$UserStateFromJson<T>(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserState<T> {
-  Users? get user => throw _privateConstructorUsedError;
+  User? get user => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,9 +35,9 @@ abstract class $UserStateCopyWith<T, $Res> {
           UserState<T> value, $Res Function(UserState<T>) then) =
       _$UserStateCopyWithImpl<T, $Res, UserState<T>>;
   @useResult
-  $Res call({Users? user, bool isLoading});
+  $Res call({User? user, bool isLoading});
 
-  $UsersCopyWith<$Res>? get user;
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -60,7 +60,7 @@ class _$UserStateCopyWithImpl<T, $Res, $Val extends UserState<T>>
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as Users?,
+              as User?,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -70,12 +70,12 @@ class _$UserStateCopyWithImpl<T, $Res, $Val extends UserState<T>>
 
   @override
   @pragma('vm:prefer-inline')
-  $UsersCopyWith<$Res>? get user {
+  $UserCopyWith<$Res>? get user {
     if (_value.user == null) {
       return null;
     }
 
-    return $UsersCopyWith<$Res>(_value.user!, (value) {
+    return $UserCopyWith<$Res>(_value.user!, (value) {
       return _then(_value.copyWith(user: value) as $Val);
     });
   }
@@ -89,10 +89,10 @@ abstract class _$$_UserStateCopyWith<T, $Res>
       __$$_UserStateCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({Users? user, bool isLoading});
+  $Res call({User? user, bool isLoading});
 
   @override
-  $UsersCopyWith<$Res>? get user;
+  $UserCopyWith<$Res>? get user;
 }
 
 /// @nodoc
@@ -113,7 +113,7 @@ class __$$_UserStateCopyWithImpl<T, $Res>
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as Users?,
+              as User?,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -131,7 +131,7 @@ class _$_UserState<T> implements _UserState<T> {
       _$$_UserStateFromJson(json);
 
   @override
-  final Users? user;
+  final User? user;
   @override
   @JsonKey()
   final bool isLoading;
@@ -170,14 +170,14 @@ class _$_UserState<T> implements _UserState<T> {
 }
 
 abstract class _UserState<T> implements UserState<T> {
-  factory _UserState({final Users? user, final bool isLoading}) =
+  factory _UserState({final User? user, final bool isLoading}) =
       _$_UserState<T>;
 
   factory _UserState.fromJson(Map<String, dynamic> json) =
       _$_UserState<T>.fromJson;
 
   @override
-  Users? get user;
+  User? get user;
   @override
   bool get isLoading;
   @override

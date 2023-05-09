@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:test_project/domain/model/user/users.dart';
+import 'package:test_project/domain/model/user/user.dart';
 import 'package:test_project/screen/mypage/user_info_screen.dart';
 
 class MyPageScreen extends StatelessWidget {
-  final Users user;
+  final User user;
   final List<String> tabsString = [
     "수익금 관리",
     "결제 수단 관리",

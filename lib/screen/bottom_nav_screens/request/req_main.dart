@@ -12,7 +12,7 @@ import 'package:test_project/presentation/state/users/user_state.dart';
 import 'package:test_project/presentation/state/users/users_state.dart';
 import 'package:test_project/presentation/vm/user_view_model.dart';
 
-import '../../../domain/model/user/users.dart';
+import '../../../domain/model/user/user.dart';
 import '../../match_page.dart';
 import '../../post_webview.dart';
 
@@ -20,7 +20,7 @@ class BodyReq extends StatefulWidget {
   final String userId;
   final Socket socket;
   final String category;
-  final Users user;
+  final User user;
 
   const BodyReq(this.userId, this.socket, this.category, this.user, {Key? key}) : super(key: key);
 
@@ -43,7 +43,7 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
   late String dropdownValue;
   late String reqLat;
   late String reqLng;
-  late Users _user;
+  late User _user;
   String address = 'input address';
 
   //tabBar controller
@@ -54,7 +54,7 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
   late List<NMarker> markerList;
   late int tappedHelperIdx;
 
-  late List<Users> _usersList;
+  late List<User> _usersList;
   late UserViewModel _viewModel;
   late UsersState _usersState;
   late UserState _userState;
