@@ -1,9 +1,7 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:logger/logger.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 class PostWebView extends StatefulWidget {
   const PostWebView({Key? key}) : super(key: key);
@@ -19,9 +17,9 @@ class _PostWebViewState extends State<PostWebView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('주소 검색'),
+        title: const Text('주소 검색'),
         centerTitle: true,
-        titleTextStyle: TextStyle(color: Colors.white),
+        titleTextStyle: const TextStyle(color: Colors.white),
       ),
       body: InAppWebView(
         onWebViewCreated: (controller) {
@@ -29,9 +27,9 @@ class _PostWebViewState extends State<PostWebView> {
           _controller.addJavaScriptHandler(
             handlerName: 'jsHandler',
             callback: (arguments) {
-              Map<String, dynamic> _fromMap = arguments.first;
-              Logger().d("_fromMap : $_fromMap");
-              Navigator.of(context).pop(_fromMap);
+              Map<String, dynamic> fromMap = arguments.first;
+              Logger().d("_fromMap : $fromMap");
+              Navigator.of(context).pop(fromMap);
             },
           );
         },

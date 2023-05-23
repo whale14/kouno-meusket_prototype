@@ -19,8 +19,8 @@ mixin _$UsersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String id) getAroundHelpers,
-    required TResult Function(
-            String id, String name, double latitude, double longitude)
+    required TResult Function(String id, String name, double latitude,
+            double longitude, String fcmToken)
         insert,
     required TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)
@@ -30,14 +30,36 @@ mixin _$UsersEvent {
         updateLocation,
     required TResult Function(String idx) requesterRegistration,
     required TResult Function(String idx) workerRegistration,
-    required TResult Function(String idx, String fileName) updateUserInfo,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath,
+            String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)
+        sendRequestToWorker,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(
-            String id, String name, double latitude, double longitude)?
+    TResult? Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
         insert,
     TResult? Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
@@ -47,13 +69,35 @@ mixin _$UsersEvent {
         updateLocation,
     TResult? Function(String idx)? requesterRegistration,
     TResult? Function(String idx)? workerRegistration,
-    TResult? Function(String idx, String fileName)? updateUserInfo,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude)?
+    TResult Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
         insert,
     TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
@@ -63,7 +107,28 @@ mixin _$UsersEvent {
         updateLocation,
     TResult Function(String idx)? requesterRegistration,
     TResult Function(String idx)? workerRegistration,
-    TResult Function(String idx, String fileName)? updateUserInfo,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -77,7 +142,17 @@ mixin _$UsersEvent {
     required TResult Function(RequesterRegistration value)
         requesterRegistration,
     required TResult Function(WorkerRegistration value) workerRegistration,
-    required TResult Function(UpdateUserInfo value) updateUserInfo,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -89,7 +164,15 @@ mixin _$UsersEvent {
     TResult? Function(UpdateLocation value)? updateLocation,
     TResult? Function(RequesterRegistration value)? requesterRegistration,
     TResult? Function(WorkerRegistration value)? workerRegistration,
-    TResult? Function(UpdateUserInfo value)? updateUserInfo,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -101,7 +184,15 @@ mixin _$UsersEvent {
     TResult Function(UpdateLocation value)? updateLocation,
     TResult Function(RequesterRegistration value)? requesterRegistration,
     TResult Function(WorkerRegistration value)? workerRegistration,
-    TResult Function(UpdateUserInfo value)? updateUserInfo,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -190,8 +281,8 @@ class _$GetAroundHelpers implements GetAroundHelpers {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String id) getAroundHelpers,
-    required TResult Function(
-            String id, String name, double latitude, double longitude)
+    required TResult Function(String id, String name, double latitude,
+            double longitude, String fcmToken)
         insert,
     required TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)
@@ -201,7 +292,29 @@ class _$GetAroundHelpers implements GetAroundHelpers {
         updateLocation,
     required TResult Function(String idx) requesterRegistration,
     required TResult Function(String idx) workerRegistration,
-    required TResult Function(String idx, String fileName) updateUserInfo,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath,
+            String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)
+        sendRequestToWorker,
   }) {
     return getAroundHelpers(id);
   }
@@ -210,8 +323,8 @@ class _$GetAroundHelpers implements GetAroundHelpers {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(
-            String id, String name, double latitude, double longitude)?
+    TResult? Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
         insert,
     TResult? Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
@@ -221,7 +334,28 @@ class _$GetAroundHelpers implements GetAroundHelpers {
         updateLocation,
     TResult? Function(String idx)? requesterRegistration,
     TResult? Function(String idx)? workerRegistration,
-    TResult? Function(String idx, String fileName)? updateUserInfo,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
   }) {
     return getAroundHelpers?.call(id);
   }
@@ -230,7 +364,8 @@ class _$GetAroundHelpers implements GetAroundHelpers {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude)?
+    TResult Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
         insert,
     TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
@@ -240,7 +375,28 @@ class _$GetAroundHelpers implements GetAroundHelpers {
         updateLocation,
     TResult Function(String idx)? requesterRegistration,
     TResult Function(String idx)? workerRegistration,
-    TResult Function(String idx, String fileName)? updateUserInfo,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
     required TResult orElse(),
   }) {
     if (getAroundHelpers != null) {
@@ -260,7 +416,17 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     required TResult Function(RequesterRegistration value)
         requesterRegistration,
     required TResult Function(WorkerRegistration value) workerRegistration,
-    required TResult Function(UpdateUserInfo value) updateUserInfo,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
   }) {
     return getAroundHelpers(this);
   }
@@ -275,7 +441,15 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     TResult? Function(UpdateLocation value)? updateLocation,
     TResult? Function(RequesterRegistration value)? requesterRegistration,
     TResult? Function(WorkerRegistration value)? workerRegistration,
-    TResult? Function(UpdateUserInfo value)? updateUserInfo,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
   }) {
     return getAroundHelpers?.call(this);
   }
@@ -290,7 +464,15 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     TResult Function(UpdateLocation value)? updateLocation,
     TResult Function(RequesterRegistration value)? requesterRegistration,
     TResult Function(WorkerRegistration value)? workerRegistration,
-    TResult Function(UpdateUserInfo value)? updateUserInfo,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     required TResult orElse(),
   }) {
     if (getAroundHelpers != null) {
@@ -314,7 +496,12 @@ abstract class _$$InsertCopyWith<$Res> {
   factory _$$InsertCopyWith(_$Insert value, $Res Function(_$Insert) then) =
       __$$InsertCopyWithImpl<$Res>;
   @useResult
-  $Res call({String id, String name, double latitude, double longitude});
+  $Res call(
+      {String id,
+      String name,
+      double latitude,
+      double longitude,
+      String fcmToken});
 }
 
 /// @nodoc
@@ -331,6 +518,7 @@ class __$$InsertCopyWithImpl<$Res>
     Object? name = null,
     Object? latitude = null,
     Object? longitude = null,
+    Object? fcmToken = null,
   }) {
     return _then(_$Insert(
       null == id
@@ -349,6 +537,10 @@ class __$$InsertCopyWithImpl<$Res>
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double,
+      null == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -356,7 +548,8 @@ class __$$InsertCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Insert implements Insert {
-  const _$Insert(this.id, this.name, this.latitude, this.longitude);
+  const _$Insert(
+      this.id, this.name, this.latitude, this.longitude, this.fcmToken);
 
   @override
   final String id;
@@ -366,10 +559,12 @@ class _$Insert implements Insert {
   final double latitude;
   @override
   final double longitude;
+  @override
+  final String fcmToken;
 
   @override
   String toString() {
-    return 'UsersEvent.insert(id: $id, name: $name, latitude: $latitude, longitude: $longitude)';
+    return 'UsersEvent.insert(id: $id, name: $name, latitude: $latitude, longitude: $longitude, fcmToken: $fcmToken)';
   }
 
   @override
@@ -382,11 +577,14 @@ class _$Insert implements Insert {
             (identical(other.latitude, latitude) ||
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
-                other.longitude == longitude));
+                other.longitude == longitude) &&
+            (identical(other.fcmToken, fcmToken) ||
+                other.fcmToken == fcmToken));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, latitude, longitude);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, latitude, longitude, fcmToken);
 
   @JsonKey(ignore: true)
   @override
@@ -398,8 +596,8 @@ class _$Insert implements Insert {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String id) getAroundHelpers,
-    required TResult Function(
-            String id, String name, double latitude, double longitude)
+    required TResult Function(String id, String name, double latitude,
+            double longitude, String fcmToken)
         insert,
     required TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)
@@ -409,17 +607,39 @@ class _$Insert implements Insert {
         updateLocation,
     required TResult Function(String idx) requesterRegistration,
     required TResult Function(String idx) workerRegistration,
-    required TResult Function(String idx, String fileName) updateUserInfo,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath,
+            String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)
+        sendRequestToWorker,
   }) {
-    return insert(id, name, latitude, longitude);
+    return insert(id, name, latitude, longitude, fcmToken);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(
-            String id, String name, double latitude, double longitude)?
+    TResult? Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
         insert,
     TResult? Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
@@ -429,16 +649,38 @@ class _$Insert implements Insert {
         updateLocation,
     TResult? Function(String idx)? requesterRegistration,
     TResult? Function(String idx)? workerRegistration,
-    TResult? Function(String idx, String fileName)? updateUserInfo,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
   }) {
-    return insert?.call(id, name, latitude, longitude);
+    return insert?.call(id, name, latitude, longitude, fcmToken);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude)?
+    TResult Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
         insert,
     TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
@@ -448,11 +690,32 @@ class _$Insert implements Insert {
         updateLocation,
     TResult Function(String idx)? requesterRegistration,
     TResult Function(String idx)? workerRegistration,
-    TResult Function(String idx, String fileName)? updateUserInfo,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
     required TResult orElse(),
   }) {
     if (insert != null) {
-      return insert(id, name, latitude, longitude);
+      return insert(id, name, latitude, longitude, fcmToken);
     }
     return orElse();
   }
@@ -468,7 +731,17 @@ class _$Insert implements Insert {
     required TResult Function(RequesterRegistration value)
         requesterRegistration,
     required TResult Function(WorkerRegistration value) workerRegistration,
-    required TResult Function(UpdateUserInfo value) updateUserInfo,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
   }) {
     return insert(this);
   }
@@ -483,7 +756,15 @@ class _$Insert implements Insert {
     TResult? Function(UpdateLocation value)? updateLocation,
     TResult? Function(RequesterRegistration value)? requesterRegistration,
     TResult? Function(WorkerRegistration value)? workerRegistration,
-    TResult? Function(UpdateUserInfo value)? updateUserInfo,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
   }) {
     return insert?.call(this);
   }
@@ -498,7 +779,15 @@ class _$Insert implements Insert {
     TResult Function(UpdateLocation value)? updateLocation,
     TResult Function(RequesterRegistration value)? requesterRegistration,
     TResult Function(WorkerRegistration value)? workerRegistration,
-    TResult Function(UpdateUserInfo value)? updateUserInfo,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     required TResult orElse(),
   }) {
     if (insert != null) {
@@ -509,13 +798,18 @@ class _$Insert implements Insert {
 }
 
 abstract class Insert implements UsersEvent {
-  const factory Insert(final String id, final String name,
-      final double latitude, final double longitude) = _$Insert;
+  const factory Insert(
+      final String id,
+      final String name,
+      final double latitude,
+      final double longitude,
+      final String fcmToken) = _$Insert;
 
   String get id;
   String get name;
   double get latitude;
   double get longitude;
+  String get fcmToken;
   @JsonKey(ignore: true)
   _$$InsertCopyWith<_$Insert> get copyWith =>
       throw _privateConstructorUsedError;
@@ -646,8 +940,8 @@ class _$InsertRequest implements InsertRequest {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String id) getAroundHelpers,
-    required TResult Function(
-            String id, String name, double latitude, double longitude)
+    required TResult Function(String id, String name, double latitude,
+            double longitude, String fcmToken)
         insert,
     required TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)
@@ -657,7 +951,29 @@ class _$InsertRequest implements InsertRequest {
         updateLocation,
     required TResult Function(String idx) requesterRegistration,
     required TResult Function(String idx) workerRegistration,
-    required TResult Function(String idx, String fileName) updateUserInfo,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath,
+            String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)
+        sendRequestToWorker,
   }) {
     return insertRequest(
         reqIdx, categoryIdx, title, content, address, latitude, longitude);
@@ -667,8 +983,8 @@ class _$InsertRequest implements InsertRequest {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(
-            String id, String name, double latitude, double longitude)?
+    TResult? Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
         insert,
     TResult? Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
@@ -678,7 +994,28 @@ class _$InsertRequest implements InsertRequest {
         updateLocation,
     TResult? Function(String idx)? requesterRegistration,
     TResult? Function(String idx)? workerRegistration,
-    TResult? Function(String idx, String fileName)? updateUserInfo,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
   }) {
     return insertRequest?.call(
         reqIdx, categoryIdx, title, content, address, latitude, longitude);
@@ -688,7 +1025,8 @@ class _$InsertRequest implements InsertRequest {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude)?
+    TResult Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
         insert,
     TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
@@ -698,7 +1036,28 @@ class _$InsertRequest implements InsertRequest {
         updateLocation,
     TResult Function(String idx)? requesterRegistration,
     TResult Function(String idx)? workerRegistration,
-    TResult Function(String idx, String fileName)? updateUserInfo,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
     required TResult orElse(),
   }) {
     if (insertRequest != null) {
@@ -719,7 +1078,17 @@ class _$InsertRequest implements InsertRequest {
     required TResult Function(RequesterRegistration value)
         requesterRegistration,
     required TResult Function(WorkerRegistration value) workerRegistration,
-    required TResult Function(UpdateUserInfo value) updateUserInfo,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
   }) {
     return insertRequest(this);
   }
@@ -734,7 +1103,15 @@ class _$InsertRequest implements InsertRequest {
     TResult? Function(UpdateLocation value)? updateLocation,
     TResult? Function(RequesterRegistration value)? requesterRegistration,
     TResult? Function(WorkerRegistration value)? workerRegistration,
-    TResult? Function(UpdateUserInfo value)? updateUserInfo,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
   }) {
     return insertRequest?.call(this);
   }
@@ -749,7 +1126,15 @@ class _$InsertRequest implements InsertRequest {
     TResult Function(UpdateLocation value)? updateLocation,
     TResult Function(RequesterRegistration value)? requesterRegistration,
     TResult Function(WorkerRegistration value)? workerRegistration,
-    TResult Function(UpdateUserInfo value)? updateUserInfo,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     required TResult orElse(),
   }) {
     if (insertRequest != null) {
@@ -844,8 +1229,8 @@ class _$GetUser implements GetUser {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String id) getAroundHelpers,
-    required TResult Function(
-            String id, String name, double latitude, double longitude)
+    required TResult Function(String id, String name, double latitude,
+            double longitude, String fcmToken)
         insert,
     required TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)
@@ -855,7 +1240,29 @@ class _$GetUser implements GetUser {
         updateLocation,
     required TResult Function(String idx) requesterRegistration,
     required TResult Function(String idx) workerRegistration,
-    required TResult Function(String idx, String fileName) updateUserInfo,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath,
+            String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)
+        sendRequestToWorker,
   }) {
     return getUser(id);
   }
@@ -864,8 +1271,8 @@ class _$GetUser implements GetUser {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(
-            String id, String name, double latitude, double longitude)?
+    TResult? Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
         insert,
     TResult? Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
@@ -875,7 +1282,28 @@ class _$GetUser implements GetUser {
         updateLocation,
     TResult? Function(String idx)? requesterRegistration,
     TResult? Function(String idx)? workerRegistration,
-    TResult? Function(String idx, String fileName)? updateUserInfo,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
   }) {
     return getUser?.call(id);
   }
@@ -884,7 +1312,8 @@ class _$GetUser implements GetUser {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude)?
+    TResult Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
         insert,
     TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
@@ -894,7 +1323,28 @@ class _$GetUser implements GetUser {
         updateLocation,
     TResult Function(String idx)? requesterRegistration,
     TResult Function(String idx)? workerRegistration,
-    TResult Function(String idx, String fileName)? updateUserInfo,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
     required TResult orElse(),
   }) {
     if (getUser != null) {
@@ -914,7 +1364,17 @@ class _$GetUser implements GetUser {
     required TResult Function(RequesterRegistration value)
         requesterRegistration,
     required TResult Function(WorkerRegistration value) workerRegistration,
-    required TResult Function(UpdateUserInfo value) updateUserInfo,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
   }) {
     return getUser(this);
   }
@@ -929,7 +1389,15 @@ class _$GetUser implements GetUser {
     TResult? Function(UpdateLocation value)? updateLocation,
     TResult? Function(RequesterRegistration value)? requesterRegistration,
     TResult? Function(WorkerRegistration value)? workerRegistration,
-    TResult? Function(UpdateUserInfo value)? updateUserInfo,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
   }) {
     return getUser?.call(this);
   }
@@ -944,7 +1412,15 @@ class _$GetUser implements GetUser {
     TResult Function(UpdateLocation value)? updateLocation,
     TResult Function(RequesterRegistration value)? requesterRegistration,
     TResult Function(WorkerRegistration value)? workerRegistration,
-    TResult Function(UpdateUserInfo value)? updateUserInfo,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     required TResult orElse(),
   }) {
     if (getUser != null) {
@@ -1046,8 +1522,8 @@ class _$UpdateLocation implements UpdateLocation {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String id) getAroundHelpers,
-    required TResult Function(
-            String id, String name, double latitude, double longitude)
+    required TResult Function(String id, String name, double latitude,
+            double longitude, String fcmToken)
         insert,
     required TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)
@@ -1057,7 +1533,29 @@ class _$UpdateLocation implements UpdateLocation {
         updateLocation,
     required TResult Function(String idx) requesterRegistration,
     required TResult Function(String idx) workerRegistration,
-    required TResult Function(String idx, String fileName) updateUserInfo,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath,
+            String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)
+        sendRequestToWorker,
   }) {
     return updateLocation(idx, latitude, longitude);
   }
@@ -1066,8 +1564,8 @@ class _$UpdateLocation implements UpdateLocation {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(
-            String id, String name, double latitude, double longitude)?
+    TResult? Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
         insert,
     TResult? Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
@@ -1077,7 +1575,28 @@ class _$UpdateLocation implements UpdateLocation {
         updateLocation,
     TResult? Function(String idx)? requesterRegistration,
     TResult? Function(String idx)? workerRegistration,
-    TResult? Function(String idx, String fileName)? updateUserInfo,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
   }) {
     return updateLocation?.call(idx, latitude, longitude);
   }
@@ -1086,7 +1605,8 @@ class _$UpdateLocation implements UpdateLocation {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude)?
+    TResult Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
         insert,
     TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
@@ -1096,7 +1616,28 @@ class _$UpdateLocation implements UpdateLocation {
         updateLocation,
     TResult Function(String idx)? requesterRegistration,
     TResult Function(String idx)? workerRegistration,
-    TResult Function(String idx, String fileName)? updateUserInfo,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
     required TResult orElse(),
   }) {
     if (updateLocation != null) {
@@ -1116,7 +1657,17 @@ class _$UpdateLocation implements UpdateLocation {
     required TResult Function(RequesterRegistration value)
         requesterRegistration,
     required TResult Function(WorkerRegistration value) workerRegistration,
-    required TResult Function(UpdateUserInfo value) updateUserInfo,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
   }) {
     return updateLocation(this);
   }
@@ -1131,7 +1682,15 @@ class _$UpdateLocation implements UpdateLocation {
     TResult? Function(UpdateLocation value)? updateLocation,
     TResult? Function(RequesterRegistration value)? requesterRegistration,
     TResult? Function(WorkerRegistration value)? workerRegistration,
-    TResult? Function(UpdateUserInfo value)? updateUserInfo,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
   }) {
     return updateLocation?.call(this);
   }
@@ -1146,7 +1705,15 @@ class _$UpdateLocation implements UpdateLocation {
     TResult Function(UpdateLocation value)? updateLocation,
     TResult Function(RequesterRegistration value)? requesterRegistration,
     TResult Function(WorkerRegistration value)? workerRegistration,
-    TResult Function(UpdateUserInfo value)? updateUserInfo,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     required TResult orElse(),
   }) {
     if (updateLocation != null) {
@@ -1235,8 +1802,8 @@ class _$RequesterRegistration implements RequesterRegistration {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String id) getAroundHelpers,
-    required TResult Function(
-            String id, String name, double latitude, double longitude)
+    required TResult Function(String id, String name, double latitude,
+            double longitude, String fcmToken)
         insert,
     required TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)
@@ -1246,7 +1813,29 @@ class _$RequesterRegistration implements RequesterRegistration {
         updateLocation,
     required TResult Function(String idx) requesterRegistration,
     required TResult Function(String idx) workerRegistration,
-    required TResult Function(String idx, String fileName) updateUserInfo,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath,
+            String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)
+        sendRequestToWorker,
   }) {
     return requesterRegistration(idx);
   }
@@ -1255,8 +1844,8 @@ class _$RequesterRegistration implements RequesterRegistration {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(
-            String id, String name, double latitude, double longitude)?
+    TResult? Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
         insert,
     TResult? Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
@@ -1266,7 +1855,28 @@ class _$RequesterRegistration implements RequesterRegistration {
         updateLocation,
     TResult? Function(String idx)? requesterRegistration,
     TResult? Function(String idx)? workerRegistration,
-    TResult? Function(String idx, String fileName)? updateUserInfo,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
   }) {
     return requesterRegistration?.call(idx);
   }
@@ -1275,7 +1885,8 @@ class _$RequesterRegistration implements RequesterRegistration {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude)?
+    TResult Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
         insert,
     TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
@@ -1285,7 +1896,28 @@ class _$RequesterRegistration implements RequesterRegistration {
         updateLocation,
     TResult Function(String idx)? requesterRegistration,
     TResult Function(String idx)? workerRegistration,
-    TResult Function(String idx, String fileName)? updateUserInfo,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
     required TResult orElse(),
   }) {
     if (requesterRegistration != null) {
@@ -1305,7 +1937,17 @@ class _$RequesterRegistration implements RequesterRegistration {
     required TResult Function(RequesterRegistration value)
         requesterRegistration,
     required TResult Function(WorkerRegistration value) workerRegistration,
-    required TResult Function(UpdateUserInfo value) updateUserInfo,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
   }) {
     return requesterRegistration(this);
   }
@@ -1320,7 +1962,15 @@ class _$RequesterRegistration implements RequesterRegistration {
     TResult? Function(UpdateLocation value)? updateLocation,
     TResult? Function(RequesterRegistration value)? requesterRegistration,
     TResult? Function(WorkerRegistration value)? workerRegistration,
-    TResult? Function(UpdateUserInfo value)? updateUserInfo,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
   }) {
     return requesterRegistration?.call(this);
   }
@@ -1335,7 +1985,15 @@ class _$RequesterRegistration implements RequesterRegistration {
     TResult Function(UpdateLocation value)? updateLocation,
     TResult Function(RequesterRegistration value)? requesterRegistration,
     TResult Function(WorkerRegistration value)? workerRegistration,
-    TResult Function(UpdateUserInfo value)? updateUserInfo,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     required TResult orElse(),
   }) {
     if (requesterRegistration != null) {
@@ -1421,8 +2079,8 @@ class _$WorkerRegistration implements WorkerRegistration {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String id) getAroundHelpers,
-    required TResult Function(
-            String id, String name, double latitude, double longitude)
+    required TResult Function(String id, String name, double latitude,
+            double longitude, String fcmToken)
         insert,
     required TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)
@@ -1432,7 +2090,29 @@ class _$WorkerRegistration implements WorkerRegistration {
         updateLocation,
     required TResult Function(String idx) requesterRegistration,
     required TResult Function(String idx) workerRegistration,
-    required TResult Function(String idx, String fileName) updateUserInfo,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath,
+            String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)
+        sendRequestToWorker,
   }) {
     return workerRegistration(idx);
   }
@@ -1441,8 +2121,8 @@ class _$WorkerRegistration implements WorkerRegistration {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(
-            String id, String name, double latitude, double longitude)?
+    TResult? Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
         insert,
     TResult? Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
@@ -1452,7 +2132,28 @@ class _$WorkerRegistration implements WorkerRegistration {
         updateLocation,
     TResult? Function(String idx)? requesterRegistration,
     TResult? Function(String idx)? workerRegistration,
-    TResult? Function(String idx, String fileName)? updateUserInfo,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
   }) {
     return workerRegistration?.call(idx);
   }
@@ -1461,7 +2162,8 @@ class _$WorkerRegistration implements WorkerRegistration {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude)?
+    TResult Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
         insert,
     TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
@@ -1471,7 +2173,28 @@ class _$WorkerRegistration implements WorkerRegistration {
         updateLocation,
     TResult Function(String idx)? requesterRegistration,
     TResult Function(String idx)? workerRegistration,
-    TResult Function(String idx, String fileName)? updateUserInfo,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
     required TResult orElse(),
   }) {
     if (workerRegistration != null) {
@@ -1491,7 +2214,17 @@ class _$WorkerRegistration implements WorkerRegistration {
     required TResult Function(RequesterRegistration value)
         requesterRegistration,
     required TResult Function(WorkerRegistration value) workerRegistration,
-    required TResult Function(UpdateUserInfo value) updateUserInfo,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
   }) {
     return workerRegistration(this);
   }
@@ -1506,7 +2239,15 @@ class _$WorkerRegistration implements WorkerRegistration {
     TResult? Function(UpdateLocation value)? updateLocation,
     TResult? Function(RequesterRegistration value)? requesterRegistration,
     TResult? Function(WorkerRegistration value)? workerRegistration,
-    TResult? Function(UpdateUserInfo value)? updateUserInfo,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
   }) {
     return workerRegistration?.call(this);
   }
@@ -1521,7 +2262,15 @@ class _$WorkerRegistration implements WorkerRegistration {
     TResult Function(UpdateLocation value)? updateLocation,
     TResult Function(RequesterRegistration value)? requesterRegistration,
     TResult Function(WorkerRegistration value)? workerRegistration,
-    TResult Function(UpdateUserInfo value)? updateUserInfo,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     required TResult orElse(),
   }) {
     if (workerRegistration != null) {
@@ -1541,20 +2290,20 @@ abstract class WorkerRegistration implements UsersEvent {
 }
 
 /// @nodoc
-abstract class _$$UpdateUserInfoCopyWith<$Res> {
-  factory _$$UpdateUserInfoCopyWith(
-          _$UpdateUserInfo value, $Res Function(_$UpdateUserInfo) then) =
-      __$$UpdateUserInfoCopyWithImpl<$Res>;
+abstract class _$$UpdateUserPhotoCopyWith<$Res> {
+  factory _$$UpdateUserPhotoCopyWith(
+          _$UpdateUserPhoto value, $Res Function(_$UpdateUserPhoto) then) =
+      __$$UpdateUserPhotoCopyWithImpl<$Res>;
   @useResult
   $Res call({String idx, String fileName});
 }
 
 /// @nodoc
-class __$$UpdateUserInfoCopyWithImpl<$Res>
-    extends _$UsersEventCopyWithImpl<$Res, _$UpdateUserInfo>
-    implements _$$UpdateUserInfoCopyWith<$Res> {
-  __$$UpdateUserInfoCopyWithImpl(
-      _$UpdateUserInfo _value, $Res Function(_$UpdateUserInfo) _then)
+class __$$UpdateUserPhotoCopyWithImpl<$Res>
+    extends _$UsersEventCopyWithImpl<$Res, _$UpdateUserPhoto>
+    implements _$$UpdateUserPhotoCopyWith<$Res> {
+  __$$UpdateUserPhotoCopyWithImpl(
+      _$UpdateUserPhoto _value, $Res Function(_$UpdateUserPhoto) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1563,7 +2312,7 @@ class __$$UpdateUserInfoCopyWithImpl<$Res>
     Object? idx = null,
     Object? fileName = null,
   }) {
-    return _then(_$UpdateUserInfo(
+    return _then(_$UpdateUserPhoto(
       null == idx
           ? _value.idx
           : idx // ignore: cast_nullable_to_non_nullable
@@ -1578,8 +2327,8 @@ class __$$UpdateUserInfoCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UpdateUserInfo implements UpdateUserInfo {
-  const _$UpdateUserInfo(this.idx, this.fileName);
+class _$UpdateUserPhoto implements UpdateUserPhoto {
+  const _$UpdateUserPhoto(this.idx, this.fileName);
 
   @override
   final String idx;
@@ -1588,14 +2337,14 @@ class _$UpdateUserInfo implements UpdateUserInfo {
 
   @override
   String toString() {
-    return 'UsersEvent.updateUserInfo(idx: $idx, fileName: $fileName)';
+    return 'UsersEvent.updateUserPhoto(idx: $idx, fileName: $fileName)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UpdateUserInfo &&
+            other is _$UpdateUserPhoto &&
             (identical(other.idx, idx) || other.idx == idx) &&
             (identical(other.fileName, fileName) ||
                 other.fileName == fileName));
@@ -1607,15 +2356,15 @@ class _$UpdateUserInfo implements UpdateUserInfo {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UpdateUserInfoCopyWith<_$UpdateUserInfo> get copyWith =>
-      __$$UpdateUserInfoCopyWithImpl<_$UpdateUserInfo>(this, _$identity);
+  _$$UpdateUserPhotoCopyWith<_$UpdateUserPhoto> get copyWith =>
+      __$$UpdateUserPhotoCopyWithImpl<_$UpdateUserPhoto>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String id) getAroundHelpers,
-    required TResult Function(
-            String id, String name, double latitude, double longitude)
+    required TResult Function(String id, String name, double latitude,
+            double longitude, String fcmToken)
         insert,
     required TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)
@@ -1625,17 +2374,39 @@ class _$UpdateUserInfo implements UpdateUserInfo {
         updateLocation,
     required TResult Function(String idx) requesterRegistration,
     required TResult Function(String idx) workerRegistration,
-    required TResult Function(String idx, String fileName) updateUserInfo,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath,
+            String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)
+        sendRequestToWorker,
   }) {
-    return updateUserInfo(idx, fileName);
+    return updateUserPhoto(idx, fileName);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(
-            String id, String name, double latitude, double longitude)?
+    TResult? Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
         insert,
     TResult? Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
@@ -1645,16 +2416,38 @@ class _$UpdateUserInfo implements UpdateUserInfo {
         updateLocation,
     TResult? Function(String idx)? requesterRegistration,
     TResult? Function(String idx)? workerRegistration,
-    TResult? Function(String idx, String fileName)? updateUserInfo,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
   }) {
-    return updateUserInfo?.call(idx, fileName);
+    return updateUserPhoto?.call(idx, fileName);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude)?
+    TResult Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
         insert,
     TResult Function(String reqIdx, String categoryIdx, String title,
             String content, String address, String latitude, String longitude)?
@@ -1664,11 +2457,32 @@ class _$UpdateUserInfo implements UpdateUserInfo {
         updateLocation,
     TResult Function(String idx)? requesterRegistration,
     TResult Function(String idx)? workerRegistration,
-    TResult Function(String idx, String fileName)? updateUserInfo,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
     required TResult orElse(),
   }) {
-    if (updateUserInfo != null) {
-      return updateUserInfo(idx, fileName);
+    if (updateUserPhoto != null) {
+      return updateUserPhoto(idx, fileName);
     }
     return orElse();
   }
@@ -1684,9 +2498,19 @@ class _$UpdateUserInfo implements UpdateUserInfo {
     required TResult Function(RequesterRegistration value)
         requesterRegistration,
     required TResult Function(WorkerRegistration value) workerRegistration,
-    required TResult Function(UpdateUserInfo value) updateUserInfo,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
   }) {
-    return updateUserInfo(this);
+    return updateUserPhoto(this);
   }
 
   @override
@@ -1699,9 +2523,17 @@ class _$UpdateUserInfo implements UpdateUserInfo {
     TResult? Function(UpdateLocation value)? updateLocation,
     TResult? Function(RequesterRegistration value)? requesterRegistration,
     TResult? Function(WorkerRegistration value)? workerRegistration,
-    TResult? Function(UpdateUserInfo value)? updateUserInfo,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
   }) {
-    return updateUserInfo?.call(this);
+    return updateUserPhoto?.call(this);
   }
 
   @override
@@ -1714,23 +2546,2442 @@ class _$UpdateUserInfo implements UpdateUserInfo {
     TResult Function(UpdateLocation value)? updateLocation,
     TResult Function(RequesterRegistration value)? requesterRegistration,
     TResult Function(WorkerRegistration value)? workerRegistration,
-    TResult Function(UpdateUserInfo value)? updateUserInfo,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     required TResult orElse(),
   }) {
-    if (updateUserInfo != null) {
-      return updateUserInfo(this);
+    if (updateUserPhoto != null) {
+      return updateUserPhoto(this);
     }
     return orElse();
   }
 }
 
-abstract class UpdateUserInfo implements UsersEvent {
-  const factory UpdateUserInfo(final String idx, final String fileName) =
-      _$UpdateUserInfo;
+abstract class UpdateUserPhoto implements UsersEvent {
+  const factory UpdateUserPhoto(final String idx, final String fileName) =
+      _$UpdateUserPhoto;
 
   String get idx;
   String get fileName;
   @JsonKey(ignore: true)
-  _$$UpdateUserInfoCopyWith<_$UpdateUserInfo> get copyWith =>
+  _$$UpdateUserPhotoCopyWith<_$UpdateUserPhoto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateUserNameCopyWith<$Res> {
+  factory _$$UpdateUserNameCopyWith(
+          _$UpdateUserName value, $Res Function(_$UpdateUserName) then) =
+      __$$UpdateUserNameCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String idx, String name});
+}
+
+/// @nodoc
+class __$$UpdateUserNameCopyWithImpl<$Res>
+    extends _$UsersEventCopyWithImpl<$Res, _$UpdateUserName>
+    implements _$$UpdateUserNameCopyWith<$Res> {
+  __$$UpdateUserNameCopyWithImpl(
+      _$UpdateUserName _value, $Res Function(_$UpdateUserName) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idx = null,
+    Object? name = null,
+  }) {
+    return _then(_$UpdateUserName(
+      null == idx
+          ? _value.idx
+          : idx // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateUserName implements UpdateUserName {
+  const _$UpdateUserName(this.idx, this.name);
+
+  @override
+  final String idx;
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'UsersEvent.updateUserName(idx: $idx, name: $name)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateUserName &&
+            (identical(other.idx, idx) || other.idx == idx) &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, idx, name);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateUserNameCopyWith<_$UpdateUserName> get copyWith =>
+      __$$UpdateUserNameCopyWithImpl<_$UpdateUserName>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) getAroundHelpers,
+    required TResult Function(String id, String name, double latitude,
+            double longitude, String fcmToken)
+        insert,
+    required TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)
+        insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath,
+            String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)
+        sendRequestToWorker,
+  }) {
+    return updateUserName(idx, name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? getAroundHelpers,
+    TResult? Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult? Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+  }) {
+    return updateUserName?.call(idx, name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? getAroundHelpers,
+    TResult Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+    required TResult orElse(),
+  }) {
+    if (updateUserName != null) {
+      return updateUserName(idx, name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAroundHelpers value) getAroundHelpers,
+    required TResult Function(Insert value) insert,
+    required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+  }) {
+    return updateUserName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult? Function(Insert value)? insert,
+    TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+  }) {
+    return updateUserName?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult Function(Insert value)? insert,
+    TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    required TResult orElse(),
+  }) {
+    if (updateUserName != null) {
+      return updateUserName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateUserName implements UsersEvent {
+  const factory UpdateUserName(final String idx, final String name) =
+      _$UpdateUserName;
+
+  String get idx;
+  String get name;
+  @JsonKey(ignore: true)
+  _$$UpdateUserNameCopyWith<_$UpdateUserName> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateUserBioCopyWith<$Res> {
+  factory _$$UpdateUserBioCopyWith(
+          _$UpdateUserBio value, $Res Function(_$UpdateUserBio) then) =
+      __$$UpdateUserBioCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String idx, String bio});
+}
+
+/// @nodoc
+class __$$UpdateUserBioCopyWithImpl<$Res>
+    extends _$UsersEventCopyWithImpl<$Res, _$UpdateUserBio>
+    implements _$$UpdateUserBioCopyWith<$Res> {
+  __$$UpdateUserBioCopyWithImpl(
+      _$UpdateUserBio _value, $Res Function(_$UpdateUserBio) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idx = null,
+    Object? bio = null,
+  }) {
+    return _then(_$UpdateUserBio(
+      null == idx
+          ? _value.idx
+          : idx // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == bio
+          ? _value.bio
+          : bio // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateUserBio implements UpdateUserBio {
+  const _$UpdateUserBio(this.idx, this.bio);
+
+  @override
+  final String idx;
+  @override
+  final String bio;
+
+  @override
+  String toString() {
+    return 'UsersEvent.updateUserBio(idx: $idx, bio: $bio)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateUserBio &&
+            (identical(other.idx, idx) || other.idx == idx) &&
+            (identical(other.bio, bio) || other.bio == bio));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, idx, bio);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateUserBioCopyWith<_$UpdateUserBio> get copyWith =>
+      __$$UpdateUserBioCopyWithImpl<_$UpdateUserBio>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) getAroundHelpers,
+    required TResult Function(String id, String name, double latitude,
+            double longitude, String fcmToken)
+        insert,
+    required TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)
+        insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath,
+            String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)
+        sendRequestToWorker,
+  }) {
+    return updateUserBio(idx, bio);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? getAroundHelpers,
+    TResult? Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult? Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+  }) {
+    return updateUserBio?.call(idx, bio);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? getAroundHelpers,
+    TResult Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+    required TResult orElse(),
+  }) {
+    if (updateUserBio != null) {
+      return updateUserBio(idx, bio);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAroundHelpers value) getAroundHelpers,
+    required TResult Function(Insert value) insert,
+    required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+  }) {
+    return updateUserBio(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult? Function(Insert value)? insert,
+    TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+  }) {
+    return updateUserBio?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult Function(Insert value)? insert,
+    TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    required TResult orElse(),
+  }) {
+    if (updateUserBio != null) {
+      return updateUserBio(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateUserBio implements UsersEvent {
+  const factory UpdateUserBio(final String idx, final String bio) =
+      _$UpdateUserBio;
+
+  String get idx;
+  String get bio;
+  @JsonKey(ignore: true)
+  _$$UpdateUserBioCopyWith<_$UpdateUserBio> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateUserIntroduceCopyWith<$Res> {
+  factory _$$UpdateUserIntroduceCopyWith(_$UpdateUserIntroduce value,
+          $Res Function(_$UpdateUserIntroduce) then) =
+      __$$UpdateUserIntroduceCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String idx, String introduce});
+}
+
+/// @nodoc
+class __$$UpdateUserIntroduceCopyWithImpl<$Res>
+    extends _$UsersEventCopyWithImpl<$Res, _$UpdateUserIntroduce>
+    implements _$$UpdateUserIntroduceCopyWith<$Res> {
+  __$$UpdateUserIntroduceCopyWithImpl(
+      _$UpdateUserIntroduce _value, $Res Function(_$UpdateUserIntroduce) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idx = null,
+    Object? introduce = null,
+  }) {
+    return _then(_$UpdateUserIntroduce(
+      null == idx
+          ? _value.idx
+          : idx // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == introduce
+          ? _value.introduce
+          : introduce // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateUserIntroduce implements UpdateUserIntroduce {
+  const _$UpdateUserIntroduce(this.idx, this.introduce);
+
+  @override
+  final String idx;
+  @override
+  final String introduce;
+
+  @override
+  String toString() {
+    return 'UsersEvent.updateUserIntroduce(idx: $idx, introduce: $introduce)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateUserIntroduce &&
+            (identical(other.idx, idx) || other.idx == idx) &&
+            (identical(other.introduce, introduce) ||
+                other.introduce == introduce));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, idx, introduce);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateUserIntroduceCopyWith<_$UpdateUserIntroduce> get copyWith =>
+      __$$UpdateUserIntroduceCopyWithImpl<_$UpdateUserIntroduce>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) getAroundHelpers,
+    required TResult Function(String id, String name, double latitude,
+            double longitude, String fcmToken)
+        insert,
+    required TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)
+        insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath,
+            String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)
+        sendRequestToWorker,
+  }) {
+    return updateUserIntroduce(idx, introduce);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? getAroundHelpers,
+    TResult? Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult? Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+  }) {
+    return updateUserIntroduce?.call(idx, introduce);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? getAroundHelpers,
+    TResult Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+    required TResult orElse(),
+  }) {
+    if (updateUserIntroduce != null) {
+      return updateUserIntroduce(idx, introduce);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAroundHelpers value) getAroundHelpers,
+    required TResult Function(Insert value) insert,
+    required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+  }) {
+    return updateUserIntroduce(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult? Function(Insert value)? insert,
+    TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+  }) {
+    return updateUserIntroduce?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult Function(Insert value)? insert,
+    TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    required TResult orElse(),
+  }) {
+    if (updateUserIntroduce != null) {
+      return updateUserIntroduce(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateUserIntroduce implements UsersEvent {
+  const factory UpdateUserIntroduce(final String idx, final String introduce) =
+      _$UpdateUserIntroduce;
+
+  String get idx;
+  String get introduce;
+  @JsonKey(ignore: true)
+  _$$UpdateUserIntroduceCopyWith<_$UpdateUserIntroduce> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateUserTransportationCopyWith<$Res> {
+  factory _$$UpdateUserTransportationCopyWith(_$UpdateUserTransportation value,
+          $Res Function(_$UpdateUserTransportation) then) =
+      __$$UpdateUserTransportationCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String idx, String transportation});
+}
+
+/// @nodoc
+class __$$UpdateUserTransportationCopyWithImpl<$Res>
+    extends _$UsersEventCopyWithImpl<$Res, _$UpdateUserTransportation>
+    implements _$$UpdateUserTransportationCopyWith<$Res> {
+  __$$UpdateUserTransportationCopyWithImpl(_$UpdateUserTransportation _value,
+      $Res Function(_$UpdateUserTransportation) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idx = null,
+    Object? transportation = null,
+  }) {
+    return _then(_$UpdateUserTransportation(
+      null == idx
+          ? _value.idx
+          : idx // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == transportation
+          ? _value.transportation
+          : transportation // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateUserTransportation implements UpdateUserTransportation {
+  const _$UpdateUserTransportation(this.idx, this.transportation);
+
+  @override
+  final String idx;
+  @override
+  final String transportation;
+
+  @override
+  String toString() {
+    return 'UsersEvent.updateUserTransportation(idx: $idx, transportation: $transportation)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateUserTransportation &&
+            (identical(other.idx, idx) || other.idx == idx) &&
+            (identical(other.transportation, transportation) ||
+                other.transportation == transportation));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, idx, transportation);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateUserTransportationCopyWith<_$UpdateUserTransportation>
+      get copyWith =>
+          __$$UpdateUserTransportationCopyWithImpl<_$UpdateUserTransportation>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) getAroundHelpers,
+    required TResult Function(String id, String name, double latitude,
+            double longitude, String fcmToken)
+        insert,
+    required TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)
+        insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath,
+            String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)
+        sendRequestToWorker,
+  }) {
+    return updateUserTransportation(idx, transportation);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? getAroundHelpers,
+    TResult? Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult? Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+  }) {
+    return updateUserTransportation?.call(idx, transportation);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? getAroundHelpers,
+    TResult Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+    required TResult orElse(),
+  }) {
+    if (updateUserTransportation != null) {
+      return updateUserTransportation(idx, transportation);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAroundHelpers value) getAroundHelpers,
+    required TResult Function(Insert value) insert,
+    required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+  }) {
+    return updateUserTransportation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult? Function(Insert value)? insert,
+    TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+  }) {
+    return updateUserTransportation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult Function(Insert value)? insert,
+    TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    required TResult orElse(),
+  }) {
+    if (updateUserTransportation != null) {
+      return updateUserTransportation(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateUserTransportation implements UsersEvent {
+  const factory UpdateUserTransportation(
+          final String idx, final String transportation) =
+      _$UpdateUserTransportation;
+
+  String get idx;
+  String get transportation;
+  @JsonKey(ignore: true)
+  _$$UpdateUserTransportationCopyWith<_$UpdateUserTransportation>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateUserWorkCategoryCopyWith<$Res> {
+  factory _$$UpdateUserWorkCategoryCopyWith(_$UpdateUserWorkCategory value,
+          $Res Function(_$UpdateUserWorkCategory) then) =
+      __$$UpdateUserWorkCategoryCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String idx, String workCategory});
+}
+
+/// @nodoc
+class __$$UpdateUserWorkCategoryCopyWithImpl<$Res>
+    extends _$UsersEventCopyWithImpl<$Res, _$UpdateUserWorkCategory>
+    implements _$$UpdateUserWorkCategoryCopyWith<$Res> {
+  __$$UpdateUserWorkCategoryCopyWithImpl(_$UpdateUserWorkCategory _value,
+      $Res Function(_$UpdateUserWorkCategory) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idx = null,
+    Object? workCategory = null,
+  }) {
+    return _then(_$UpdateUserWorkCategory(
+      null == idx
+          ? _value.idx
+          : idx // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == workCategory
+          ? _value.workCategory
+          : workCategory // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
+  const _$UpdateUserWorkCategory(this.idx, this.workCategory);
+
+  @override
+  final String idx;
+  @override
+  final String workCategory;
+
+  @override
+  String toString() {
+    return 'UsersEvent.updateUserWorkCategory(idx: $idx, workCategory: $workCategory)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateUserWorkCategory &&
+            (identical(other.idx, idx) || other.idx == idx) &&
+            (identical(other.workCategory, workCategory) ||
+                other.workCategory == workCategory));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, idx, workCategory);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateUserWorkCategoryCopyWith<_$UpdateUserWorkCategory> get copyWith =>
+      __$$UpdateUserWorkCategoryCopyWithImpl<_$UpdateUserWorkCategory>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) getAroundHelpers,
+    required TResult Function(String id, String name, double latitude,
+            double longitude, String fcmToken)
+        insert,
+    required TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)
+        insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath,
+            String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)
+        sendRequestToWorker,
+  }) {
+    return updateUserWorkCategory(idx, workCategory);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? getAroundHelpers,
+    TResult? Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult? Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+  }) {
+    return updateUserWorkCategory?.call(idx, workCategory);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? getAroundHelpers,
+    TResult Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+    required TResult orElse(),
+  }) {
+    if (updateUserWorkCategory != null) {
+      return updateUserWorkCategory(idx, workCategory);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAroundHelpers value) getAroundHelpers,
+    required TResult Function(Insert value) insert,
+    required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+  }) {
+    return updateUserWorkCategory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult? Function(Insert value)? insert,
+    TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+  }) {
+    return updateUserWorkCategory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult Function(Insert value)? insert,
+    TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    required TResult orElse(),
+  }) {
+    if (updateUserWorkCategory != null) {
+      return updateUserWorkCategory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateUserWorkCategory implements UsersEvent {
+  const factory UpdateUserWorkCategory(
+      final String idx, final String workCategory) = _$UpdateUserWorkCategory;
+
+  String get idx;
+  String get workCategory;
+  @JsonKey(ignore: true)
+  _$$UpdateUserWorkCategoryCopyWith<_$UpdateUserWorkCategory> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$WorkerRegistration1CopyWith<$Res> {
+  factory _$$WorkerRegistration1CopyWith(_$WorkerRegistration1 value,
+          $Res Function(_$WorkerRegistration1) then) =
+      __$$WorkerRegistration1CopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String idx, String idCardPath, String faceCheckPath, List<String> infs});
+}
+
+/// @nodoc
+class __$$WorkerRegistration1CopyWithImpl<$Res>
+    extends _$UsersEventCopyWithImpl<$Res, _$WorkerRegistration1>
+    implements _$$WorkerRegistration1CopyWith<$Res> {
+  __$$WorkerRegistration1CopyWithImpl(
+      _$WorkerRegistration1 _value, $Res Function(_$WorkerRegistration1) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idx = null,
+    Object? idCardPath = null,
+    Object? faceCheckPath = null,
+    Object? infs = null,
+  }) {
+    return _then(_$WorkerRegistration1(
+      null == idx
+          ? _value.idx
+          : idx // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == idCardPath
+          ? _value.idCardPath
+          : idCardPath // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == faceCheckPath
+          ? _value.faceCheckPath
+          : faceCheckPath // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == infs
+          ? _value._infs
+          : infs // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$WorkerRegistration1 implements WorkerRegistration1 {
+  const _$WorkerRegistration1(
+      this.idx, this.idCardPath, this.faceCheckPath, final List<String> infs)
+      : _infs = infs;
+
+  @override
+  final String idx;
+  @override
+  final String idCardPath;
+  @override
+  final String faceCheckPath;
+  final List<String> _infs;
+  @override
+  List<String> get infs {
+    if (_infs is EqualUnmodifiableListView) return _infs;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_infs);
+  }
+
+  @override
+  String toString() {
+    return 'UsersEvent.workerRegistration1(idx: $idx, idCardPath: $idCardPath, faceCheckPath: $faceCheckPath, infs: $infs)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WorkerRegistration1 &&
+            (identical(other.idx, idx) || other.idx == idx) &&
+            (identical(other.idCardPath, idCardPath) ||
+                other.idCardPath == idCardPath) &&
+            (identical(other.faceCheckPath, faceCheckPath) ||
+                other.faceCheckPath == faceCheckPath) &&
+            const DeepCollectionEquality().equals(other._infs, _infs));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, idx, idCardPath, faceCheckPath,
+      const DeepCollectionEquality().hash(_infs));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WorkerRegistration1CopyWith<_$WorkerRegistration1> get copyWith =>
+      __$$WorkerRegistration1CopyWithImpl<_$WorkerRegistration1>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) getAroundHelpers,
+    required TResult Function(String id, String name, double latitude,
+            double longitude, String fcmToken)
+        insert,
+    required TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)
+        insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath,
+            String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)
+        sendRequestToWorker,
+  }) {
+    return workerRegistration1(idx, idCardPath, faceCheckPath, infs);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? getAroundHelpers,
+    TResult? Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult? Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+  }) {
+    return workerRegistration1?.call(idx, idCardPath, faceCheckPath, infs);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? getAroundHelpers,
+    TResult Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+    required TResult orElse(),
+  }) {
+    if (workerRegistration1 != null) {
+      return workerRegistration1(idx, idCardPath, faceCheckPath, infs);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAroundHelpers value) getAroundHelpers,
+    required TResult Function(Insert value) insert,
+    required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+  }) {
+    return workerRegistration1(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult? Function(Insert value)? insert,
+    TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+  }) {
+    return workerRegistration1?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult Function(Insert value)? insert,
+    TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    required TResult orElse(),
+  }) {
+    if (workerRegistration1 != null) {
+      return workerRegistration1(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class WorkerRegistration1 implements UsersEvent {
+  const factory WorkerRegistration1(
+      final String idx,
+      final String idCardPath,
+      final String faceCheckPath,
+      final List<String> infs) = _$WorkerRegistration1;
+
+  String get idx;
+  String get idCardPath;
+  String get faceCheckPath;
+  List<String> get infs;
+  @JsonKey(ignore: true)
+  _$$WorkerRegistration1CopyWith<_$WorkerRegistration1> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetOtherUserCopyWith<$Res> {
+  factory _$$GetOtherUserCopyWith(
+          _$GetOtherUser value, $Res Function(_$GetOtherUser) then) =
+      __$$GetOtherUserCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String tappedWorkerIdx});
+}
+
+/// @nodoc
+class __$$GetOtherUserCopyWithImpl<$Res>
+    extends _$UsersEventCopyWithImpl<$Res, _$GetOtherUser>
+    implements _$$GetOtherUserCopyWith<$Res> {
+  __$$GetOtherUserCopyWithImpl(
+      _$GetOtherUser _value, $Res Function(_$GetOtherUser) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? tappedWorkerIdx = null,
+  }) {
+    return _then(_$GetOtherUser(
+      null == tappedWorkerIdx
+          ? _value.tappedWorkerIdx
+          : tappedWorkerIdx // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetOtherUser implements GetOtherUser {
+  const _$GetOtherUser(this.tappedWorkerIdx);
+
+  @override
+  final String tappedWorkerIdx;
+
+  @override
+  String toString() {
+    return 'UsersEvent.getOtherUser(tappedWorkerIdx: $tappedWorkerIdx)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetOtherUser &&
+            (identical(other.tappedWorkerIdx, tappedWorkerIdx) ||
+                other.tappedWorkerIdx == tappedWorkerIdx));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, tappedWorkerIdx);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetOtherUserCopyWith<_$GetOtherUser> get copyWith =>
+      __$$GetOtherUserCopyWithImpl<_$GetOtherUser>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) getAroundHelpers,
+    required TResult Function(String id, String name, double latitude,
+            double longitude, String fcmToken)
+        insert,
+    required TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)
+        insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath,
+            String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)
+        sendRequestToWorker,
+  }) {
+    return getOtherUser(tappedWorkerIdx);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? getAroundHelpers,
+    TResult? Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult? Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+  }) {
+    return getOtherUser?.call(tappedWorkerIdx);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? getAroundHelpers,
+    TResult Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+    required TResult orElse(),
+  }) {
+    if (getOtherUser != null) {
+      return getOtherUser(tappedWorkerIdx);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAroundHelpers value) getAroundHelpers,
+    required TResult Function(Insert value) insert,
+    required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+  }) {
+    return getOtherUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult? Function(Insert value)? insert,
+    TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+  }) {
+    return getOtherUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult Function(Insert value)? insert,
+    TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    required TResult orElse(),
+  }) {
+    if (getOtherUser != null) {
+      return getOtherUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetOtherUser implements UsersEvent {
+  const factory GetOtherUser(final String tappedWorkerIdx) = _$GetOtherUser;
+
+  String get tappedWorkerIdx;
+  @JsonKey(ignore: true)
+  _$$GetOtherUserCopyWith<_$GetOtherUser> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SendRequestToWorkerCopyWith<$Res> {
+  factory _$$SendRequestToWorkerCopyWith(_$SendRequestToWorker value,
+          $Res Function(_$SendRequestToWorker) then) =
+      __$$SendRequestToWorkerCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {String reqIdx,
+      String workerIdx,
+      String categoryIdx,
+      String title,
+      String content,
+      String address,
+      String latitude,
+      String longitude,
+      String fcmToken});
+}
+
+/// @nodoc
+class __$$SendRequestToWorkerCopyWithImpl<$Res>
+    extends _$UsersEventCopyWithImpl<$Res, _$SendRequestToWorker>
+    implements _$$SendRequestToWorkerCopyWith<$Res> {
+  __$$SendRequestToWorkerCopyWithImpl(
+      _$SendRequestToWorker _value, $Res Function(_$SendRequestToWorker) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? reqIdx = null,
+    Object? workerIdx = null,
+    Object? categoryIdx = null,
+    Object? title = null,
+    Object? content = null,
+    Object? address = null,
+    Object? latitude = null,
+    Object? longitude = null,
+    Object? fcmToken = null,
+  }) {
+    return _then(_$SendRequestToWorker(
+      null == reqIdx
+          ? _value.reqIdx
+          : reqIdx // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == workerIdx
+          ? _value.workerIdx
+          : workerIdx // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == categoryIdx
+          ? _value.categoryIdx
+          : categoryIdx // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == latitude
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == longitude
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SendRequestToWorker implements SendRequestToWorker {
+  const _$SendRequestToWorker(
+      this.reqIdx,
+      this.workerIdx,
+      this.categoryIdx,
+      this.title,
+      this.content,
+      this.address,
+      this.latitude,
+      this.longitude,
+      this.fcmToken);
+
+  @override
+  final String reqIdx;
+  @override
+  final String workerIdx;
+  @override
+  final String categoryIdx;
+  @override
+  final String title;
+  @override
+  final String content;
+  @override
+  final String address;
+  @override
+  final String latitude;
+  @override
+  final String longitude;
+  @override
+  final String fcmToken;
+
+  @override
+  String toString() {
+    return 'UsersEvent.sendRequestToWorker(reqIdx: $reqIdx, workerIdx: $workerIdx, categoryIdx: $categoryIdx, title: $title, content: $content, address: $address, latitude: $latitude, longitude: $longitude, fcmToken: $fcmToken)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendRequestToWorker &&
+            (identical(other.reqIdx, reqIdx) || other.reqIdx == reqIdx) &&
+            (identical(other.workerIdx, workerIdx) ||
+                other.workerIdx == workerIdx) &&
+            (identical(other.categoryIdx, categoryIdx) ||
+                other.categoryIdx == categoryIdx) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude) &&
+            (identical(other.fcmToken, fcmToken) ||
+                other.fcmToken == fcmToken));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reqIdx, workerIdx, categoryIdx,
+      title, content, address, latitude, longitude, fcmToken);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendRequestToWorkerCopyWith<_$SendRequestToWorker> get copyWith =>
+      __$$SendRequestToWorkerCopyWithImpl<_$SendRequestToWorker>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) getAroundHelpers,
+    required TResult Function(String id, String name, double latitude,
+            double longitude, String fcmToken)
+        insert,
+    required TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)
+        insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath,
+            String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)
+        sendRequestToWorker,
+  }) {
+    return sendRequestToWorker(reqIdx, workerIdx, categoryIdx, title, content,
+        address, latitude, longitude, fcmToken);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? getAroundHelpers,
+    TResult? Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult? Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+  }) {
+    return sendRequestToWorker?.call(reqIdx, workerIdx, categoryIdx, title,
+        content, address, latitude, longitude, fcmToken);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? getAroundHelpers,
+    TResult Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult Function(String reqIdx, String categoryIdx, String title,
+            String content, String address, String latitude, String longitude)?
+        insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+    required TResult orElse(),
+  }) {
+    if (sendRequestToWorker != null) {
+      return sendRequestToWorker(reqIdx, workerIdx, categoryIdx, title, content,
+          address, latitude, longitude, fcmToken);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAroundHelpers value) getAroundHelpers,
+    required TResult Function(Insert value) insert,
+    required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+  }) {
+    return sendRequestToWorker(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult? Function(Insert value)? insert,
+    TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+  }) {
+    return sendRequestToWorker?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult Function(Insert value)? insert,
+    TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    required TResult orElse(),
+  }) {
+    if (sendRequestToWorker != null) {
+      return sendRequestToWorker(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SendRequestToWorker implements UsersEvent {
+  const factory SendRequestToWorker(
+      final String reqIdx,
+      final String workerIdx,
+      final String categoryIdx,
+      final String title,
+      final String content,
+      final String address,
+      final String latitude,
+      final String longitude,
+      final String fcmToken) = _$SendRequestToWorker;
+
+  String get reqIdx;
+  String get workerIdx;
+  String get categoryIdx;
+  String get title;
+  String get content;
+  String get address;
+  String get latitude;
+  String get longitude;
+  String get fcmToken;
+  @JsonKey(ignore: true)
+  _$$SendRequestToWorkerCopyWith<_$SendRequestToWorker> get copyWith =>
       throw _privateConstructorUsedError;
 }

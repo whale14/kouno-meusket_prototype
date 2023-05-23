@@ -1,17 +1,14 @@
-import 'dart:convert';
-import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:test_project/data/repository/chat_repository_impl.dart';
 import 'package:test_project/data/repository/user_repository_impl.dart';
 import 'package:test_project/data/source/remote/chat_api.dart';
-import 'package:test_project/presentation/event/users/users_event.dart';
-import 'package:http/http.dart' as http;
 import 'package:test_project/config/shared_preferences.dart';
 import 'package:test_project/presentation/vm/chat_view_model.dart';
 import 'package:test_project/presentation/vm/request_view_model.dart';
-import 'package:test_project/screen/home_screen.dart';
 import 'package:logger/logger.dart';
 import 'package:test_project/data/repository/errand_repository_impl.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +24,15 @@ import 'package:test_project/screen/look_around.dart';
 import 'package:test_project/data/source/remote/user_api.dart';
 import 'firebase_options.dart';
 
-void main() async {
+Future _handleFirebaseMessage(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  Logger().d("A background message : ${message.messageId}");
+}
+
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  FirebaseMessaging.onBackgroundMessage(_handleFirebaseMessage);
+
   await _permission();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -75,12 +79,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: GlobalKey<NavigatorState>(),
+      // routes: const {"/tab": TabPage()},
+      builder: FToastBuilder(),
       title: 'Flutter Demo',
       theme: ThemeData(
           primarySwatch: Colors.orange,
-          iconTheme: IconThemeData(color: Colors.orange),
-          appBarTheme: const AppBarTheme(centerTitle: true, titleTextStyle: TextStyle(color: Colors.orange))),
-      home: SplashScreen(), //TabPage(),
+          iconTheme: const IconThemeData(color: Colors.orange),
+          appBarTheme: const AppBarTheme(centerTitle: true, titleTextStyle: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold), iconTheme: IconThemeData(color: Colors.white))),
+      home: const SplashScreen(), //TabPage(),
     );
   }
 }
@@ -105,7 +112,7 @@ class _SplashScreenState extends State<SplashScreen> {
         String userId = await SharedPreferencesService().getUserId();
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LookAround(userId),));
       } else {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage(),));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginPage(),));
       }
     });
   }

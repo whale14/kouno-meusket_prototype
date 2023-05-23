@@ -22,10 +22,10 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future insert(String id, String name, double latitude, double longitude) async {
+  Future insert(String id, String name, double latitude, double longitude, String fcmToken) async {
     // TODO: implement insert
-    Logger().d("repo data: $id, $name, $latitude, $longitude");
-    await api.insert(id, name, latitude, longitude);
+    Logger().d("repo data: $id, $name, $latitude, $longitude, $fcmToken");
+    await api.insert(id, name, latitude, longitude, fcmToken);
   }
 
   @override
@@ -84,5 +84,47 @@ class UserRepositoryImpl implements UserRepository {
   Future updateUserInfo(String idx, String fileName) async{
     // TODO: implement updateUserInfo
     await api.updateUserInfo(idx, fileName);
+  }
+
+  @override
+  Future updateUserName(String idx, String name) async{
+    // TODO: implement updateUserName
+    await api.updateUserName(idx, name);
+  }
+
+  @override
+  Future updateUserBio(String idx, String bio) async{
+    // TODO: implement updateUserBio
+    await api.updateUserBio(idx, bio);
+  }
+
+  @override
+  Future updateUserIntroduce(String idx, String introduce) async{
+    // TODO: implement updateUserIntroduce
+    await api.updateUserIntroduce(idx, introduce);
+  }
+
+  @override
+  Future updateUserTransportation(String idx, String transportation) async{
+    // TODO: implement updateUserTransportation
+    await api.updateUserTransportation(idx, transportation);
+  }
+
+  @override
+  Future updateUserWorkCategory(String idx, String workCategory) async{
+    // TODO: implement updateUserWorkCategory
+    await api.updateUserWorkCategory(idx, workCategory);
+  }
+
+  @override
+  Future workerRegistration1(String idx, String idCardPath, String faceCheckPath, List<String> infs) async{
+    // TODO: implement workerRegistration1
+    await api.workerRegistration1(idx, idCardPath, faceCheckPath, infs);
+  }
+
+  @override
+  Future sendRequestToWorker(String reqIdx,String workerIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, String fcmToken) async{
+    // TODO: implement sendRequestToWorker
+    await api.sendRequestToWorker(reqIdx, workerIdx, categoryIdx, title, content, address, latitude, longitude, fcmToken);
   }
 }

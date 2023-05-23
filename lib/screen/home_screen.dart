@@ -8,6 +8,7 @@ import 'package:test_project/presentation/vm/user_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
+import 'package:test_project/screen/bottom_nav_screens/work/worker_registration_page.dart';
 import 'bottom_nav_screens/chat/chat_main.dart';
 import 'bottom_nav_screens/work/work_main.dart';
 import 'bottom_nav_screens/request/req_main.dart';
@@ -129,7 +130,7 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
               appBar: AppBar(
                 leading: IconButton(
                   onPressed: () => Navigator.pop(context),
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.home,
                     color: Colors.white,
                   ),
@@ -150,7 +151,7 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => RequestHistory(),
+                              builder: (context) => const RequestHistory(),
                             ));
                       },
                       child: const Text(
@@ -159,15 +160,15 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
                       )),
                   IconButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => MyPageScreen(_user)));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => MyPageScreen()));
                     },
-                    icon: Icon(Icons.account_circle),
+                    icon: const Icon(Icons.account_circle),
                     color: Colors.white,
                   ),
                 ],
               ),
               body: [
-                BodyReq(_user.id, socket, widget.category, _state.user!),
+                BodyReq(socket, widget.category),
                 workerTab(_state.user!),
                 const BodyShopping(),
                 BodyChat(socket)
@@ -209,9 +210,9 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
   Widget workerTab(User user) {
     if (user.isWorkerRegist == 0) {
       return AlertDialog(
-        title: Text("부름이 등록"),
-        content: Wrap(
-          children: [
+        title: const Text("부름이 등록"),
+        content:  Wrap(
+          children: const [
             Text("심부름을 수행하기 위해선 계정을 부름이로 등록해야합니다."),
             Padding(
               padding: EdgeInsets.only(top: 20),
@@ -221,15 +222,16 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
         ),
         actions: [
           TextButton(onPressed: () {
-            _viewModel.onUsersEvent(UsersEvent.workerRegistration(user.idx.toString())).then((value) {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => WorkerRegistrationPage(),));
+            /*** 심부름 드림이(헬퍼) 등록 _viewModel.onUsersEvent(UsersEvent.workerRegistration(user.idx.toString())).then((value) {
               _onItemTapped(_preIndex);
-            });
-          }, child: Text("등록")),
+            }); ***/
+          }, child: const Text("등록")),
           TextButton(
               onPressed: () {
                 _onItemTapped(_preIndex);
               },
-              child: Text("취소", style: TextStyle(color: Colors.grey))),
+              child: const Text("취소", style: TextStyle(color: Colors.grey))),
         ],
       );
     } else {

@@ -10,7 +10,6 @@ import 'package:test_project/domain/model/chat/chat_room.dart';
 import 'package:test_project/presentation/event/chat/chat_event.dart';
 import 'package:test_project/presentation/state/chat/chat_content_state.dart';
 import 'package:test_project/presentation/vm/chat_view_model.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class ChattingScreen extends StatefulWidget {
   final ChatRoom chatRoom;
@@ -118,7 +117,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
                   Expanded(
                       child: TextField(
                     controller: sendTextController,
-                    decoration: InputDecoration(labelText: 'Send a message..'),
+                    decoration: const InputDecoration(labelText: 'Send a message..'),
                     onChanged: (value) {
                       setState(() {
                         _userTypeMessage = value;
@@ -177,7 +176,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
       return Align(
         alignment: alignment,
         child: Padding(
-          padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+          padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
           child: Container(
             padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
             decoration: BoxDecoration(

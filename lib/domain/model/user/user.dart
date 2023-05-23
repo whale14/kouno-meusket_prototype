@@ -1,4 +1,3 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user.freezed.dart';
@@ -20,7 +19,11 @@ class User with _$User {
     required int isRequesterRegist,
     required int isWorkerRegist,
     required String? bio,
-    required String? profileImageUrl
+    required String? introduce,
+    required String? profileImageUrl,
+    required String? transportation,
+    required String? workCategory,
+    required String fcmToken,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

@@ -19,7 +19,11 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       isRequesterRegist: json['isRequesterRegist'] as int,
       isWorkerRegist: json['isWorkerRegist'] as int,
       bio: json['bio'] as String?,
+      introduce: json['introduce'] as String?,
       profileImageUrl: json['profileImageUrl'] as String?,
+      transportation: json['transportation'] as String?,
+      workCategory: json['workCategory'] as String?,
+      fcmToken: json['fcmToken'] as String,
     );
 
 Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
@@ -35,5 +39,9 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'isRequesterRegist': instance.isRequesterRegist,
       'isWorkerRegist': instance.isWorkerRegist,
       'bio': instance.bio,
+      'introduce': instance.introduce,
       'profileImageUrl': instance.profileImageUrl,
+      'transportation': instance.transportation,
+      'workCategory': instance.workCategory,
+      'fcmToken': instance.fcmToken,
     };

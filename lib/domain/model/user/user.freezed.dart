@@ -32,7 +32,11 @@ mixin _$User {
   int get isRequesterRegist => throw _privateConstructorUsedError;
   int get isWorkerRegist => throw _privateConstructorUsedError;
   String? get bio => throw _privateConstructorUsedError;
+  String? get introduce => throw _privateConstructorUsedError;
   String? get profileImageUrl => throw _privateConstructorUsedError;
+  String? get transportation => throw _privateConstructorUsedError;
+  String? get workCategory => throw _privateConstructorUsedError;
+  String get fcmToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,7 +61,11 @@ abstract class $UserCopyWith<$Res> {
       int isRequesterRegist,
       int isWorkerRegist,
       String? bio,
-      String? profileImageUrl});
+      String? introduce,
+      String? profileImageUrl,
+      String? transportation,
+      String? workCategory,
+      String fcmToken});
 }
 
 /// @nodoc
@@ -85,7 +93,11 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? isRequesterRegist = null,
     Object? isWorkerRegist = null,
     Object? bio = freezed,
+    Object? introduce = freezed,
     Object? profileImageUrl = freezed,
+    Object? transportation = freezed,
+    Object? workCategory = freezed,
+    Object? fcmToken = null,
   }) {
     return _then(_value.copyWith(
       idx: null == idx
@@ -136,10 +148,26 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.bio
           : bio // ignore: cast_nullable_to_non_nullable
               as String?,
+      introduce: freezed == introduce
+          ? _value.introduce
+          : introduce // ignore: cast_nullable_to_non_nullable
+              as String?,
       profileImageUrl: freezed == profileImageUrl
           ? _value.profileImageUrl
           : profileImageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      transportation: freezed == transportation
+          ? _value.transportation
+          : transportation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      workCategory: freezed == workCategory
+          ? _value.workCategory
+          : workCategory // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fcmToken: null == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -163,7 +191,11 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       int isRequesterRegist,
       int isWorkerRegist,
       String? bio,
-      String? profileImageUrl});
+      String? introduce,
+      String? profileImageUrl,
+      String? transportation,
+      String? workCategory,
+      String fcmToken});
 }
 
 /// @nodoc
@@ -187,7 +219,11 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? isRequesterRegist = null,
     Object? isWorkerRegist = null,
     Object? bio = freezed,
+    Object? introduce = freezed,
     Object? profileImageUrl = freezed,
+    Object? transportation = freezed,
+    Object? workCategory = freezed,
+    Object? fcmToken = null,
   }) {
     return _then(_$_User(
       idx: null == idx
@@ -238,10 +274,26 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.bio
           : bio // ignore: cast_nullable_to_non_nullable
               as String?,
+      introduce: freezed == introduce
+          ? _value.introduce
+          : introduce // ignore: cast_nullable_to_non_nullable
+              as String?,
       profileImageUrl: freezed == profileImageUrl
           ? _value.profileImageUrl
           : profileImageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      transportation: freezed == transportation
+          ? _value.transportation
+          : transportation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      workCategory: freezed == workCategory
+          ? _value.workCategory
+          : workCategory // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fcmToken: null == fcmToken
+          ? _value.fcmToken
+          : fcmToken // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -262,7 +314,11 @@ class _$_User implements _User {
       required this.isRequesterRegist,
       required this.isWorkerRegist,
       required this.bio,
-      required this.profileImageUrl});
+      required this.introduce,
+      required this.profileImageUrl,
+      required this.transportation,
+      required this.workCategory,
+      required this.fcmToken});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -291,11 +347,19 @@ class _$_User implements _User {
   @override
   final String? bio;
   @override
+  final String? introduce;
+  @override
   final String? profileImageUrl;
+  @override
+  final String? transportation;
+  @override
+  final String? workCategory;
+  @override
+  final String fcmToken;
 
   @override
   String toString() {
-    return 'User(idx: $idx, id: $id, name: $name, latitude: $latitude, longitude: $longitude, createAt: $createAt, updateAt: $updateAt, doingState: $doingState, accountState: $accountState, isRequesterRegist: $isRequesterRegist, isWorkerRegist: $isWorkerRegist, bio: $bio, profileImageUrl: $profileImageUrl)';
+    return 'User(idx: $idx, id: $id, name: $name, latitude: $latitude, longitude: $longitude, createAt: $createAt, updateAt: $updateAt, doingState: $doingState, accountState: $accountState, isRequesterRegist: $isRequesterRegist, isWorkerRegist: $isWorkerRegist, bio: $bio, introduce: $introduce, profileImageUrl: $profileImageUrl, transportation: $transportation, workCategory: $workCategory, fcmToken: $fcmToken)';
   }
 
   @override
@@ -323,8 +387,16 @@ class _$_User implements _User {
             (identical(other.isWorkerRegist, isWorkerRegist) ||
                 other.isWorkerRegist == isWorkerRegist) &&
             (identical(other.bio, bio) || other.bio == bio) &&
+            (identical(other.introduce, introduce) ||
+                other.introduce == introduce) &&
             (identical(other.profileImageUrl, profileImageUrl) ||
-                other.profileImageUrl == profileImageUrl));
+                other.profileImageUrl == profileImageUrl) &&
+            (identical(other.transportation, transportation) ||
+                other.transportation == transportation) &&
+            (identical(other.workCategory, workCategory) ||
+                other.workCategory == workCategory) &&
+            (identical(other.fcmToken, fcmToken) ||
+                other.fcmToken == fcmToken));
   }
 
   @JsonKey(ignore: true)
@@ -343,7 +415,11 @@ class _$_User implements _User {
       isRequesterRegist,
       isWorkerRegist,
       bio,
-      profileImageUrl);
+      introduce,
+      profileImageUrl,
+      transportation,
+      workCategory,
+      fcmToken);
 
   @JsonKey(ignore: true)
   @override
@@ -373,7 +449,11 @@ abstract class _User implements User {
       required final int isRequesterRegist,
       required final int isWorkerRegist,
       required final String? bio,
-      required final String? profileImageUrl}) = _$_User;
+      required final String? introduce,
+      required final String? profileImageUrl,
+      required final String? transportation,
+      required final String? workCategory,
+      required final String fcmToken}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -402,7 +482,15 @@ abstract class _User implements User {
   @override
   String? get bio;
   @override
+  String? get introduce;
+  @override
   String? get profileImageUrl;
+  @override
+  String? get transportation;
+  @override
+  String? get workCategory;
+  @override
+  String get fcmToken;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

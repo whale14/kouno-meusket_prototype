@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:test_project/domain/repository/user_repository.dart';
+import 'package:test_project/presentation/state/users/other_user_state.dart';
 import 'package:test_project/presentation/state/users/user_state.dart';
 import 'package:test_project/presentation/state/users/users_state.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
@@ -11,30 +12,42 @@ class UserViewModel with ChangeNotifier {
   final UserRepository _userRepository;
   var _usersState = UsersState();
   var _userState = UserState();
+  var _otherUserState = OtherUserState();
 
   // TestState get testState => _testState;
   UserState get userState => _userState;
 
   UsersState get usersState => _usersState;
 
+  OtherUserState get otherUserState => _otherUserState;
+
   UserViewModel(this._userRepository);
 
   Future onUsersEvent(UsersEvent event) async {
     // event.when(getTests: _getTests);
     await event.when(
-        getAroundHelpers: _getAroundHelpers,
-        insert: _insert,
-        insertRequest: _insertRequest,
-        getUser: _getUser,
-        updateLocation: _updateLocation,
-        requesterRegistration: _requesterRegistration,
-        workerRegistration: _workerRegistration,
-        updateUserInfo: _updateUserInfo);
+      getAroundHelpers: _getAroundHelpers,
+      insert: _insert,
+      insertRequest: _insertRequest,
+      getUser: _getUser,
+      updateLocation: _updateLocation,
+      requesterRegistration: _requesterRegistration,
+      workerRegistration: _workerRegistration,
+      updateUserPhoto: _updateUserPhoto,
+      updateUserName: _updateUserName,
+      updateUserBio: _updateUserBio,
+      updateUserIntroduce: _updateUserIntroduce,
+      updateUserTransportation: _updateUserTransportation,
+      updateUserWorkCategory: _updateUserWorkCategory,
+      workerRegistration1: _workerRegistration1,
+      getOtherUser: _getOtherUser,
+      sendRequestToWorker: _sendRequestToWorker,
+    );
   }
 
-  Future _insert(String id, String name, double latitude, double longitude) async {
+  Future _insert(String id, String name, double latitude, double longitude, String fcmToken) async {
     Logger().d("vm data: $id");
-    await _userRepository.insert(id, name, latitude, longitude);
+    await _userRepository.insert(id, name, latitude, longitude, fcmToken);
   }
 
   Future _getAroundHelpers(String id) async {
@@ -93,12 +106,42 @@ class UserViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Future _updateUserInfo(String idx, String fileName) async {
+  Future _updateUserPhoto(String idx, String fileName) async {
     await _userRepository.updateUserInfo(idx, fileName);
+  }
 
-    final result = _userRepository.getUserFromIdx(idx);
+  Future _updateUserName(String idx, String name) async {
+    await _userRepository.updateUserName(idx, name);
+  }
 
-    _userState = userState.copyWith(user: await result);
+  Future _updateUserBio(String idx, String bio) async {
+    await _userRepository.updateUserBio(idx, bio);
+  }
+
+  Future _updateUserIntroduce(String idx, String introduce) async {
+    await _userRepository.updateUserIntroduce(idx, introduce);
+  }
+
+  Future _updateUserTransportation(String idx, String transportation) async {
+    await _userRepository.updateUserTransportation(idx, transportation);
+  }
+
+  Future _updateUserWorkCategory(String idx, String workCategory) async {
+    await _userRepository.updateUserWorkCategory(idx, workCategory);
+  }
+
+  Future _workerRegistration1(String idx, String idCardPath, String faceCheckPath, List<String> infs) async {
+    await _userRepository.workerRegistration1(idx, idCardPath, faceCheckPath, infs);
+  }
+
+  Future _getOtherUser(String tappedWorkerIdx) async{
+    final result = _userRepository.getUserFromIdx(tappedWorkerIdx);
+
+    _otherUserState = otherUserState.copyWith(user: await result);
     notifyListeners();
+  }
+
+  Future _sendRequestToWorker(String reqIdx,String workerIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, String fcmToken) async{
+    await _userRepository.sendRequestToWorker(reqIdx, workerIdx, categoryIdx, title, content, address, latitude, longitude, fcmToken);
   }
 }

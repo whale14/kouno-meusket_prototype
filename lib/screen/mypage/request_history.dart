@@ -6,10 +6,7 @@ import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
-import 'package:test_project/data/repository/errand_repository_impl.dart';
-import 'package:test_project/data/source/remote/errand_api.dart';
 import 'package:test_project/domain/model/request/request.dart';
-import 'package:test_project/domain/repository/errand_repository.dart';
 import 'package:test_project/presentation/event/request/request_event.dart';
 import 'package:test_project/presentation/state/request/request_state.dart';
 import 'package:test_project/presentation/vm/request_view_model.dart';
@@ -138,12 +135,12 @@ class _RequestHistoryState extends State<RequestHistory> {
             child: Column(
               children: [
                 AppBar(
-                  title: Text('진행상황 확인', style: TextStyle(color: Colors.white),),
+                  title: const Text('진행상황 확인', style: TextStyle(color: Colors.white),),
                   leading: GestureDetector(
                       onTap: () => Navigator.of(context).pop(),
-                      child: Icon(Icons.keyboard_arrow_down)),),
+                      child: const Icon(Icons.keyboard_arrow_down)),),
                 Expanded(child: NaverMap(
-                  options: NaverMapViewOptions(indoorEnable: true, locationButtonEnable: true, consumeSymbolTapEvents: false),
+                  options: const NaverMapViewOptions(indoorEnable: true, locationButtonEnable: true, consumeSymbolTapEvents: false),
                   onMapReady: (controller){
                     if(latitude != 0) {
                       setStateBuilder(() {

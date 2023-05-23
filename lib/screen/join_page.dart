@@ -1,17 +1,14 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
 import 'package:test_project/presentation/state/users/users_state.dart';
-import 'package:test_project/screen/home_screen.dart';
 import 'package:test_project/screen/look_around.dart';
 
 import '../config/shared_preferences.dart';
-import '../data/repository/errand_repository_impl.dart';
-import '../data/source/remote/errand_api.dart';
 import '../presentation/vm/user_view_model.dart';
 
 class JoinPage extends StatefulWidget {
@@ -40,11 +37,6 @@ class _JoinPageState extends State<JoinPage> {
     longitude = position.longitude;
   }
 
-  void _setData(value) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('id', value);
-  }
-
   @override
   void initState() {
     // TODO: implement initState
@@ -70,7 +62,8 @@ class _JoinPageState extends State<JoinPage> {
                 color: Colors.orange,
                 child: const Text('start App'),
                 onPressed: () async{
-                  await viewModel.onUsersEvent(UsersEvent.insert(_userId, _controller.value.text.trim(), latitude, longitude));
+                  String? fcmToken = await FirebaseMessaging.instance.getToken();
+                  await viewModel.onUsersEvent(UsersEvent.insert(_userId, _controller.value.text.trim(), latitude, longitude, fcmToken!));
 
                   await viewModel.onUsersEvent(UsersEvent.getAroundHelpers(_userId));
                   usersState = viewModel.usersState;

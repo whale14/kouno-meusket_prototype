@@ -7,7 +7,6 @@ import 'package:test_project/presentation/event/chat/chat_event.dart';
 import 'package:test_project/presentation/state/chat/chat_room_state.dart';
 import 'package:test_project/presentation/vm/chat_view_model.dart';
 
-import '../../../domain/model/chat/chat_room.dart';
 import 'chatting_screen.dart';
 
 class BodyChat extends StatefulWidget {
