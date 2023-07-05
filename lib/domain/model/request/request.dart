@@ -16,9 +16,18 @@ class Request with _$Request {
     required String address,
     required double latitude,
     required double longitude,
+    required DateTime? workDate,
+    required String? runningTime,
     required int status,
     required String regDate,
     required int reward,
+    required String requesterName,
+    required String workerName,
+    required String? requesterImgUrl,
+    required String? workerImgUrl,
+    required int recruitmentStatus,
+    required int? reviewRequesterIdx,
+    required int? reviewWorkerIdx,
   }) = _Request;
 
   factory Request.fromJson(Map<String, dynamic> json) => _$RequestFromJson(json);

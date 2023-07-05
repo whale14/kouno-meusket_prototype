@@ -61,53 +61,56 @@ class _BodyChatState extends State<BodyChat> {
     _chatRoomState = _viewModel.chatRoomState;
 
     // chat room list view
-    return ListView.builder(
-      itemCount: _chatRoomState.chatRooms.length,
-      itemBuilder: (context, index) {
-        final chatRoom = _chatRoomState.chatRooms[index];
-        if (chatRoom.stackedMessages != 0) {
-          return Container(
-            decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: Colors.grey))),
-            child: ListTile(
-              title: Text(chatRoom.subject),
-              subtitle: Text('last time: ${chatRoom.time}'),
-              trailing: Container(
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.orange,
-                  ),
-                  padding: const EdgeInsets.all(7),
-                  child: Text(
-                    chatRoom.stackedMessages.toString(),
-                    style: const TextStyle(color: Colors.white),
-                  )),
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ChattingScreen(chatRoom, widget.socket),
-                  )).then((value) => _viewModel.onChatEvent(ChatEvent.getChatRooms(idx!)))
-            ),
-          );
-        } else {
-          return Container(
-            decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: Colors.grey))),
-            child: ListTile(
-                title: Text(chatRoom.subject),
-                subtitle: Text('last time: ${chatRoom.time}'),
-                onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ChattingScreen(chatRoom, widget.socket),
-                    )).then((value) => _viewModel.onChatEvent(ChatEvent.getChatRooms(idx!)))
+    return Scaffold(
+      appBar: AppBar(title: Text("채팅"),),
+      body: ListView.builder(
+        itemCount: _chatRoomState.chatRooms.length,
+        itemBuilder: (context, index) {
+          final chatRoom = _chatRoomState.chatRooms[index];
+          if (chatRoom.stackedMessages != 0) {
+            return Container(
+              decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: Colors.grey))),
+              child: ListTile(
+                  title: Text(chatRoom.subject),
+                  subtitle: Text('last time: ${chatRoom.time}'),
+                  trailing: Container(
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.orange,
+                      ),
+                      padding: const EdgeInsets.all(7),
+                      child: Text(
+                        chatRoom.stackedMessages.toString(),
+                        style: const TextStyle(color: Colors.white),
+                      )),
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChattingScreen(chatRoom, widget.socket),
+                      )).then((value) => _viewModel.onChatEvent(ChatEvent.getChatRooms(idx!)))
+              ),
+            );
+          } else {
+            return Container(
+              decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: Colors.grey))),
+              child: ListTile(
+                  title: Text(chatRoom.subject),
+                  subtitle: Text('last time: ${chatRoom.time}'),
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChattingScreen(chatRoom, widget.socket),
+                      )).then((value) => _viewModel.onChatEvent(ChatEvent.getChatRooms(idx!)))
                 //     .then((value) {
                 //   setState(() {
                 //     initialize = _initialize();
                 //   });
                 // }),
-                ),
-          );
-        }
-      },
+              ),
+            );
+          }
+        },
+      ),
     );
   }
 

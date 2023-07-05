@@ -124,6 +124,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
                       });
                     },
                   )),
+
                   IconButton(
                       onPressed: _userTypeMessage.trim().isEmpty ? null : () => sendMessage(widget.chatRoom.idx.toString(), idx!, _userTypeMessage),
                       icon: const Icon(
@@ -149,18 +150,18 @@ class _ChattingScreenState extends State<ChattingScreen> {
   }
 
   Widget chatBubble(ChatContent chatContent) {
-    Color color = Colors.grey;
+    Color color = Color(0xffE9E9E9);
     Alignment alignment = Alignment.center;
     MainAxisAlignment rowAlign = MainAxisAlignment.center;
     Widget bubble;
 
     if (chatContent.userIdx != 0) {
       if (chatContent.userIdx.toString() == idx) {
-        color = Colors.orange;
+        color = Color(0xffF8A239);
         alignment = Alignment.centerRight;
         rowAlign = MainAxisAlignment.end;
       } else {
-        color = Colors.grey;
+        color = Color(0xffE9E9E9);
         alignment = Alignment.centerLeft;
         rowAlign = MainAxisAlignment.start;
       }
@@ -181,7 +182,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
             padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
             decoration: BoxDecoration(
               color: color,
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(12),
             ),
             child: Text(
               chatContent.content,
@@ -200,35 +201,38 @@ class _ChattingScreenState extends State<ChattingScreen> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             const Text("1", style: TextStyle(color: Colors.orange),),
+            SizedBox(width: 4,),
             Container(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+              padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
                 color: color,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(12),
               ),
               child: Text(
                 chatContent.content,
+                style: TextStyle(color: Colors.white),
               ),
             ),
           ],
         );
       } else { return Container(
-          padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+          padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
             color: color,
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(12),
           ),
           child: Text(
             chatContent.content,
+            style: TextStyle(color: Colors.white),
           ),
         );
       }
     } else {
       return Container(
-        padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: color,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(12),
         ),
         child: Text(
           chatContent.content,

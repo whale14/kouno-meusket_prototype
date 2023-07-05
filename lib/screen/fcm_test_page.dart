@@ -24,15 +24,20 @@ class _FCMTestPageState extends State<FCMTestPage> {
     Logger().d(await FirebaseMessaging.instance.getToken());
   }
   @override
+  void initState() {
+    // TODO: implement initState
+    getFcmToken();
+  }
+  @override
   Widget build(BuildContext context) {
     _viewModel = context.read();
     _state = _viewModel.userState;
-    getFcmToken();
+    var fcmToken = "ciU0wr2LRLmXQPG31g7R4-:APA91bHvaQDlhgrYlNhLrw_nHgCbkkoV3eQbl5572A7clnRNyb-CFcl0IUFug9-6nwP8VBXAKhlNjJCVllaof0xVz5EsXnbjqhsBzipr4-bFaFQ0cBQ4OdQ4wzO6UKbDI-YJGMCN9Ppe";
     return Scaffold(
       body: Center(
         child: MaterialButton(
           onPressed: () {
-            _postMessage(_state.user!.fcmToken);
+            _postMessage(fcmToken);
           },
           child: Text("FCM TEST"),
         ),
@@ -42,8 +47,6 @@ class _FCMTestPageState extends State<FCMTestPage> {
 
   Future _postMessage(String fcmToken) async {
     try {
-      String _accessToken =
-          "ya29.a0AWY7Ckkt-4vWpQU-mi4BCeT4NGlSFLD4NVIet6CHZZrD-4HGHimDyDhAN2Pt86qtGeg6U9sj1F7p62wKbqX-0c9DNsCE90a12KD2gRY5e6so90Xlb0QwKLKKIvSHGKiZLz2XsBZsk3TC5GJcxn23sNo-r3LPMLYaCgYKAXcSARESFQG1tDrpGGHR3l99lAWJ-_-GmcUdOQ0166";
       Map data = {
         "token": fcmToken,
         // "topic": "user_uid",

@@ -42,6 +42,8 @@ class UserViewModel with ChangeNotifier {
       workerRegistration1: _workerRegistration1,
       getOtherUser: _getOtherUser,
       sendRequestToWorker: _sendRequestToWorker,
+      updateWorkableState:  _updateWorkableState,
+      updateNotWorkableState: _updateNotWorkableState,
     );
   }
 
@@ -68,20 +70,20 @@ class UserViewModel with ChangeNotifier {
     // return result;
   }
 
-  Future _insertRequest(String reqIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude) async {
-    await _userRepository.insertRequest(reqIdx, categoryIdx, title, content, address, latitude, longitude);
+  Future _insertRequest(String reqIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, DateTime date, String runningTime, String reward) async {
+    await _userRepository.insertRequest(reqIdx, categoryIdx, title, content, address, latitude, longitude, date, runningTime, reward);
   }
 
   Future _getUser(String id) async {
     _userState = userState.copyWith(isLoading: true);
     notifyListeners();
 
-    final result = _userRepository.getUser(id);
+    final result = await _userRepository.getUser(id);
     Logger().d("vm(user):$result");
 
     _userState = userState.copyWith(
       isLoading: false,
-      user: await result,
+      user: result,
     );
     notifyListeners();
   }
@@ -143,5 +145,27 @@ class UserViewModel with ChangeNotifier {
 
   Future _sendRequestToWorker(String reqIdx,String workerIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, String fcmToken) async{
     await _userRepository.sendRequestToWorker(reqIdx, workerIdx, categoryIdx, title, content, address, latitude, longitude, fcmToken);
+  }
+
+  Future _updateWorkableState(String idx) async{
+    await _userRepository.updateWorkableState(idx);
+
+    final result = _userRepository.getUserFromIdx(idx);
+    _userState = userState.copyWith(user: await result);
+
+    notifyListeners();
+  }
+
+  Future _updateNotWorkableState(String idx) async{
+    await _userRepository.updateNotWorkableState(idx);
+
+    final result = _userRepository.getUserFromIdx(idx);
+    _userState = userState.copyWith(user: await result);
+
+    notifyListeners();
+  }
+
+  Future<bool> _checkId(id) async{
+    return _userRepository.checkId(id);
   }
 }

@@ -3,7 +3,10 @@ import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test_project/domain/model/user/user.dart';
+import 'package:test_project/presentation/event/request/request_event.dart';
+import 'package:test_project/presentation/state/request/request_state.dart';
 import 'package:test_project/presentation/state/users/user_state.dart';
+import 'package:test_project/presentation/vm/request_view_model.dart';
 import 'package:test_project/presentation/vm/user_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -14,7 +17,7 @@ import 'bottom_nav_screens/work/work_main.dart';
 import 'bottom_nav_screens/request/req_main.dart';
 import 'bottom_nav_screens//body_shopping.dart';
 import 'mypage/my_page_screen.dart';
-import 'mypage/request_history.dart';
+import 'errand_history/request_history.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class TabPage extends StatefulWidget {
@@ -33,8 +36,10 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
   int _bottomNavIndex = 0;
   int _preIndex = 0;
 
-  late UserViewModel _viewModel;
-  late UserState _state;
+  late UserViewModel _userViewModel;
+  late UserState _userState;
+
+  late RequestViewModel _requestViewModel;
 
   late User _user;
 
@@ -71,7 +76,7 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
       if (workState) {
         Logger().d('$data');
         await _getCurrentLocation();
-        _viewModel.onUsersEvent(UsersEvent.updateLocation(_user.idx.toString(), latitude, longitude));
+        _userViewModel.onUsersEvent(UsersEvent.updateLocation(_user.idx.toString(), latitude, longitude));
       }
     });
   }
@@ -109,15 +114,15 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
 
   Future _initialize() async {
     await _getCurrentLocation();
-    await _viewModel.onUsersEvent(UsersEvent.getUser(_user.id));
+    await _userViewModel.onUsersEvent(UsersEvent.getUser(_user.id));
     socket.emit('joinUser', ('user${_user.idx}'));
   }
 
   @override
   Widget build(BuildContext context) {
     String title = '제목';
-    _viewModel = context.watch<UserViewModel>();
-    _state = _viewModel.userState;
+    _userViewModel = context.watch<UserViewModel>();
+    _userState = _userViewModel.userState;
     // _getSharedPreferences();
     // _viewModel.onUserEvent(UserEvent.getUser(widget.userId));
     // _getUser;
@@ -127,25 +132,24 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
         builder: (context, snapShot) {
           if (snapShot.connectionState == ConnectionState.done) {
             return Scaffold(
-              appBar: AppBar(
+              /*appBar: AppBar(
                 leading: IconButton(
                   onPressed: () => Navigator.pop(context),
                   icon: const Icon(
                     Icons.home,
-                    color: Colors.white,
                   ),
                 ),
                 title: Text(_barTitles[_bottomNavIndex]),
                 actions: <Widget>[
-                  Switch(
-                    value: workState,
-                    onChanged: (value) {
-                      setState(() {
-                        workState = value;
-                      });
-                      Logger().d(workState);
-                    },
-                  ),
+                  // if(_bottomNavIndex == 1)Switch(
+                  //   value: workState,
+                  //   onChanged: (value) {
+                  //     setState(() {
+                  //       workState = value;
+                  //     });
+                  //     Logger().d(workState);
+                  //   },
+                  // ),
                   TextButton(
                       onPressed: () {
                         Navigator.push(
@@ -156,20 +160,18 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
                       },
                       child: const Text(
                         '요청내역',
-                        style: TextStyle(color: Colors.white),
                       )),
                   IconButton(
                     onPressed: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => MyPageScreen()));
                     },
                     icon: const Icon(Icons.account_circle),
-                    color: Colors.white,
                   ),
                 ],
-              ),
+              ),*/
               body: [
                 BodyReq(socket, widget.category),
-                workerTab(_state.user!),
+                workerTab(_userState.user!),
                 const BodyShopping(),
                 BodyChat(socket)
               ][_bottomNavIndex], //_pages[_bottomNavIndex],
@@ -193,7 +195,7 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
         });
   }
 
-  void _onItemTapped(int index) {
+  void _onItemTapped(int index) async{
     setState(() {
       _preIndex = _bottomNavIndex;
       _bottomNavIndex = index;

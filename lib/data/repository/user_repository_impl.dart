@@ -39,9 +39,9 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future insertRequest(String reqIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude) async {
+  Future insertRequest(String reqIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, DateTime date, String runningTime, String reward) async {
     // TODO: implement insertRequest
-    await api.insertRequest(reqIdx, categoryIdx, title, content, address, latitude, longitude);
+    await api.insertRequest(reqIdx, categoryIdx, title, content, address, latitude, longitude, date, runningTime, reward);
   }
 
   @override
@@ -126,5 +126,23 @@ class UserRepositoryImpl implements UserRepository {
   Future sendRequestToWorker(String reqIdx,String workerIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, String fcmToken) async{
     // TODO: implement sendRequestToWorker
     await api.sendRequestToWorker(reqIdx, workerIdx, categoryIdx, title, content, address, latitude, longitude, fcmToken);
+  }
+
+  @override
+  Future<bool> checkId(id) async{
+    // TODO: implement checkId
+    return await api.checkId(id);
+  }
+
+  @override
+  Future updateWorkableState(String idx) async{
+    // TODO: implement updateWorkableState
+    await api.updateWorkableState(idx);
+  }
+
+  @override
+  Future updateNotWorkableState(String idx) async{
+    // TODO: implement updateNotWorkableState
+    await api.updateNotWorkableState(idx);
   }
 }

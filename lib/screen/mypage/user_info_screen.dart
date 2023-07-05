@@ -14,8 +14,8 @@ class UserInfoScreen extends StatefulWidget {
 }
 
 class _UserInfoScreenState extends State<UserInfoScreen> with TickerProviderStateMixin {
-  late UserViewModel _viewModel;
-  late UserState _state;
+  late UserViewModel _userViewModel;
+  late UserState _userState;
 
   late Future initialize;
 
@@ -25,22 +25,22 @@ class _UserInfoScreenState extends State<UserInfoScreen> with TickerProviderStat
   void initState() {
     // TODO: implement initState
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
   Widget build(BuildContext context) {
-    _viewModel = context.watch<UserViewModel>();
-    _state = _viewModel.userState;
+    _userViewModel = context.watch<UserViewModel>();
+    _userState = _userViewModel.userState;
 
     List<String> transportations = [];
     List<String> categories = [];
-    if (_state.user!.transportation != null && _state.user!.transportation != "") {
-      transportations = _state.user!.transportation!.split(",");
+    if (_userState.user!.transportation != null && _userState.user!.transportation != "") {
+      transportations = _userState.user!.transportation!.split(",");
     }
 
-    if (_state.user!.workCategory != null && _state.user!.workCategory != "") {
-      categories = _state.user!.workCategory!.split(",");
+    if (_userState.user!.workCategory != null && _userState.user!.workCategory != "") {
+      categories = _userState.user!.workCategory!.split(",");
     }
 
     return Scaffold(
@@ -62,7 +62,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> with TickerProviderStat
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            if (_state.user!.profileImageUrl == null)
+                            if (_userState.user!.profileImageUrl == null)
                               const Icon(Icons.person, size: 88)
                             else
                               Container(
@@ -81,7 +81,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> with TickerProviderStat
                                   ),
                                   child: ClipOval(
                                       child: Image.network(
-                                    "http://${_state.user!.profileImageUrl}",
+                                    "http://${_userState.user!.profileImageUrl}",
                                     cacheWidth: 1080,
                                   )),
                                 ),
@@ -93,7 +93,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> with TickerProviderStat
                                   Column(
                                     children: [
                                       Text(
-                                        "0",
+                                        "${_userState.user!.requestRequesterCount}",
                                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                                       ),
                                       Text(
@@ -105,7 +105,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> with TickerProviderStat
                                   Column(
                                     children: [
                                       Text(
-                                        "0",
+                                        "${_userState.user!.requestWorkerCount}",
                                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                                       ),
                                       Text(
@@ -123,10 +123,10 @@ class _UserInfoScreenState extends State<UserInfoScreen> with TickerProviderStat
                           height: 20,
                         ),
                         Text(
-                          _state.user!.name,
+                          _userState.user!.name,
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        if (_state.user!.bio != null) Text(_state.user!.bio!),
+                        if (_userState.user!.bio != null) Text(_userState.user!.bio!),
                         MaterialButton(
                             onPressed: () => Navigator.push(
                                 context,
@@ -159,7 +159,11 @@ class _UserInfoScreenState extends State<UserInfoScreen> with TickerProviderStat
                     ),
                     Container(
                       padding: const EdgeInsets.only(top: 15, bottom: 15),
-                      child: const Text("사진"),
+                      child: const Text("요청 리뷰"),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.only(top: 15, bottom: 15),
+                      child: const Text("수행 리뷰"),
                     ),
                   ],
                 ),
@@ -170,7 +174,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> with TickerProviderStat
         body: TabBarView(
           controller: _tabController,
           children: [
-            if (_state.user!.isWorkerRegist == 1)
+            if (_userState.user!.isWorkerRegist == 1)
               SafeArea(
                 top: false,
                 bottom: false,
@@ -189,7 +193,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> with TickerProviderStat
                               children: [
                                 const Text("자기소개", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                                 SizedBox(height: 20),
-                                if (_state.user!.introduce != null) Text(_state.user!.introduce!),
+                                if (_userState.user!.introduce != null) Text(_userState.user!.introduce!),
                               ],
                             ),
                           ), //자기소개
@@ -267,7 +271,10 @@ class _UserInfoScreenState extends State<UserInfoScreen> with TickerProviderStat
             else
               const Center(child: Text("부름이 등록후 작성 가능합니다.")),
             Center(
-              child: Text("사진"),
+              child: Text("요청리뷰"),
+            ),
+            Center(
+              child: Text("수행리뷰"),
             ),
           ],
         ),

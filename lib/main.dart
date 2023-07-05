@@ -1,12 +1,18 @@
+import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/scheduler.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:test_project/data/repository/chat_repository_impl.dart';
 import 'package:test_project/data/repository/user_repository_impl.dart';
 import 'package:test_project/data/source/remote/chat_api.dart';
-import 'package:test_project/config/shared_preferences.dart';
+import 'package:test_project/controller/shared_preferences.dart';
+import 'package:test_project/presentation/event/users/users_event.dart';
+import 'package:test_project/presentation/state/users/user_state.dart';
 import 'package:test_project/presentation/vm/chat_view_model.dart';
 import 'package:test_project/presentation/vm/request_view_model.dart';
 import 'package:logger/logger.dart';
@@ -24,28 +30,68 @@ import 'package:test_project/screen/look_around.dart';
 import 'package:test_project/data/source/remote/user_api.dart';
 import 'firebase_options.dart';
 
-Future _handleFirebaseMessage(RemoteMessage message) async {
-  await Firebase.initializeApp();
-  Logger().d("A background message : ${message.messageId}");
+@pragma('vm:entry-point')
+Future _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  Logger().d('Handling a background message ${message.messageId}');
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await setupFlutterNotifications();
+  // showFlutterNotification(message);
+}
+
+late AndroidNotificationChannel channel;
+late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+
+bool isFlutterLocalNotificationsInitialized = false;
+
+Future setupFlutterNotifications() async {
+  if (isFlutterLocalNotificationsInitialized) {
+    return;
+  }
+  channel = const AndroidNotificationChannel(
+      'high_importance_channel', //id
+      'High_Importance_Notifications', //title
+      description: 'This channel is used for important notifications.',
+      importance: Importance.high);
+  flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
+  await flutterLocalNotificationsPlugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.createNotificationChannel(channel);
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(alert: true, badge: true, sound: true);
+  isFlutterLocalNotificationsInitialized = true;
+}
+
+void showFlutterNotification(RemoteMessage message) {
+  RemoteNotification? notification = message.notification;
+  AndroidNotification? android = message.notification?.android;
+  if (notification != null && android != null) {
+    flutterLocalNotificationsPlugin.show(
+      notification.hashCode,
+      notification.title,
+      notification.body,
+      NotificationDetails(
+        android: AndroidNotificationDetails(channel.id, channel.name, channelDescription: channel.description, icon: 'launch_background'),
+      ),
+    );
+    Logger().d(android.clickAction);
+  }
 }
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  FirebaseMessaging.onBackgroundMessage(_handleFirebaseMessage);
-
+  await initializeDateFormatting();
   await _permission();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
   KakaoSdk.init(nativeAppKey: '64ba3b8a596d221c8216b7ce7f89af66');
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  if (!kIsWeb) {
+    await setupFlutterNotifications();
+  }
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => UserViewModel(UserRepositoryImpl(UserAPI()))),
       ChangeNotifierProvider(create: (_) => RequestViewModel(ErrandRepositoryImpl(ErrandApi()))),
       ChangeNotifierProvider(create: (_) => ChatViewModel(ChatRepositoryImpl(ChatApi()))),
-
     ],
-    child: const MyApp(),
+    child: MyApp(),
   ));
 }
 
@@ -73,20 +119,25 @@ Future<void> _permission() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      navigatorKey: GlobalKey<NavigatorState>(),
       // routes: const {"/tab": TabPage()},
       builder: FToastBuilder(),
       title: 'Flutter Demo',
       theme: ThemeData(
-          primarySwatch: Colors.orange,
-          iconTheme: const IconThemeData(color: Colors.orange),
-          appBarTheme: const AppBarTheme(centerTitle: true, titleTextStyle: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold), iconTheme: IconThemeData(color: Colors.white))),
+        primarySwatch: Colors.orange,
+        iconTheme: const IconThemeData(color: Colors.orange),
+        textButtonTheme: TextButtonThemeData(style: ButtonStyle(foregroundColor: MaterialStateProperty.all(Colors.black87))),
+        appBarTheme: const AppBarTheme(
+          color: Colors.white,
+          centerTitle: true,
+          titleTextStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black87),
+        ),
+      ),
       home: const SplashScreen(), //TabPage(),
     );
   }
@@ -98,21 +149,32 @@ class SplashScreen extends StatefulWidget {
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
+
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-
   }
 
   void moveScreen() async {
-    await SharedPreferencesService().isLoggedIn().then((value) async{
-      if(value) {
+    await SharedPreferencesService().isLoggedIn().then((value) async {
+      if (value) {
         String userId = await SharedPreferencesService().getUserId();
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LookAround(userId),));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => LookAround(userId),
+            // builder: (context) => LoginPage(),
+          ),
+        );
       } else {
-        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const LoginPage(),));
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const LoginPage(),
+          ),
+        );
       }
     });
   }
@@ -124,7 +186,6 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -133,6 +194,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  late UserViewModel _viewModel;
+  late UserState _state;
+  bool _isLogin = false;
+  late String _userId;
+
   Future<void> signInWithKakao(BuildContext context) async {
     try {
       bool isInstalled = await isKakaoTalkInstalled();
@@ -140,8 +206,11 @@ class _LoginPageState extends State<LoginPage> {
 
       User user = await UserApi.instance.me();
       String userId = 'id${user.id}';
-
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => JoinPage(userId)));
+      //
+      await _viewModel.onUsersEvent(UsersEvent.getUser(userId)).then((value) {
+        _isLogin = true;
+        _userId = userId;
+      });
 
       // final url = Uri.https('kap.kakao.com', '/v2/user/me');
       //
@@ -156,13 +225,80 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Center(
-      child: ElevatedButton(
-          onPressed: () {
-            signInWithKakao(context);
+    _viewModel = context.watch<UserViewModel>();
+    _state = _viewModel.userState;
+
+    if (_isLogin) {
+      if (_state.user != null) {
+        Navigator.pushReplacement(context, MaterialPageRoute(
+          builder: (context) {
+            SharedPreferencesService().setIdx(_state.user!.idx.toString());
+            SharedPreferencesService().setLoggedIn(true);
+            SharedPreferencesService().setUserId(_state.user!.id);
+            return LookAround(_state.user!.id);
           },
-          child: const Text("kakao login")),
-    ));
+        ));
+      } else {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => JoinPage(_userId),
+            ));
+      }
+    }
+
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Container(width: double.maxFinite, child: SvgPicture.asset("asset/logo/MEUSKET_logo.svg")),
+          SizedBox(
+            height: 64,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("열심히 ", style: TextStyle(fontSize: 24, color: Color(0xffBF9D75))),
+              Text("일하고,", style: TextStyle(fontSize: 24, color: Color(0xffE77924))),
+            ],
+          ),
+          SizedBox(
+            height: 16,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("더많이 ", style: TextStyle(fontSize: 24, color: Color(0xffBF9D75))),
+              Text("벌고,", style: TextStyle(fontSize: 24, color: Color(0xffE77924))),
+            ],
+          ),
+          SizedBox(
+            height: 16,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("보상을 ", style: TextStyle(fontSize: 24, color: Color(0xffBF9D75))),
+              Text("받으세요", style: TextStyle(fontSize: 24, color: Color(0xffE77924))),
+            ],
+          ),
+          SizedBox(
+            height: 64,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 32, right: 32),
+            child: GestureDetector(
+              onTap: () async {
+                await signInWithKakao(context);
+              },
+              child: Image.asset("asset/image/kakao_login/ko/kakao_login_large_wide.png"),
+            ),
+          ),
+          SizedBox(
+            height: 64,
+          )
+        ],
+      ),
+    );
   }
 }

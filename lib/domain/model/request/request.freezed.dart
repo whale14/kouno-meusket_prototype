@@ -29,9 +29,18 @@ mixin _$Request {
   String get address => throw _privateConstructorUsedError;
   double get latitude => throw _privateConstructorUsedError;
   double get longitude => throw _privateConstructorUsedError;
+  DateTime? get workDate => throw _privateConstructorUsedError;
+  String? get runningTime => throw _privateConstructorUsedError;
   int get status => throw _privateConstructorUsedError;
   String get regDate => throw _privateConstructorUsedError;
   int get reward => throw _privateConstructorUsedError;
+  String get requesterName => throw _privateConstructorUsedError;
+  String get workerName => throw _privateConstructorUsedError;
+  String? get requesterImgUrl => throw _privateConstructorUsedError;
+  String? get workerImgUrl => throw _privateConstructorUsedError;
+  int get recruitmentStatus => throw _privateConstructorUsedError;
+  int? get reviewRequesterIdx => throw _privateConstructorUsedError;
+  int? get reviewWorkerIdx => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,9 +62,18 @@ abstract class $RequestCopyWith<$Res> {
       String address,
       double latitude,
       double longitude,
+      DateTime? workDate,
+      String? runningTime,
       int status,
       String regDate,
-      int reward});
+      int reward,
+      String requesterName,
+      String workerName,
+      String? requesterImgUrl,
+      String? workerImgUrl,
+      int recruitmentStatus,
+      int? reviewRequesterIdx,
+      int? reviewWorkerIdx});
 }
 
 /// @nodoc
@@ -80,9 +98,18 @@ class _$RequestCopyWithImpl<$Res, $Val extends Request>
     Object? address = null,
     Object? latitude = null,
     Object? longitude = null,
+    Object? workDate = freezed,
+    Object? runningTime = freezed,
     Object? status = null,
     Object? regDate = null,
     Object? reward = null,
+    Object? requesterName = null,
+    Object? workerName = null,
+    Object? requesterImgUrl = freezed,
+    Object? workerImgUrl = freezed,
+    Object? recruitmentStatus = null,
+    Object? reviewRequesterIdx = freezed,
+    Object? reviewWorkerIdx = freezed,
   }) {
     return _then(_value.copyWith(
       idx: null == idx
@@ -121,6 +148,14 @@ class _$RequestCopyWithImpl<$Res, $Val extends Request>
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double,
+      workDate: freezed == workDate
+          ? _value.workDate
+          : workDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      runningTime: freezed == runningTime
+          ? _value.runningTime
+          : runningTime // ignore: cast_nullable_to_non_nullable
+              as String?,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -133,6 +168,34 @@ class _$RequestCopyWithImpl<$Res, $Val extends Request>
           ? _value.reward
           : reward // ignore: cast_nullable_to_non_nullable
               as int,
+      requesterName: null == requesterName
+          ? _value.requesterName
+          : requesterName // ignore: cast_nullable_to_non_nullable
+              as String,
+      workerName: null == workerName
+          ? _value.workerName
+          : workerName // ignore: cast_nullable_to_non_nullable
+              as String,
+      requesterImgUrl: freezed == requesterImgUrl
+          ? _value.requesterImgUrl
+          : requesterImgUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      workerImgUrl: freezed == workerImgUrl
+          ? _value.workerImgUrl
+          : workerImgUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      recruitmentStatus: null == recruitmentStatus
+          ? _value.recruitmentStatus
+          : recruitmentStatus // ignore: cast_nullable_to_non_nullable
+              as int,
+      reviewRequesterIdx: freezed == reviewRequesterIdx
+          ? _value.reviewRequesterIdx
+          : reviewRequesterIdx // ignore: cast_nullable_to_non_nullable
+              as int?,
+      reviewWorkerIdx: freezed == reviewWorkerIdx
+          ? _value.reviewWorkerIdx
+          : reviewWorkerIdx // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -154,9 +217,18 @@ abstract class _$$_RequestCopyWith<$Res> implements $RequestCopyWith<$Res> {
       String address,
       double latitude,
       double longitude,
+      DateTime? workDate,
+      String? runningTime,
       int status,
       String regDate,
-      int reward});
+      int reward,
+      String requesterName,
+      String workerName,
+      String? requesterImgUrl,
+      String? workerImgUrl,
+      int recruitmentStatus,
+      int? reviewRequesterIdx,
+      int? reviewWorkerIdx});
 }
 
 /// @nodoc
@@ -178,9 +250,18 @@ class __$$_RequestCopyWithImpl<$Res>
     Object? address = null,
     Object? latitude = null,
     Object? longitude = null,
+    Object? workDate = freezed,
+    Object? runningTime = freezed,
     Object? status = null,
     Object? regDate = null,
     Object? reward = null,
+    Object? requesterName = null,
+    Object? workerName = null,
+    Object? requesterImgUrl = freezed,
+    Object? workerImgUrl = freezed,
+    Object? recruitmentStatus = null,
+    Object? reviewRequesterIdx = freezed,
+    Object? reviewWorkerIdx = freezed,
   }) {
     return _then(_$_Request(
       idx: null == idx
@@ -219,6 +300,14 @@ class __$$_RequestCopyWithImpl<$Res>
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double,
+      workDate: freezed == workDate
+          ? _value.workDate
+          : workDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      runningTime: freezed == runningTime
+          ? _value.runningTime
+          : runningTime // ignore: cast_nullable_to_non_nullable
+              as String?,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -231,6 +320,34 @@ class __$$_RequestCopyWithImpl<$Res>
           ? _value.reward
           : reward // ignore: cast_nullable_to_non_nullable
               as int,
+      requesterName: null == requesterName
+          ? _value.requesterName
+          : requesterName // ignore: cast_nullable_to_non_nullable
+              as String,
+      workerName: null == workerName
+          ? _value.workerName
+          : workerName // ignore: cast_nullable_to_non_nullable
+              as String,
+      requesterImgUrl: freezed == requesterImgUrl
+          ? _value.requesterImgUrl
+          : requesterImgUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      workerImgUrl: freezed == workerImgUrl
+          ? _value.workerImgUrl
+          : workerImgUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      recruitmentStatus: null == recruitmentStatus
+          ? _value.recruitmentStatus
+          : recruitmentStatus // ignore: cast_nullable_to_non_nullable
+              as int,
+      reviewRequesterIdx: freezed == reviewRequesterIdx
+          ? _value.reviewRequesterIdx
+          : reviewRequesterIdx // ignore: cast_nullable_to_non_nullable
+              as int?,
+      reviewWorkerIdx: freezed == reviewWorkerIdx
+          ? _value.reviewWorkerIdx
+          : reviewWorkerIdx // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -248,9 +365,18 @@ class _$_Request implements _Request {
       required this.address,
       required this.latitude,
       required this.longitude,
+      required this.workDate,
+      required this.runningTime,
       required this.status,
       required this.regDate,
-      required this.reward});
+      required this.reward,
+      required this.requesterName,
+      required this.workerName,
+      required this.requesterImgUrl,
+      required this.workerImgUrl,
+      required this.recruitmentStatus,
+      required this.reviewRequesterIdx,
+      required this.reviewWorkerIdx});
 
   factory _$_Request.fromJson(Map<String, dynamic> json) =>
       _$$_RequestFromJson(json);
@@ -274,15 +400,33 @@ class _$_Request implements _Request {
   @override
   final double longitude;
   @override
+  final DateTime? workDate;
+  @override
+  final String? runningTime;
+  @override
   final int status;
   @override
   final String regDate;
   @override
   final int reward;
+  @override
+  final String requesterName;
+  @override
+  final String workerName;
+  @override
+  final String? requesterImgUrl;
+  @override
+  final String? workerImgUrl;
+  @override
+  final int recruitmentStatus;
+  @override
+  final int? reviewRequesterIdx;
+  @override
+  final int? reviewWorkerIdx;
 
   @override
   String toString() {
-    return 'Request(idx: $idx, requesterIdx: $requesterIdx, workerIdx: $workerIdx, workCategoryIdx: $workCategoryIdx, title: $title, content: $content, address: $address, latitude: $latitude, longitude: $longitude, status: $status, regDate: $regDate, reward: $reward)';
+    return 'Request(idx: $idx, requesterIdx: $requesterIdx, workerIdx: $workerIdx, workCategoryIdx: $workCategoryIdx, title: $title, content: $content, address: $address, latitude: $latitude, longitude: $longitude, workDate: $workDate, runningTime: $runningTime, status: $status, regDate: $regDate, reward: $reward, requesterName: $requesterName, workerName: $workerName, requesterImgUrl: $requesterImgUrl, workerImgUrl: $workerImgUrl, recruitmentStatus: $recruitmentStatus, reviewRequesterIdx: $reviewRequesterIdx, reviewWorkerIdx: $reviewWorkerIdx)';
   }
 
   @override
@@ -304,27 +448,55 @@ class _$_Request implements _Request {
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
                 other.longitude == longitude) &&
+            (identical(other.workDate, workDate) ||
+                other.workDate == workDate) &&
+            (identical(other.runningTime, runningTime) ||
+                other.runningTime == runningTime) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.regDate, regDate) || other.regDate == regDate) &&
-            (identical(other.reward, reward) || other.reward == reward));
+            (identical(other.reward, reward) || other.reward == reward) &&
+            (identical(other.requesterName, requesterName) ||
+                other.requesterName == requesterName) &&
+            (identical(other.workerName, workerName) ||
+                other.workerName == workerName) &&
+            (identical(other.requesterImgUrl, requesterImgUrl) ||
+                other.requesterImgUrl == requesterImgUrl) &&
+            (identical(other.workerImgUrl, workerImgUrl) ||
+                other.workerImgUrl == workerImgUrl) &&
+            (identical(other.recruitmentStatus, recruitmentStatus) ||
+                other.recruitmentStatus == recruitmentStatus) &&
+            (identical(other.reviewRequesterIdx, reviewRequesterIdx) ||
+                other.reviewRequesterIdx == reviewRequesterIdx) &&
+            (identical(other.reviewWorkerIdx, reviewWorkerIdx) ||
+                other.reviewWorkerIdx == reviewWorkerIdx));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      idx,
-      requesterIdx,
-      workerIdx,
-      workCategoryIdx,
-      title,
-      content,
-      address,
-      latitude,
-      longitude,
-      status,
-      regDate,
-      reward);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        idx,
+        requesterIdx,
+        workerIdx,
+        workCategoryIdx,
+        title,
+        content,
+        address,
+        latitude,
+        longitude,
+        workDate,
+        runningTime,
+        status,
+        regDate,
+        reward,
+        requesterName,
+        workerName,
+        requesterImgUrl,
+        workerImgUrl,
+        recruitmentStatus,
+        reviewRequesterIdx,
+        reviewWorkerIdx
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -351,9 +523,18 @@ abstract class _Request implements Request {
       required final String address,
       required final double latitude,
       required final double longitude,
+      required final DateTime? workDate,
+      required final String? runningTime,
       required final int status,
       required final String regDate,
-      required final int reward}) = _$_Request;
+      required final int reward,
+      required final String requesterName,
+      required final String workerName,
+      required final String? requesterImgUrl,
+      required final String? workerImgUrl,
+      required final int recruitmentStatus,
+      required final int? reviewRequesterIdx,
+      required final int? reviewWorkerIdx}) = _$_Request;
 
   factory _Request.fromJson(Map<String, dynamic> json) = _$_Request.fromJson;
 
@@ -376,11 +557,29 @@ abstract class _Request implements Request {
   @override
   double get longitude;
   @override
+  DateTime? get workDate;
+  @override
+  String? get runningTime;
+  @override
   int get status;
   @override
   String get regDate;
   @override
   int get reward;
+  @override
+  String get requesterName;
+  @override
+  String get workerName;
+  @override
+  String? get requesterImgUrl;
+  @override
+  String? get workerImgUrl;
+  @override
+  int get recruitmentStatus;
+  @override
+  int? get reviewRequesterIdx;
+  @override
+  int? get reviewWorkerIdx;
   @override
   @JsonKey(ignore: true)
   _$$_RequestCopyWith<_$_Request> get copyWith =>

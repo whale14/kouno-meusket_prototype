@@ -21,6 +21,7 @@ RequestState _$RequestStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$RequestState {
   List<Request> get requests => throw _privateConstructorUsedError;
+  Request? get request => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,9 @@ abstract class $RequestStateCopyWith<$Res> {
           RequestState value, $Res Function(RequestState) then) =
       _$RequestStateCopyWithImpl<$Res, RequestState>;
   @useResult
-  $Res call({List<Request> requests});
+  $Res call({List<Request> requests, Request? request});
+
+  $RequestCopyWith<$Res>? get request;
 }
 
 /// @nodoc
@@ -51,13 +54,30 @@ class _$RequestStateCopyWithImpl<$Res, $Val extends RequestState>
   @override
   $Res call({
     Object? requests = null,
+    Object? request = freezed,
   }) {
     return _then(_value.copyWith(
       requests: null == requests
           ? _value.requests
           : requests // ignore: cast_nullable_to_non_nullable
               as List<Request>,
+      request: freezed == request
+          ? _value.request
+          : request // ignore: cast_nullable_to_non_nullable
+              as Request?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RequestCopyWith<$Res>? get request {
+    if (_value.request == null) {
+      return null;
+    }
+
+    return $RequestCopyWith<$Res>(_value.request!, (value) {
+      return _then(_value.copyWith(request: value) as $Val);
+    });
   }
 }
 
@@ -69,7 +89,10 @@ abstract class _$$_RequestStateCopyWith<$Res>
       __$$_RequestStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Request> requests});
+  $Res call({List<Request> requests, Request? request});
+
+  @override
+  $RequestCopyWith<$Res>? get request;
 }
 
 /// @nodoc
@@ -84,12 +107,17 @@ class __$$_RequestStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? requests = null,
+    Object? request = freezed,
   }) {
     return _then(_$_RequestState(
       requests: null == requests
           ? _value._requests
           : requests // ignore: cast_nullable_to_non_nullable
               as List<Request>,
+      request: freezed == request
+          ? _value.request
+          : request // ignore: cast_nullable_to_non_nullable
+              as Request?,
     ));
   }
 }
@@ -97,7 +125,7 @@ class __$$_RequestStateCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_RequestState implements _RequestState {
-  _$_RequestState({final List<Request> requests = const []})
+  _$_RequestState({final List<Request> requests = const [], this.request})
       : _requests = requests;
 
   factory _$_RequestState.fromJson(Map<String, dynamic> json) =>
@@ -113,8 +141,11 @@ class _$_RequestState implements _RequestState {
   }
 
   @override
+  final Request? request;
+
+  @override
   String toString() {
-    return 'RequestState(requests: $requests)';
+    return 'RequestState(requests: $requests, request: $request)';
   }
 
   @override
@@ -122,13 +153,14 @@ class _$_RequestState implements _RequestState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RequestState &&
-            const DeepCollectionEquality().equals(other._requests, _requests));
+            const DeepCollectionEquality().equals(other._requests, _requests) &&
+            (identical(other.request, request) || other.request == request));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_requests));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_requests), request);
 
   @JsonKey(ignore: true)
   @override
@@ -145,13 +177,16 @@ class _$_RequestState implements _RequestState {
 }
 
 abstract class _RequestState implements RequestState {
-  factory _RequestState({final List<Request> requests}) = _$_RequestState;
+  factory _RequestState(
+      {final List<Request> requests, final Request? request}) = _$_RequestState;
 
   factory _RequestState.fromJson(Map<String, dynamic> json) =
       _$_RequestState.fromJson;
 
   @override
   List<Request> get requests;
+  @override
+  Request? get request;
   @override
   @JsonKey(ignore: true)
   _$$_RequestStateCopyWith<_$_RequestState> get copyWith =>

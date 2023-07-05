@@ -11,7 +11,7 @@ abstract class UserRepository {
 
   Future<String> getMyIdx(String id);
 
-  Future insertRequest(String reqIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude);
+  Future insertRequest(String reqIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, DateTime date, String runningTime, String reward);
 
   Future requestRegistration(String id);
 
@@ -34,4 +34,10 @@ abstract class UserRepository {
   Future workerRegistration1(String idx, String idCardPath, String faceCheckPath, List<String> infs);
 
   Future sendRequestToWorker(String reqIdx, String workerIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, String fcmToken);
+
+  Future<bool> checkId(id);
+
+  Future updateWorkableState(String idx);
+
+  Future updateNotWorkableState(String idx);
 }

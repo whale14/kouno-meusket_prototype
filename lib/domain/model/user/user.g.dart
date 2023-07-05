@@ -24,6 +24,8 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       transportation: json['transportation'] as String?,
       workCategory: json['workCategory'] as String?,
       fcmToken: json['fcmToken'] as String,
+      requestRequesterCount: json['requestRequesterCount'] as int?,
+      requestWorkerCount: json['requestWorkerCount'] as int?,
     );
 
 Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
@@ -44,4 +46,6 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'transportation': instance.transportation,
       'workCategory': instance.workCategory,
       'fcmToken': instance.fcmToken,
+      'requestRequesterCount': instance.requestRequesterCount,
+      'requestWorkerCount': instance.requestWorkerCount,
     };

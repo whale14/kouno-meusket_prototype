@@ -10,6 +10,7 @@ part 'request_state.g.dart';
 class RequestState with _$RequestState {
   factory RequestState({
     @Default([]) List<Request> requests,
+    Request? request,
   }) = _RequestState;
 
   factory RequestState.fromJson(Map<String, dynamic> json) => _$RequestStateFromJson(json);

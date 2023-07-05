@@ -4,6 +4,8 @@ class ChatApi {
   final http.Client _client;
 
   // static const baseUrl = 'http://10.0.2.2:9001/chat';  //로컬 호스트
+  // static const baseUrl = 'http://192.168.33.7:9001/chat';  //작업실
+  // static const baseUrl = 'http://172.30.1.69:9001/chat';  //집
   // static const baseUrl = 'http://192.168.101.2:9001/chat'; //기기 사용 3층
   static const baseUrl = 'http://192.168.100.42:9001/chat'; //기기 사용 5층
 

@@ -22,8 +22,17 @@ mixin _$UsersEvent {
     required TResult Function(String id, String name, double latitude,
             double longitude, String fcmToken)
         insert,
-    required TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -53,6 +62,8 @@ mixin _$UsersEvent {
             String longitude,
             String fcmToken)
         sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,8 +72,17 @@ mixin _$UsersEvent {
     TResult? Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult? Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -91,6 +111,8 @@ mixin _$UsersEvent {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -99,8 +121,17 @@ mixin _$UsersEvent {
     TResult Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -129,6 +160,8 @@ mixin _$UsersEvent {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -153,6 +186,9 @@ mixin _$UsersEvent {
     required TResult Function(WorkerRegistration1 value) workerRegistration1,
     required TResult Function(GetOtherUser value) getOtherUser,
     required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -173,6 +209,8 @@ mixin _$UsersEvent {
     TResult? Function(WorkerRegistration1 value)? workerRegistration1,
     TResult? Function(GetOtherUser value)? getOtherUser,
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -193,6 +231,8 @@ mixin _$UsersEvent {
     TResult Function(WorkerRegistration1 value)? workerRegistration1,
     TResult Function(GetOtherUser value)? getOtherUser,
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -284,8 +324,17 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     required TResult Function(String id, String name, double latitude,
             double longitude, String fcmToken)
         insert,
-    required TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -315,6 +364,8 @@ class _$GetAroundHelpers implements GetAroundHelpers {
             String longitude,
             String fcmToken)
         sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
   }) {
     return getAroundHelpers(id);
   }
@@ -326,8 +377,17 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     TResult? Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult? Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -356,6 +416,8 @@ class _$GetAroundHelpers implements GetAroundHelpers {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
   }) {
     return getAroundHelpers?.call(id);
   }
@@ -367,8 +429,17 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     TResult Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -397,6 +468,8 @@ class _$GetAroundHelpers implements GetAroundHelpers {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (getAroundHelpers != null) {
@@ -427,6 +500,9 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     required TResult Function(WorkerRegistration1 value) workerRegistration1,
     required TResult Function(GetOtherUser value) getOtherUser,
     required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
   }) {
     return getAroundHelpers(this);
   }
@@ -450,6 +526,8 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     TResult? Function(WorkerRegistration1 value)? workerRegistration1,
     TResult? Function(GetOtherUser value)? getOtherUser,
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
   }) {
     return getAroundHelpers?.call(this);
   }
@@ -473,6 +551,8 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     TResult Function(WorkerRegistration1 value)? workerRegistration1,
     TResult Function(GetOtherUser value)? getOtherUser,
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (getAroundHelpers != null) {
@@ -599,8 +679,17 @@ class _$Insert implements Insert {
     required TResult Function(String id, String name, double latitude,
             double longitude, String fcmToken)
         insert,
-    required TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -630,6 +719,8 @@ class _$Insert implements Insert {
             String longitude,
             String fcmToken)
         sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
   }) {
     return insert(id, name, latitude, longitude, fcmToken);
   }
@@ -641,8 +732,17 @@ class _$Insert implements Insert {
     TResult? Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult? Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -671,6 +771,8 @@ class _$Insert implements Insert {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
   }) {
     return insert?.call(id, name, latitude, longitude, fcmToken);
   }
@@ -682,8 +784,17 @@ class _$Insert implements Insert {
     TResult Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -712,6 +823,8 @@ class _$Insert implements Insert {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (insert != null) {
@@ -742,6 +855,9 @@ class _$Insert implements Insert {
     required TResult Function(WorkerRegistration1 value) workerRegistration1,
     required TResult Function(GetOtherUser value) getOtherUser,
     required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
   }) {
     return insert(this);
   }
@@ -765,6 +881,8 @@ class _$Insert implements Insert {
     TResult? Function(WorkerRegistration1 value)? workerRegistration1,
     TResult? Function(GetOtherUser value)? getOtherUser,
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
   }) {
     return insert?.call(this);
   }
@@ -788,6 +906,8 @@ class _$Insert implements Insert {
     TResult Function(WorkerRegistration1 value)? workerRegistration1,
     TResult Function(GetOtherUser value)? getOtherUser,
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (insert != null) {
@@ -828,7 +948,10 @@ abstract class _$$InsertRequestCopyWith<$Res> {
       String content,
       String address,
       String latitude,
-      String longitude});
+      String longitude,
+      DateTime date,
+      String runningTime,
+      String reward});
 }
 
 /// @nodoc
@@ -849,6 +972,9 @@ class __$$InsertRequestCopyWithImpl<$Res>
     Object? address = null,
     Object? latitude = null,
     Object? longitude = null,
+    Object? date = null,
+    Object? runningTime = null,
+    Object? reward = null,
   }) {
     return _then(_$InsertRequest(
       null == reqIdx
@@ -879,6 +1005,18 @@ class __$$InsertRequestCopyWithImpl<$Res>
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as String,
+      null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      null == runningTime
+          ? _value.runningTime
+          : runningTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == reward
+          ? _value.reward
+          : reward // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -886,8 +1024,17 @@ class __$$InsertRequestCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InsertRequest implements InsertRequest {
-  const _$InsertRequest(this.reqIdx, this.categoryIdx, this.title, this.content,
-      this.address, this.latitude, this.longitude);
+  const _$InsertRequest(
+      this.reqIdx,
+      this.categoryIdx,
+      this.title,
+      this.content,
+      this.address,
+      this.latitude,
+      this.longitude,
+      this.date,
+      this.runningTime,
+      this.reward);
 
   @override
   final String reqIdx;
@@ -903,10 +1050,16 @@ class _$InsertRequest implements InsertRequest {
   final String latitude;
   @override
   final String longitude;
+  @override
+  final DateTime date;
+  @override
+  final String runningTime;
+  @override
+  final String reward;
 
   @override
   String toString() {
-    return 'UsersEvent.insertRequest(reqIdx: $reqIdx, categoryIdx: $categoryIdx, title: $title, content: $content, address: $address, latitude: $latitude, longitude: $longitude)';
+    return 'UsersEvent.insertRequest(reqIdx: $reqIdx, categoryIdx: $categoryIdx, title: $title, content: $content, address: $address, latitude: $latitude, longitude: $longitude, date: $date, runningTime: $runningTime, reward: $reward)';
   }
 
   @override
@@ -923,12 +1076,16 @@ class _$InsertRequest implements InsertRequest {
             (identical(other.latitude, latitude) ||
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
-                other.longitude == longitude));
+                other.longitude == longitude) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.runningTime, runningTime) ||
+                other.runningTime == runningTime) &&
+            (identical(other.reward, reward) || other.reward == reward));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, reqIdx, categoryIdx, title,
-      content, address, latitude, longitude);
+      content, address, latitude, longitude, date, runningTime, reward);
 
   @JsonKey(ignore: true)
   @override
@@ -943,8 +1100,17 @@ class _$InsertRequest implements InsertRequest {
     required TResult Function(String id, String name, double latitude,
             double longitude, String fcmToken)
         insert,
-    required TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -974,9 +1140,11 @@ class _$InsertRequest implements InsertRequest {
             String longitude,
             String fcmToken)
         sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
   }) {
-    return insertRequest(
-        reqIdx, categoryIdx, title, content, address, latitude, longitude);
+    return insertRequest(reqIdx, categoryIdx, title, content, address, latitude,
+        longitude, date, runningTime, reward);
   }
 
   @override
@@ -986,8 +1154,17 @@ class _$InsertRequest implements InsertRequest {
     TResult? Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult? Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -1016,9 +1193,11 @@ class _$InsertRequest implements InsertRequest {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
   }) {
-    return insertRequest?.call(
-        reqIdx, categoryIdx, title, content, address, latitude, longitude);
+    return insertRequest?.call(reqIdx, categoryIdx, title, content, address,
+        latitude, longitude, date, runningTime, reward);
   }
 
   @override
@@ -1028,8 +1207,17 @@ class _$InsertRequest implements InsertRequest {
     TResult Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -1058,11 +1246,13 @@ class _$InsertRequest implements InsertRequest {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (insertRequest != null) {
-      return insertRequest(
-          reqIdx, categoryIdx, title, content, address, latitude, longitude);
+      return insertRequest(reqIdx, categoryIdx, title, content, address,
+          latitude, longitude, date, runningTime, reward);
     }
     return orElse();
   }
@@ -1089,6 +1279,9 @@ class _$InsertRequest implements InsertRequest {
     required TResult Function(WorkerRegistration1 value) workerRegistration1,
     required TResult Function(GetOtherUser value) getOtherUser,
     required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
   }) {
     return insertRequest(this);
   }
@@ -1112,6 +1305,8 @@ class _$InsertRequest implements InsertRequest {
     TResult? Function(WorkerRegistration1 value)? workerRegistration1,
     TResult? Function(GetOtherUser value)? getOtherUser,
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
   }) {
     return insertRequest?.call(this);
   }
@@ -1135,6 +1330,8 @@ class _$InsertRequest implements InsertRequest {
     TResult Function(WorkerRegistration1 value)? workerRegistration1,
     TResult Function(GetOtherUser value)? getOtherUser,
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (insertRequest != null) {
@@ -1152,7 +1349,10 @@ abstract class InsertRequest implements UsersEvent {
       final String content,
       final String address,
       final String latitude,
-      final String longitude) = _$InsertRequest;
+      final String longitude,
+      final DateTime date,
+      final String runningTime,
+      final String reward) = _$InsertRequest;
 
   String get reqIdx;
   String get categoryIdx;
@@ -1161,6 +1361,9 @@ abstract class InsertRequest implements UsersEvent {
   String get address;
   String get latitude;
   String get longitude;
+  DateTime get date;
+  String get runningTime;
+  String get reward;
   @JsonKey(ignore: true)
   _$$InsertRequestCopyWith<_$InsertRequest> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1232,8 +1435,17 @@ class _$GetUser implements GetUser {
     required TResult Function(String id, String name, double latitude,
             double longitude, String fcmToken)
         insert,
-    required TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -1263,6 +1475,8 @@ class _$GetUser implements GetUser {
             String longitude,
             String fcmToken)
         sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
   }) {
     return getUser(id);
   }
@@ -1274,8 +1488,17 @@ class _$GetUser implements GetUser {
     TResult? Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult? Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -1304,6 +1527,8 @@ class _$GetUser implements GetUser {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
   }) {
     return getUser?.call(id);
   }
@@ -1315,8 +1540,17 @@ class _$GetUser implements GetUser {
     TResult Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -1345,6 +1579,8 @@ class _$GetUser implements GetUser {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (getUser != null) {
@@ -1375,6 +1611,9 @@ class _$GetUser implements GetUser {
     required TResult Function(WorkerRegistration1 value) workerRegistration1,
     required TResult Function(GetOtherUser value) getOtherUser,
     required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
   }) {
     return getUser(this);
   }
@@ -1398,6 +1637,8 @@ class _$GetUser implements GetUser {
     TResult? Function(WorkerRegistration1 value)? workerRegistration1,
     TResult? Function(GetOtherUser value)? getOtherUser,
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
   }) {
     return getUser?.call(this);
   }
@@ -1421,6 +1662,8 @@ class _$GetUser implements GetUser {
     TResult Function(WorkerRegistration1 value)? workerRegistration1,
     TResult Function(GetOtherUser value)? getOtherUser,
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (getUser != null) {
@@ -1525,8 +1768,17 @@ class _$UpdateLocation implements UpdateLocation {
     required TResult Function(String id, String name, double latitude,
             double longitude, String fcmToken)
         insert,
-    required TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -1556,6 +1808,8 @@ class _$UpdateLocation implements UpdateLocation {
             String longitude,
             String fcmToken)
         sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
   }) {
     return updateLocation(idx, latitude, longitude);
   }
@@ -1567,8 +1821,17 @@ class _$UpdateLocation implements UpdateLocation {
     TResult? Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult? Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -1597,6 +1860,8 @@ class _$UpdateLocation implements UpdateLocation {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
   }) {
     return updateLocation?.call(idx, latitude, longitude);
   }
@@ -1608,8 +1873,17 @@ class _$UpdateLocation implements UpdateLocation {
     TResult Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -1638,6 +1912,8 @@ class _$UpdateLocation implements UpdateLocation {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (updateLocation != null) {
@@ -1668,6 +1944,9 @@ class _$UpdateLocation implements UpdateLocation {
     required TResult Function(WorkerRegistration1 value) workerRegistration1,
     required TResult Function(GetOtherUser value) getOtherUser,
     required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
   }) {
     return updateLocation(this);
   }
@@ -1691,6 +1970,8 @@ class _$UpdateLocation implements UpdateLocation {
     TResult? Function(WorkerRegistration1 value)? workerRegistration1,
     TResult? Function(GetOtherUser value)? getOtherUser,
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
   }) {
     return updateLocation?.call(this);
   }
@@ -1714,6 +1995,8 @@ class _$UpdateLocation implements UpdateLocation {
     TResult Function(WorkerRegistration1 value)? workerRegistration1,
     TResult Function(GetOtherUser value)? getOtherUser,
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (updateLocation != null) {
@@ -1805,8 +2088,17 @@ class _$RequesterRegistration implements RequesterRegistration {
     required TResult Function(String id, String name, double latitude,
             double longitude, String fcmToken)
         insert,
-    required TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -1836,6 +2128,8 @@ class _$RequesterRegistration implements RequesterRegistration {
             String longitude,
             String fcmToken)
         sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
   }) {
     return requesterRegistration(idx);
   }
@@ -1847,8 +2141,17 @@ class _$RequesterRegistration implements RequesterRegistration {
     TResult? Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult? Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -1877,6 +2180,8 @@ class _$RequesterRegistration implements RequesterRegistration {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
   }) {
     return requesterRegistration?.call(idx);
   }
@@ -1888,8 +2193,17 @@ class _$RequesterRegistration implements RequesterRegistration {
     TResult Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -1918,6 +2232,8 @@ class _$RequesterRegistration implements RequesterRegistration {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (requesterRegistration != null) {
@@ -1948,6 +2264,9 @@ class _$RequesterRegistration implements RequesterRegistration {
     required TResult Function(WorkerRegistration1 value) workerRegistration1,
     required TResult Function(GetOtherUser value) getOtherUser,
     required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
   }) {
     return requesterRegistration(this);
   }
@@ -1971,6 +2290,8 @@ class _$RequesterRegistration implements RequesterRegistration {
     TResult? Function(WorkerRegistration1 value)? workerRegistration1,
     TResult? Function(GetOtherUser value)? getOtherUser,
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
   }) {
     return requesterRegistration?.call(this);
   }
@@ -1994,6 +2315,8 @@ class _$RequesterRegistration implements RequesterRegistration {
     TResult Function(WorkerRegistration1 value)? workerRegistration1,
     TResult Function(GetOtherUser value)? getOtherUser,
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (requesterRegistration != null) {
@@ -2082,8 +2405,17 @@ class _$WorkerRegistration implements WorkerRegistration {
     required TResult Function(String id, String name, double latitude,
             double longitude, String fcmToken)
         insert,
-    required TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -2113,6 +2445,8 @@ class _$WorkerRegistration implements WorkerRegistration {
             String longitude,
             String fcmToken)
         sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
   }) {
     return workerRegistration(idx);
   }
@@ -2124,8 +2458,17 @@ class _$WorkerRegistration implements WorkerRegistration {
     TResult? Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult? Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -2154,6 +2497,8 @@ class _$WorkerRegistration implements WorkerRegistration {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
   }) {
     return workerRegistration?.call(idx);
   }
@@ -2165,8 +2510,17 @@ class _$WorkerRegistration implements WorkerRegistration {
     TResult Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -2195,6 +2549,8 @@ class _$WorkerRegistration implements WorkerRegistration {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (workerRegistration != null) {
@@ -2225,6 +2581,9 @@ class _$WorkerRegistration implements WorkerRegistration {
     required TResult Function(WorkerRegistration1 value) workerRegistration1,
     required TResult Function(GetOtherUser value) getOtherUser,
     required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
   }) {
     return workerRegistration(this);
   }
@@ -2248,6 +2607,8 @@ class _$WorkerRegistration implements WorkerRegistration {
     TResult? Function(WorkerRegistration1 value)? workerRegistration1,
     TResult? Function(GetOtherUser value)? getOtherUser,
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
   }) {
     return workerRegistration?.call(this);
   }
@@ -2271,6 +2632,8 @@ class _$WorkerRegistration implements WorkerRegistration {
     TResult Function(WorkerRegistration1 value)? workerRegistration1,
     TResult Function(GetOtherUser value)? getOtherUser,
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (workerRegistration != null) {
@@ -2366,8 +2729,17 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
     required TResult Function(String id, String name, double latitude,
             double longitude, String fcmToken)
         insert,
-    required TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -2397,6 +2769,8 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
             String longitude,
             String fcmToken)
         sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
   }) {
     return updateUserPhoto(idx, fileName);
   }
@@ -2408,8 +2782,17 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
     TResult? Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult? Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -2438,6 +2821,8 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
   }) {
     return updateUserPhoto?.call(idx, fileName);
   }
@@ -2449,8 +2834,17 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
     TResult Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -2479,6 +2873,8 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (updateUserPhoto != null) {
@@ -2509,6 +2905,9 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
     required TResult Function(WorkerRegistration1 value) workerRegistration1,
     required TResult Function(GetOtherUser value) getOtherUser,
     required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
   }) {
     return updateUserPhoto(this);
   }
@@ -2532,6 +2931,8 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
     TResult? Function(WorkerRegistration1 value)? workerRegistration1,
     TResult? Function(GetOtherUser value)? getOtherUser,
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
   }) {
     return updateUserPhoto?.call(this);
   }
@@ -2555,6 +2956,8 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
     TResult Function(WorkerRegistration1 value)? workerRegistration1,
     TResult Function(GetOtherUser value)? getOtherUser,
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (updateUserPhoto != null) {
@@ -2651,8 +3054,17 @@ class _$UpdateUserName implements UpdateUserName {
     required TResult Function(String id, String name, double latitude,
             double longitude, String fcmToken)
         insert,
-    required TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -2682,6 +3094,8 @@ class _$UpdateUserName implements UpdateUserName {
             String longitude,
             String fcmToken)
         sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
   }) {
     return updateUserName(idx, name);
   }
@@ -2693,8 +3107,17 @@ class _$UpdateUserName implements UpdateUserName {
     TResult? Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult? Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -2723,6 +3146,8 @@ class _$UpdateUserName implements UpdateUserName {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
   }) {
     return updateUserName?.call(idx, name);
   }
@@ -2734,8 +3159,17 @@ class _$UpdateUserName implements UpdateUserName {
     TResult Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -2764,6 +3198,8 @@ class _$UpdateUserName implements UpdateUserName {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (updateUserName != null) {
@@ -2794,6 +3230,9 @@ class _$UpdateUserName implements UpdateUserName {
     required TResult Function(WorkerRegistration1 value) workerRegistration1,
     required TResult Function(GetOtherUser value) getOtherUser,
     required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
   }) {
     return updateUserName(this);
   }
@@ -2817,6 +3256,8 @@ class _$UpdateUserName implements UpdateUserName {
     TResult? Function(WorkerRegistration1 value)? workerRegistration1,
     TResult? Function(GetOtherUser value)? getOtherUser,
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
   }) {
     return updateUserName?.call(this);
   }
@@ -2840,6 +3281,8 @@ class _$UpdateUserName implements UpdateUserName {
     TResult Function(WorkerRegistration1 value)? workerRegistration1,
     TResult Function(GetOtherUser value)? getOtherUser,
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (updateUserName != null) {
@@ -2936,8 +3379,17 @@ class _$UpdateUserBio implements UpdateUserBio {
     required TResult Function(String id, String name, double latitude,
             double longitude, String fcmToken)
         insert,
-    required TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -2967,6 +3419,8 @@ class _$UpdateUserBio implements UpdateUserBio {
             String longitude,
             String fcmToken)
         sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
   }) {
     return updateUserBio(idx, bio);
   }
@@ -2978,8 +3432,17 @@ class _$UpdateUserBio implements UpdateUserBio {
     TResult? Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult? Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -3008,6 +3471,8 @@ class _$UpdateUserBio implements UpdateUserBio {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
   }) {
     return updateUserBio?.call(idx, bio);
   }
@@ -3019,8 +3484,17 @@ class _$UpdateUserBio implements UpdateUserBio {
     TResult Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -3049,6 +3523,8 @@ class _$UpdateUserBio implements UpdateUserBio {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (updateUserBio != null) {
@@ -3079,6 +3555,9 @@ class _$UpdateUserBio implements UpdateUserBio {
     required TResult Function(WorkerRegistration1 value) workerRegistration1,
     required TResult Function(GetOtherUser value) getOtherUser,
     required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
   }) {
     return updateUserBio(this);
   }
@@ -3102,6 +3581,8 @@ class _$UpdateUserBio implements UpdateUserBio {
     TResult? Function(WorkerRegistration1 value)? workerRegistration1,
     TResult? Function(GetOtherUser value)? getOtherUser,
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
   }) {
     return updateUserBio?.call(this);
   }
@@ -3125,6 +3606,8 @@ class _$UpdateUserBio implements UpdateUserBio {
     TResult Function(WorkerRegistration1 value)? workerRegistration1,
     TResult Function(GetOtherUser value)? getOtherUser,
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (updateUserBio != null) {
@@ -3223,8 +3706,17 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
     required TResult Function(String id, String name, double latitude,
             double longitude, String fcmToken)
         insert,
-    required TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -3254,6 +3746,8 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
             String longitude,
             String fcmToken)
         sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
   }) {
     return updateUserIntroduce(idx, introduce);
   }
@@ -3265,8 +3759,17 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
     TResult? Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult? Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -3295,6 +3798,8 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
   }) {
     return updateUserIntroduce?.call(idx, introduce);
   }
@@ -3306,8 +3811,17 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
     TResult Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -3336,6 +3850,8 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (updateUserIntroduce != null) {
@@ -3366,6 +3882,9 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
     required TResult Function(WorkerRegistration1 value) workerRegistration1,
     required TResult Function(GetOtherUser value) getOtherUser,
     required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
   }) {
     return updateUserIntroduce(this);
   }
@@ -3389,6 +3908,8 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
     TResult? Function(WorkerRegistration1 value)? workerRegistration1,
     TResult? Function(GetOtherUser value)? getOtherUser,
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
   }) {
     return updateUserIntroduce?.call(this);
   }
@@ -3412,6 +3933,8 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
     TResult Function(WorkerRegistration1 value)? workerRegistration1,
     TResult Function(GetOtherUser value)? getOtherUser,
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (updateUserIntroduce != null) {
@@ -3511,8 +4034,17 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
     required TResult Function(String id, String name, double latitude,
             double longitude, String fcmToken)
         insert,
-    required TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -3542,6 +4074,8 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
             String longitude,
             String fcmToken)
         sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
   }) {
     return updateUserTransportation(idx, transportation);
   }
@@ -3553,8 +4087,17 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
     TResult? Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult? Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -3583,6 +4126,8 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
   }) {
     return updateUserTransportation?.call(idx, transportation);
   }
@@ -3594,8 +4139,17 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
     TResult Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -3624,6 +4178,8 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (updateUserTransportation != null) {
@@ -3654,6 +4210,9 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
     required TResult Function(WorkerRegistration1 value) workerRegistration1,
     required TResult Function(GetOtherUser value) getOtherUser,
     required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
   }) {
     return updateUserTransportation(this);
   }
@@ -3677,6 +4236,8 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
     TResult? Function(WorkerRegistration1 value)? workerRegistration1,
     TResult? Function(GetOtherUser value)? getOtherUser,
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
   }) {
     return updateUserTransportation?.call(this);
   }
@@ -3700,6 +4261,8 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
     TResult Function(WorkerRegistration1 value)? workerRegistration1,
     TResult Function(GetOtherUser value)? getOtherUser,
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (updateUserTransportation != null) {
@@ -3799,8 +4362,17 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
     required TResult Function(String id, String name, double latitude,
             double longitude, String fcmToken)
         insert,
-    required TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -3830,6 +4402,8 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
             String longitude,
             String fcmToken)
         sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
   }) {
     return updateUserWorkCategory(idx, workCategory);
   }
@@ -3841,8 +4415,17 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
     TResult? Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult? Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -3871,6 +4454,8 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
   }) {
     return updateUserWorkCategory?.call(idx, workCategory);
   }
@@ -3882,8 +4467,17 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
     TResult Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -3912,6 +4506,8 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (updateUserWorkCategory != null) {
@@ -3942,6 +4538,9 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
     required TResult Function(WorkerRegistration1 value) workerRegistration1,
     required TResult Function(GetOtherUser value) getOtherUser,
     required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
   }) {
     return updateUserWorkCategory(this);
   }
@@ -3965,6 +4564,8 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
     TResult? Function(WorkerRegistration1 value)? workerRegistration1,
     TResult? Function(GetOtherUser value)? getOtherUser,
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
   }) {
     return updateUserWorkCategory?.call(this);
   }
@@ -3988,6 +4589,8 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
     TResult Function(WorkerRegistration1 value)? workerRegistration1,
     TResult Function(GetOtherUser value)? getOtherUser,
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (updateUserWorkCategory != null) {
@@ -4112,8 +4715,17 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
     required TResult Function(String id, String name, double latitude,
             double longitude, String fcmToken)
         insert,
-    required TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -4143,6 +4755,8 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
             String longitude,
             String fcmToken)
         sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
   }) {
     return workerRegistration1(idx, idCardPath, faceCheckPath, infs);
   }
@@ -4154,8 +4768,17 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
     TResult? Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult? Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -4184,6 +4807,8 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
   }) {
     return workerRegistration1?.call(idx, idCardPath, faceCheckPath, infs);
   }
@@ -4195,8 +4820,17 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
     TResult Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -4225,6 +4859,8 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (workerRegistration1 != null) {
@@ -4255,6 +4891,9 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
     required TResult Function(WorkerRegistration1 value) workerRegistration1,
     required TResult Function(GetOtherUser value) getOtherUser,
     required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
   }) {
     return workerRegistration1(this);
   }
@@ -4278,6 +4917,8 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
     TResult? Function(WorkerRegistration1 value)? workerRegistration1,
     TResult? Function(GetOtherUser value)? getOtherUser,
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
   }) {
     return workerRegistration1?.call(this);
   }
@@ -4301,6 +4942,8 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
     TResult Function(WorkerRegistration1 value)? workerRegistration1,
     TResult Function(GetOtherUser value)? getOtherUser,
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (workerRegistration1 != null) {
@@ -4395,8 +5038,17 @@ class _$GetOtherUser implements GetOtherUser {
     required TResult Function(String id, String name, double latitude,
             double longitude, String fcmToken)
         insert,
-    required TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -4426,6 +5078,8 @@ class _$GetOtherUser implements GetOtherUser {
             String longitude,
             String fcmToken)
         sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
   }) {
     return getOtherUser(tappedWorkerIdx);
   }
@@ -4437,8 +5091,17 @@ class _$GetOtherUser implements GetOtherUser {
     TResult? Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult? Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -4467,6 +5130,8 @@ class _$GetOtherUser implements GetOtherUser {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
   }) {
     return getOtherUser?.call(tappedWorkerIdx);
   }
@@ -4478,8 +5143,17 @@ class _$GetOtherUser implements GetOtherUser {
     TResult Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -4508,6 +5182,8 @@ class _$GetOtherUser implements GetOtherUser {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (getOtherUser != null) {
@@ -4538,6 +5214,9 @@ class _$GetOtherUser implements GetOtherUser {
     required TResult Function(WorkerRegistration1 value) workerRegistration1,
     required TResult Function(GetOtherUser value) getOtherUser,
     required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
   }) {
     return getOtherUser(this);
   }
@@ -4561,6 +5240,8 @@ class _$GetOtherUser implements GetOtherUser {
     TResult? Function(WorkerRegistration1 value)? workerRegistration1,
     TResult? Function(GetOtherUser value)? getOtherUser,
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
   }) {
     return getOtherUser?.call(this);
   }
@@ -4584,6 +5265,8 @@ class _$GetOtherUser implements GetOtherUser {
     TResult Function(WorkerRegistration1 value)? workerRegistration1,
     TResult Function(GetOtherUser value)? getOtherUser,
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (getOtherUser != null) {
@@ -4759,8 +5442,17 @@ class _$SendRequestToWorker implements SendRequestToWorker {
     required TResult Function(String id, String name, double latitude,
             double longitude, String fcmToken)
         insert,
-    required TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -4790,6 +5482,8 @@ class _$SendRequestToWorker implements SendRequestToWorker {
             String longitude,
             String fcmToken)
         sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
   }) {
     return sendRequestToWorker(reqIdx, workerIdx, categoryIdx, title, content,
         address, latitude, longitude, fcmToken);
@@ -4802,8 +5496,17 @@ class _$SendRequestToWorker implements SendRequestToWorker {
     TResult? Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult? Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -4832,6 +5535,8 @@ class _$SendRequestToWorker implements SendRequestToWorker {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
   }) {
     return sendRequestToWorker?.call(reqIdx, workerIdx, categoryIdx, title,
         content, address, latitude, longitude, fcmToken);
@@ -4844,8 +5549,17 @@ class _$SendRequestToWorker implements SendRequestToWorker {
     TResult Function(String id, String name, double latitude, double longitude,
             String fcmToken)?
         insert,
-    TResult Function(String reqIdx, String categoryIdx, String title,
-            String content, String address, String latitude, String longitude)?
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -4874,6 +5588,8 @@ class _$SendRequestToWorker implements SendRequestToWorker {
             String longitude,
             String fcmToken)?
         sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (sendRequestToWorker != null) {
@@ -4905,6 +5621,9 @@ class _$SendRequestToWorker implements SendRequestToWorker {
     required TResult Function(WorkerRegistration1 value) workerRegistration1,
     required TResult Function(GetOtherUser value) getOtherUser,
     required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
   }) {
     return sendRequestToWorker(this);
   }
@@ -4928,6 +5647,8 @@ class _$SendRequestToWorker implements SendRequestToWorker {
     TResult? Function(WorkerRegistration1 value)? workerRegistration1,
     TResult? Function(GetOtherUser value)? getOtherUser,
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
   }) {
     return sendRequestToWorker?.call(this);
   }
@@ -4951,6 +5672,8 @@ class _$SendRequestToWorker implements SendRequestToWorker {
     TResult Function(WorkerRegistration1 value)? workerRegistration1,
     TResult Function(GetOtherUser value)? getOtherUser,
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
     required TResult orElse(),
   }) {
     if (sendRequestToWorker != null) {
@@ -4983,5 +5706,638 @@ abstract class SendRequestToWorker implements UsersEvent {
   String get fcmToken;
   @JsonKey(ignore: true)
   _$$SendRequestToWorkerCopyWith<_$SendRequestToWorker> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateWorkableStateCopyWith<$Res> {
+  factory _$$UpdateWorkableStateCopyWith(_$UpdateWorkableState value,
+          $Res Function(_$UpdateWorkableState) then) =
+      __$$UpdateWorkableStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String idx});
+}
+
+/// @nodoc
+class __$$UpdateWorkableStateCopyWithImpl<$Res>
+    extends _$UsersEventCopyWithImpl<$Res, _$UpdateWorkableState>
+    implements _$$UpdateWorkableStateCopyWith<$Res> {
+  __$$UpdateWorkableStateCopyWithImpl(
+      _$UpdateWorkableState _value, $Res Function(_$UpdateWorkableState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idx = null,
+  }) {
+    return _then(_$UpdateWorkableState(
+      null == idx
+          ? _value.idx
+          : idx // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateWorkableState implements UpdateWorkableState {
+  const _$UpdateWorkableState(this.idx);
+
+  @override
+  final String idx;
+
+  @override
+  String toString() {
+    return 'UsersEvent.updateWorkableState(idx: $idx)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateWorkableState &&
+            (identical(other.idx, idx) || other.idx == idx));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, idx);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateWorkableStateCopyWith<_$UpdateWorkableState> get copyWith =>
+      __$$UpdateWorkableStateCopyWithImpl<_$UpdateWorkableState>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) getAroundHelpers,
+    required TResult Function(String id, String name, double latitude,
+            double longitude, String fcmToken)
+        insert,
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)
+        insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath,
+            String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)
+        sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
+  }) {
+    return updateWorkableState(idx);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? getAroundHelpers,
+    TResult? Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
+        insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
+  }) {
+    return updateWorkableState?.call(idx);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? getAroundHelpers,
+    TResult Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
+        insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
+    required TResult orElse(),
+  }) {
+    if (updateWorkableState != null) {
+      return updateWorkableState(idx);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAroundHelpers value) getAroundHelpers,
+    required TResult Function(Insert value) insert,
+    required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
+  }) {
+    return updateWorkableState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult? Function(Insert value)? insert,
+    TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+  }) {
+    return updateWorkableState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult Function(Insert value)? insert,
+    TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    required TResult orElse(),
+  }) {
+    if (updateWorkableState != null) {
+      return updateWorkableState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateWorkableState implements UsersEvent {
+  const factory UpdateWorkableState(final String idx) = _$UpdateWorkableState;
+
+  String get idx;
+  @JsonKey(ignore: true)
+  _$$UpdateWorkableStateCopyWith<_$UpdateWorkableState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateNotWorkableStateCopyWith<$Res> {
+  factory _$$UpdateNotWorkableStateCopyWith(_$UpdateNotWorkableState value,
+          $Res Function(_$UpdateNotWorkableState) then) =
+      __$$UpdateNotWorkableStateCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String idx});
+}
+
+/// @nodoc
+class __$$UpdateNotWorkableStateCopyWithImpl<$Res>
+    extends _$UsersEventCopyWithImpl<$Res, _$UpdateNotWorkableState>
+    implements _$$UpdateNotWorkableStateCopyWith<$Res> {
+  __$$UpdateNotWorkableStateCopyWithImpl(_$UpdateNotWorkableState _value,
+      $Res Function(_$UpdateNotWorkableState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idx = null,
+  }) {
+    return _then(_$UpdateNotWorkableState(
+      null == idx
+          ? _value.idx
+          : idx // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateNotWorkableState implements UpdateNotWorkableState {
+  const _$UpdateNotWorkableState(this.idx);
+
+  @override
+  final String idx;
+
+  @override
+  String toString() {
+    return 'UsersEvent.updateNotWorkableState(idx: $idx)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateNotWorkableState &&
+            (identical(other.idx, idx) || other.idx == idx));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, idx);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateNotWorkableStateCopyWith<_$UpdateNotWorkableState> get copyWith =>
+      __$$UpdateNotWorkableStateCopyWithImpl<_$UpdateNotWorkableState>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) getAroundHelpers,
+    required TResult Function(String id, String name, double latitude,
+            double longitude, String fcmToken)
+        insert,
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)
+        insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath,
+            String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)
+        sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
+  }) {
+    return updateNotWorkableState(idx);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? getAroundHelpers,
+    TResult? Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
+        insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
+  }) {
+    return updateNotWorkableState?.call(idx);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? getAroundHelpers,
+    TResult Function(String id, String name, double latitude, double longitude,
+            String fcmToken)?
+        insert,
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            DateTime date,
+            String runningTime,
+            String reward)?
+        insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath,
+            List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String fcmToken)?
+        sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
+    required TResult orElse(),
+  }) {
+    if (updateNotWorkableState != null) {
+      return updateNotWorkableState(idx);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAroundHelpers value) getAroundHelpers,
+    required TResult Function(Insert value) insert,
+    required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
+  }) {
+    return updateNotWorkableState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult? Function(Insert value)? insert,
+    TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+  }) {
+    return updateNotWorkableState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult Function(Insert value)? insert,
+    TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    required TResult orElse(),
+  }) {
+    if (updateNotWorkableState != null) {
+      return updateNotWorkableState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateNotWorkableState implements UsersEvent {
+  const factory UpdateNotWorkableState(final String idx) =
+      _$UpdateNotWorkableState;
+
+  String get idx;
+  @JsonKey(ignore: true)
+  _$$UpdateNotWorkableStateCopyWith<_$UpdateNotWorkableState> get copyWith =>
       throw _privateConstructorUsedError;
 }

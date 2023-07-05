@@ -7,7 +7,7 @@ part 'users_event.freezed.dart';
 class UsersEvent with _$UsersEvent {
   const factory UsersEvent.getAroundHelpers(String id) = GetAroundHelpers;
   const factory UsersEvent.insert(String id, String name, double latitude, double longitude, String fcmToken) = Insert;
-  const factory UsersEvent.insertRequest(String reqIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude) = InsertRequest;
+  const factory UsersEvent.insertRequest(String reqIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, DateTime date, String runningTime, String reward) = InsertRequest;
   const factory UsersEvent.getUser(String id) = GetUser;
   const factory UsersEvent.updateLocation(String idx, double latitude, double longitude) = UpdateLocation;
   const factory UsersEvent.requesterRegistration(String idx) = RequesterRegistration;
@@ -21,5 +21,9 @@ class UsersEvent with _$UsersEvent {
   const factory UsersEvent.workerRegistration1(String idx, String idCardPath, String faceCheckPath, List<String> infs) = WorkerRegistration1;
   const factory UsersEvent.getOtherUser(String tappedWorkerIdx) = GetOtherUser;
   const factory UsersEvent.sendRequestToWorker(String reqIdx,String workerIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, String fcmToken) = SendRequestToWorker;
+  const factory UsersEvent.updateWorkableState(String idx) = UpdateWorkableState;
+  const factory UsersEvent.updateNotWorkableState(String idx) = UpdateNotWorkableState;
+
+
 
 }

@@ -10,6 +10,8 @@ class UserAPI {
   final http.Client _client;
 
   // static const baseUrl = 'http://10.0.2.2:9001/user';  //로컬 호스트
+  // static const baseUrl = 'http://192.168.33.7:9001/user';  //작업실
+  // static const baseUrl = 'http://172.30.1.69:9001/user';  //집
   // static const baseUrl = 'http://192.168.101.2:9001/user'; //기기 사용 3층
   static const baseUrl = 'http://192.168.100.42:9001/user'; //기기 사용 5층
 
@@ -59,7 +61,7 @@ class UserAPI {
     Logger().d(response.body);
   }
 
-  Future<void> insertRequest(String reqIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude) async {
+  Future<void> insertRequest(String reqIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, DateTime date, String runningTime, String reward) async {
     String url = '$baseUrl/insert_request.php';
     Map<String, dynamic> data = {
       'reqIdx': reqIdx,
@@ -68,7 +70,10 @@ class UserAPI {
       'content': content,
       'address': address,
       'latitude': latitude,
-      'longitude': longitude
+      'longitude': longitude,
+      'date': date,
+      'runningTime': runningTime,
+      'reward': reward
     };
 
     final response = await _client.post(Uri.parse(url), body: data);
@@ -193,7 +198,7 @@ class UserAPI {
   }
 
   Future sendRequestToWorker(
-      String reqIdx, String categoryIdx, String workerIdx, String title, String content, String address, String latitude, String longitude, String fcmToken) async {
+      String reqIdx, String workerIdx, String categoryIdx,  String title, String content, String address, String latitude, String longitude, String fcmToken) async {
     String url = '$baseUrl/send_request_to_worker.php';
     Map<String, dynamic> data = {
       'reqIdx': reqIdx,
@@ -205,9 +210,9 @@ class UserAPI {
       'latitude': latitude,
       'longitude': longitude,
     };
-
-    // final response = await _client.post(Uri.parse(url), body: data);
-    // Logger().d('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!${response.body}');
+    Logger().d(".....................$workerIdx");
+    final response = await _client.post(Uri.parse(url), body: data);
+    Logger().d('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!${response.body}');
 
     try {
       Map fcmData = {
@@ -215,8 +220,8 @@ class UserAPI {
         // "topic": "user_uid",
 
         "notification": {
-          "title": "FCM Test Title",
-          "body": "FCM Test Body",
+          "title": "요청서가 도착했어요!",
+          "body": title,
         },
         "data": {
           "click_action": "FCM Test Click Action",
@@ -250,5 +255,29 @@ class UserAPI {
     } on HttpException catch (error) {
       Logger().d(error.message);
     }
+  }
+
+  Future<bool> checkId(id) async{
+    String url = '$baseUrl/check_id.php';
+    Map<String, dynamic> data = {'id': id};
+    final response = await _client.post(Uri.parse(url), body: data);
+    if(response.body == "true") {
+      return true;
+    }else {
+      return false;
+    }
+
+  }
+
+  Future updateWorkableState(String idx) async{
+    String url = '$baseUrl/update_workable_state.php';
+    Map<String, dynamic> data = {'idx': idx};
+    await _client.post(Uri.parse(url), body: data);
+  }
+
+  Future updateNotWorkableState(String idx) async{
+    String url = '$baseUrl/update_not_workable_state.php';
+    Map<String, dynamic> data = {'idx': idx};
+    await _client.post(Uri.parse(url), body: data);
   }
 }

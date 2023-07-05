@@ -1,7 +1,9 @@
 import 'dart:convert';
 
+import 'package:logger/logger.dart';
 import 'package:test_project/data/source/remote/errand_api.dart';
 import 'package:test_project/domain/model/request/request.dart';
+import 'package:test_project/domain/model/request/request_recruitment.dart';
 import 'package:test_project/domain/repository/errand_repository.dart';
 
 class ErrandRepositoryImpl implements ErrandRepository {
@@ -12,6 +14,7 @@ class ErrandRepositoryImpl implements ErrandRepository {
   @override
   Future<List<Request>> getRequests(String idx) async {
     final response = await api.getRequests(idx);
+    Logger().d(response.body);
     final Iterable json = jsonDecode(response.body);
     return json.map((e) => Request.fromJson(e)).toList();
   }
@@ -42,6 +45,65 @@ class ErrandRepositoryImpl implements ErrandRepository {
     // TODO: implement createChatRoom
     final result = await api.createChatRoom(reqIdx);
     return result;
+  }
+
+  @override
+  Future startRequest(String idx) async{
+    // TODO: implement startRequest
+    await api.startRequest(idx);
+  }
+
+  @override
+  Future requestComplete(String idx) async{
+    // TODO: implement requestComplete
+    await api.requestComplete(idx);
+  }
+
+  @override
+  Future<List<RequestRecruitment>> getRecruitments(String idx) async{
+    // TODO: implement getRecruitments
+    final response = await api.getRecruitments(idx);
+    final Iterable json = jsonDecode(response.body);
+    return json.map((e) => RequestRecruitment.fromJson(e)).toList();
+  }
+
+  @override
+  Future rejectApplication(String idx) async{
+    // TODO: implement rejectApplication
+    await api.rejectApplication(idx);
+  }
+
+  @override
+  Future acceptApplication(String reqIdx, String workerIdx) async{
+    // TODO: implement acceptApplication
+    await api.acceptApplication(reqIdx, workerIdx);
+  }
+
+  @override
+  Future<Request> getRequest(String idx) async{
+    // TODO: implement getRequest
+    final response = await api.getRequest(idx);
+    Logger().d("id : $idx, getUser_repo_res:${response.body}");
+    final Iterable json = jsonDecode(response.body);
+    return Request.fromJson(json.first);
+  }
+
+  @override
+  Future finishRequest(String idx) async{
+    // TODO: implement finishRequest
+    await api.finishRequest(idx);
+  }
+
+  @override
+  Future recruitmentRequest(String idx, String workerIdx) async{
+    // TODO: implement recruitmentRequest
+    await api.recruitmentRequest(idx, workerIdx);
+  }
+
+  @override
+  Future crateRequestReview(String reqIdx, String fromIdx, String toIdx, double score, String comment) async{
+    // TODO: implement crateRequestReview
+    await api.crateRequestReview(reqIdx, fromIdx, toIdx, score, comment);
   }
 
 }
