@@ -18,9 +18,15 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UsersEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getAroundHelpers,
-    required TResult Function(String id, String name, double latitude,
-            double longitude, String fcmToken)
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
         insert,
     required TResult Function(
             String reqIdx,
@@ -30,9 +36,13 @@ mixin _$UsersEvent {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -47,8 +57,7 @@ mixin _$UsersEvent {
         updateUserTransportation,
     required TResult Function(String idx, String workCategory)
         updateUserWorkCategory,
-    required TResult Function(String idx, String idCardPath,
-            String faceCheckPath, List<String> infs)
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
         workerRegistration1,
     required TResult Function(String tappedWorkerIdx) getOtherUser,
     required TResult Function(
@@ -60,17 +69,31 @@ mixin _$UsersEvent {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
         sendRequestToWorker,
     required TResult Function(String idx) updateWorkableState,
     required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult? Function(
             String reqIdx,
@@ -80,9 +103,13 @@ mixin _$UsersEvent {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -96,8 +123,7 @@ mixin _$UsersEvent {
     TResult? Function(String idx, String transportation)?
         updateUserTransportation,
     TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult? Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult? Function(String tappedWorkerIdx)? getOtherUser,
     TResult? Function(
@@ -109,17 +135,31 @@ mixin _$UsersEvent {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult? Function(String idx)? updateWorkableState,
     TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult Function(
             String reqIdx,
@@ -129,9 +169,13 @@ mixin _$UsersEvent {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -145,8 +189,7 @@ mixin _$UsersEvent {
     TResult Function(String idx, String transportation)?
         updateUserTransportation,
     TResult Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult Function(String tappedWorkerIdx)? getOtherUser,
     TResult Function(
@@ -158,10 +201,18 @@ mixin _$UsersEvent {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult Function(String idx)? updateWorkableState,
     TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -189,6 +240,7 @@ mixin _$UsersEvent {
     required TResult Function(UpdateWorkableState value) updateWorkableState,
     required TResult Function(UpdateNotWorkableState value)
         updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -211,6 +263,7 @@ mixin _$UsersEvent {
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult? Function(UpdateWorkableState value)? updateWorkableState,
     TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -233,6 +286,7 @@ mixin _$UsersEvent {
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult Function(UpdateWorkableState value)? updateWorkableState,
     TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -262,7 +316,12 @@ abstract class _$$GetAroundHelpersCopyWith<$Res> {
           _$GetAroundHelpers value, $Res Function(_$GetAroundHelpers) then) =
       __$$GetAroundHelpersCopyWithImpl<$Res>;
   @useResult
-  $Res call({String id});
+  $Res call(
+      {String id,
+      List<bool> workCategoryCheckValues,
+      List<bool> ageGroupCheckValues,
+      List<bool> genderCheckValues,
+      int distanceIndex});
 }
 
 /// @nodoc
@@ -277,12 +336,32 @@ class __$$GetAroundHelpersCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
+    Object? workCategoryCheckValues = null,
+    Object? ageGroupCheckValues = null,
+    Object? genderCheckValues = null,
+    Object? distanceIndex = null,
   }) {
     return _then(_$GetAroundHelpers(
       null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      null == workCategoryCheckValues
+          ? _value._workCategoryCheckValues
+          : workCategoryCheckValues // ignore: cast_nullable_to_non_nullable
+              as List<bool>,
+      null == ageGroupCheckValues
+          ? _value._ageGroupCheckValues
+          : ageGroupCheckValues // ignore: cast_nullable_to_non_nullable
+              as List<bool>,
+      null == genderCheckValues
+          ? _value._genderCheckValues
+          : genderCheckValues // ignore: cast_nullable_to_non_nullable
+              as List<bool>,
+      null == distanceIndex
+          ? _value.distanceIndex
+          : distanceIndex // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -290,14 +369,51 @@ class __$$GetAroundHelpersCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetAroundHelpers implements GetAroundHelpers {
-  const _$GetAroundHelpers(this.id);
+  const _$GetAroundHelpers(
+      this.id,
+      final List<bool> workCategoryCheckValues,
+      final List<bool> ageGroupCheckValues,
+      final List<bool> genderCheckValues,
+      this.distanceIndex)
+      : _workCategoryCheckValues = workCategoryCheckValues,
+        _ageGroupCheckValues = ageGroupCheckValues,
+        _genderCheckValues = genderCheckValues;
 
   @override
   final String id;
+  final List<bool> _workCategoryCheckValues;
+  @override
+  List<bool> get workCategoryCheckValues {
+    if (_workCategoryCheckValues is EqualUnmodifiableListView)
+      return _workCategoryCheckValues;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_workCategoryCheckValues);
+  }
+
+  final List<bool> _ageGroupCheckValues;
+  @override
+  List<bool> get ageGroupCheckValues {
+    if (_ageGroupCheckValues is EqualUnmodifiableListView)
+      return _ageGroupCheckValues;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_ageGroupCheckValues);
+  }
+
+  final List<bool> _genderCheckValues;
+  @override
+  List<bool> get genderCheckValues {
+    if (_genderCheckValues is EqualUnmodifiableListView)
+      return _genderCheckValues;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_genderCheckValues);
+  }
+
+  @override
+  final int distanceIndex;
 
   @override
   String toString() {
-    return 'UsersEvent.getAroundHelpers(id: $id)';
+    return 'UsersEvent.getAroundHelpers(id: $id, workCategoryCheckValues: $workCategoryCheckValues, ageGroupCheckValues: $ageGroupCheckValues, genderCheckValues: $genderCheckValues, distanceIndex: $distanceIndex)';
   }
 
   @override
@@ -305,11 +421,25 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetAroundHelpers &&
-            (identical(other.id, id) || other.id == id));
+            (identical(other.id, id) || other.id == id) &&
+            const DeepCollectionEquality().equals(
+                other._workCategoryCheckValues, _workCategoryCheckValues) &&
+            const DeepCollectionEquality()
+                .equals(other._ageGroupCheckValues, _ageGroupCheckValues) &&
+            const DeepCollectionEquality()
+                .equals(other._genderCheckValues, _genderCheckValues) &&
+            (identical(other.distanceIndex, distanceIndex) ||
+                other.distanceIndex == distanceIndex));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      const DeepCollectionEquality().hash(_workCategoryCheckValues),
+      const DeepCollectionEquality().hash(_ageGroupCheckValues),
+      const DeepCollectionEquality().hash(_genderCheckValues),
+      distanceIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -320,9 +450,15 @@ class _$GetAroundHelpers implements GetAroundHelpers {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getAroundHelpers,
-    required TResult Function(String id, String name, double latitude,
-            double longitude, String fcmToken)
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
         insert,
     required TResult Function(
             String reqIdx,
@@ -332,9 +468,13 @@ class _$GetAroundHelpers implements GetAroundHelpers {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -349,8 +489,7 @@ class _$GetAroundHelpers implements GetAroundHelpers {
         updateUserTransportation,
     required TResult Function(String idx, String workCategory)
         updateUserWorkCategory,
-    required TResult Function(String idx, String idCardPath,
-            String faceCheckPath, List<String> infs)
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
         workerRegistration1,
     required TResult Function(String tappedWorkerIdx) getOtherUser,
     required TResult Function(
@@ -362,20 +501,35 @@ class _$GetAroundHelpers implements GetAroundHelpers {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
         sendRequestToWorker,
     required TResult Function(String idx) updateWorkableState,
     required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
   }) {
-    return getAroundHelpers(id);
+    return getAroundHelpers(id, workCategoryCheckValues, ageGroupCheckValues,
+        genderCheckValues, distanceIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult? Function(
             String reqIdx,
@@ -385,9 +539,13 @@ class _$GetAroundHelpers implements GetAroundHelpers {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -401,8 +559,7 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     TResult? Function(String idx, String transportation)?
         updateUserTransportation,
     TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult? Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult? Function(String tappedWorkerIdx)? getOtherUser,
     TResult? Function(
@@ -414,20 +571,35 @@ class _$GetAroundHelpers implements GetAroundHelpers {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult? Function(String idx)? updateWorkableState,
     TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
   }) {
-    return getAroundHelpers?.call(id);
+    return getAroundHelpers?.call(id, workCategoryCheckValues,
+        ageGroupCheckValues, genderCheckValues, distanceIndex);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult Function(
             String reqIdx,
@@ -437,9 +609,13 @@ class _$GetAroundHelpers implements GetAroundHelpers {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -453,8 +629,7 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     TResult Function(String idx, String transportation)?
         updateUserTransportation,
     TResult Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult Function(String tappedWorkerIdx)? getOtherUser,
     TResult Function(
@@ -466,14 +641,23 @@ class _$GetAroundHelpers implements GetAroundHelpers {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult Function(String idx)? updateWorkableState,
     TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
     required TResult orElse(),
   }) {
     if (getAroundHelpers != null) {
-      return getAroundHelpers(id);
+      return getAroundHelpers(id, workCategoryCheckValues, ageGroupCheckValues,
+          genderCheckValues, distanceIndex);
     }
     return orElse();
   }
@@ -503,6 +687,7 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     required TResult Function(UpdateWorkableState value) updateWorkableState,
     required TResult Function(UpdateNotWorkableState value)
         updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
   }) {
     return getAroundHelpers(this);
   }
@@ -528,6 +713,7 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult? Function(UpdateWorkableState value)? updateWorkableState,
     TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
   }) {
     return getAroundHelpers?.call(this);
   }
@@ -553,6 +739,7 @@ class _$GetAroundHelpers implements GetAroundHelpers {
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult Function(UpdateWorkableState value)? updateWorkableState,
     TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
     required TResult orElse(),
   }) {
     if (getAroundHelpers != null) {
@@ -563,9 +750,18 @@ class _$GetAroundHelpers implements GetAroundHelpers {
 }
 
 abstract class GetAroundHelpers implements UsersEvent {
-  const factory GetAroundHelpers(final String id) = _$GetAroundHelpers;
+  const factory GetAroundHelpers(
+      final String id,
+      final List<bool> workCategoryCheckValues,
+      final List<bool> ageGroupCheckValues,
+      final List<bool> genderCheckValues,
+      final int distanceIndex) = _$GetAroundHelpers;
 
   String get id;
+  List<bool> get workCategoryCheckValues;
+  List<bool> get ageGroupCheckValues;
+  List<bool> get genderCheckValues;
+  int get distanceIndex;
   @JsonKey(ignore: true)
   _$$GetAroundHelpersCopyWith<_$GetAroundHelpers> get copyWith =>
       throw _privateConstructorUsedError;
@@ -579,6 +775,7 @@ abstract class _$$InsertCopyWith<$Res> {
   $Res call(
       {String id,
       String name,
+      String bio,
       double latitude,
       double longitude,
       String fcmToken});
@@ -596,6 +793,7 @@ class __$$InsertCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? bio = null,
     Object? latitude = null,
     Object? longitude = null,
     Object? fcmToken = null,
@@ -608,6 +806,10 @@ class __$$InsertCopyWithImpl<$Res>
       null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == bio
+          ? _value.bio
+          : bio // ignore: cast_nullable_to_non_nullable
               as String,
       null == latitude
           ? _value.latitude
@@ -628,13 +830,15 @@ class __$$InsertCopyWithImpl<$Res>
 /// @nodoc
 
 class _$Insert implements Insert {
-  const _$Insert(
-      this.id, this.name, this.latitude, this.longitude, this.fcmToken);
+  const _$Insert(this.id, this.name, this.bio, this.latitude, this.longitude,
+      this.fcmToken);
 
   @override
   final String id;
   @override
   final String name;
+  @override
+  final String bio;
   @override
   final double latitude;
   @override
@@ -644,7 +848,7 @@ class _$Insert implements Insert {
 
   @override
   String toString() {
-    return 'UsersEvent.insert(id: $id, name: $name, latitude: $latitude, longitude: $longitude, fcmToken: $fcmToken)';
+    return 'UsersEvent.insert(id: $id, name: $name, bio: $bio, latitude: $latitude, longitude: $longitude, fcmToken: $fcmToken)';
   }
 
   @override
@@ -654,6 +858,7 @@ class _$Insert implements Insert {
             other is _$Insert &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.bio, bio) || other.bio == bio) &&
             (identical(other.latitude, latitude) ||
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
@@ -664,7 +869,7 @@ class _$Insert implements Insert {
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, name, latitude, longitude, fcmToken);
+      Object.hash(runtimeType, id, name, bio, latitude, longitude, fcmToken);
 
   @JsonKey(ignore: true)
   @override
@@ -675,9 +880,15 @@ class _$Insert implements Insert {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getAroundHelpers,
-    required TResult Function(String id, String name, double latitude,
-            double longitude, String fcmToken)
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
         insert,
     required TResult Function(
             String reqIdx,
@@ -687,9 +898,13 @@ class _$Insert implements Insert {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -704,8 +919,7 @@ class _$Insert implements Insert {
         updateUserTransportation,
     required TResult Function(String idx, String workCategory)
         updateUserWorkCategory,
-    required TResult Function(String idx, String idCardPath,
-            String faceCheckPath, List<String> infs)
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
         workerRegistration1,
     required TResult Function(String tappedWorkerIdx) getOtherUser,
     required TResult Function(
@@ -717,20 +931,34 @@ class _$Insert implements Insert {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
         sendRequestToWorker,
     required TResult Function(String idx) updateWorkableState,
     required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
   }) {
-    return insert(id, name, latitude, longitude, fcmToken);
+    return insert(id, name, bio, latitude, longitude, fcmToken);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult? Function(
             String reqIdx,
@@ -740,9 +968,13 @@ class _$Insert implements Insert {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -756,8 +988,7 @@ class _$Insert implements Insert {
     TResult? Function(String idx, String transportation)?
         updateUserTransportation,
     TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult? Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult? Function(String tappedWorkerIdx)? getOtherUser,
     TResult? Function(
@@ -769,20 +1000,34 @@ class _$Insert implements Insert {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult? Function(String idx)? updateWorkableState,
     TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
   }) {
-    return insert?.call(id, name, latitude, longitude, fcmToken);
+    return insert?.call(id, name, bio, latitude, longitude, fcmToken);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult Function(
             String reqIdx,
@@ -792,9 +1037,13 @@ class _$Insert implements Insert {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -808,8 +1057,7 @@ class _$Insert implements Insert {
     TResult Function(String idx, String transportation)?
         updateUserTransportation,
     TResult Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult Function(String tappedWorkerIdx)? getOtherUser,
     TResult Function(
@@ -821,14 +1069,22 @@ class _$Insert implements Insert {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult Function(String idx)? updateWorkableState,
     TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
     required TResult orElse(),
   }) {
     if (insert != null) {
-      return insert(id, name, latitude, longitude, fcmToken);
+      return insert(id, name, bio, latitude, longitude, fcmToken);
     }
     return orElse();
   }
@@ -858,6 +1114,7 @@ class _$Insert implements Insert {
     required TResult Function(UpdateWorkableState value) updateWorkableState,
     required TResult Function(UpdateNotWorkableState value)
         updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
   }) {
     return insert(this);
   }
@@ -883,6 +1140,7 @@ class _$Insert implements Insert {
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult? Function(UpdateWorkableState value)? updateWorkableState,
     TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
   }) {
     return insert?.call(this);
   }
@@ -908,6 +1166,7 @@ class _$Insert implements Insert {
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult Function(UpdateWorkableState value)? updateWorkableState,
     TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
     required TResult orElse(),
   }) {
     if (insert != null) {
@@ -921,12 +1180,14 @@ abstract class Insert implements UsersEvent {
   const factory Insert(
       final String id,
       final String name,
+      final String bio,
       final double latitude,
       final double longitude,
       final String fcmToken) = _$Insert;
 
   String get id;
   String get name;
+  String get bio;
   double get latitude;
   double get longitude;
   String get fcmToken;
@@ -949,9 +1210,13 @@ abstract class _$$InsertRequestCopyWith<$Res> {
       String address,
       String latitude,
       String longitude,
-      DateTime date,
+      String date,
       String runningTime,
-      String reward});
+      String reward,
+      List<Map<String, dynamic>> waypointsLocation,
+      List<String> waypointsContent,
+      int requestType,
+      int secondType});
 }
 
 /// @nodoc
@@ -975,6 +1240,10 @@ class __$$InsertRequestCopyWithImpl<$Res>
     Object? date = null,
     Object? runningTime = null,
     Object? reward = null,
+    Object? waypointsLocation = null,
+    Object? waypointsContent = null,
+    Object? requestType = null,
+    Object? secondType = null,
   }) {
     return _then(_$InsertRequest(
       null == reqIdx
@@ -1008,7 +1277,7 @@ class __$$InsertRequestCopyWithImpl<$Res>
       null == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       null == runningTime
           ? _value.runningTime
           : runningTime // ignore: cast_nullable_to_non_nullable
@@ -1017,6 +1286,22 @@ class __$$InsertRequestCopyWithImpl<$Res>
           ? _value.reward
           : reward // ignore: cast_nullable_to_non_nullable
               as String,
+      null == waypointsLocation
+          ? _value._waypointsLocation
+          : waypointsLocation // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>,
+      null == waypointsContent
+          ? _value._waypointsContent
+          : waypointsContent // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      null == requestType
+          ? _value.requestType
+          : requestType // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == secondType
+          ? _value.secondType
+          : secondType // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -1034,7 +1319,13 @@ class _$InsertRequest implements InsertRequest {
       this.longitude,
       this.date,
       this.runningTime,
-      this.reward);
+      this.reward,
+      final List<Map<String, dynamic>> waypointsLocation,
+      final List<String> waypointsContent,
+      this.requestType,
+      this.secondType)
+      : _waypointsLocation = waypointsLocation,
+        _waypointsContent = waypointsContent;
 
   @override
   final String reqIdx;
@@ -1051,15 +1342,37 @@ class _$InsertRequest implements InsertRequest {
   @override
   final String longitude;
   @override
-  final DateTime date;
+  final String date;
   @override
   final String runningTime;
   @override
   final String reward;
+  final List<Map<String, dynamic>> _waypointsLocation;
+  @override
+  List<Map<String, dynamic>> get waypointsLocation {
+    if (_waypointsLocation is EqualUnmodifiableListView)
+      return _waypointsLocation;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_waypointsLocation);
+  }
+
+  final List<String> _waypointsContent;
+  @override
+  List<String> get waypointsContent {
+    if (_waypointsContent is EqualUnmodifiableListView)
+      return _waypointsContent;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_waypointsContent);
+  }
+
+  @override
+  final int requestType;
+  @override
+  final int secondType;
 
   @override
   String toString() {
-    return 'UsersEvent.insertRequest(reqIdx: $reqIdx, categoryIdx: $categoryIdx, title: $title, content: $content, address: $address, latitude: $latitude, longitude: $longitude, date: $date, runningTime: $runningTime, reward: $reward)';
+    return 'UsersEvent.insertRequest(reqIdx: $reqIdx, categoryIdx: $categoryIdx, title: $title, content: $content, address: $address, latitude: $latitude, longitude: $longitude, date: $date, runningTime: $runningTime, reward: $reward, waypointsLocation: $waypointsLocation, waypointsContent: $waypointsContent, requestType: $requestType, secondType: $secondType)';
   }
 
   @override
@@ -1080,12 +1393,34 @@ class _$InsertRequest implements InsertRequest {
             (identical(other.date, date) || other.date == date) &&
             (identical(other.runningTime, runningTime) ||
                 other.runningTime == runningTime) &&
-            (identical(other.reward, reward) || other.reward == reward));
+            (identical(other.reward, reward) || other.reward == reward) &&
+            const DeepCollectionEquality()
+                .equals(other._waypointsLocation, _waypointsLocation) &&
+            const DeepCollectionEquality()
+                .equals(other._waypointsContent, _waypointsContent) &&
+            (identical(other.requestType, requestType) ||
+                other.requestType == requestType) &&
+            (identical(other.secondType, secondType) ||
+                other.secondType == secondType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, reqIdx, categoryIdx, title,
-      content, address, latitude, longitude, date, runningTime, reward);
+  int get hashCode => Object.hash(
+      runtimeType,
+      reqIdx,
+      categoryIdx,
+      title,
+      content,
+      address,
+      latitude,
+      longitude,
+      date,
+      runningTime,
+      reward,
+      const DeepCollectionEquality().hash(_waypointsLocation),
+      const DeepCollectionEquality().hash(_waypointsContent),
+      requestType,
+      secondType);
 
   @JsonKey(ignore: true)
   @override
@@ -1096,9 +1431,15 @@ class _$InsertRequest implements InsertRequest {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getAroundHelpers,
-    required TResult Function(String id, String name, double latitude,
-            double longitude, String fcmToken)
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
         insert,
     required TResult Function(
             String reqIdx,
@@ -1108,9 +1449,13 @@ class _$InsertRequest implements InsertRequest {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -1125,8 +1470,7 @@ class _$InsertRequest implements InsertRequest {
         updateUserTransportation,
     required TResult Function(String idx, String workCategory)
         updateUserWorkCategory,
-    required TResult Function(String idx, String idCardPath,
-            String faceCheckPath, List<String> infs)
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
         workerRegistration1,
     required TResult Function(String tappedWorkerIdx) getOtherUser,
     required TResult Function(
@@ -1138,21 +1482,48 @@ class _$InsertRequest implements InsertRequest {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
         sendRequestToWorker,
     required TResult Function(String idx) updateWorkableState,
     required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
   }) {
-    return insertRequest(reqIdx, categoryIdx, title, content, address, latitude,
-        longitude, date, runningTime, reward);
+    return insertRequest(
+        reqIdx,
+        categoryIdx,
+        title,
+        content,
+        address,
+        latitude,
+        longitude,
+        date,
+        runningTime,
+        reward,
+        waypointsLocation,
+        waypointsContent,
+        requestType,
+        secondType);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult? Function(
             String reqIdx,
@@ -1162,9 +1533,13 @@ class _$InsertRequest implements InsertRequest {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -1178,8 +1553,7 @@ class _$InsertRequest implements InsertRequest {
     TResult? Function(String idx, String transportation)?
         updateUserTransportation,
     TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult? Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult? Function(String tappedWorkerIdx)? getOtherUser,
     TResult? Function(
@@ -1191,21 +1565,48 @@ class _$InsertRequest implements InsertRequest {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult? Function(String idx)? updateWorkableState,
     TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
   }) {
-    return insertRequest?.call(reqIdx, categoryIdx, title, content, address,
-        latitude, longitude, date, runningTime, reward);
+    return insertRequest?.call(
+        reqIdx,
+        categoryIdx,
+        title,
+        content,
+        address,
+        latitude,
+        longitude,
+        date,
+        runningTime,
+        reward,
+        waypointsLocation,
+        waypointsContent,
+        requestType,
+        secondType);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult Function(
             String reqIdx,
@@ -1215,9 +1616,13 @@ class _$InsertRequest implements InsertRequest {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -1231,8 +1636,7 @@ class _$InsertRequest implements InsertRequest {
     TResult Function(String idx, String transportation)?
         updateUserTransportation,
     TResult Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult Function(String tappedWorkerIdx)? getOtherUser,
     TResult Function(
@@ -1244,15 +1648,36 @@ class _$InsertRequest implements InsertRequest {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult Function(String idx)? updateWorkableState,
     TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
     required TResult orElse(),
   }) {
     if (insertRequest != null) {
-      return insertRequest(reqIdx, categoryIdx, title, content, address,
-          latitude, longitude, date, runningTime, reward);
+      return insertRequest(
+          reqIdx,
+          categoryIdx,
+          title,
+          content,
+          address,
+          latitude,
+          longitude,
+          date,
+          runningTime,
+          reward,
+          waypointsLocation,
+          waypointsContent,
+          requestType,
+          secondType);
     }
     return orElse();
   }
@@ -1282,6 +1707,7 @@ class _$InsertRequest implements InsertRequest {
     required TResult Function(UpdateWorkableState value) updateWorkableState,
     required TResult Function(UpdateNotWorkableState value)
         updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
   }) {
     return insertRequest(this);
   }
@@ -1307,6 +1733,7 @@ class _$InsertRequest implements InsertRequest {
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult? Function(UpdateWorkableState value)? updateWorkableState,
     TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
   }) {
     return insertRequest?.call(this);
   }
@@ -1332,6 +1759,7 @@ class _$InsertRequest implements InsertRequest {
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult Function(UpdateWorkableState value)? updateWorkableState,
     TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
     required TResult orElse(),
   }) {
     if (insertRequest != null) {
@@ -1350,9 +1778,13 @@ abstract class InsertRequest implements UsersEvent {
       final String address,
       final String latitude,
       final String longitude,
-      final DateTime date,
+      final String date,
       final String runningTime,
-      final String reward) = _$InsertRequest;
+      final String reward,
+      final List<Map<String, dynamic>> waypointsLocation,
+      final List<String> waypointsContent,
+      final int requestType,
+      final int secondType) = _$InsertRequest;
 
   String get reqIdx;
   String get categoryIdx;
@@ -1361,9 +1793,13 @@ abstract class InsertRequest implements UsersEvent {
   String get address;
   String get latitude;
   String get longitude;
-  DateTime get date;
+  String get date;
   String get runningTime;
   String get reward;
+  List<Map<String, dynamic>> get waypointsLocation;
+  List<String> get waypointsContent;
+  int get requestType;
+  int get secondType;
   @JsonKey(ignore: true)
   _$$InsertRequestCopyWith<_$InsertRequest> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1431,9 +1867,15 @@ class _$GetUser implements GetUser {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getAroundHelpers,
-    required TResult Function(String id, String name, double latitude,
-            double longitude, String fcmToken)
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
         insert,
     required TResult Function(
             String reqIdx,
@@ -1443,9 +1885,13 @@ class _$GetUser implements GetUser {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -1460,8 +1906,7 @@ class _$GetUser implements GetUser {
         updateUserTransportation,
     required TResult Function(String idx, String workCategory)
         updateUserWorkCategory,
-    required TResult Function(String idx, String idCardPath,
-            String faceCheckPath, List<String> infs)
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
         workerRegistration1,
     required TResult Function(String tappedWorkerIdx) getOtherUser,
     required TResult Function(
@@ -1473,10 +1918,18 @@ class _$GetUser implements GetUser {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
         sendRequestToWorker,
     required TResult Function(String idx) updateWorkableState,
     required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
   }) {
     return getUser(id);
   }
@@ -1484,9 +1937,15 @@ class _$GetUser implements GetUser {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult? Function(
             String reqIdx,
@@ -1496,9 +1955,13 @@ class _$GetUser implements GetUser {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -1512,8 +1975,7 @@ class _$GetUser implements GetUser {
     TResult? Function(String idx, String transportation)?
         updateUserTransportation,
     TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult? Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult? Function(String tappedWorkerIdx)? getOtherUser,
     TResult? Function(
@@ -1525,10 +1987,18 @@ class _$GetUser implements GetUser {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult? Function(String idx)? updateWorkableState,
     TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
   }) {
     return getUser?.call(id);
   }
@@ -1536,9 +2006,15 @@ class _$GetUser implements GetUser {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult Function(
             String reqIdx,
@@ -1548,9 +2024,13 @@ class _$GetUser implements GetUser {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -1564,8 +2044,7 @@ class _$GetUser implements GetUser {
     TResult Function(String idx, String transportation)?
         updateUserTransportation,
     TResult Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult Function(String tappedWorkerIdx)? getOtherUser,
     TResult Function(
@@ -1577,10 +2056,18 @@ class _$GetUser implements GetUser {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult Function(String idx)? updateWorkableState,
     TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
     required TResult orElse(),
   }) {
     if (getUser != null) {
@@ -1614,6 +2101,7 @@ class _$GetUser implements GetUser {
     required TResult Function(UpdateWorkableState value) updateWorkableState,
     required TResult Function(UpdateNotWorkableState value)
         updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
   }) {
     return getUser(this);
   }
@@ -1639,6 +2127,7 @@ class _$GetUser implements GetUser {
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult? Function(UpdateWorkableState value)? updateWorkableState,
     TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
   }) {
     return getUser?.call(this);
   }
@@ -1664,6 +2153,7 @@ class _$GetUser implements GetUser {
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult Function(UpdateWorkableState value)? updateWorkableState,
     TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
     required TResult orElse(),
   }) {
     if (getUser != null) {
@@ -1764,9 +2254,15 @@ class _$UpdateLocation implements UpdateLocation {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getAroundHelpers,
-    required TResult Function(String id, String name, double latitude,
-            double longitude, String fcmToken)
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
         insert,
     required TResult Function(
             String reqIdx,
@@ -1776,9 +2272,13 @@ class _$UpdateLocation implements UpdateLocation {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -1793,8 +2293,7 @@ class _$UpdateLocation implements UpdateLocation {
         updateUserTransportation,
     required TResult Function(String idx, String workCategory)
         updateUserWorkCategory,
-    required TResult Function(String idx, String idCardPath,
-            String faceCheckPath, List<String> infs)
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
         workerRegistration1,
     required TResult Function(String tappedWorkerIdx) getOtherUser,
     required TResult Function(
@@ -1806,10 +2305,18 @@ class _$UpdateLocation implements UpdateLocation {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
         sendRequestToWorker,
     required TResult Function(String idx) updateWorkableState,
     required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
   }) {
     return updateLocation(idx, latitude, longitude);
   }
@@ -1817,9 +2324,15 @@ class _$UpdateLocation implements UpdateLocation {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult? Function(
             String reqIdx,
@@ -1829,9 +2342,13 @@ class _$UpdateLocation implements UpdateLocation {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -1845,8 +2362,7 @@ class _$UpdateLocation implements UpdateLocation {
     TResult? Function(String idx, String transportation)?
         updateUserTransportation,
     TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult? Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult? Function(String tappedWorkerIdx)? getOtherUser,
     TResult? Function(
@@ -1858,10 +2374,18 @@ class _$UpdateLocation implements UpdateLocation {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult? Function(String idx)? updateWorkableState,
     TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
   }) {
     return updateLocation?.call(idx, latitude, longitude);
   }
@@ -1869,9 +2393,15 @@ class _$UpdateLocation implements UpdateLocation {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult Function(
             String reqIdx,
@@ -1881,9 +2411,13 @@ class _$UpdateLocation implements UpdateLocation {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -1897,8 +2431,7 @@ class _$UpdateLocation implements UpdateLocation {
     TResult Function(String idx, String transportation)?
         updateUserTransportation,
     TResult Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult Function(String tappedWorkerIdx)? getOtherUser,
     TResult Function(
@@ -1910,10 +2443,18 @@ class _$UpdateLocation implements UpdateLocation {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult Function(String idx)? updateWorkableState,
     TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
     required TResult orElse(),
   }) {
     if (updateLocation != null) {
@@ -1947,6 +2488,7 @@ class _$UpdateLocation implements UpdateLocation {
     required TResult Function(UpdateWorkableState value) updateWorkableState,
     required TResult Function(UpdateNotWorkableState value)
         updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
   }) {
     return updateLocation(this);
   }
@@ -1972,6 +2514,7 @@ class _$UpdateLocation implements UpdateLocation {
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult? Function(UpdateWorkableState value)? updateWorkableState,
     TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
   }) {
     return updateLocation?.call(this);
   }
@@ -1997,6 +2540,7 @@ class _$UpdateLocation implements UpdateLocation {
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult Function(UpdateWorkableState value)? updateWorkableState,
     TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
     required TResult orElse(),
   }) {
     if (updateLocation != null) {
@@ -2084,9 +2628,15 @@ class _$RequesterRegistration implements RequesterRegistration {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getAroundHelpers,
-    required TResult Function(String id, String name, double latitude,
-            double longitude, String fcmToken)
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
         insert,
     required TResult Function(
             String reqIdx,
@@ -2096,9 +2646,13 @@ class _$RequesterRegistration implements RequesterRegistration {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -2113,8 +2667,7 @@ class _$RequesterRegistration implements RequesterRegistration {
         updateUserTransportation,
     required TResult Function(String idx, String workCategory)
         updateUserWorkCategory,
-    required TResult Function(String idx, String idCardPath,
-            String faceCheckPath, List<String> infs)
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
         workerRegistration1,
     required TResult Function(String tappedWorkerIdx) getOtherUser,
     required TResult Function(
@@ -2126,10 +2679,18 @@ class _$RequesterRegistration implements RequesterRegistration {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
         sendRequestToWorker,
     required TResult Function(String idx) updateWorkableState,
     required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
   }) {
     return requesterRegistration(idx);
   }
@@ -2137,9 +2698,15 @@ class _$RequesterRegistration implements RequesterRegistration {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult? Function(
             String reqIdx,
@@ -2149,9 +2716,13 @@ class _$RequesterRegistration implements RequesterRegistration {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -2165,8 +2736,7 @@ class _$RequesterRegistration implements RequesterRegistration {
     TResult? Function(String idx, String transportation)?
         updateUserTransportation,
     TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult? Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult? Function(String tappedWorkerIdx)? getOtherUser,
     TResult? Function(
@@ -2178,10 +2748,18 @@ class _$RequesterRegistration implements RequesterRegistration {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult? Function(String idx)? updateWorkableState,
     TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
   }) {
     return requesterRegistration?.call(idx);
   }
@@ -2189,9 +2767,15 @@ class _$RequesterRegistration implements RequesterRegistration {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult Function(
             String reqIdx,
@@ -2201,9 +2785,13 @@ class _$RequesterRegistration implements RequesterRegistration {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -2217,8 +2805,7 @@ class _$RequesterRegistration implements RequesterRegistration {
     TResult Function(String idx, String transportation)?
         updateUserTransportation,
     TResult Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult Function(String tappedWorkerIdx)? getOtherUser,
     TResult Function(
@@ -2230,10 +2817,18 @@ class _$RequesterRegistration implements RequesterRegistration {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult Function(String idx)? updateWorkableState,
     TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
     required TResult orElse(),
   }) {
     if (requesterRegistration != null) {
@@ -2267,6 +2862,7 @@ class _$RequesterRegistration implements RequesterRegistration {
     required TResult Function(UpdateWorkableState value) updateWorkableState,
     required TResult Function(UpdateNotWorkableState value)
         updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
   }) {
     return requesterRegistration(this);
   }
@@ -2292,6 +2888,7 @@ class _$RequesterRegistration implements RequesterRegistration {
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult? Function(UpdateWorkableState value)? updateWorkableState,
     TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
   }) {
     return requesterRegistration?.call(this);
   }
@@ -2317,6 +2914,7 @@ class _$RequesterRegistration implements RequesterRegistration {
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult Function(UpdateWorkableState value)? updateWorkableState,
     TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
     required TResult orElse(),
   }) {
     if (requesterRegistration != null) {
@@ -2401,9 +2999,15 @@ class _$WorkerRegistration implements WorkerRegistration {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getAroundHelpers,
-    required TResult Function(String id, String name, double latitude,
-            double longitude, String fcmToken)
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
         insert,
     required TResult Function(
             String reqIdx,
@@ -2413,9 +3017,13 @@ class _$WorkerRegistration implements WorkerRegistration {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -2430,8 +3038,7 @@ class _$WorkerRegistration implements WorkerRegistration {
         updateUserTransportation,
     required TResult Function(String idx, String workCategory)
         updateUserWorkCategory,
-    required TResult Function(String idx, String idCardPath,
-            String faceCheckPath, List<String> infs)
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
         workerRegistration1,
     required TResult Function(String tappedWorkerIdx) getOtherUser,
     required TResult Function(
@@ -2443,10 +3050,18 @@ class _$WorkerRegistration implements WorkerRegistration {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
         sendRequestToWorker,
     required TResult Function(String idx) updateWorkableState,
     required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
   }) {
     return workerRegistration(idx);
   }
@@ -2454,9 +3069,15 @@ class _$WorkerRegistration implements WorkerRegistration {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult? Function(
             String reqIdx,
@@ -2466,9 +3087,13 @@ class _$WorkerRegistration implements WorkerRegistration {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -2482,8 +3107,7 @@ class _$WorkerRegistration implements WorkerRegistration {
     TResult? Function(String idx, String transportation)?
         updateUserTransportation,
     TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult? Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult? Function(String tappedWorkerIdx)? getOtherUser,
     TResult? Function(
@@ -2495,10 +3119,18 @@ class _$WorkerRegistration implements WorkerRegistration {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult? Function(String idx)? updateWorkableState,
     TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
   }) {
     return workerRegistration?.call(idx);
   }
@@ -2506,9 +3138,15 @@ class _$WorkerRegistration implements WorkerRegistration {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult Function(
             String reqIdx,
@@ -2518,9 +3156,13 @@ class _$WorkerRegistration implements WorkerRegistration {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -2534,8 +3176,7 @@ class _$WorkerRegistration implements WorkerRegistration {
     TResult Function(String idx, String transportation)?
         updateUserTransportation,
     TResult Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult Function(String tappedWorkerIdx)? getOtherUser,
     TResult Function(
@@ -2547,10 +3188,18 @@ class _$WorkerRegistration implements WorkerRegistration {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult Function(String idx)? updateWorkableState,
     TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
     required TResult orElse(),
   }) {
     if (workerRegistration != null) {
@@ -2584,6 +3233,7 @@ class _$WorkerRegistration implements WorkerRegistration {
     required TResult Function(UpdateWorkableState value) updateWorkableState,
     required TResult Function(UpdateNotWorkableState value)
         updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
   }) {
     return workerRegistration(this);
   }
@@ -2609,6 +3259,7 @@ class _$WorkerRegistration implements WorkerRegistration {
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult? Function(UpdateWorkableState value)? updateWorkableState,
     TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
   }) {
     return workerRegistration?.call(this);
   }
@@ -2634,6 +3285,7 @@ class _$WorkerRegistration implements WorkerRegistration {
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult Function(UpdateWorkableState value)? updateWorkableState,
     TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
     required TResult orElse(),
   }) {
     if (workerRegistration != null) {
@@ -2725,9 +3377,15 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getAroundHelpers,
-    required TResult Function(String id, String name, double latitude,
-            double longitude, String fcmToken)
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
         insert,
     required TResult Function(
             String reqIdx,
@@ -2737,9 +3395,13 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -2754,8 +3416,7 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
         updateUserTransportation,
     required TResult Function(String idx, String workCategory)
         updateUserWorkCategory,
-    required TResult Function(String idx, String idCardPath,
-            String faceCheckPath, List<String> infs)
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
         workerRegistration1,
     required TResult Function(String tappedWorkerIdx) getOtherUser,
     required TResult Function(
@@ -2767,10 +3428,18 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
         sendRequestToWorker,
     required TResult Function(String idx) updateWorkableState,
     required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
   }) {
     return updateUserPhoto(idx, fileName);
   }
@@ -2778,9 +3447,15 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult? Function(
             String reqIdx,
@@ -2790,9 +3465,13 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -2806,8 +3485,7 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
     TResult? Function(String idx, String transportation)?
         updateUserTransportation,
     TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult? Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult? Function(String tappedWorkerIdx)? getOtherUser,
     TResult? Function(
@@ -2819,10 +3497,18 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult? Function(String idx)? updateWorkableState,
     TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
   }) {
     return updateUserPhoto?.call(idx, fileName);
   }
@@ -2830,9 +3516,15 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult Function(
             String reqIdx,
@@ -2842,9 +3534,13 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -2858,8 +3554,7 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
     TResult Function(String idx, String transportation)?
         updateUserTransportation,
     TResult Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult Function(String tappedWorkerIdx)? getOtherUser,
     TResult Function(
@@ -2871,10 +3566,18 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult Function(String idx)? updateWorkableState,
     TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
     required TResult orElse(),
   }) {
     if (updateUserPhoto != null) {
@@ -2908,6 +3611,7 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
     required TResult Function(UpdateWorkableState value) updateWorkableState,
     required TResult Function(UpdateNotWorkableState value)
         updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
   }) {
     return updateUserPhoto(this);
   }
@@ -2933,6 +3637,7 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult? Function(UpdateWorkableState value)? updateWorkableState,
     TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
   }) {
     return updateUserPhoto?.call(this);
   }
@@ -2958,6 +3663,7 @@ class _$UpdateUserPhoto implements UpdateUserPhoto {
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult Function(UpdateWorkableState value)? updateWorkableState,
     TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
     required TResult orElse(),
   }) {
     if (updateUserPhoto != null) {
@@ -3050,9 +3756,15 @@ class _$UpdateUserName implements UpdateUserName {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getAroundHelpers,
-    required TResult Function(String id, String name, double latitude,
-            double longitude, String fcmToken)
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
         insert,
     required TResult Function(
             String reqIdx,
@@ -3062,9 +3774,13 @@ class _$UpdateUserName implements UpdateUserName {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -3079,8 +3795,7 @@ class _$UpdateUserName implements UpdateUserName {
         updateUserTransportation,
     required TResult Function(String idx, String workCategory)
         updateUserWorkCategory,
-    required TResult Function(String idx, String idCardPath,
-            String faceCheckPath, List<String> infs)
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
         workerRegistration1,
     required TResult Function(String tappedWorkerIdx) getOtherUser,
     required TResult Function(
@@ -3092,10 +3807,18 @@ class _$UpdateUserName implements UpdateUserName {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
         sendRequestToWorker,
     required TResult Function(String idx) updateWorkableState,
     required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
   }) {
     return updateUserName(idx, name);
   }
@@ -3103,9 +3826,15 @@ class _$UpdateUserName implements UpdateUserName {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult? Function(
             String reqIdx,
@@ -3115,9 +3844,13 @@ class _$UpdateUserName implements UpdateUserName {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -3131,8 +3864,7 @@ class _$UpdateUserName implements UpdateUserName {
     TResult? Function(String idx, String transportation)?
         updateUserTransportation,
     TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult? Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult? Function(String tappedWorkerIdx)? getOtherUser,
     TResult? Function(
@@ -3144,10 +3876,18 @@ class _$UpdateUserName implements UpdateUserName {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult? Function(String idx)? updateWorkableState,
     TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
   }) {
     return updateUserName?.call(idx, name);
   }
@@ -3155,9 +3895,15 @@ class _$UpdateUserName implements UpdateUserName {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult Function(
             String reqIdx,
@@ -3167,9 +3913,13 @@ class _$UpdateUserName implements UpdateUserName {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -3183,8 +3933,7 @@ class _$UpdateUserName implements UpdateUserName {
     TResult Function(String idx, String transportation)?
         updateUserTransportation,
     TResult Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult Function(String tappedWorkerIdx)? getOtherUser,
     TResult Function(
@@ -3196,10 +3945,18 @@ class _$UpdateUserName implements UpdateUserName {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult Function(String idx)? updateWorkableState,
     TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
     required TResult orElse(),
   }) {
     if (updateUserName != null) {
@@ -3233,6 +3990,7 @@ class _$UpdateUserName implements UpdateUserName {
     required TResult Function(UpdateWorkableState value) updateWorkableState,
     required TResult Function(UpdateNotWorkableState value)
         updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
   }) {
     return updateUserName(this);
   }
@@ -3258,6 +4016,7 @@ class _$UpdateUserName implements UpdateUserName {
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult? Function(UpdateWorkableState value)? updateWorkableState,
     TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
   }) {
     return updateUserName?.call(this);
   }
@@ -3283,6 +4042,7 @@ class _$UpdateUserName implements UpdateUserName {
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult Function(UpdateWorkableState value)? updateWorkableState,
     TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
     required TResult orElse(),
   }) {
     if (updateUserName != null) {
@@ -3375,9 +4135,15 @@ class _$UpdateUserBio implements UpdateUserBio {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getAroundHelpers,
-    required TResult Function(String id, String name, double latitude,
-            double longitude, String fcmToken)
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
         insert,
     required TResult Function(
             String reqIdx,
@@ -3387,9 +4153,13 @@ class _$UpdateUserBio implements UpdateUserBio {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -3404,8 +4174,7 @@ class _$UpdateUserBio implements UpdateUserBio {
         updateUserTransportation,
     required TResult Function(String idx, String workCategory)
         updateUserWorkCategory,
-    required TResult Function(String idx, String idCardPath,
-            String faceCheckPath, List<String> infs)
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
         workerRegistration1,
     required TResult Function(String tappedWorkerIdx) getOtherUser,
     required TResult Function(
@@ -3417,10 +4186,18 @@ class _$UpdateUserBio implements UpdateUserBio {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
         sendRequestToWorker,
     required TResult Function(String idx) updateWorkableState,
     required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
   }) {
     return updateUserBio(idx, bio);
   }
@@ -3428,9 +4205,15 @@ class _$UpdateUserBio implements UpdateUserBio {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult? Function(
             String reqIdx,
@@ -3440,9 +4223,13 @@ class _$UpdateUserBio implements UpdateUserBio {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -3456,8 +4243,7 @@ class _$UpdateUserBio implements UpdateUserBio {
     TResult? Function(String idx, String transportation)?
         updateUserTransportation,
     TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult? Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult? Function(String tappedWorkerIdx)? getOtherUser,
     TResult? Function(
@@ -3469,10 +4255,18 @@ class _$UpdateUserBio implements UpdateUserBio {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult? Function(String idx)? updateWorkableState,
     TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
   }) {
     return updateUserBio?.call(idx, bio);
   }
@@ -3480,9 +4274,15 @@ class _$UpdateUserBio implements UpdateUserBio {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult Function(
             String reqIdx,
@@ -3492,9 +4292,13 @@ class _$UpdateUserBio implements UpdateUserBio {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -3508,8 +4312,7 @@ class _$UpdateUserBio implements UpdateUserBio {
     TResult Function(String idx, String transportation)?
         updateUserTransportation,
     TResult Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult Function(String tappedWorkerIdx)? getOtherUser,
     TResult Function(
@@ -3521,10 +4324,18 @@ class _$UpdateUserBio implements UpdateUserBio {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult Function(String idx)? updateWorkableState,
     TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
     required TResult orElse(),
   }) {
     if (updateUserBio != null) {
@@ -3558,6 +4369,7 @@ class _$UpdateUserBio implements UpdateUserBio {
     required TResult Function(UpdateWorkableState value) updateWorkableState,
     required TResult Function(UpdateNotWorkableState value)
         updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
   }) {
     return updateUserBio(this);
   }
@@ -3583,6 +4395,7 @@ class _$UpdateUserBio implements UpdateUserBio {
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult? Function(UpdateWorkableState value)? updateWorkableState,
     TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
   }) {
     return updateUserBio?.call(this);
   }
@@ -3608,6 +4421,7 @@ class _$UpdateUserBio implements UpdateUserBio {
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult Function(UpdateWorkableState value)? updateWorkableState,
     TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
     required TResult orElse(),
   }) {
     if (updateUserBio != null) {
@@ -3702,9 +4516,15 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getAroundHelpers,
-    required TResult Function(String id, String name, double latitude,
-            double longitude, String fcmToken)
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
         insert,
     required TResult Function(
             String reqIdx,
@@ -3714,9 +4534,13 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -3731,8 +4555,7 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
         updateUserTransportation,
     required TResult Function(String idx, String workCategory)
         updateUserWorkCategory,
-    required TResult Function(String idx, String idCardPath,
-            String faceCheckPath, List<String> infs)
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
         workerRegistration1,
     required TResult Function(String tappedWorkerIdx) getOtherUser,
     required TResult Function(
@@ -3744,10 +4567,18 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
         sendRequestToWorker,
     required TResult Function(String idx) updateWorkableState,
     required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
   }) {
     return updateUserIntroduce(idx, introduce);
   }
@@ -3755,9 +4586,15 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult? Function(
             String reqIdx,
@@ -3767,9 +4604,13 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -3783,8 +4624,7 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
     TResult? Function(String idx, String transportation)?
         updateUserTransportation,
     TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult? Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult? Function(String tappedWorkerIdx)? getOtherUser,
     TResult? Function(
@@ -3796,10 +4636,18 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult? Function(String idx)? updateWorkableState,
     TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
   }) {
     return updateUserIntroduce?.call(idx, introduce);
   }
@@ -3807,9 +4655,15 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult Function(
             String reqIdx,
@@ -3819,9 +4673,13 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -3835,8 +4693,7 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
     TResult Function(String idx, String transportation)?
         updateUserTransportation,
     TResult Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult Function(String tappedWorkerIdx)? getOtherUser,
     TResult Function(
@@ -3848,10 +4705,18 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult Function(String idx)? updateWorkableState,
     TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
     required TResult orElse(),
   }) {
     if (updateUserIntroduce != null) {
@@ -3885,6 +4750,7 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
     required TResult Function(UpdateWorkableState value) updateWorkableState,
     required TResult Function(UpdateNotWorkableState value)
         updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
   }) {
     return updateUserIntroduce(this);
   }
@@ -3910,6 +4776,7 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult? Function(UpdateWorkableState value)? updateWorkableState,
     TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
   }) {
     return updateUserIntroduce?.call(this);
   }
@@ -3935,6 +4802,7 @@ class _$UpdateUserIntroduce implements UpdateUserIntroduce {
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult Function(UpdateWorkableState value)? updateWorkableState,
     TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
     required TResult orElse(),
   }) {
     if (updateUserIntroduce != null) {
@@ -4030,9 +4898,15 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getAroundHelpers,
-    required TResult Function(String id, String name, double latitude,
-            double longitude, String fcmToken)
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
         insert,
     required TResult Function(
             String reqIdx,
@@ -4042,9 +4916,13 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -4059,8 +4937,7 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
         updateUserTransportation,
     required TResult Function(String idx, String workCategory)
         updateUserWorkCategory,
-    required TResult Function(String idx, String idCardPath,
-            String faceCheckPath, List<String> infs)
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
         workerRegistration1,
     required TResult Function(String tappedWorkerIdx) getOtherUser,
     required TResult Function(
@@ -4072,10 +4949,18 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
         sendRequestToWorker,
     required TResult Function(String idx) updateWorkableState,
     required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
   }) {
     return updateUserTransportation(idx, transportation);
   }
@@ -4083,9 +4968,15 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult? Function(
             String reqIdx,
@@ -4095,9 +4986,13 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -4111,8 +5006,7 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
     TResult? Function(String idx, String transportation)?
         updateUserTransportation,
     TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult? Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult? Function(String tappedWorkerIdx)? getOtherUser,
     TResult? Function(
@@ -4124,10 +5018,18 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult? Function(String idx)? updateWorkableState,
     TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
   }) {
     return updateUserTransportation?.call(idx, transportation);
   }
@@ -4135,9 +5037,15 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult Function(
             String reqIdx,
@@ -4147,9 +5055,13 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -4163,8 +5075,7 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
     TResult Function(String idx, String transportation)?
         updateUserTransportation,
     TResult Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult Function(String tappedWorkerIdx)? getOtherUser,
     TResult Function(
@@ -4176,10 +5087,18 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult Function(String idx)? updateWorkableState,
     TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
     required TResult orElse(),
   }) {
     if (updateUserTransportation != null) {
@@ -4213,6 +5132,7 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
     required TResult Function(UpdateWorkableState value) updateWorkableState,
     required TResult Function(UpdateNotWorkableState value)
         updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
   }) {
     return updateUserTransportation(this);
   }
@@ -4238,6 +5158,7 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult? Function(UpdateWorkableState value)? updateWorkableState,
     TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
   }) {
     return updateUserTransportation?.call(this);
   }
@@ -4263,6 +5184,7 @@ class _$UpdateUserTransportation implements UpdateUserTransportation {
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult Function(UpdateWorkableState value)? updateWorkableState,
     TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
     required TResult orElse(),
   }) {
     if (updateUserTransportation != null) {
@@ -4358,9 +5280,15 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getAroundHelpers,
-    required TResult Function(String id, String name, double latitude,
-            double longitude, String fcmToken)
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
         insert,
     required TResult Function(
             String reqIdx,
@@ -4370,9 +5298,13 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -4387,8 +5319,7 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
         updateUserTransportation,
     required TResult Function(String idx, String workCategory)
         updateUserWorkCategory,
-    required TResult Function(String idx, String idCardPath,
-            String faceCheckPath, List<String> infs)
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
         workerRegistration1,
     required TResult Function(String tappedWorkerIdx) getOtherUser,
     required TResult Function(
@@ -4400,10 +5331,18 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
         sendRequestToWorker,
     required TResult Function(String idx) updateWorkableState,
     required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
   }) {
     return updateUserWorkCategory(idx, workCategory);
   }
@@ -4411,9 +5350,15 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult? Function(
             String reqIdx,
@@ -4423,9 +5368,13 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -4439,8 +5388,7 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
     TResult? Function(String idx, String transportation)?
         updateUserTransportation,
     TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult? Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult? Function(String tappedWorkerIdx)? getOtherUser,
     TResult? Function(
@@ -4452,10 +5400,18 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult? Function(String idx)? updateWorkableState,
     TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
   }) {
     return updateUserWorkCategory?.call(idx, workCategory);
   }
@@ -4463,9 +5419,15 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult Function(
             String reqIdx,
@@ -4475,9 +5437,13 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -4491,8 +5457,7 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
     TResult Function(String idx, String transportation)?
         updateUserTransportation,
     TResult Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult Function(String tappedWorkerIdx)? getOtherUser,
     TResult Function(
@@ -4504,10 +5469,18 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult Function(String idx)? updateWorkableState,
     TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
     required TResult orElse(),
   }) {
     if (updateUserWorkCategory != null) {
@@ -4541,6 +5514,7 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
     required TResult Function(UpdateWorkableState value) updateWorkableState,
     required TResult Function(UpdateNotWorkableState value)
         updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
   }) {
     return updateUserWorkCategory(this);
   }
@@ -4566,6 +5540,7 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult? Function(UpdateWorkableState value)? updateWorkableState,
     TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
   }) {
     return updateUserWorkCategory?.call(this);
   }
@@ -4591,6 +5566,7 @@ class _$UpdateUserWorkCategory implements UpdateUserWorkCategory {
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult Function(UpdateWorkableState value)? updateWorkableState,
     TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
     required TResult orElse(),
   }) {
     if (updateUserWorkCategory != null) {
@@ -4711,9 +5687,15 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getAroundHelpers,
-    required TResult Function(String id, String name, double latitude,
-            double longitude, String fcmToken)
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
         insert,
     required TResult Function(
             String reqIdx,
@@ -4723,9 +5705,13 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -4740,8 +5726,7 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
         updateUserTransportation,
     required TResult Function(String idx, String workCategory)
         updateUserWorkCategory,
-    required TResult Function(String idx, String idCardPath,
-            String faceCheckPath, List<String> infs)
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
         workerRegistration1,
     required TResult Function(String tappedWorkerIdx) getOtherUser,
     required TResult Function(
@@ -4753,10 +5738,18 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
         sendRequestToWorker,
     required TResult Function(String idx) updateWorkableState,
     required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
   }) {
     return workerRegistration1(idx, idCardPath, faceCheckPath, infs);
   }
@@ -4764,9 +5757,15 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult? Function(
             String reqIdx,
@@ -4776,9 +5775,13 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -4792,8 +5795,7 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
     TResult? Function(String idx, String transportation)?
         updateUserTransportation,
     TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult? Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult? Function(String tappedWorkerIdx)? getOtherUser,
     TResult? Function(
@@ -4805,10 +5807,18 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult? Function(String idx)? updateWorkableState,
     TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
   }) {
     return workerRegistration1?.call(idx, idCardPath, faceCheckPath, infs);
   }
@@ -4816,9 +5826,15 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult Function(
             String reqIdx,
@@ -4828,9 +5844,13 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -4844,8 +5864,7 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
     TResult Function(String idx, String transportation)?
         updateUserTransportation,
     TResult Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult Function(String tappedWorkerIdx)? getOtherUser,
     TResult Function(
@@ -4857,10 +5876,18 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult Function(String idx)? updateWorkableState,
     TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
     required TResult orElse(),
   }) {
     if (workerRegistration1 != null) {
@@ -4894,6 +5921,7 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
     required TResult Function(UpdateWorkableState value) updateWorkableState,
     required TResult Function(UpdateNotWorkableState value)
         updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
   }) {
     return workerRegistration1(this);
   }
@@ -4919,6 +5947,7 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult? Function(UpdateWorkableState value)? updateWorkableState,
     TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
   }) {
     return workerRegistration1?.call(this);
   }
@@ -4944,6 +5973,7 @@ class _$WorkerRegistration1 implements WorkerRegistration1 {
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult Function(UpdateWorkableState value)? updateWorkableState,
     TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
     required TResult orElse(),
   }) {
     if (workerRegistration1 != null) {
@@ -5034,9 +6064,15 @@ class _$GetOtherUser implements GetOtherUser {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getAroundHelpers,
-    required TResult Function(String id, String name, double latitude,
-            double longitude, String fcmToken)
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
         insert,
     required TResult Function(
             String reqIdx,
@@ -5046,9 +6082,13 @@ class _$GetOtherUser implements GetOtherUser {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -5063,8 +6103,7 @@ class _$GetOtherUser implements GetOtherUser {
         updateUserTransportation,
     required TResult Function(String idx, String workCategory)
         updateUserWorkCategory,
-    required TResult Function(String idx, String idCardPath,
-            String faceCheckPath, List<String> infs)
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
         workerRegistration1,
     required TResult Function(String tappedWorkerIdx) getOtherUser,
     required TResult Function(
@@ -5076,10 +6115,18 @@ class _$GetOtherUser implements GetOtherUser {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
         sendRequestToWorker,
     required TResult Function(String idx) updateWorkableState,
     required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
   }) {
     return getOtherUser(tappedWorkerIdx);
   }
@@ -5087,9 +6134,15 @@ class _$GetOtherUser implements GetOtherUser {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult? Function(
             String reqIdx,
@@ -5099,9 +6152,13 @@ class _$GetOtherUser implements GetOtherUser {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -5115,8 +6172,7 @@ class _$GetOtherUser implements GetOtherUser {
     TResult? Function(String idx, String transportation)?
         updateUserTransportation,
     TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult? Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult? Function(String tappedWorkerIdx)? getOtherUser,
     TResult? Function(
@@ -5128,10 +6184,18 @@ class _$GetOtherUser implements GetOtherUser {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult? Function(String idx)? updateWorkableState,
     TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
   }) {
     return getOtherUser?.call(tappedWorkerIdx);
   }
@@ -5139,9 +6203,15 @@ class _$GetOtherUser implements GetOtherUser {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult Function(
             String reqIdx,
@@ -5151,9 +6221,13 @@ class _$GetOtherUser implements GetOtherUser {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -5167,8 +6241,7 @@ class _$GetOtherUser implements GetOtherUser {
     TResult Function(String idx, String transportation)?
         updateUserTransportation,
     TResult Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult Function(String tappedWorkerIdx)? getOtherUser,
     TResult Function(
@@ -5180,10 +6253,18 @@ class _$GetOtherUser implements GetOtherUser {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult Function(String idx)? updateWorkableState,
     TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
     required TResult orElse(),
   }) {
     if (getOtherUser != null) {
@@ -5217,6 +6298,7 @@ class _$GetOtherUser implements GetOtherUser {
     required TResult Function(UpdateWorkableState value) updateWorkableState,
     required TResult Function(UpdateNotWorkableState value)
         updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
   }) {
     return getOtherUser(this);
   }
@@ -5242,6 +6324,7 @@ class _$GetOtherUser implements GetOtherUser {
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult? Function(UpdateWorkableState value)? updateWorkableState,
     TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
   }) {
     return getOtherUser?.call(this);
   }
@@ -5267,6 +6350,7 @@ class _$GetOtherUser implements GetOtherUser {
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult Function(UpdateWorkableState value)? updateWorkableState,
     TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
     required TResult orElse(),
   }) {
     if (getOtherUser != null) {
@@ -5300,7 +6384,14 @@ abstract class _$$SendRequestToWorkerCopyWith<$Res> {
       String address,
       String latitude,
       String longitude,
-      String fcmToken});
+      String date,
+      String runningTime,
+      String reword,
+      List<Map<String, dynamic>> waypointsLocation,
+      List<String> waypointsContent,
+      String fcmToken,
+      int requestType,
+      int secondType});
 }
 
 /// @nodoc
@@ -5322,7 +6413,14 @@ class __$$SendRequestToWorkerCopyWithImpl<$Res>
     Object? address = null,
     Object? latitude = null,
     Object? longitude = null,
+    Object? date = null,
+    Object? runningTime = null,
+    Object? reword = null,
+    Object? waypointsLocation = null,
+    Object? waypointsContent = null,
     Object? fcmToken = null,
+    Object? requestType = null,
+    Object? secondType = null,
   }) {
     return _then(_$SendRequestToWorker(
       null == reqIdx
@@ -5357,10 +6455,38 @@ class __$$SendRequestToWorkerCopyWithImpl<$Res>
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as String,
+      null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == runningTime
+          ? _value.runningTime
+          : runningTime // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == reword
+          ? _value.reword
+          : reword // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == waypointsLocation
+          ? _value._waypointsLocation
+          : waypointsLocation // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>,
+      null == waypointsContent
+          ? _value._waypointsContent
+          : waypointsContent // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       null == fcmToken
           ? _value.fcmToken
           : fcmToken // ignore: cast_nullable_to_non_nullable
               as String,
+      null == requestType
+          ? _value.requestType
+          : requestType // ignore: cast_nullable_to_non_nullable
+              as int,
+      null == secondType
+          ? _value.secondType
+          : secondType // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -5377,7 +6503,16 @@ class _$SendRequestToWorker implements SendRequestToWorker {
       this.address,
       this.latitude,
       this.longitude,
-      this.fcmToken);
+      this.date,
+      this.runningTime,
+      this.reword,
+      final List<Map<String, dynamic>> waypointsLocation,
+      final List<String> waypointsContent,
+      this.fcmToken,
+      this.requestType,
+      this.secondType)
+      : _waypointsLocation = waypointsLocation,
+        _waypointsContent = waypointsContent;
 
   @override
   final String reqIdx;
@@ -5396,11 +6531,39 @@ class _$SendRequestToWorker implements SendRequestToWorker {
   @override
   final String longitude;
   @override
+  final String date;
+  @override
+  final String runningTime;
+  @override
+  final String reword;
+  final List<Map<String, dynamic>> _waypointsLocation;
+  @override
+  List<Map<String, dynamic>> get waypointsLocation {
+    if (_waypointsLocation is EqualUnmodifiableListView)
+      return _waypointsLocation;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_waypointsLocation);
+  }
+
+  final List<String> _waypointsContent;
+  @override
+  List<String> get waypointsContent {
+    if (_waypointsContent is EqualUnmodifiableListView)
+      return _waypointsContent;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_waypointsContent);
+  }
+
+  @override
   final String fcmToken;
+  @override
+  final int requestType;
+  @override
+  final int secondType;
 
   @override
   String toString() {
-    return 'UsersEvent.sendRequestToWorker(reqIdx: $reqIdx, workerIdx: $workerIdx, categoryIdx: $categoryIdx, title: $title, content: $content, address: $address, latitude: $latitude, longitude: $longitude, fcmToken: $fcmToken)';
+    return 'UsersEvent.sendRequestToWorker(reqIdx: $reqIdx, workerIdx: $workerIdx, categoryIdx: $categoryIdx, title: $title, content: $content, address: $address, latitude: $latitude, longitude: $longitude, date: $date, runningTime: $runningTime, reword: $reword, waypointsLocation: $waypointsLocation, waypointsContent: $waypointsContent, fcmToken: $fcmToken, requestType: $requestType, secondType: $secondType)';
   }
 
   @override
@@ -5420,13 +6583,41 @@ class _$SendRequestToWorker implements SendRequestToWorker {
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
                 other.longitude == longitude) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.runningTime, runningTime) ||
+                other.runningTime == runningTime) &&
+            (identical(other.reword, reword) || other.reword == reword) &&
+            const DeepCollectionEquality()
+                .equals(other._waypointsLocation, _waypointsLocation) &&
+            const DeepCollectionEquality()
+                .equals(other._waypointsContent, _waypointsContent) &&
             (identical(other.fcmToken, fcmToken) ||
-                other.fcmToken == fcmToken));
+                other.fcmToken == fcmToken) &&
+            (identical(other.requestType, requestType) ||
+                other.requestType == requestType) &&
+            (identical(other.secondType, secondType) ||
+                other.secondType == secondType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, reqIdx, workerIdx, categoryIdx,
-      title, content, address, latitude, longitude, fcmToken);
+  int get hashCode => Object.hash(
+      runtimeType,
+      reqIdx,
+      workerIdx,
+      categoryIdx,
+      title,
+      content,
+      address,
+      latitude,
+      longitude,
+      date,
+      runningTime,
+      reword,
+      const DeepCollectionEquality().hash(_waypointsLocation),
+      const DeepCollectionEquality().hash(_waypointsContent),
+      fcmToken,
+      requestType,
+      secondType);
 
   @JsonKey(ignore: true)
   @override
@@ -5438,9 +6629,15 @@ class _$SendRequestToWorker implements SendRequestToWorker {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getAroundHelpers,
-    required TResult Function(String id, String name, double latitude,
-            double longitude, String fcmToken)
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
         insert,
     required TResult Function(
             String reqIdx,
@@ -5450,9 +6647,13 @@ class _$SendRequestToWorker implements SendRequestToWorker {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -5467,8 +6668,7 @@ class _$SendRequestToWorker implements SendRequestToWorker {
         updateUserTransportation,
     required TResult Function(String idx, String workCategory)
         updateUserWorkCategory,
-    required TResult Function(String idx, String idCardPath,
-            String faceCheckPath, List<String> infs)
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
         workerRegistration1,
     required TResult Function(String tappedWorkerIdx) getOtherUser,
     required TResult Function(
@@ -5480,21 +6680,50 @@ class _$SendRequestToWorker implements SendRequestToWorker {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
         sendRequestToWorker,
     required TResult Function(String idx) updateWorkableState,
     required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
   }) {
-    return sendRequestToWorker(reqIdx, workerIdx, categoryIdx, title, content,
-        address, latitude, longitude, fcmToken);
+    return sendRequestToWorker(
+        reqIdx,
+        workerIdx,
+        categoryIdx,
+        title,
+        content,
+        address,
+        latitude,
+        longitude,
+        date,
+        runningTime,
+        reword,
+        waypointsLocation,
+        waypointsContent,
+        fcmToken,
+        requestType,
+        secondType);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult? Function(
             String reqIdx,
@@ -5504,9 +6733,13 @@ class _$SendRequestToWorker implements SendRequestToWorker {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -5520,8 +6753,7 @@ class _$SendRequestToWorker implements SendRequestToWorker {
     TResult? Function(String idx, String transportation)?
         updateUserTransportation,
     TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult? Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult? Function(String tappedWorkerIdx)? getOtherUser,
     TResult? Function(
@@ -5533,21 +6765,50 @@ class _$SendRequestToWorker implements SendRequestToWorker {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult? Function(String idx)? updateWorkableState,
     TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
   }) {
-    return sendRequestToWorker?.call(reqIdx, workerIdx, categoryIdx, title,
-        content, address, latitude, longitude, fcmToken);
+    return sendRequestToWorker?.call(
+        reqIdx,
+        workerIdx,
+        categoryIdx,
+        title,
+        content,
+        address,
+        latitude,
+        longitude,
+        date,
+        runningTime,
+        reword,
+        waypointsLocation,
+        waypointsContent,
+        fcmToken,
+        requestType,
+        secondType);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult Function(
             String reqIdx,
@@ -5557,9 +6818,13 @@ class _$SendRequestToWorker implements SendRequestToWorker {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -5573,8 +6838,7 @@ class _$SendRequestToWorker implements SendRequestToWorker {
     TResult Function(String idx, String transportation)?
         updateUserTransportation,
     TResult Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult Function(String tappedWorkerIdx)? getOtherUser,
     TResult Function(
@@ -5586,15 +6850,38 @@ class _$SendRequestToWorker implements SendRequestToWorker {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult Function(String idx)? updateWorkableState,
     TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
     required TResult orElse(),
   }) {
     if (sendRequestToWorker != null) {
-      return sendRequestToWorker(reqIdx, workerIdx, categoryIdx, title, content,
-          address, latitude, longitude, fcmToken);
+      return sendRequestToWorker(
+          reqIdx,
+          workerIdx,
+          categoryIdx,
+          title,
+          content,
+          address,
+          latitude,
+          longitude,
+          date,
+          runningTime,
+          reword,
+          waypointsLocation,
+          waypointsContent,
+          fcmToken,
+          requestType,
+          secondType);
     }
     return orElse();
   }
@@ -5624,6 +6911,7 @@ class _$SendRequestToWorker implements SendRequestToWorker {
     required TResult Function(UpdateWorkableState value) updateWorkableState,
     required TResult Function(UpdateNotWorkableState value)
         updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
   }) {
     return sendRequestToWorker(this);
   }
@@ -5649,6 +6937,7 @@ class _$SendRequestToWorker implements SendRequestToWorker {
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult? Function(UpdateWorkableState value)? updateWorkableState,
     TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
   }) {
     return sendRequestToWorker?.call(this);
   }
@@ -5674,6 +6963,7 @@ class _$SendRequestToWorker implements SendRequestToWorker {
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult Function(UpdateWorkableState value)? updateWorkableState,
     TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
     required TResult orElse(),
   }) {
     if (sendRequestToWorker != null) {
@@ -5693,7 +6983,14 @@ abstract class SendRequestToWorker implements UsersEvent {
       final String address,
       final String latitude,
       final String longitude,
-      final String fcmToken) = _$SendRequestToWorker;
+      final String date,
+      final String runningTime,
+      final String reword,
+      final List<Map<String, dynamic>> waypointsLocation,
+      final List<String> waypointsContent,
+      final String fcmToken,
+      final int requestType,
+      final int secondType) = _$SendRequestToWorker;
 
   String get reqIdx;
   String get workerIdx;
@@ -5703,7 +7000,14 @@ abstract class SendRequestToWorker implements UsersEvent {
   String get address;
   String get latitude;
   String get longitude;
+  String get date;
+  String get runningTime;
+  String get reword;
+  List<Map<String, dynamic>> get waypointsLocation;
+  List<String> get waypointsContent;
   String get fcmToken;
+  int get requestType;
+  int get secondType;
   @JsonKey(ignore: true)
   _$$SendRequestToWorkerCopyWith<_$SendRequestToWorker> get copyWith =>
       throw _privateConstructorUsedError;
@@ -5774,9 +7078,15 @@ class _$UpdateWorkableState implements UpdateWorkableState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getAroundHelpers,
-    required TResult Function(String id, String name, double latitude,
-            double longitude, String fcmToken)
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
         insert,
     required TResult Function(
             String reqIdx,
@@ -5786,9 +7096,13 @@ class _$UpdateWorkableState implements UpdateWorkableState {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -5803,8 +7117,7 @@ class _$UpdateWorkableState implements UpdateWorkableState {
         updateUserTransportation,
     required TResult Function(String idx, String workCategory)
         updateUserWorkCategory,
-    required TResult Function(String idx, String idCardPath,
-            String faceCheckPath, List<String> infs)
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
         workerRegistration1,
     required TResult Function(String tappedWorkerIdx) getOtherUser,
     required TResult Function(
@@ -5816,10 +7129,18 @@ class _$UpdateWorkableState implements UpdateWorkableState {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
         sendRequestToWorker,
     required TResult Function(String idx) updateWorkableState,
     required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
   }) {
     return updateWorkableState(idx);
   }
@@ -5827,9 +7148,15 @@ class _$UpdateWorkableState implements UpdateWorkableState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult? Function(
             String reqIdx,
@@ -5839,9 +7166,13 @@ class _$UpdateWorkableState implements UpdateWorkableState {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -5855,8 +7186,7 @@ class _$UpdateWorkableState implements UpdateWorkableState {
     TResult? Function(String idx, String transportation)?
         updateUserTransportation,
     TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult? Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult? Function(String tappedWorkerIdx)? getOtherUser,
     TResult? Function(
@@ -5868,10 +7198,18 @@ class _$UpdateWorkableState implements UpdateWorkableState {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult? Function(String idx)? updateWorkableState,
     TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
   }) {
     return updateWorkableState?.call(idx);
   }
@@ -5879,9 +7217,15 @@ class _$UpdateWorkableState implements UpdateWorkableState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult Function(
             String reqIdx,
@@ -5891,9 +7235,13 @@ class _$UpdateWorkableState implements UpdateWorkableState {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -5907,8 +7255,7 @@ class _$UpdateWorkableState implements UpdateWorkableState {
     TResult Function(String idx, String transportation)?
         updateUserTransportation,
     TResult Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult Function(String tappedWorkerIdx)? getOtherUser,
     TResult Function(
@@ -5920,10 +7267,18 @@ class _$UpdateWorkableState implements UpdateWorkableState {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult Function(String idx)? updateWorkableState,
     TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
     required TResult orElse(),
   }) {
     if (updateWorkableState != null) {
@@ -5957,6 +7312,7 @@ class _$UpdateWorkableState implements UpdateWorkableState {
     required TResult Function(UpdateWorkableState value) updateWorkableState,
     required TResult Function(UpdateNotWorkableState value)
         updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
   }) {
     return updateWorkableState(this);
   }
@@ -5982,6 +7338,7 @@ class _$UpdateWorkableState implements UpdateWorkableState {
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult? Function(UpdateWorkableState value)? updateWorkableState,
     TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
   }) {
     return updateWorkableState?.call(this);
   }
@@ -6007,6 +7364,7 @@ class _$UpdateWorkableState implements UpdateWorkableState {
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult Function(UpdateWorkableState value)? updateWorkableState,
     TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
     required TResult orElse(),
   }) {
     if (updateWorkableState != null) {
@@ -6090,9 +7448,15 @@ class _$UpdateNotWorkableState implements UpdateNotWorkableState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String id) getAroundHelpers,
-    required TResult Function(String id, String name, double latitude,
-            double longitude, String fcmToken)
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
         insert,
     required TResult Function(
             String reqIdx,
@@ -6102,9 +7466,13 @@ class _$UpdateNotWorkableState implements UpdateNotWorkableState {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
         insertRequest,
     required TResult Function(String id) getUser,
     required TResult Function(String idx, double latitude, double longitude)
@@ -6119,8 +7487,7 @@ class _$UpdateNotWorkableState implements UpdateNotWorkableState {
         updateUserTransportation,
     required TResult Function(String idx, String workCategory)
         updateUserWorkCategory,
-    required TResult Function(String idx, String idCardPath,
-            String faceCheckPath, List<String> infs)
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
         workerRegistration1,
     required TResult Function(String tappedWorkerIdx) getOtherUser,
     required TResult Function(
@@ -6132,10 +7499,18 @@ class _$UpdateNotWorkableState implements UpdateNotWorkableState {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
         sendRequestToWorker,
     required TResult Function(String idx) updateWorkableState,
     required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
   }) {
     return updateNotWorkableState(idx);
   }
@@ -6143,9 +7518,15 @@ class _$UpdateNotWorkableState implements UpdateNotWorkableState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String id)? getAroundHelpers,
-    TResult? Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult? Function(
             String reqIdx,
@@ -6155,9 +7536,13 @@ class _$UpdateNotWorkableState implements UpdateNotWorkableState {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult? Function(String id)? getUser,
     TResult? Function(String idx, double latitude, double longitude)?
@@ -6171,8 +7556,7 @@ class _$UpdateNotWorkableState implements UpdateNotWorkableState {
     TResult? Function(String idx, String transportation)?
         updateUserTransportation,
     TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult? Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult? Function(String tappedWorkerIdx)? getOtherUser,
     TResult? Function(
@@ -6184,10 +7568,18 @@ class _$UpdateNotWorkableState implements UpdateNotWorkableState {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult? Function(String idx)? updateWorkableState,
     TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
   }) {
     return updateNotWorkableState?.call(idx);
   }
@@ -6195,9 +7587,15 @@ class _$UpdateNotWorkableState implements UpdateNotWorkableState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String id)? getAroundHelpers,
-    TResult Function(String id, String name, double latitude, double longitude,
-            String fcmToken)?
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
         insert,
     TResult Function(
             String reqIdx,
@@ -6207,9 +7605,13 @@ class _$UpdateNotWorkableState implements UpdateNotWorkableState {
             String address,
             String latitude,
             String longitude,
-            DateTime date,
+            String date,
             String runningTime,
-            String reward)?
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
         insertRequest,
     TResult Function(String id)? getUser,
     TResult Function(String idx, double latitude, double longitude)?
@@ -6223,8 +7625,7 @@ class _$UpdateNotWorkableState implements UpdateNotWorkableState {
     TResult Function(String idx, String transportation)?
         updateUserTransportation,
     TResult Function(String idx, String workCategory)? updateUserWorkCategory,
-    TResult Function(String idx, String idCardPath, String faceCheckPath,
-            List<String> infs)?
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
         workerRegistration1,
     TResult Function(String tappedWorkerIdx)? getOtherUser,
     TResult Function(
@@ -6236,10 +7637,18 @@ class _$UpdateNotWorkableState implements UpdateNotWorkableState {
             String address,
             String latitude,
             String longitude,
-            String fcmToken)?
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
         sendRequestToWorker,
     TResult Function(String idx)? updateWorkableState,
     TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
     required TResult orElse(),
   }) {
     if (updateNotWorkableState != null) {
@@ -6273,6 +7682,7 @@ class _$UpdateNotWorkableState implements UpdateNotWorkableState {
     required TResult Function(UpdateWorkableState value) updateWorkableState,
     required TResult Function(UpdateNotWorkableState value)
         updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
   }) {
     return updateNotWorkableState(this);
   }
@@ -6298,6 +7708,7 @@ class _$UpdateNotWorkableState implements UpdateNotWorkableState {
     TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult? Function(UpdateWorkableState value)? updateWorkableState,
     TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
   }) {
     return updateNotWorkableState?.call(this);
   }
@@ -6323,6 +7734,7 @@ class _$UpdateNotWorkableState implements UpdateNotWorkableState {
     TResult Function(SendRequestToWorker value)? sendRequestToWorker,
     TResult Function(UpdateWorkableState value)? updateWorkableState,
     TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
     required TResult orElse(),
   }) {
     if (updateNotWorkableState != null) {
@@ -6339,5 +7751,373 @@ abstract class UpdateNotWorkableState implements UsersEvent {
   String get idx;
   @JsonKey(ignore: true)
   _$$UpdateNotWorkableStateCopyWith<_$UpdateNotWorkableState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$MyWalletCopyWith<$Res> {
+  factory _$$MyWalletCopyWith(
+          _$MyWallet value, $Res Function(_$MyWallet) then) =
+      __$$MyWalletCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String idx});
+}
+
+/// @nodoc
+class __$$MyWalletCopyWithImpl<$Res>
+    extends _$UsersEventCopyWithImpl<$Res, _$MyWallet>
+    implements _$$MyWalletCopyWith<$Res> {
+  __$$MyWalletCopyWithImpl(_$MyWallet _value, $Res Function(_$MyWallet) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idx = null,
+  }) {
+    return _then(_$MyWallet(
+      null == idx
+          ? _value.idx
+          : idx // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$MyWallet implements MyWallet {
+  const _$MyWallet(this.idx);
+
+  @override
+  final String idx;
+
+  @override
+  String toString() {
+    return 'UsersEvent.myWallet(idx: $idx)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MyWallet &&
+            (identical(other.idx, idx) || other.idx == idx));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, idx);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MyWalletCopyWith<_$MyWallet> get copyWith =>
+      __$$MyWalletCopyWithImpl<_$MyWallet>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)
+        getAroundHelpers,
+    required TResult Function(String id, String name, String bio,
+            double latitude, double longitude, String fcmToken)
+        insert,
+    required TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String date,
+            String runningTime,
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)
+        insertRequest,
+    required TResult Function(String id) getUser,
+    required TResult Function(String idx, double latitude, double longitude)
+        updateLocation,
+    required TResult Function(String idx) requesterRegistration,
+    required TResult Function(String idx) workerRegistration,
+    required TResult Function(String idx, String fileName) updateUserPhoto,
+    required TResult Function(String idx, String name) updateUserName,
+    required TResult Function(String idx, String bio) updateUserBio,
+    required TResult Function(String idx, String introduce) updateUserIntroduce,
+    required TResult Function(String idx, String transportation)
+        updateUserTransportation,
+    required TResult Function(String idx, String workCategory)
+        updateUserWorkCategory,
+    required TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)
+        workerRegistration1,
+    required TResult Function(String tappedWorkerIdx) getOtherUser,
+    required TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)
+        sendRequestToWorker,
+    required TResult Function(String idx) updateWorkableState,
+    required TResult Function(String idx) updateNotWorkableState,
+    required TResult Function(String idx) myWallet,
+  }) {
+    return myWallet(idx);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult? Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
+        insert,
+    TResult? Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String date,
+            String runningTime,
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
+        insertRequest,
+    TResult? Function(String id)? getUser,
+    TResult? Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult? Function(String idx)? requesterRegistration,
+    TResult? Function(String idx)? workerRegistration,
+    TResult? Function(String idx, String fileName)? updateUserPhoto,
+    TResult? Function(String idx, String name)? updateUserName,
+    TResult? Function(String idx, String bio)? updateUserBio,
+    TResult? Function(String idx, String introduce)? updateUserIntroduce,
+    TResult? Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult? Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult? Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
+        workerRegistration1,
+    TResult? Function(String tappedWorkerIdx)? getOtherUser,
+    TResult? Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
+        sendRequestToWorker,
+    TResult? Function(String idx)? updateWorkableState,
+    TResult? Function(String idx)? updateNotWorkableState,
+    TResult? Function(String idx)? myWallet,
+  }) {
+    return myWallet?.call(idx);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String id,
+            List<bool> workCategoryCheckValues,
+            List<bool> ageGroupCheckValues,
+            List<bool> genderCheckValues,
+            int distanceIndex)?
+        getAroundHelpers,
+    TResult Function(String id, String name, String bio, double latitude,
+            double longitude, String fcmToken)?
+        insert,
+    TResult Function(
+            String reqIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String date,
+            String runningTime,
+            String reward,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            int requestType,
+            int secondType)?
+        insertRequest,
+    TResult Function(String id)? getUser,
+    TResult Function(String idx, double latitude, double longitude)?
+        updateLocation,
+    TResult Function(String idx)? requesterRegistration,
+    TResult Function(String idx)? workerRegistration,
+    TResult Function(String idx, String fileName)? updateUserPhoto,
+    TResult Function(String idx, String name)? updateUserName,
+    TResult Function(String idx, String bio)? updateUserBio,
+    TResult Function(String idx, String introduce)? updateUserIntroduce,
+    TResult Function(String idx, String transportation)?
+        updateUserTransportation,
+    TResult Function(String idx, String workCategory)? updateUserWorkCategory,
+    TResult Function(String idx, String idCardPath, String faceCheckPath, List<String> infs)?
+        workerRegistration1,
+    TResult Function(String tappedWorkerIdx)? getOtherUser,
+    TResult Function(
+            String reqIdx,
+            String workerIdx,
+            String categoryIdx,
+            String title,
+            String content,
+            String address,
+            String latitude,
+            String longitude,
+            String date,
+            String runningTime,
+            String reword,
+            List<Map<String, dynamic>> waypointsLocation,
+            List<String> waypointsContent,
+            String fcmToken,
+            int requestType,
+            int secondType)?
+        sendRequestToWorker,
+    TResult Function(String idx)? updateWorkableState,
+    TResult Function(String idx)? updateNotWorkableState,
+    TResult Function(String idx)? myWallet,
+    required TResult orElse(),
+  }) {
+    if (myWallet != null) {
+      return myWallet(idx);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetAroundHelpers value) getAroundHelpers,
+    required TResult Function(Insert value) insert,
+    required TResult Function(InsertRequest value) insertRequest,
+    required TResult Function(GetUser value) getUser,
+    required TResult Function(UpdateLocation value) updateLocation,
+    required TResult Function(RequesterRegistration value)
+        requesterRegistration,
+    required TResult Function(WorkerRegistration value) workerRegistration,
+    required TResult Function(UpdateUserPhoto value) updateUserPhoto,
+    required TResult Function(UpdateUserName value) updateUserName,
+    required TResult Function(UpdateUserBio value) updateUserBio,
+    required TResult Function(UpdateUserIntroduce value) updateUserIntroduce,
+    required TResult Function(UpdateUserTransportation value)
+        updateUserTransportation,
+    required TResult Function(UpdateUserWorkCategory value)
+        updateUserWorkCategory,
+    required TResult Function(WorkerRegistration1 value) workerRegistration1,
+    required TResult Function(GetOtherUser value) getOtherUser,
+    required TResult Function(SendRequestToWorker value) sendRequestToWorker,
+    required TResult Function(UpdateWorkableState value) updateWorkableState,
+    required TResult Function(UpdateNotWorkableState value)
+        updateNotWorkableState,
+    required TResult Function(MyWallet value) myWallet,
+  }) {
+    return myWallet(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult? Function(Insert value)? insert,
+    TResult? Function(InsertRequest value)? insertRequest,
+    TResult? Function(GetUser value)? getUser,
+    TResult? Function(UpdateLocation value)? updateLocation,
+    TResult? Function(RequesterRegistration value)? requesterRegistration,
+    TResult? Function(WorkerRegistration value)? workerRegistration,
+    TResult? Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult? Function(UpdateUserName value)? updateUserName,
+    TResult? Function(UpdateUserBio value)? updateUserBio,
+    TResult? Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult? Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult? Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult? Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult? Function(GetOtherUser value)? getOtherUser,
+    TResult? Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult? Function(UpdateWorkableState value)? updateWorkableState,
+    TResult? Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult? Function(MyWallet value)? myWallet,
+  }) {
+    return myWallet?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetAroundHelpers value)? getAroundHelpers,
+    TResult Function(Insert value)? insert,
+    TResult Function(InsertRequest value)? insertRequest,
+    TResult Function(GetUser value)? getUser,
+    TResult Function(UpdateLocation value)? updateLocation,
+    TResult Function(RequesterRegistration value)? requesterRegistration,
+    TResult Function(WorkerRegistration value)? workerRegistration,
+    TResult Function(UpdateUserPhoto value)? updateUserPhoto,
+    TResult Function(UpdateUserName value)? updateUserName,
+    TResult Function(UpdateUserBio value)? updateUserBio,
+    TResult Function(UpdateUserIntroduce value)? updateUserIntroduce,
+    TResult Function(UpdateUserTransportation value)? updateUserTransportation,
+    TResult Function(UpdateUserWorkCategory value)? updateUserWorkCategory,
+    TResult Function(WorkerRegistration1 value)? workerRegistration1,
+    TResult Function(GetOtherUser value)? getOtherUser,
+    TResult Function(SendRequestToWorker value)? sendRequestToWorker,
+    TResult Function(UpdateWorkableState value)? updateWorkableState,
+    TResult Function(UpdateNotWorkableState value)? updateNotWorkableState,
+    TResult Function(MyWallet value)? myWallet,
+    required TResult orElse(),
+  }) {
+    if (myWallet != null) {
+      return myWallet(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MyWallet implements UsersEvent {
+  const factory MyWallet(final String idx) = _$MyWallet;
+
+  String get idx;
+  @JsonKey(ignore: true)
+  _$$MyWalletCopyWith<_$MyWallet> get copyWith =>
       throw _privateConstructorUsedError;
 }

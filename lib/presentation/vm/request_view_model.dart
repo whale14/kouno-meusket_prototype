@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:test_project/presentation/event/request/request_event.dart';
 import 'package:test_project/presentation/state/request/request_recruitment_state.dart';
+import 'package:test_project/presentation/state/request/waypoint_state.dart';
 
 import '../../domain/repository/errand_repository.dart';
 import '../state/request/request_state.dart';
@@ -10,9 +11,12 @@ class RequestViewModel with ChangeNotifier {
   final ErrandRepository _errandRepository;
   var _requestState = RequestState();
   var _recruitmentState = RequestRecruitmentState();
+  var _waypointsState = WaypointState();
 
   RequestState get requestState => _requestState;
   RequestRecruitmentState get recruitmentState => _recruitmentState;
+  WaypointState get waypointState => _waypointsState;
+
   RequestViewModel(this._errandRepository) {
     // _getRequests();
   }
@@ -32,6 +36,9 @@ class RequestViewModel with ChangeNotifier {
       finishRequest: _finishRequest,
       recruitmentRequest: _recruitmentRequest,
       createRequestReview: _createRequestReview,
+      getWaypoints: _getWaypoints,
+      requestCancel: _requestCancel,
+      successCheckConfirm: _successCheckConfirm,
     );
   }
 
@@ -52,6 +59,7 @@ class RequestViewModel with ChangeNotifier {
 
   Future _acceptRequest(String idx, String workerIdx) async {
     await _errandRepository.acceptRequest(idx, workerIdx);
+    await _getRequest(idx);
     // String roomIdx = await _errandRepository.createChatRoom(idx);
   }
 
@@ -113,5 +121,23 @@ class RequestViewModel with ChangeNotifier {
 
   Future _createRequestReview(String reqIdx, String fromIdx, String toIdx, double score, String comment) async{
     await _errandRepository.crateRequestReview(reqIdx, fromIdx, toIdx, score, comment);
+  }
+
+  Future _getWaypoints(String idx) async{
+    final result = _errandRepository.getWaypoint(idx);
+
+    _waypointsState = waypointState.copyWith(
+      waypoints: await result,
+    );
+    notifyListeners();
+  }
+
+  Future _requestCancel(String requestIdx, String content, String requestStatus, String userIdx, String isRequester) async{
+    await _errandRepository.requestCancel(requestIdx, content, requestStatus, userIdx, isRequester);
+  }
+
+  Future _successCheckConfirm(String requestIdx, String requesterIdx, String workerIdx, String reward) async{
+    await _errandRepository.successCheckConfirm(requestIdx, requesterIdx, workerIdx, reward);
+    await _getRequest(requestIdx);
   }
 }

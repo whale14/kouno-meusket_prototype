@@ -1,20 +1,24 @@
+import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:logger/logger.dart';
 
-class PostWebView extends StatefulWidget {
-  const PostWebView({Key? key}) : super(key: key);
+class PaymentWebView extends StatefulWidget {
+  const PaymentWebView({Key? key}) : super(key: key);
 
   @override
-  State<PostWebView> createState() => _PostWebViewState();
+  State<PaymentWebView> createState() => _PaymentWebViewState();
 }
 
-class _PostWebViewState extends State<PostWebView> {
+class _PaymentWebViewState extends State<PaymentWebView> {
   late InAppWebViewController _controller;
 
   @override
   Widget build(BuildContext context) {
+    Uint8List body = Uint8List.fromList(utf8.encode("price=10000&title=심부름결제"));
+    Logger().d(utf8.decode(body));
     return Scaffold(
       appBar: AppBar(
         title: const Text('주소 검색'),
@@ -33,8 +37,14 @@ class _PostWebViewState extends State<PostWebView> {
             },
           );
         },
-        initialUrlRequest:
-            URLRequest(url: Uri.parse('http://192.168.100.42:3000/post')),
+        initialUrlRequest: URLRequest(
+          url: Uri.parse('http://192.168.100.42:9001/payments/tosspayments.php?'),
+          method: 'POST',
+          body: Uint8List.fromList(body),
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+        ),
       ),
     );
     // return WebView(initialUrl:

@@ -14,6 +14,8 @@ _$_RequestReview _$$_RequestReviewFromJson(Map<String, dynamic> json) =>
       comment: json['comment'] as String,
       toIdx: json['toIdx'] as int,
       isRequester: json['isRequester'] as int,
+      reviewerImageUrl: json['reviewerImageUrl'] as String?,
+      reviewerName: json['reviewerName'] as String,
     );
 
 Map<String, dynamic> _$$_RequestReviewToJson(_$_RequestReview instance) =>
@@ -24,4 +26,6 @@ Map<String, dynamic> _$$_RequestReviewToJson(_$_RequestReview instance) =>
       'comment': instance.comment,
       'toIdx': instance.toIdx,
       'isRequester': instance.isRequester,
+      'reviewerImageUrl': instance.reviewerImageUrl,
+      'reviewerName': instance.reviewerName,
     };

@@ -11,7 +11,6 @@ class UsersState with _$UsersState {
   factory UsersState({
     @Default([]) List<User> users,
     @Default(false) bool isLoading,
-    @Default('') String myIdx,
   }) = _UsersState;
 
   factory UsersState.fromJson(Map<String, dynamic> json) => _$UsersStateFromJson(json);

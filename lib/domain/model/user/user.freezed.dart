@@ -39,6 +39,10 @@ mixin _$User {
   String get fcmToken => throw _privateConstructorUsedError;
   int? get requestRequesterCount => throw _privateConstructorUsedError;
   int? get requestWorkerCount => throw _privateConstructorUsedError;
+  String get age => throw _privateConstructorUsedError;
+  String get gender => throw _privateConstructorUsedError;
+  double? get distance => throw _privateConstructorUsedError;
+  int? get money => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -69,7 +73,11 @@ abstract class $UserCopyWith<$Res> {
       String? workCategory,
       String fcmToken,
       int? requestRequesterCount,
-      int? requestWorkerCount});
+      int? requestWorkerCount,
+      String age,
+      String gender,
+      double? distance,
+      int? money});
 }
 
 /// @nodoc
@@ -104,6 +112,10 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? fcmToken = null,
     Object? requestRequesterCount = freezed,
     Object? requestWorkerCount = freezed,
+    Object? age = null,
+    Object? gender = null,
+    Object? distance = freezed,
+    Object? money = freezed,
   }) {
     return _then(_value.copyWith(
       idx: null == idx
@@ -182,6 +194,22 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.requestWorkerCount
           : requestWorkerCount // ignore: cast_nullable_to_non_nullable
               as int?,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as String,
+      gender: null == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as String,
+      distance: freezed == distance
+          ? _value.distance
+          : distance // ignore: cast_nullable_to_non_nullable
+              as double?,
+      money: freezed == money
+          ? _value.money
+          : money // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -211,7 +239,11 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       String? workCategory,
       String fcmToken,
       int? requestRequesterCount,
-      int? requestWorkerCount});
+      int? requestWorkerCount,
+      String age,
+      String gender,
+      double? distance,
+      int? money});
 }
 
 /// @nodoc
@@ -242,6 +274,10 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
     Object? fcmToken = null,
     Object? requestRequesterCount = freezed,
     Object? requestWorkerCount = freezed,
+    Object? age = null,
+    Object? gender = null,
+    Object? distance = freezed,
+    Object? money = freezed,
   }) {
     return _then(_$_User(
       idx: null == idx
@@ -320,6 +356,22 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.requestWorkerCount
           : requestWorkerCount // ignore: cast_nullable_to_non_nullable
               as int?,
+      age: null == age
+          ? _value.age
+          : age // ignore: cast_nullable_to_non_nullable
+              as String,
+      gender: null == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as String,
+      distance: freezed == distance
+          ? _value.distance
+          : distance // ignore: cast_nullable_to_non_nullable
+              as double?,
+      money: freezed == money
+          ? _value.money
+          : money // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -346,7 +398,11 @@ class _$_User implements _User {
       required this.workCategory,
       required this.fcmToken,
       required this.requestRequesterCount,
-      required this.requestWorkerCount});
+      required this.requestWorkerCount,
+      required this.age,
+      required this.gender,
+      required this.distance,
+      required this.money});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -388,10 +444,18 @@ class _$_User implements _User {
   final int? requestRequesterCount;
   @override
   final int? requestWorkerCount;
+  @override
+  final String age;
+  @override
+  final String gender;
+  @override
+  final double? distance;
+  @override
+  final int? money;
 
   @override
   String toString() {
-    return 'User(idx: $idx, id: $id, name: $name, latitude: $latitude, longitude: $longitude, createAt: $createAt, updateAt: $updateAt, doingState: $doingState, accountState: $accountState, isRequesterRegist: $isRequesterRegist, isWorkerRegist: $isWorkerRegist, bio: $bio, introduce: $introduce, profileImageUrl: $profileImageUrl, transportation: $transportation, workCategory: $workCategory, fcmToken: $fcmToken, requestRequesterCount: $requestRequesterCount, requestWorkerCount: $requestWorkerCount)';
+    return 'User(idx: $idx, id: $id, name: $name, latitude: $latitude, longitude: $longitude, createAt: $createAt, updateAt: $updateAt, doingState: $doingState, accountState: $accountState, isRequesterRegist: $isRequesterRegist, isWorkerRegist: $isWorkerRegist, bio: $bio, introduce: $introduce, profileImageUrl: $profileImageUrl, transportation: $transportation, workCategory: $workCategory, fcmToken: $fcmToken, requestRequesterCount: $requestRequesterCount, requestWorkerCount: $requestWorkerCount, age: $age, gender: $gender, distance: $distance, money: $money)';
   }
 
   @override
@@ -432,7 +496,12 @@ class _$_User implements _User {
             (identical(other.requestRequesterCount, requestRequesterCount) ||
                 other.requestRequesterCount == requestRequesterCount) &&
             (identical(other.requestWorkerCount, requestWorkerCount) ||
-                other.requestWorkerCount == requestWorkerCount));
+                other.requestWorkerCount == requestWorkerCount) &&
+            (identical(other.age, age) || other.age == age) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.distance, distance) ||
+                other.distance == distance) &&
+            (identical(other.money, money) || other.money == money));
   }
 
   @JsonKey(ignore: true)
@@ -457,7 +526,11 @@ class _$_User implements _User {
         workCategory,
         fcmToken,
         requestRequesterCount,
-        requestWorkerCount
+        requestWorkerCount,
+        age,
+        gender,
+        distance,
+        money
       ]);
 
   @JsonKey(ignore: true)
@@ -494,7 +567,11 @@ abstract class _User implements User {
       required final String? workCategory,
       required final String fcmToken,
       required final int? requestRequesterCount,
-      required final int? requestWorkerCount}) = _$_User;
+      required final int? requestWorkerCount,
+      required final String age,
+      required final String gender,
+      required final double? distance,
+      required final int? money}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
@@ -536,6 +613,14 @@ abstract class _User implements User {
   int? get requestRequesterCount;
   @override
   int? get requestWorkerCount;
+  @override
+  String get age;
+  @override
+  String get gender;
+  @override
+  double? get distance;
+  @override
+  int? get money;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;

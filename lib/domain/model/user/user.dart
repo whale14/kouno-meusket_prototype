@@ -26,6 +26,10 @@ class User with _$User {
     required String fcmToken,
     required int? requestRequesterCount,
     required int? requestWorkerCount,
+    required String age,
+    required String gender,
+    required double? distance,
+    required int? money,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

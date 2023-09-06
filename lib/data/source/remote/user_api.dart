@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
+import 'package:test_project/domain/model/work_category.dart';
 
 class UserAPI {
   final http.Client _client;
@@ -13,7 +14,9 @@ class UserAPI {
   // static const baseUrl = 'http://192.168.33.7:9001/user';  //작업실
   // static const baseUrl = 'http://172.30.1.69:9001/user';  //집
   // static const baseUrl = 'http://192.168.101.2:9001/user'; //기기 사용 3층
-  static const baseUrl = 'http://192.168.100.42:9001/user'; //기기 사용 5층
+  // static const baseUrl = 'http://192.168.100.42:9001/user'; //기기 사용 5층
+  static const baseUrl = 'http://203.229.171.79:84/user'; //기기 사용 5층
+  // static const baseUrl = 'http://192.168.0.168:9001/user'; //5층 소셜캠퍼스
 
   UserAPI({http.Client? client}) : _client = (client ?? http.Client());
 
@@ -36,23 +39,77 @@ class UserAPI {
     return response;
   }
 
-  Future<http.Response> getAroundHelpers() async {
+  Future<http.Response> getAroundHelpers(
+      String idx, List<bool> categoryCheckValues, List<bool> ageCheckValues, List<bool> genderCheckValues, int distance) async {
     // Logger().d("api_getAH_data : ");
     String url = '$baseUrl/get_around_helpers.php';
-    // Map<String, dynamic> data = {
-    //   'id': id
-    // };
-    final response = await _client.post(Uri.parse(url));
-    Logger().d("api_get_AH_reponse: ${response.body}");
+
+    List<String> categories = WorkCategory().categories;
+    categories.add('전체 서비스');
+    String category = '';
+    String ageGroup = '';
+    String gender = '';
+    List<int> indexList = [];
+    for (int i = 0; i < categoryCheckValues.length; i++) {
+      if (categoryCheckValues[i]) {
+        indexList.add(i);
+      }
+    }
+    Logger().d('#################categoryIndexList : $indexList');
+    for (int i = 0; i < indexList.length; i++) {
+      int index = indexList[i];
+      if (i == indexList.length - 1) {
+        category += categories[index];
+      } else {
+        category += '${categories[index]},';
+      }
+    }
+    indexList = [];
+    for (int i = 0; i < ageCheckValues.length; i++) {
+      if (ageCheckValues[i]) {
+        indexList.add(i);
+      }
+    }
+    Logger().d('##########ageIndexList : $indexList');
+    for (int i = 0; i < indexList.length; i++) {
+      int index = indexList[i];
+      if (i == indexList.length - 1) {
+        ageGroup += ['', '20대', '30대', '40대', '50대', '60대 이상'][index];
+      } else {
+        ageGroup += '${['', '20대', '30대', '40대', '50대', '60대 이상'][index]},';
+      }
+    }
+
+    for (int i = 0; i < genderCheckValues.length; i++) {
+      if (genderCheckValues[i]) {
+        gender = ['', '남성', '여성'][i];
+      }
+    }
+    Map<String, dynamic> data = {
+      'idx': idx,
+      'categories': category,
+      'ageGroup': ageGroup,
+      'gender': gender,
+      'distance': distance.toString(),
+    };
+    Logger().d("api_get_AH_categoryValue: $categoryCheckValues");
+    Logger().d("api_get_AH_query: $category, $ageGroup, $gender, $distance");
+    final response = await _client.post(Uri.parse(url), body: data);
+    Logger().d(
+      "api_get_AH_reponse: ${response.body}",
+    );
     return response;
+    // Logger().d("api_get_AH_reponse: ${response.body}",);
+    // return response;
   }
 
-  Future<void> insert(String id, String name, double latitude, double longitude, String fcmToken) async {
+  Future<void> insert(String id, String name, String bio, double latitude, double longitude, String fcmToken) async {
     Logger().d("api data: $id, $name, ${latitude.toString()}, ${longitude.toString()}");
     String url = '$baseUrl/insert.php';
     Map<String, dynamic> data = {
       'id': id,
       'name': name,
+      'bio': bio,
       'latitude': latitude.toString(),
       'longitude': longitude.toString(),
       'fcmToken': fcmToken,
@@ -61,7 +118,8 @@ class UserAPI {
     Logger().d(response.body);
   }
 
-  Future<void> insertRequest(String reqIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, DateTime date, String runningTime, String reward) async {
+  Future<void> insertRequest(String reqIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, String date,
+      String runningTime, String reward, List<Map<String, dynamic>> waypointsLocation, List<String> waypointsContent, int requestType, int secondType) async {
     String url = '$baseUrl/insert_request.php';
     Map<String, dynamic> data = {
       'reqIdx': reqIdx,
@@ -73,11 +131,34 @@ class UserAPI {
       'longitude': longitude,
       'date': date,
       'runningTime': runningTime,
-      'reward': reward
+      'reward': reward,
+      'requestType': requestType,
+      'secondType': secondType
     };
-
     final response = await _client.post(Uri.parse(url), body: data);
-    Logger().d('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!${response.body}');
+
+    String requestIdx = jsonDecode(response.body).first['LAST_INSERT_ID()'].toString();
+    Logger().d('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!${jsonDecode(response.body).first['LAST_INSERT_ID()'].toString()}');
+
+    if (waypointsContent.isNotEmpty) {
+      url = '$baseUrl/insert_waypoints.php';
+      Logger().d("do insert waypoint");
+      for (int i = 0; i < waypointsContent.length; i++) {
+        Map<String, dynamic> data = {
+          'requestIdx': requestIdx,
+          'content': waypointsContent[i],
+          'latitude': waypointsLocation[i]['latitude'],
+          'longitude': waypointsLocation[i]['longitude'],
+          'address': waypointsLocation[i]['address'],
+        };
+
+        final response = await _client.post(Uri.parse(url), body: data);
+
+        Logger().d('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!${response.body}');
+      }
+    } else {
+      Logger().d("there is no waypoints");
+    }
   }
 
   Future updateLocation(String idx, double latitude, double longitude) async {
@@ -198,21 +279,61 @@ class UserAPI {
   }
 
   Future sendRequestToWorker(
-      String reqIdx, String workerIdx, String categoryIdx,  String title, String content, String address, String latitude, String longitude, String fcmToken) async {
+      String reqIdx,
+      String workerIdx,
+      String categoryIdx,
+      String title,
+      String content,
+      String address,
+      String latitude,
+      String longitude,
+      String date,
+      String runningTime,
+      String reword,
+      List<Map<String, dynamic>> waypointsLocation,
+      List<String> waypointsContent,
+      String fcmToken,
+      int requestType,
+      int secondType) async {
     String url = '$baseUrl/send_request_to_worker.php';
     Map<String, dynamic> data = {
       'reqIdx': reqIdx,
-      'workerIdx' : workerIdx,
+      'workerIdx': workerIdx,
       'category': categoryIdx,
       'title': title,
       'content': content,
       'address': address,
       'latitude': latitude,
       'longitude': longitude,
+      'date': date,
+      'runningTime': runningTime,
+      'reword': reword,
+      'requestType' : requestType,
+      'secondType' : secondType,
     };
-    Logger().d(".....................$workerIdx");
     final response = await _client.post(Uri.parse(url), body: data);
-    Logger().d('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!${response.body}');
+    String requestIdx = jsonDecode(response.body).first['LAST_INSERT_ID()'].toString();
+    Logger().d('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!${jsonDecode(response.body).first['LAST_INSERT_ID()'].toString()}');
+
+    if (waypointsContent.isNotEmpty) {
+      url = '$baseUrl/insert_waypoints.php';
+      Logger().d("do insert waypoint");
+      for (int i = 0; i < waypointsContent.length; i++) {
+        Map<String, dynamic> data = {
+          'requestIdx': requestIdx,
+          'content': waypointsContent[i],
+          'latitude': waypointsLocation[i]['latitude'],
+          'longitude': waypointsLocation[i]['longitude'],
+          'address': waypointsLocation[i]['address'],
+        };
+
+        final response = await _client.post(Uri.parse(url), body: data);
+
+        Logger().d('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!${response.body}');
+      }
+    } else {
+      Logger().d("there is no waypoints");
+    }
 
     try {
       Map fcmData = {
@@ -257,27 +378,34 @@ class UserAPI {
     }
   }
 
-  Future<bool> checkId(id) async{
+  Future<bool> checkId(id) async {
     String url = '$baseUrl/check_id.php';
     Map<String, dynamic> data = {'id': id};
     final response = await _client.post(Uri.parse(url), body: data);
-    if(response.body == "true") {
+    if (response.body == "true") {
       return true;
-    }else {
+    } else {
       return false;
     }
-
   }
 
-  Future updateWorkableState(String idx) async{
+  Future updateWorkableState(String idx) async {
     String url = '$baseUrl/update_workable_state.php';
     Map<String, dynamic> data = {'idx': idx};
     await _client.post(Uri.parse(url), body: data);
   }
 
-  Future updateNotWorkableState(String idx) async{
+  Future updateNotWorkableState(String idx) async {
     String url = '$baseUrl/update_not_workable_state.php';
     Map<String, dynamic> data = {'idx': idx};
     await _client.post(Uri.parse(url), body: data);
+  }
+
+  Future<http.Response> myWallet(String idx) async {
+    String url = '$baseUrl/my_wallet.php';
+    Map<String, dynamic> data = {'idx': idx};
+    final response = await _client.post(Uri.parse(url), body: data);
+    Logger().d('#########myWalletApi : ${response.body}');
+    return response;
   }
 }

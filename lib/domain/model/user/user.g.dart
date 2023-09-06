@@ -26,6 +26,10 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       fcmToken: json['fcmToken'] as String,
       requestRequesterCount: json['requestRequesterCount'] as int?,
       requestWorkerCount: json['requestWorkerCount'] as int?,
+      age: json['age'] as String,
+      gender: json['gender'] as String,
+      distance: (json['distance'] as num?)?.toDouble(),
+      money: json['money'] as int?,
     );
 
 Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
@@ -48,4 +52,8 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'fcmToken': instance.fcmToken,
       'requestRequesterCount': instance.requestRequesterCount,
       'requestWorkerCount': instance.requestWorkerCount,
+      'age': instance.age,
+      'gender': instance.gender,
+      'distance': instance.distance,
+      'money': instance.money,
     };

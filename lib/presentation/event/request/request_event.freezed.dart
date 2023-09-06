@@ -34,6 +34,13 @@ mixin _$RequestEvent<T> {
     required TResult Function(String reqIdx, String fromIdx, String toIdx,
             double score, String comment)
         createRequestReview,
+    required TResult Function(String idx) getWaypoints,
+    required TResult Function(String requestIdx, String content,
+            String requestStatus, String userIdx, String isRequest)
+        requestCancel,
+    required TResult Function(String requestIdx, String requesterIdx,
+            String workerIdx, String reward)
+        successCheckConfirm,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +60,13 @@ mixin _$RequestEvent<T> {
     TResult? Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult? Function(String idx)? getWaypoints,
+    TResult? Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult? Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -72,6 +86,13 @@ mixin _$RequestEvent<T> {
     TResult Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult Function(String idx)? getWaypoints,
+    TResult Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -92,6 +113,9 @@ mixin _$RequestEvent<T> {
     required TResult Function(FinishRequest<T> value) finishRequest,
     required TResult Function(RecruitmentRequest<T> value) recruitmentRequest,
     required TResult Function(createRequestReview<T> value) createRequestReview,
+    required TResult Function(GetWaypoints<T> value) getWaypoints,
+    required TResult Function(RequestCancel<T> value) requestCancel,
+    required TResult Function(SuccessCheckConfirm<T> value) successCheckConfirm,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -111,6 +135,9 @@ mixin _$RequestEvent<T> {
     TResult? Function(FinishRequest<T> value)? finishRequest,
     TResult? Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult? Function(createRequestReview<T> value)? createRequestReview,
+    TResult? Function(GetWaypoints<T> value)? getWaypoints,
+    TResult? Function(RequestCancel<T> value)? requestCancel,
+    TResult? Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -129,6 +156,9 @@ mixin _$RequestEvent<T> {
     TResult Function(FinishRequest<T> value)? finishRequest,
     TResult Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult Function(createRequestReview<T> value)? createRequestReview,
+    TResult Function(GetWaypoints<T> value)? getWaypoints,
+    TResult Function(RequestCancel<T> value)? requestCancel,
+    TResult Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -232,6 +262,13 @@ class _$GetRequests<T> implements GetRequests<T> {
     required TResult Function(String reqIdx, String fromIdx, String toIdx,
             double score, String comment)
         createRequestReview,
+    required TResult Function(String idx) getWaypoints,
+    required TResult Function(String requestIdx, String content,
+            String requestStatus, String userIdx, String isRequest)
+        requestCancel,
+    required TResult Function(String requestIdx, String requesterIdx,
+            String workerIdx, String reward)
+        successCheckConfirm,
   }) {
     return getRequests(idx);
   }
@@ -254,6 +291,13 @@ class _$GetRequests<T> implements GetRequests<T> {
     TResult? Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult? Function(String idx)? getWaypoints,
+    TResult? Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult? Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
   }) {
     return getRequests?.call(idx);
   }
@@ -276,6 +320,13 @@ class _$GetRequests<T> implements GetRequests<T> {
     TResult Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult Function(String idx)? getWaypoints,
+    TResult Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
     required TResult orElse(),
   }) {
     if (getRequests != null) {
@@ -302,6 +353,9 @@ class _$GetRequests<T> implements GetRequests<T> {
     required TResult Function(FinishRequest<T> value) finishRequest,
     required TResult Function(RecruitmentRequest<T> value) recruitmentRequest,
     required TResult Function(createRequestReview<T> value) createRequestReview,
+    required TResult Function(GetWaypoints<T> value) getWaypoints,
+    required TResult Function(RequestCancel<T> value) requestCancel,
+    required TResult Function(SuccessCheckConfirm<T> value) successCheckConfirm,
   }) {
     return getRequests(this);
   }
@@ -324,6 +378,9 @@ class _$GetRequests<T> implements GetRequests<T> {
     TResult? Function(FinishRequest<T> value)? finishRequest,
     TResult? Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult? Function(createRequestReview<T> value)? createRequestReview,
+    TResult? Function(GetWaypoints<T> value)? getWaypoints,
+    TResult? Function(RequestCancel<T> value)? requestCancel,
+    TResult? Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
   }) {
     return getRequests?.call(this);
   }
@@ -345,6 +402,9 @@ class _$GetRequests<T> implements GetRequests<T> {
     TResult Function(FinishRequest<T> value)? finishRequest,
     TResult Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult Function(createRequestReview<T> value)? createRequestReview,
+    TResult Function(GetWaypoints<T> value)? getWaypoints,
+    TResult Function(RequestCancel<T> value)? requestCancel,
+    TResult Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
     required TResult orElse(),
   }) {
     if (getRequests != null) {
@@ -446,6 +506,13 @@ class _$GetMyRequestsRequesterSide<T> implements GetMyRequestsRequesterSide<T> {
     required TResult Function(String reqIdx, String fromIdx, String toIdx,
             double score, String comment)
         createRequestReview,
+    required TResult Function(String idx) getWaypoints,
+    required TResult Function(String requestIdx, String content,
+            String requestStatus, String userIdx, String isRequest)
+        requestCancel,
+    required TResult Function(String requestIdx, String requesterIdx,
+            String workerIdx, String reward)
+        successCheckConfirm,
   }) {
     return getMyRequestsRequesterSide(idx);
   }
@@ -468,6 +535,13 @@ class _$GetMyRequestsRequesterSide<T> implements GetMyRequestsRequesterSide<T> {
     TResult? Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult? Function(String idx)? getWaypoints,
+    TResult? Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult? Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
   }) {
     return getMyRequestsRequesterSide?.call(idx);
   }
@@ -490,6 +564,13 @@ class _$GetMyRequestsRequesterSide<T> implements GetMyRequestsRequesterSide<T> {
     TResult Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult Function(String idx)? getWaypoints,
+    TResult Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
     required TResult orElse(),
   }) {
     if (getMyRequestsRequesterSide != null) {
@@ -516,6 +597,9 @@ class _$GetMyRequestsRequesterSide<T> implements GetMyRequestsRequesterSide<T> {
     required TResult Function(FinishRequest<T> value) finishRequest,
     required TResult Function(RecruitmentRequest<T> value) recruitmentRequest,
     required TResult Function(createRequestReview<T> value) createRequestReview,
+    required TResult Function(GetWaypoints<T> value) getWaypoints,
+    required TResult Function(RequestCancel<T> value) requestCancel,
+    required TResult Function(SuccessCheckConfirm<T> value) successCheckConfirm,
   }) {
     return getMyRequestsRequesterSide(this);
   }
@@ -538,6 +622,9 @@ class _$GetMyRequestsRequesterSide<T> implements GetMyRequestsRequesterSide<T> {
     TResult? Function(FinishRequest<T> value)? finishRequest,
     TResult? Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult? Function(createRequestReview<T> value)? createRequestReview,
+    TResult? Function(GetWaypoints<T> value)? getWaypoints,
+    TResult? Function(RequestCancel<T> value)? requestCancel,
+    TResult? Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
   }) {
     return getMyRequestsRequesterSide?.call(this);
   }
@@ -559,6 +646,9 @@ class _$GetMyRequestsRequesterSide<T> implements GetMyRequestsRequesterSide<T> {
     TResult Function(FinishRequest<T> value)? finishRequest,
     TResult Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult Function(createRequestReview<T> value)? createRequestReview,
+    TResult Function(GetWaypoints<T> value)? getWaypoints,
+    TResult Function(RequestCancel<T> value)? requestCancel,
+    TResult Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
     required TResult orElse(),
   }) {
     if (getMyRequestsRequesterSide != null) {
@@ -659,6 +749,13 @@ class _$GetMyRequestsWorkerSide<T> implements GetMyRequestsWorkerSide<T> {
     required TResult Function(String reqIdx, String fromIdx, String toIdx,
             double score, String comment)
         createRequestReview,
+    required TResult Function(String idx) getWaypoints,
+    required TResult Function(String requestIdx, String content,
+            String requestStatus, String userIdx, String isRequest)
+        requestCancel,
+    required TResult Function(String requestIdx, String requesterIdx,
+            String workerIdx, String reward)
+        successCheckConfirm,
   }) {
     return getMyRequestsWorkerSide(idx);
   }
@@ -681,6 +778,13 @@ class _$GetMyRequestsWorkerSide<T> implements GetMyRequestsWorkerSide<T> {
     TResult? Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult? Function(String idx)? getWaypoints,
+    TResult? Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult? Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
   }) {
     return getMyRequestsWorkerSide?.call(idx);
   }
@@ -703,6 +807,13 @@ class _$GetMyRequestsWorkerSide<T> implements GetMyRequestsWorkerSide<T> {
     TResult Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult Function(String idx)? getWaypoints,
+    TResult Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
     required TResult orElse(),
   }) {
     if (getMyRequestsWorkerSide != null) {
@@ -729,6 +840,9 @@ class _$GetMyRequestsWorkerSide<T> implements GetMyRequestsWorkerSide<T> {
     required TResult Function(FinishRequest<T> value) finishRequest,
     required TResult Function(RecruitmentRequest<T> value) recruitmentRequest,
     required TResult Function(createRequestReview<T> value) createRequestReview,
+    required TResult Function(GetWaypoints<T> value) getWaypoints,
+    required TResult Function(RequestCancel<T> value) requestCancel,
+    required TResult Function(SuccessCheckConfirm<T> value) successCheckConfirm,
   }) {
     return getMyRequestsWorkerSide(this);
   }
@@ -751,6 +865,9 @@ class _$GetMyRequestsWorkerSide<T> implements GetMyRequestsWorkerSide<T> {
     TResult? Function(FinishRequest<T> value)? finishRequest,
     TResult? Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult? Function(createRequestReview<T> value)? createRequestReview,
+    TResult? Function(GetWaypoints<T> value)? getWaypoints,
+    TResult? Function(RequestCancel<T> value)? requestCancel,
+    TResult? Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
   }) {
     return getMyRequestsWorkerSide?.call(this);
   }
@@ -772,6 +889,9 @@ class _$GetMyRequestsWorkerSide<T> implements GetMyRequestsWorkerSide<T> {
     TResult Function(FinishRequest<T> value)? finishRequest,
     TResult Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult Function(createRequestReview<T> value)? createRequestReview,
+    TResult Function(GetWaypoints<T> value)? getWaypoints,
+    TResult Function(RequestCancel<T> value)? requestCancel,
+    TResult Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
     required TResult orElse(),
   }) {
     if (getMyRequestsWorkerSide != null) {
@@ -880,6 +1000,13 @@ class _$AccpetRequest<T> implements AccpetRequest<T> {
     required TResult Function(String reqIdx, String fromIdx, String toIdx,
             double score, String comment)
         createRequestReview,
+    required TResult Function(String idx) getWaypoints,
+    required TResult Function(String requestIdx, String content,
+            String requestStatus, String userIdx, String isRequest)
+        requestCancel,
+    required TResult Function(String requestIdx, String requesterIdx,
+            String workerIdx, String reward)
+        successCheckConfirm,
   }) {
     return acceptRequest(idx, workerIdx);
   }
@@ -902,6 +1029,13 @@ class _$AccpetRequest<T> implements AccpetRequest<T> {
     TResult? Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult? Function(String idx)? getWaypoints,
+    TResult? Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult? Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
   }) {
     return acceptRequest?.call(idx, workerIdx);
   }
@@ -924,6 +1058,13 @@ class _$AccpetRequest<T> implements AccpetRequest<T> {
     TResult Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult Function(String idx)? getWaypoints,
+    TResult Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
     required TResult orElse(),
   }) {
     if (acceptRequest != null) {
@@ -950,6 +1091,9 @@ class _$AccpetRequest<T> implements AccpetRequest<T> {
     required TResult Function(FinishRequest<T> value) finishRequest,
     required TResult Function(RecruitmentRequest<T> value) recruitmentRequest,
     required TResult Function(createRequestReview<T> value) createRequestReview,
+    required TResult Function(GetWaypoints<T> value) getWaypoints,
+    required TResult Function(RequestCancel<T> value) requestCancel,
+    required TResult Function(SuccessCheckConfirm<T> value) successCheckConfirm,
   }) {
     return acceptRequest(this);
   }
@@ -972,6 +1116,9 @@ class _$AccpetRequest<T> implements AccpetRequest<T> {
     TResult? Function(FinishRequest<T> value)? finishRequest,
     TResult? Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult? Function(createRequestReview<T> value)? createRequestReview,
+    TResult? Function(GetWaypoints<T> value)? getWaypoints,
+    TResult? Function(RequestCancel<T> value)? requestCancel,
+    TResult? Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
   }) {
     return acceptRequest?.call(this);
   }
@@ -993,6 +1140,9 @@ class _$AccpetRequest<T> implements AccpetRequest<T> {
     TResult Function(FinishRequest<T> value)? finishRequest,
     TResult Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult Function(createRequestReview<T> value)? createRequestReview,
+    TResult Function(GetWaypoints<T> value)? getWaypoints,
+    TResult Function(RequestCancel<T> value)? requestCancel,
+    TResult Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
     required TResult orElse(),
   }) {
     if (acceptRequest != null) {
@@ -1093,6 +1243,13 @@ class _$StartRequest<T> implements StartRequest<T> {
     required TResult Function(String reqIdx, String fromIdx, String toIdx,
             double score, String comment)
         createRequestReview,
+    required TResult Function(String idx) getWaypoints,
+    required TResult Function(String requestIdx, String content,
+            String requestStatus, String userIdx, String isRequest)
+        requestCancel,
+    required TResult Function(String requestIdx, String requesterIdx,
+            String workerIdx, String reward)
+        successCheckConfirm,
   }) {
     return startRequest(idx);
   }
@@ -1115,6 +1272,13 @@ class _$StartRequest<T> implements StartRequest<T> {
     TResult? Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult? Function(String idx)? getWaypoints,
+    TResult? Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult? Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
   }) {
     return startRequest?.call(idx);
   }
@@ -1137,6 +1301,13 @@ class _$StartRequest<T> implements StartRequest<T> {
     TResult Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult Function(String idx)? getWaypoints,
+    TResult Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
     required TResult orElse(),
   }) {
     if (startRequest != null) {
@@ -1163,6 +1334,9 @@ class _$StartRequest<T> implements StartRequest<T> {
     required TResult Function(FinishRequest<T> value) finishRequest,
     required TResult Function(RecruitmentRequest<T> value) recruitmentRequest,
     required TResult Function(createRequestReview<T> value) createRequestReview,
+    required TResult Function(GetWaypoints<T> value) getWaypoints,
+    required TResult Function(RequestCancel<T> value) requestCancel,
+    required TResult Function(SuccessCheckConfirm<T> value) successCheckConfirm,
   }) {
     return startRequest(this);
   }
@@ -1185,6 +1359,9 @@ class _$StartRequest<T> implements StartRequest<T> {
     TResult? Function(FinishRequest<T> value)? finishRequest,
     TResult? Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult? Function(createRequestReview<T> value)? createRequestReview,
+    TResult? Function(GetWaypoints<T> value)? getWaypoints,
+    TResult? Function(RequestCancel<T> value)? requestCancel,
+    TResult? Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
   }) {
     return startRequest?.call(this);
   }
@@ -1206,6 +1383,9 @@ class _$StartRequest<T> implements StartRequest<T> {
     TResult Function(FinishRequest<T> value)? finishRequest,
     TResult Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult Function(createRequestReview<T> value)? createRequestReview,
+    TResult Function(GetWaypoints<T> value)? getWaypoints,
+    TResult Function(RequestCancel<T> value)? requestCancel,
+    TResult Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
     required TResult orElse(),
   }) {
     if (startRequest != null) {
@@ -1305,6 +1485,13 @@ class _$RequestComplete<T> implements RequestComplete<T> {
     required TResult Function(String reqIdx, String fromIdx, String toIdx,
             double score, String comment)
         createRequestReview,
+    required TResult Function(String idx) getWaypoints,
+    required TResult Function(String requestIdx, String content,
+            String requestStatus, String userIdx, String isRequest)
+        requestCancel,
+    required TResult Function(String requestIdx, String requesterIdx,
+            String workerIdx, String reward)
+        successCheckConfirm,
   }) {
     return requestComplete(idx);
   }
@@ -1327,6 +1514,13 @@ class _$RequestComplete<T> implements RequestComplete<T> {
     TResult? Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult? Function(String idx)? getWaypoints,
+    TResult? Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult? Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
   }) {
     return requestComplete?.call(idx);
   }
@@ -1349,6 +1543,13 @@ class _$RequestComplete<T> implements RequestComplete<T> {
     TResult Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult Function(String idx)? getWaypoints,
+    TResult Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
     required TResult orElse(),
   }) {
     if (requestComplete != null) {
@@ -1375,6 +1576,9 @@ class _$RequestComplete<T> implements RequestComplete<T> {
     required TResult Function(FinishRequest<T> value) finishRequest,
     required TResult Function(RecruitmentRequest<T> value) recruitmentRequest,
     required TResult Function(createRequestReview<T> value) createRequestReview,
+    required TResult Function(GetWaypoints<T> value) getWaypoints,
+    required TResult Function(RequestCancel<T> value) requestCancel,
+    required TResult Function(SuccessCheckConfirm<T> value) successCheckConfirm,
   }) {
     return requestComplete(this);
   }
@@ -1397,6 +1601,9 @@ class _$RequestComplete<T> implements RequestComplete<T> {
     TResult? Function(FinishRequest<T> value)? finishRequest,
     TResult? Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult? Function(createRequestReview<T> value)? createRequestReview,
+    TResult? Function(GetWaypoints<T> value)? getWaypoints,
+    TResult? Function(RequestCancel<T> value)? requestCancel,
+    TResult? Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
   }) {
     return requestComplete?.call(this);
   }
@@ -1418,6 +1625,9 @@ class _$RequestComplete<T> implements RequestComplete<T> {
     TResult Function(FinishRequest<T> value)? finishRequest,
     TResult Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult Function(createRequestReview<T> value)? createRequestReview,
+    TResult Function(GetWaypoints<T> value)? getWaypoints,
+    TResult Function(RequestCancel<T> value)? requestCancel,
+    TResult Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
     required TResult orElse(),
   }) {
     if (requestComplete != null) {
@@ -1517,6 +1727,13 @@ class _$GetRecruitments<T> implements GetRecruitments<T> {
     required TResult Function(String reqIdx, String fromIdx, String toIdx,
             double score, String comment)
         createRequestReview,
+    required TResult Function(String idx) getWaypoints,
+    required TResult Function(String requestIdx, String content,
+            String requestStatus, String userIdx, String isRequest)
+        requestCancel,
+    required TResult Function(String requestIdx, String requesterIdx,
+            String workerIdx, String reward)
+        successCheckConfirm,
   }) {
     return getRecruitments(idx);
   }
@@ -1539,6 +1756,13 @@ class _$GetRecruitments<T> implements GetRecruitments<T> {
     TResult? Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult? Function(String idx)? getWaypoints,
+    TResult? Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult? Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
   }) {
     return getRecruitments?.call(idx);
   }
@@ -1561,6 +1785,13 @@ class _$GetRecruitments<T> implements GetRecruitments<T> {
     TResult Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult Function(String idx)? getWaypoints,
+    TResult Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
     required TResult orElse(),
   }) {
     if (getRecruitments != null) {
@@ -1587,6 +1818,9 @@ class _$GetRecruitments<T> implements GetRecruitments<T> {
     required TResult Function(FinishRequest<T> value) finishRequest,
     required TResult Function(RecruitmentRequest<T> value) recruitmentRequest,
     required TResult Function(createRequestReview<T> value) createRequestReview,
+    required TResult Function(GetWaypoints<T> value) getWaypoints,
+    required TResult Function(RequestCancel<T> value) requestCancel,
+    required TResult Function(SuccessCheckConfirm<T> value) successCheckConfirm,
   }) {
     return getRecruitments(this);
   }
@@ -1609,6 +1843,9 @@ class _$GetRecruitments<T> implements GetRecruitments<T> {
     TResult? Function(FinishRequest<T> value)? finishRequest,
     TResult? Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult? Function(createRequestReview<T> value)? createRequestReview,
+    TResult? Function(GetWaypoints<T> value)? getWaypoints,
+    TResult? Function(RequestCancel<T> value)? requestCancel,
+    TResult? Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
   }) {
     return getRecruitments?.call(this);
   }
@@ -1630,6 +1867,9 @@ class _$GetRecruitments<T> implements GetRecruitments<T> {
     TResult Function(FinishRequest<T> value)? finishRequest,
     TResult Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult Function(createRequestReview<T> value)? createRequestReview,
+    TResult Function(GetWaypoints<T> value)? getWaypoints,
+    TResult Function(RequestCancel<T> value)? requestCancel,
+    TResult Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
     required TResult orElse(),
   }) {
     if (getRecruitments != null) {
@@ -1729,6 +1969,13 @@ class _$RejectApplication<T> implements RejectApplication<T> {
     required TResult Function(String reqIdx, String fromIdx, String toIdx,
             double score, String comment)
         createRequestReview,
+    required TResult Function(String idx) getWaypoints,
+    required TResult Function(String requestIdx, String content,
+            String requestStatus, String userIdx, String isRequest)
+        requestCancel,
+    required TResult Function(String requestIdx, String requesterIdx,
+            String workerIdx, String reward)
+        successCheckConfirm,
   }) {
     return rejectApplication(idx);
   }
@@ -1751,6 +1998,13 @@ class _$RejectApplication<T> implements RejectApplication<T> {
     TResult? Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult? Function(String idx)? getWaypoints,
+    TResult? Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult? Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
   }) {
     return rejectApplication?.call(idx);
   }
@@ -1773,6 +2027,13 @@ class _$RejectApplication<T> implements RejectApplication<T> {
     TResult Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult Function(String idx)? getWaypoints,
+    TResult Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
     required TResult orElse(),
   }) {
     if (rejectApplication != null) {
@@ -1799,6 +2060,9 @@ class _$RejectApplication<T> implements RejectApplication<T> {
     required TResult Function(FinishRequest<T> value) finishRequest,
     required TResult Function(RecruitmentRequest<T> value) recruitmentRequest,
     required TResult Function(createRequestReview<T> value) createRequestReview,
+    required TResult Function(GetWaypoints<T> value) getWaypoints,
+    required TResult Function(RequestCancel<T> value) requestCancel,
+    required TResult Function(SuccessCheckConfirm<T> value) successCheckConfirm,
   }) {
     return rejectApplication(this);
   }
@@ -1821,6 +2085,9 @@ class _$RejectApplication<T> implements RejectApplication<T> {
     TResult? Function(FinishRequest<T> value)? finishRequest,
     TResult? Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult? Function(createRequestReview<T> value)? createRequestReview,
+    TResult? Function(GetWaypoints<T> value)? getWaypoints,
+    TResult? Function(RequestCancel<T> value)? requestCancel,
+    TResult? Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
   }) {
     return rejectApplication?.call(this);
   }
@@ -1842,6 +2109,9 @@ class _$RejectApplication<T> implements RejectApplication<T> {
     TResult Function(FinishRequest<T> value)? finishRequest,
     TResult Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult Function(createRequestReview<T> value)? createRequestReview,
+    TResult Function(GetWaypoints<T> value)? getWaypoints,
+    TResult Function(RequestCancel<T> value)? requestCancel,
+    TResult Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
     required TResult orElse(),
   }) {
     if (rejectApplication != null) {
@@ -1950,6 +2220,13 @@ class _$AcceptApplication<T> implements AcceptApplication<T> {
     required TResult Function(String reqIdx, String fromIdx, String toIdx,
             double score, String comment)
         createRequestReview,
+    required TResult Function(String idx) getWaypoints,
+    required TResult Function(String requestIdx, String content,
+            String requestStatus, String userIdx, String isRequest)
+        requestCancel,
+    required TResult Function(String requestIdx, String requesterIdx,
+            String workerIdx, String reward)
+        successCheckConfirm,
   }) {
     return acceptApplication(reqIdx, workerIdx);
   }
@@ -1972,6 +2249,13 @@ class _$AcceptApplication<T> implements AcceptApplication<T> {
     TResult? Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult? Function(String idx)? getWaypoints,
+    TResult? Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult? Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
   }) {
     return acceptApplication?.call(reqIdx, workerIdx);
   }
@@ -1994,6 +2278,13 @@ class _$AcceptApplication<T> implements AcceptApplication<T> {
     TResult Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult Function(String idx)? getWaypoints,
+    TResult Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
     required TResult orElse(),
   }) {
     if (acceptApplication != null) {
@@ -2020,6 +2311,9 @@ class _$AcceptApplication<T> implements AcceptApplication<T> {
     required TResult Function(FinishRequest<T> value) finishRequest,
     required TResult Function(RecruitmentRequest<T> value) recruitmentRequest,
     required TResult Function(createRequestReview<T> value) createRequestReview,
+    required TResult Function(GetWaypoints<T> value) getWaypoints,
+    required TResult Function(RequestCancel<T> value) requestCancel,
+    required TResult Function(SuccessCheckConfirm<T> value) successCheckConfirm,
   }) {
     return acceptApplication(this);
   }
@@ -2042,6 +2336,9 @@ class _$AcceptApplication<T> implements AcceptApplication<T> {
     TResult? Function(FinishRequest<T> value)? finishRequest,
     TResult? Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult? Function(createRequestReview<T> value)? createRequestReview,
+    TResult? Function(GetWaypoints<T> value)? getWaypoints,
+    TResult? Function(RequestCancel<T> value)? requestCancel,
+    TResult? Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
   }) {
     return acceptApplication?.call(this);
   }
@@ -2063,6 +2360,9 @@ class _$AcceptApplication<T> implements AcceptApplication<T> {
     TResult Function(FinishRequest<T> value)? finishRequest,
     TResult Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult Function(createRequestReview<T> value)? createRequestReview,
+    TResult Function(GetWaypoints<T> value)? getWaypoints,
+    TResult Function(RequestCancel<T> value)? requestCancel,
+    TResult Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
     required TResult orElse(),
   }) {
     if (acceptApplication != null) {
@@ -2163,6 +2463,13 @@ class _$GetRequest<T> implements GetRequest<T> {
     required TResult Function(String reqIdx, String fromIdx, String toIdx,
             double score, String comment)
         createRequestReview,
+    required TResult Function(String idx) getWaypoints,
+    required TResult Function(String requestIdx, String content,
+            String requestStatus, String userIdx, String isRequest)
+        requestCancel,
+    required TResult Function(String requestIdx, String requesterIdx,
+            String workerIdx, String reward)
+        successCheckConfirm,
   }) {
     return getRequest(idx);
   }
@@ -2185,6 +2492,13 @@ class _$GetRequest<T> implements GetRequest<T> {
     TResult? Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult? Function(String idx)? getWaypoints,
+    TResult? Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult? Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
   }) {
     return getRequest?.call(idx);
   }
@@ -2207,6 +2521,13 @@ class _$GetRequest<T> implements GetRequest<T> {
     TResult Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult Function(String idx)? getWaypoints,
+    TResult Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
     required TResult orElse(),
   }) {
     if (getRequest != null) {
@@ -2233,6 +2554,9 @@ class _$GetRequest<T> implements GetRequest<T> {
     required TResult Function(FinishRequest<T> value) finishRequest,
     required TResult Function(RecruitmentRequest<T> value) recruitmentRequest,
     required TResult Function(createRequestReview<T> value) createRequestReview,
+    required TResult Function(GetWaypoints<T> value) getWaypoints,
+    required TResult Function(RequestCancel<T> value) requestCancel,
+    required TResult Function(SuccessCheckConfirm<T> value) successCheckConfirm,
   }) {
     return getRequest(this);
   }
@@ -2255,6 +2579,9 @@ class _$GetRequest<T> implements GetRequest<T> {
     TResult? Function(FinishRequest<T> value)? finishRequest,
     TResult? Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult? Function(createRequestReview<T> value)? createRequestReview,
+    TResult? Function(GetWaypoints<T> value)? getWaypoints,
+    TResult? Function(RequestCancel<T> value)? requestCancel,
+    TResult? Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
   }) {
     return getRequest?.call(this);
   }
@@ -2276,6 +2603,9 @@ class _$GetRequest<T> implements GetRequest<T> {
     TResult Function(FinishRequest<T> value)? finishRequest,
     TResult Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult Function(createRequestReview<T> value)? createRequestReview,
+    TResult Function(GetWaypoints<T> value)? getWaypoints,
+    TResult Function(RequestCancel<T> value)? requestCancel,
+    TResult Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
     required TResult orElse(),
   }) {
     if (getRequest != null) {
@@ -2374,6 +2704,13 @@ class _$FinishRequest<T> implements FinishRequest<T> {
     required TResult Function(String reqIdx, String fromIdx, String toIdx,
             double score, String comment)
         createRequestReview,
+    required TResult Function(String idx) getWaypoints,
+    required TResult Function(String requestIdx, String content,
+            String requestStatus, String userIdx, String isRequest)
+        requestCancel,
+    required TResult Function(String requestIdx, String requesterIdx,
+            String workerIdx, String reward)
+        successCheckConfirm,
   }) {
     return finishRequest(idx);
   }
@@ -2396,6 +2733,13 @@ class _$FinishRequest<T> implements FinishRequest<T> {
     TResult? Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult? Function(String idx)? getWaypoints,
+    TResult? Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult? Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
   }) {
     return finishRequest?.call(idx);
   }
@@ -2418,6 +2762,13 @@ class _$FinishRequest<T> implements FinishRequest<T> {
     TResult Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult Function(String idx)? getWaypoints,
+    TResult Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
     required TResult orElse(),
   }) {
     if (finishRequest != null) {
@@ -2444,6 +2795,9 @@ class _$FinishRequest<T> implements FinishRequest<T> {
     required TResult Function(FinishRequest<T> value) finishRequest,
     required TResult Function(RecruitmentRequest<T> value) recruitmentRequest,
     required TResult Function(createRequestReview<T> value) createRequestReview,
+    required TResult Function(GetWaypoints<T> value) getWaypoints,
+    required TResult Function(RequestCancel<T> value) requestCancel,
+    required TResult Function(SuccessCheckConfirm<T> value) successCheckConfirm,
   }) {
     return finishRequest(this);
   }
@@ -2466,6 +2820,9 @@ class _$FinishRequest<T> implements FinishRequest<T> {
     TResult? Function(FinishRequest<T> value)? finishRequest,
     TResult? Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult? Function(createRequestReview<T> value)? createRequestReview,
+    TResult? Function(GetWaypoints<T> value)? getWaypoints,
+    TResult? Function(RequestCancel<T> value)? requestCancel,
+    TResult? Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
   }) {
     return finishRequest?.call(this);
   }
@@ -2487,6 +2844,9 @@ class _$FinishRequest<T> implements FinishRequest<T> {
     TResult Function(FinishRequest<T> value)? finishRequest,
     TResult Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult Function(createRequestReview<T> value)? createRequestReview,
+    TResult Function(GetWaypoints<T> value)? getWaypoints,
+    TResult Function(RequestCancel<T> value)? requestCancel,
+    TResult Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
     required TResult orElse(),
   }) {
     if (finishRequest != null) {
@@ -2595,6 +2955,13 @@ class _$RecruitmentRequest<T> implements RecruitmentRequest<T> {
     required TResult Function(String reqIdx, String fromIdx, String toIdx,
             double score, String comment)
         createRequestReview,
+    required TResult Function(String idx) getWaypoints,
+    required TResult Function(String requestIdx, String content,
+            String requestStatus, String userIdx, String isRequest)
+        requestCancel,
+    required TResult Function(String requestIdx, String requesterIdx,
+            String workerIdx, String reward)
+        successCheckConfirm,
   }) {
     return recruitmentRequest(idx, workerIdx);
   }
@@ -2617,6 +2984,13 @@ class _$RecruitmentRequest<T> implements RecruitmentRequest<T> {
     TResult? Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult? Function(String idx)? getWaypoints,
+    TResult? Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult? Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
   }) {
     return recruitmentRequest?.call(idx, workerIdx);
   }
@@ -2639,6 +3013,13 @@ class _$RecruitmentRequest<T> implements RecruitmentRequest<T> {
     TResult Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult Function(String idx)? getWaypoints,
+    TResult Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
     required TResult orElse(),
   }) {
     if (recruitmentRequest != null) {
@@ -2665,6 +3046,9 @@ class _$RecruitmentRequest<T> implements RecruitmentRequest<T> {
     required TResult Function(FinishRequest<T> value) finishRequest,
     required TResult Function(RecruitmentRequest<T> value) recruitmentRequest,
     required TResult Function(createRequestReview<T> value) createRequestReview,
+    required TResult Function(GetWaypoints<T> value) getWaypoints,
+    required TResult Function(RequestCancel<T> value) requestCancel,
+    required TResult Function(SuccessCheckConfirm<T> value) successCheckConfirm,
   }) {
     return recruitmentRequest(this);
   }
@@ -2687,6 +3071,9 @@ class _$RecruitmentRequest<T> implements RecruitmentRequest<T> {
     TResult? Function(FinishRequest<T> value)? finishRequest,
     TResult? Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult? Function(createRequestReview<T> value)? createRequestReview,
+    TResult? Function(GetWaypoints<T> value)? getWaypoints,
+    TResult? Function(RequestCancel<T> value)? requestCancel,
+    TResult? Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
   }) {
     return recruitmentRequest?.call(this);
   }
@@ -2708,6 +3095,9 @@ class _$RecruitmentRequest<T> implements RecruitmentRequest<T> {
     TResult Function(FinishRequest<T> value)? finishRequest,
     TResult Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult Function(createRequestReview<T> value)? createRequestReview,
+    TResult Function(GetWaypoints<T> value)? getWaypoints,
+    TResult Function(RequestCancel<T> value)? requestCancel,
+    TResult Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
     required TResult orElse(),
   }) {
     if (recruitmentRequest != null) {
@@ -2848,6 +3238,13 @@ class _$createRequestReview<T> implements createRequestReview<T> {
     required TResult Function(String reqIdx, String fromIdx, String toIdx,
             double score, String comment)
         createRequestReview,
+    required TResult Function(String idx) getWaypoints,
+    required TResult Function(String requestIdx, String content,
+            String requestStatus, String userIdx, String isRequest)
+        requestCancel,
+    required TResult Function(String requestIdx, String requesterIdx,
+            String workerIdx, String reward)
+        successCheckConfirm,
   }) {
     return createRequestReview(reqIdx, fromIdx, toIdx, score, comment);
   }
@@ -2870,6 +3267,13 @@ class _$createRequestReview<T> implements createRequestReview<T> {
     TResult? Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult? Function(String idx)? getWaypoints,
+    TResult? Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult? Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
   }) {
     return createRequestReview?.call(reqIdx, fromIdx, toIdx, score, comment);
   }
@@ -2892,6 +3296,13 @@ class _$createRequestReview<T> implements createRequestReview<T> {
     TResult Function(String reqIdx, String fromIdx, String toIdx, double score,
             String comment)?
         createRequestReview,
+    TResult Function(String idx)? getWaypoints,
+    TResult Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
     required TResult orElse(),
   }) {
     if (createRequestReview != null) {
@@ -2918,6 +3329,9 @@ class _$createRequestReview<T> implements createRequestReview<T> {
     required TResult Function(FinishRequest<T> value) finishRequest,
     required TResult Function(RecruitmentRequest<T> value) recruitmentRequest,
     required TResult Function(createRequestReview<T> value) createRequestReview,
+    required TResult Function(GetWaypoints<T> value) getWaypoints,
+    required TResult Function(RequestCancel<T> value) requestCancel,
+    required TResult Function(SuccessCheckConfirm<T> value) successCheckConfirm,
   }) {
     return createRequestReview(this);
   }
@@ -2940,6 +3354,9 @@ class _$createRequestReview<T> implements createRequestReview<T> {
     TResult? Function(FinishRequest<T> value)? finishRequest,
     TResult? Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult? Function(createRequestReview<T> value)? createRequestReview,
+    TResult? Function(GetWaypoints<T> value)? getWaypoints,
+    TResult? Function(RequestCancel<T> value)? requestCancel,
+    TResult? Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
   }) {
     return createRequestReview?.call(this);
   }
@@ -2961,6 +3378,9 @@ class _$createRequestReview<T> implements createRequestReview<T> {
     TResult Function(FinishRequest<T> value)? finishRequest,
     TResult Function(RecruitmentRequest<T> value)? recruitmentRequest,
     TResult Function(createRequestReview<T> value)? createRequestReview,
+    TResult Function(GetWaypoints<T> value)? getWaypoints,
+    TResult Function(RequestCancel<T> value)? requestCancel,
+    TResult Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
     required TResult orElse(),
   }) {
     if (createRequestReview != null) {
@@ -2985,5 +3405,824 @@ abstract class createRequestReview<T> implements RequestEvent<T> {
   String get comment;
   @JsonKey(ignore: true)
   _$$createRequestReviewCopyWith<T, _$createRequestReview<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetWaypointsCopyWith<T, $Res> {
+  factory _$$GetWaypointsCopyWith(
+          _$GetWaypoints<T> value, $Res Function(_$GetWaypoints<T>) then) =
+      __$$GetWaypointsCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({String idx});
+}
+
+/// @nodoc
+class __$$GetWaypointsCopyWithImpl<T, $Res>
+    extends _$RequestEventCopyWithImpl<T, $Res, _$GetWaypoints<T>>
+    implements _$$GetWaypointsCopyWith<T, $Res> {
+  __$$GetWaypointsCopyWithImpl(
+      _$GetWaypoints<T> _value, $Res Function(_$GetWaypoints<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idx = null,
+  }) {
+    return _then(_$GetWaypoints<T>(
+      null == idx
+          ? _value.idx
+          : idx // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetWaypoints<T> implements GetWaypoints<T> {
+  const _$GetWaypoints(this.idx);
+
+  @override
+  final String idx;
+
+  @override
+  String toString() {
+    return 'RequestEvent<$T>.getWaypoints(idx: $idx)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetWaypoints<T> &&
+            (identical(other.idx, idx) || other.idx == idx));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, idx);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetWaypointsCopyWith<T, _$GetWaypoints<T>> get copyWith =>
+      __$$GetWaypointsCopyWithImpl<T, _$GetWaypoints<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String idx) getRequests,
+    required TResult Function(String idx) getMyRequestsRequesterSide,
+    required TResult Function(String idx) getMyRequestsWorkerSide,
+    required TResult Function(String idx, String workerIdx) acceptRequest,
+    required TResult Function(String idx) startRequest,
+    required TResult Function(String idx) requestComplete,
+    required TResult Function(String idx) getRecruitments,
+    required TResult Function(String idx) rejectApplication,
+    required TResult Function(String reqIdx, String workerIdx)
+        acceptApplication,
+    required TResult Function(String idx) getRequest,
+    required TResult Function(String idx) finishRequest,
+    required TResult Function(String idx, String workerIdx) recruitmentRequest,
+    required TResult Function(String reqIdx, String fromIdx, String toIdx,
+            double score, String comment)
+        createRequestReview,
+    required TResult Function(String idx) getWaypoints,
+    required TResult Function(String requestIdx, String content,
+            String requestStatus, String userIdx, String isRequest)
+        requestCancel,
+    required TResult Function(String requestIdx, String requesterIdx,
+            String workerIdx, String reward)
+        successCheckConfirm,
+  }) {
+    return getWaypoints(idx);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String idx)? getRequests,
+    TResult? Function(String idx)? getMyRequestsRequesterSide,
+    TResult? Function(String idx)? getMyRequestsWorkerSide,
+    TResult? Function(String idx, String workerIdx)? acceptRequest,
+    TResult? Function(String idx)? startRequest,
+    TResult? Function(String idx)? requestComplete,
+    TResult? Function(String idx)? getRecruitments,
+    TResult? Function(String idx)? rejectApplication,
+    TResult? Function(String reqIdx, String workerIdx)? acceptApplication,
+    TResult? Function(String idx)? getRequest,
+    TResult? Function(String idx)? finishRequest,
+    TResult? Function(String idx, String workerIdx)? recruitmentRequest,
+    TResult? Function(String reqIdx, String fromIdx, String toIdx, double score,
+            String comment)?
+        createRequestReview,
+    TResult? Function(String idx)? getWaypoints,
+    TResult? Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult? Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
+  }) {
+    return getWaypoints?.call(idx);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String idx)? getRequests,
+    TResult Function(String idx)? getMyRequestsRequesterSide,
+    TResult Function(String idx)? getMyRequestsWorkerSide,
+    TResult Function(String idx, String workerIdx)? acceptRequest,
+    TResult Function(String idx)? startRequest,
+    TResult Function(String idx)? requestComplete,
+    TResult Function(String idx)? getRecruitments,
+    TResult Function(String idx)? rejectApplication,
+    TResult Function(String reqIdx, String workerIdx)? acceptApplication,
+    TResult Function(String idx)? getRequest,
+    TResult Function(String idx)? finishRequest,
+    TResult Function(String idx, String workerIdx)? recruitmentRequest,
+    TResult Function(String reqIdx, String fromIdx, String toIdx, double score,
+            String comment)?
+        createRequestReview,
+    TResult Function(String idx)? getWaypoints,
+    TResult Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
+    required TResult orElse(),
+  }) {
+    if (getWaypoints != null) {
+      return getWaypoints(idx);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetRequests<T> value) getRequests,
+    required TResult Function(GetMyRequestsRequesterSide<T> value)
+        getMyRequestsRequesterSide,
+    required TResult Function(GetMyRequestsWorkerSide<T> value)
+        getMyRequestsWorkerSide,
+    required TResult Function(AccpetRequest<T> value) acceptRequest,
+    required TResult Function(StartRequest<T> value) startRequest,
+    required TResult Function(RequestComplete<T> value) requestComplete,
+    required TResult Function(GetRecruitments<T> value) getRecruitments,
+    required TResult Function(RejectApplication<T> value) rejectApplication,
+    required TResult Function(AcceptApplication<T> value) acceptApplication,
+    required TResult Function(GetRequest<T> value) getRequest,
+    required TResult Function(FinishRequest<T> value) finishRequest,
+    required TResult Function(RecruitmentRequest<T> value) recruitmentRequest,
+    required TResult Function(createRequestReview<T> value) createRequestReview,
+    required TResult Function(GetWaypoints<T> value) getWaypoints,
+    required TResult Function(RequestCancel<T> value) requestCancel,
+    required TResult Function(SuccessCheckConfirm<T> value) successCheckConfirm,
+  }) {
+    return getWaypoints(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetRequests<T> value)? getRequests,
+    TResult? Function(GetMyRequestsRequesterSide<T> value)?
+        getMyRequestsRequesterSide,
+    TResult? Function(GetMyRequestsWorkerSide<T> value)?
+        getMyRequestsWorkerSide,
+    TResult? Function(AccpetRequest<T> value)? acceptRequest,
+    TResult? Function(StartRequest<T> value)? startRequest,
+    TResult? Function(RequestComplete<T> value)? requestComplete,
+    TResult? Function(GetRecruitments<T> value)? getRecruitments,
+    TResult? Function(RejectApplication<T> value)? rejectApplication,
+    TResult? Function(AcceptApplication<T> value)? acceptApplication,
+    TResult? Function(GetRequest<T> value)? getRequest,
+    TResult? Function(FinishRequest<T> value)? finishRequest,
+    TResult? Function(RecruitmentRequest<T> value)? recruitmentRequest,
+    TResult? Function(createRequestReview<T> value)? createRequestReview,
+    TResult? Function(GetWaypoints<T> value)? getWaypoints,
+    TResult? Function(RequestCancel<T> value)? requestCancel,
+    TResult? Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
+  }) {
+    return getWaypoints?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetRequests<T> value)? getRequests,
+    TResult Function(GetMyRequestsRequesterSide<T> value)?
+        getMyRequestsRequesterSide,
+    TResult Function(GetMyRequestsWorkerSide<T> value)? getMyRequestsWorkerSide,
+    TResult Function(AccpetRequest<T> value)? acceptRequest,
+    TResult Function(StartRequest<T> value)? startRequest,
+    TResult Function(RequestComplete<T> value)? requestComplete,
+    TResult Function(GetRecruitments<T> value)? getRecruitments,
+    TResult Function(RejectApplication<T> value)? rejectApplication,
+    TResult Function(AcceptApplication<T> value)? acceptApplication,
+    TResult Function(GetRequest<T> value)? getRequest,
+    TResult Function(FinishRequest<T> value)? finishRequest,
+    TResult Function(RecruitmentRequest<T> value)? recruitmentRequest,
+    TResult Function(createRequestReview<T> value)? createRequestReview,
+    TResult Function(GetWaypoints<T> value)? getWaypoints,
+    TResult Function(RequestCancel<T> value)? requestCancel,
+    TResult Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
+    required TResult orElse(),
+  }) {
+    if (getWaypoints != null) {
+      return getWaypoints(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetWaypoints<T> implements RequestEvent<T> {
+  const factory GetWaypoints(final String idx) = _$GetWaypoints<T>;
+
+  String get idx;
+  @JsonKey(ignore: true)
+  _$$GetWaypointsCopyWith<T, _$GetWaypoints<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RequestCancelCopyWith<T, $Res> {
+  factory _$$RequestCancelCopyWith(
+          _$RequestCancel<T> value, $Res Function(_$RequestCancel<T>) then) =
+      __$$RequestCancelCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call(
+      {String requestIdx,
+      String content,
+      String requestStatus,
+      String userIdx,
+      String isRequest});
+}
+
+/// @nodoc
+class __$$RequestCancelCopyWithImpl<T, $Res>
+    extends _$RequestEventCopyWithImpl<T, $Res, _$RequestCancel<T>>
+    implements _$$RequestCancelCopyWith<T, $Res> {
+  __$$RequestCancelCopyWithImpl(
+      _$RequestCancel<T> _value, $Res Function(_$RequestCancel<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? requestIdx = null,
+    Object? content = null,
+    Object? requestStatus = null,
+    Object? userIdx = null,
+    Object? isRequest = null,
+  }) {
+    return _then(_$RequestCancel<T>(
+      null == requestIdx
+          ? _value.requestIdx
+          : requestIdx // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == content
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == requestStatus
+          ? _value.requestStatus
+          : requestStatus // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == userIdx
+          ? _value.userIdx
+          : userIdx // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == isRequest
+          ? _value.isRequest
+          : isRequest // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RequestCancel<T> implements RequestCancel<T> {
+  const _$RequestCancel(this.requestIdx, this.content, this.requestStatus,
+      this.userIdx, this.isRequest);
+
+  @override
+  final String requestIdx;
+  @override
+  final String content;
+  @override
+  final String requestStatus;
+  @override
+  final String userIdx;
+  @override
+  final String isRequest;
+
+  @override
+  String toString() {
+    return 'RequestEvent<$T>.requestCancel(requestIdx: $requestIdx, content: $content, requestStatus: $requestStatus, userIdx: $userIdx, isRequest: $isRequest)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RequestCancel<T> &&
+            (identical(other.requestIdx, requestIdx) ||
+                other.requestIdx == requestIdx) &&
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.requestStatus, requestStatus) ||
+                other.requestStatus == requestStatus) &&
+            (identical(other.userIdx, userIdx) || other.userIdx == userIdx) &&
+            (identical(other.isRequest, isRequest) ||
+                other.isRequest == isRequest));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, requestIdx, content, requestStatus, userIdx, isRequest);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RequestCancelCopyWith<T, _$RequestCancel<T>> get copyWith =>
+      __$$RequestCancelCopyWithImpl<T, _$RequestCancel<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String idx) getRequests,
+    required TResult Function(String idx) getMyRequestsRequesterSide,
+    required TResult Function(String idx) getMyRequestsWorkerSide,
+    required TResult Function(String idx, String workerIdx) acceptRequest,
+    required TResult Function(String idx) startRequest,
+    required TResult Function(String idx) requestComplete,
+    required TResult Function(String idx) getRecruitments,
+    required TResult Function(String idx) rejectApplication,
+    required TResult Function(String reqIdx, String workerIdx)
+        acceptApplication,
+    required TResult Function(String idx) getRequest,
+    required TResult Function(String idx) finishRequest,
+    required TResult Function(String idx, String workerIdx) recruitmentRequest,
+    required TResult Function(String reqIdx, String fromIdx, String toIdx,
+            double score, String comment)
+        createRequestReview,
+    required TResult Function(String idx) getWaypoints,
+    required TResult Function(String requestIdx, String content,
+            String requestStatus, String userIdx, String isRequest)
+        requestCancel,
+    required TResult Function(String requestIdx, String requesterIdx,
+            String workerIdx, String reward)
+        successCheckConfirm,
+  }) {
+    return requestCancel(
+        requestIdx, content, requestStatus, userIdx, isRequest);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String idx)? getRequests,
+    TResult? Function(String idx)? getMyRequestsRequesterSide,
+    TResult? Function(String idx)? getMyRequestsWorkerSide,
+    TResult? Function(String idx, String workerIdx)? acceptRequest,
+    TResult? Function(String idx)? startRequest,
+    TResult? Function(String idx)? requestComplete,
+    TResult? Function(String idx)? getRecruitments,
+    TResult? Function(String idx)? rejectApplication,
+    TResult? Function(String reqIdx, String workerIdx)? acceptApplication,
+    TResult? Function(String idx)? getRequest,
+    TResult? Function(String idx)? finishRequest,
+    TResult? Function(String idx, String workerIdx)? recruitmentRequest,
+    TResult? Function(String reqIdx, String fromIdx, String toIdx, double score,
+            String comment)?
+        createRequestReview,
+    TResult? Function(String idx)? getWaypoints,
+    TResult? Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult? Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
+  }) {
+    return requestCancel?.call(
+        requestIdx, content, requestStatus, userIdx, isRequest);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String idx)? getRequests,
+    TResult Function(String idx)? getMyRequestsRequesterSide,
+    TResult Function(String idx)? getMyRequestsWorkerSide,
+    TResult Function(String idx, String workerIdx)? acceptRequest,
+    TResult Function(String idx)? startRequest,
+    TResult Function(String idx)? requestComplete,
+    TResult Function(String idx)? getRecruitments,
+    TResult Function(String idx)? rejectApplication,
+    TResult Function(String reqIdx, String workerIdx)? acceptApplication,
+    TResult Function(String idx)? getRequest,
+    TResult Function(String idx)? finishRequest,
+    TResult Function(String idx, String workerIdx)? recruitmentRequest,
+    TResult Function(String reqIdx, String fromIdx, String toIdx, double score,
+            String comment)?
+        createRequestReview,
+    TResult Function(String idx)? getWaypoints,
+    TResult Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
+    required TResult orElse(),
+  }) {
+    if (requestCancel != null) {
+      return requestCancel(
+          requestIdx, content, requestStatus, userIdx, isRequest);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetRequests<T> value) getRequests,
+    required TResult Function(GetMyRequestsRequesterSide<T> value)
+        getMyRequestsRequesterSide,
+    required TResult Function(GetMyRequestsWorkerSide<T> value)
+        getMyRequestsWorkerSide,
+    required TResult Function(AccpetRequest<T> value) acceptRequest,
+    required TResult Function(StartRequest<T> value) startRequest,
+    required TResult Function(RequestComplete<T> value) requestComplete,
+    required TResult Function(GetRecruitments<T> value) getRecruitments,
+    required TResult Function(RejectApplication<T> value) rejectApplication,
+    required TResult Function(AcceptApplication<T> value) acceptApplication,
+    required TResult Function(GetRequest<T> value) getRequest,
+    required TResult Function(FinishRequest<T> value) finishRequest,
+    required TResult Function(RecruitmentRequest<T> value) recruitmentRequest,
+    required TResult Function(createRequestReview<T> value) createRequestReview,
+    required TResult Function(GetWaypoints<T> value) getWaypoints,
+    required TResult Function(RequestCancel<T> value) requestCancel,
+    required TResult Function(SuccessCheckConfirm<T> value) successCheckConfirm,
+  }) {
+    return requestCancel(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetRequests<T> value)? getRequests,
+    TResult? Function(GetMyRequestsRequesterSide<T> value)?
+        getMyRequestsRequesterSide,
+    TResult? Function(GetMyRequestsWorkerSide<T> value)?
+        getMyRequestsWorkerSide,
+    TResult? Function(AccpetRequest<T> value)? acceptRequest,
+    TResult? Function(StartRequest<T> value)? startRequest,
+    TResult? Function(RequestComplete<T> value)? requestComplete,
+    TResult? Function(GetRecruitments<T> value)? getRecruitments,
+    TResult? Function(RejectApplication<T> value)? rejectApplication,
+    TResult? Function(AcceptApplication<T> value)? acceptApplication,
+    TResult? Function(GetRequest<T> value)? getRequest,
+    TResult? Function(FinishRequest<T> value)? finishRequest,
+    TResult? Function(RecruitmentRequest<T> value)? recruitmentRequest,
+    TResult? Function(createRequestReview<T> value)? createRequestReview,
+    TResult? Function(GetWaypoints<T> value)? getWaypoints,
+    TResult? Function(RequestCancel<T> value)? requestCancel,
+    TResult? Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
+  }) {
+    return requestCancel?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetRequests<T> value)? getRequests,
+    TResult Function(GetMyRequestsRequesterSide<T> value)?
+        getMyRequestsRequesterSide,
+    TResult Function(GetMyRequestsWorkerSide<T> value)? getMyRequestsWorkerSide,
+    TResult Function(AccpetRequest<T> value)? acceptRequest,
+    TResult Function(StartRequest<T> value)? startRequest,
+    TResult Function(RequestComplete<T> value)? requestComplete,
+    TResult Function(GetRecruitments<T> value)? getRecruitments,
+    TResult Function(RejectApplication<T> value)? rejectApplication,
+    TResult Function(AcceptApplication<T> value)? acceptApplication,
+    TResult Function(GetRequest<T> value)? getRequest,
+    TResult Function(FinishRequest<T> value)? finishRequest,
+    TResult Function(RecruitmentRequest<T> value)? recruitmentRequest,
+    TResult Function(createRequestReview<T> value)? createRequestReview,
+    TResult Function(GetWaypoints<T> value)? getWaypoints,
+    TResult Function(RequestCancel<T> value)? requestCancel,
+    TResult Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
+    required TResult orElse(),
+  }) {
+    if (requestCancel != null) {
+      return requestCancel(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RequestCancel<T> implements RequestEvent<T> {
+  const factory RequestCancel(
+      final String requestIdx,
+      final String content,
+      final String requestStatus,
+      final String userIdx,
+      final String isRequest) = _$RequestCancel<T>;
+
+  String get requestIdx;
+  String get content;
+  String get requestStatus;
+  String get userIdx;
+  String get isRequest;
+  @JsonKey(ignore: true)
+  _$$RequestCancelCopyWith<T, _$RequestCancel<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SuccessCheckConfirmCopyWith<T, $Res> {
+  factory _$$SuccessCheckConfirmCopyWith(_$SuccessCheckConfirm<T> value,
+          $Res Function(_$SuccessCheckConfirm<T>) then) =
+      __$$SuccessCheckConfirmCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call(
+      {String requestIdx,
+      String requesterIdx,
+      String workerIdx,
+      String reward});
+}
+
+/// @nodoc
+class __$$SuccessCheckConfirmCopyWithImpl<T, $Res>
+    extends _$RequestEventCopyWithImpl<T, $Res, _$SuccessCheckConfirm<T>>
+    implements _$$SuccessCheckConfirmCopyWith<T, $Res> {
+  __$$SuccessCheckConfirmCopyWithImpl(_$SuccessCheckConfirm<T> _value,
+      $Res Function(_$SuccessCheckConfirm<T>) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? requestIdx = null,
+    Object? requesterIdx = null,
+    Object? workerIdx = null,
+    Object? reward = null,
+  }) {
+    return _then(_$SuccessCheckConfirm<T>(
+      null == requestIdx
+          ? _value.requestIdx
+          : requestIdx // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == requesterIdx
+          ? _value.requesterIdx
+          : requesterIdx // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == workerIdx
+          ? _value.workerIdx
+          : workerIdx // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == reward
+          ? _value.reward
+          : reward // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SuccessCheckConfirm<T> implements SuccessCheckConfirm<T> {
+  const _$SuccessCheckConfirm(
+      this.requestIdx, this.requesterIdx, this.workerIdx, this.reward);
+
+  @override
+  final String requestIdx;
+  @override
+  final String requesterIdx;
+  @override
+  final String workerIdx;
+  @override
+  final String reward;
+
+  @override
+  String toString() {
+    return 'RequestEvent<$T>.successCheckConfirm(requestIdx: $requestIdx, requesterIdx: $requesterIdx, workerIdx: $workerIdx, reward: $reward)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessCheckConfirm<T> &&
+            (identical(other.requestIdx, requestIdx) ||
+                other.requestIdx == requestIdx) &&
+            (identical(other.requesterIdx, requesterIdx) ||
+                other.requesterIdx == requesterIdx) &&
+            (identical(other.workerIdx, workerIdx) ||
+                other.workerIdx == workerIdx) &&
+            (identical(other.reward, reward) || other.reward == reward));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, requestIdx, requesterIdx, workerIdx, reward);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessCheckConfirmCopyWith<T, _$SuccessCheckConfirm<T>> get copyWith =>
+      __$$SuccessCheckConfirmCopyWithImpl<T, _$SuccessCheckConfirm<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String idx) getRequests,
+    required TResult Function(String idx) getMyRequestsRequesterSide,
+    required TResult Function(String idx) getMyRequestsWorkerSide,
+    required TResult Function(String idx, String workerIdx) acceptRequest,
+    required TResult Function(String idx) startRequest,
+    required TResult Function(String idx) requestComplete,
+    required TResult Function(String idx) getRecruitments,
+    required TResult Function(String idx) rejectApplication,
+    required TResult Function(String reqIdx, String workerIdx)
+        acceptApplication,
+    required TResult Function(String idx) getRequest,
+    required TResult Function(String idx) finishRequest,
+    required TResult Function(String idx, String workerIdx) recruitmentRequest,
+    required TResult Function(String reqIdx, String fromIdx, String toIdx,
+            double score, String comment)
+        createRequestReview,
+    required TResult Function(String idx) getWaypoints,
+    required TResult Function(String requestIdx, String content,
+            String requestStatus, String userIdx, String isRequest)
+        requestCancel,
+    required TResult Function(String requestIdx, String requesterIdx,
+            String workerIdx, String reward)
+        successCheckConfirm,
+  }) {
+    return successCheckConfirm(requestIdx, requesterIdx, workerIdx, reward);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String idx)? getRequests,
+    TResult? Function(String idx)? getMyRequestsRequesterSide,
+    TResult? Function(String idx)? getMyRequestsWorkerSide,
+    TResult? Function(String idx, String workerIdx)? acceptRequest,
+    TResult? Function(String idx)? startRequest,
+    TResult? Function(String idx)? requestComplete,
+    TResult? Function(String idx)? getRecruitments,
+    TResult? Function(String idx)? rejectApplication,
+    TResult? Function(String reqIdx, String workerIdx)? acceptApplication,
+    TResult? Function(String idx)? getRequest,
+    TResult? Function(String idx)? finishRequest,
+    TResult? Function(String idx, String workerIdx)? recruitmentRequest,
+    TResult? Function(String reqIdx, String fromIdx, String toIdx, double score,
+            String comment)?
+        createRequestReview,
+    TResult? Function(String idx)? getWaypoints,
+    TResult? Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult? Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
+  }) {
+    return successCheckConfirm?.call(
+        requestIdx, requesterIdx, workerIdx, reward);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String idx)? getRequests,
+    TResult Function(String idx)? getMyRequestsRequesterSide,
+    TResult Function(String idx)? getMyRequestsWorkerSide,
+    TResult Function(String idx, String workerIdx)? acceptRequest,
+    TResult Function(String idx)? startRequest,
+    TResult Function(String idx)? requestComplete,
+    TResult Function(String idx)? getRecruitments,
+    TResult Function(String idx)? rejectApplication,
+    TResult Function(String reqIdx, String workerIdx)? acceptApplication,
+    TResult Function(String idx)? getRequest,
+    TResult Function(String idx)? finishRequest,
+    TResult Function(String idx, String workerIdx)? recruitmentRequest,
+    TResult Function(String reqIdx, String fromIdx, String toIdx, double score,
+            String comment)?
+        createRequestReview,
+    TResult Function(String idx)? getWaypoints,
+    TResult Function(String requestIdx, String content, String requestStatus,
+            String userIdx, String isRequest)?
+        requestCancel,
+    TResult Function(String requestIdx, String requesterIdx, String workerIdx,
+            String reward)?
+        successCheckConfirm,
+    required TResult orElse(),
+  }) {
+    if (successCheckConfirm != null) {
+      return successCheckConfirm(requestIdx, requesterIdx, workerIdx, reward);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetRequests<T> value) getRequests,
+    required TResult Function(GetMyRequestsRequesterSide<T> value)
+        getMyRequestsRequesterSide,
+    required TResult Function(GetMyRequestsWorkerSide<T> value)
+        getMyRequestsWorkerSide,
+    required TResult Function(AccpetRequest<T> value) acceptRequest,
+    required TResult Function(StartRequest<T> value) startRequest,
+    required TResult Function(RequestComplete<T> value) requestComplete,
+    required TResult Function(GetRecruitments<T> value) getRecruitments,
+    required TResult Function(RejectApplication<T> value) rejectApplication,
+    required TResult Function(AcceptApplication<T> value) acceptApplication,
+    required TResult Function(GetRequest<T> value) getRequest,
+    required TResult Function(FinishRequest<T> value) finishRequest,
+    required TResult Function(RecruitmentRequest<T> value) recruitmentRequest,
+    required TResult Function(createRequestReview<T> value) createRequestReview,
+    required TResult Function(GetWaypoints<T> value) getWaypoints,
+    required TResult Function(RequestCancel<T> value) requestCancel,
+    required TResult Function(SuccessCheckConfirm<T> value) successCheckConfirm,
+  }) {
+    return successCheckConfirm(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetRequests<T> value)? getRequests,
+    TResult? Function(GetMyRequestsRequesterSide<T> value)?
+        getMyRequestsRequesterSide,
+    TResult? Function(GetMyRequestsWorkerSide<T> value)?
+        getMyRequestsWorkerSide,
+    TResult? Function(AccpetRequest<T> value)? acceptRequest,
+    TResult? Function(StartRequest<T> value)? startRequest,
+    TResult? Function(RequestComplete<T> value)? requestComplete,
+    TResult? Function(GetRecruitments<T> value)? getRecruitments,
+    TResult? Function(RejectApplication<T> value)? rejectApplication,
+    TResult? Function(AcceptApplication<T> value)? acceptApplication,
+    TResult? Function(GetRequest<T> value)? getRequest,
+    TResult? Function(FinishRequest<T> value)? finishRequest,
+    TResult? Function(RecruitmentRequest<T> value)? recruitmentRequest,
+    TResult? Function(createRequestReview<T> value)? createRequestReview,
+    TResult? Function(GetWaypoints<T> value)? getWaypoints,
+    TResult? Function(RequestCancel<T> value)? requestCancel,
+    TResult? Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
+  }) {
+    return successCheckConfirm?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetRequests<T> value)? getRequests,
+    TResult Function(GetMyRequestsRequesterSide<T> value)?
+        getMyRequestsRequesterSide,
+    TResult Function(GetMyRequestsWorkerSide<T> value)? getMyRequestsWorkerSide,
+    TResult Function(AccpetRequest<T> value)? acceptRequest,
+    TResult Function(StartRequest<T> value)? startRequest,
+    TResult Function(RequestComplete<T> value)? requestComplete,
+    TResult Function(GetRecruitments<T> value)? getRecruitments,
+    TResult Function(RejectApplication<T> value)? rejectApplication,
+    TResult Function(AcceptApplication<T> value)? acceptApplication,
+    TResult Function(GetRequest<T> value)? getRequest,
+    TResult Function(FinishRequest<T> value)? finishRequest,
+    TResult Function(RecruitmentRequest<T> value)? recruitmentRequest,
+    TResult Function(createRequestReview<T> value)? createRequestReview,
+    TResult Function(GetWaypoints<T> value)? getWaypoints,
+    TResult Function(RequestCancel<T> value)? requestCancel,
+    TResult Function(SuccessCheckConfirm<T> value)? successCheckConfirm,
+    required TResult orElse(),
+  }) {
+    if (successCheckConfirm != null) {
+      return successCheckConfirm(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SuccessCheckConfirm<T> implements RequestEvent<T> {
+  const factory SuccessCheckConfirm(
+      final String requestIdx,
+      final String requesterIdx,
+      final String workerIdx,
+      final String reward) = _$SuccessCheckConfirm<T>;
+
+  String get requestIdx;
+  String get requesterIdx;
+  String get workerIdx;
+  String get reward;
+  @JsonKey(ignore: true)
+  _$$SuccessCheckConfirmCopyWith<T, _$SuccessCheckConfirm<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

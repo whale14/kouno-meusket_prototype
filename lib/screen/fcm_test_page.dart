@@ -23,16 +23,19 @@ class _FCMTestPageState extends State<FCMTestPage> {
   Future getFcmToken() async {
     Logger().d(await FirebaseMessaging.instance.getToken());
   }
+
   @override
   void initState() {
     // TODO: implement initState
     getFcmToken();
   }
+
   @override
   Widget build(BuildContext context) {
     _viewModel = context.read();
     _state = _viewModel.userState;
-    var fcmToken = "ciU0wr2LRLmXQPG31g7R4-:APA91bHvaQDlhgrYlNhLrw_nHgCbkkoV3eQbl5572A7clnRNyb-CFcl0IUFug9-6nwP8VBXAKhlNjJCVllaof0xVz5EsXnbjqhsBzipr4-bFaFQ0cBQ4OdQ4wzO6UKbDI-YJGMCN9Ppe";
+    var fcmToken =
+        "dQVzfo53StGl9fK7rDvKX9:APA91bHkzkcvm9PSZWGpnsyyI6LI0A26iWlA8p_coQ-2TrBQHgMlvzQk_5jDXe1sZaqBfUmjIZmEkLcG0LZ3UOxk3_tXl_pVu2MNHUlehQatP4Erow8u20pxZP1J0MMp6fn36g6TMDFS";
     return Scaffold(
       body: Center(
         child: MaterialButton(

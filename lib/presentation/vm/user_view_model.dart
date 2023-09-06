@@ -5,6 +5,7 @@ import 'package:test_project/presentation/state/users/other_user_state.dart';
 import 'package:test_project/presentation/state/users/user_state.dart';
 import 'package:test_project/presentation/state/users/users_state.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
+import 'package:test_project/presentation/state/users/wallet_state.dart';
 
 class UserViewModel with ChangeNotifier {
   // final TestRepository _testRepository;
@@ -13,6 +14,7 @@ class UserViewModel with ChangeNotifier {
   var _usersState = UsersState();
   var _userState = UserState();
   var _otherUserState = OtherUserState();
+  var _walletState = WalletState();
 
   // TestState get testState => _testState;
   UserState get userState => _userState;
@@ -20,6 +22,8 @@ class UserViewModel with ChangeNotifier {
   UsersState get usersState => _usersState;
 
   OtherUserState get otherUserState => _otherUserState;
+
+  WalletState get walletState => _walletState;
 
   UserViewModel(this._userRepository);
 
@@ -44,34 +48,34 @@ class UserViewModel with ChangeNotifier {
       sendRequestToWorker: _sendRequestToWorker,
       updateWorkableState:  _updateWorkableState,
       updateNotWorkableState: _updateNotWorkableState,
+      myWallet: _myWallet,
     );
   }
 
-  Future _insert(String id, String name, double latitude, double longitude, String fcmToken) async {
+  Future _insert(String id, String name, String bio, double latitude, double longitude, String fcmToken) async {
     Logger().d("vm data: $id");
-    await _userRepository.insert(id, name, latitude, longitude, fcmToken);
+    await _userRepository.insert(id, name, bio, latitude, longitude, fcmToken);
   }
 
-  Future _getAroundHelpers(String id) async {
+  Future _getAroundHelpers(String idx, List<bool> categoryCheckValues, List<bool>ageCheckValues, List<bool> genderCheckValues, int distance) async {
     _usersState = usersState.copyWith(isLoading: true);
     notifyListeners();
 
-    final result = _userRepository.getAroundHelpers();
-    final idx = _userRepository.getMyIdx(id);
+    Logger().d("vm data: $idx");
+    final result = _userRepository.getAroundHelpers(idx, categoryCheckValues, ageCheckValues, genderCheckValues, distance);
 
     _usersState = usersState.copyWith(
       isLoading: false,
       users: await result,
-      myIdx: await idx,
     );
     notifyListeners();
-    Logger().d("vm(users):$result");
+    Logger().d("vm(users): ${await result}");
 
     // return result;
   }
 
-  Future _insertRequest(String reqIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, DateTime date, String runningTime, String reward) async {
-    await _userRepository.insertRequest(reqIdx, categoryIdx, title, content, address, latitude, longitude, date, runningTime, reward);
+  Future _insertRequest(String reqIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, String date, String runningTime, String reward, List<Map<String, dynamic>> waypointLocation, List<String> waypointContent, int requestType, int secondType) async {
+    await _userRepository.insertRequest(reqIdx, categoryIdx, title, content, address, latitude, longitude, date, runningTime, reward, waypointLocation, waypointContent, requestType, secondType);
   }
 
   Future _getUser(String id) async {
@@ -143,8 +147,8 @@ class UserViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Future _sendRequestToWorker(String reqIdx,String workerIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, String fcmToken) async{
-    await _userRepository.sendRequestToWorker(reqIdx, workerIdx, categoryIdx, title, content, address, latitude, longitude, fcmToken);
+  Future _sendRequestToWorker(String reqIdx,String workerIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude,String date, String runningTime, String reword, List<Map<String, dynamic>> waypointsLocation, List<String> waypointsContent, String fcmToken, int requestType, int secondType) async{
+    await _userRepository.sendRequestToWorker(reqIdx, workerIdx, categoryIdx, title, content, address, latitude, longitude, date, runningTime, reword, waypointsLocation, waypointsContent, fcmToken, requestType, secondType);
   }
 
   Future _updateWorkableState(String idx) async{
@@ -167,5 +171,11 @@ class UserViewModel with ChangeNotifier {
 
   Future<bool> _checkId(id) async{
     return _userRepository.checkId(id);
+  }
+
+  Future _myWallet(String idx) async{
+    final result = _userRepository.myWallet(idx);
+    _walletState = walletState.copyWith(wallet: await result);
+    notifyListeners();
   }
 }

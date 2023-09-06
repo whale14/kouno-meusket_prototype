@@ -28,6 +28,10 @@ class Request with _$Request {
     required int recruitmentStatus,
     required int? reviewRequesterIdx,
     required int? reviewWorkerIdx,
+    required int successCheck,
+    required int requestType,
+    required int secondType,
+    required int isReported,
   }) = _Request;
 
   factory Request.fromJson(Map<String, dynamic> json) => _$RequestFromJson(json);

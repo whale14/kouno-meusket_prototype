@@ -22,7 +22,6 @@ UsersState _$UsersStateFromJson(Map<String, dynamic> json) {
 mixin _$UsersState {
   List<User> get users => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
-  String get myIdx => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +35,7 @@ abstract class $UsersStateCopyWith<$Res> {
           UsersState value, $Res Function(UsersState) then) =
       _$UsersStateCopyWithImpl<$Res, UsersState>;
   @useResult
-  $Res call({List<User> users, bool isLoading, String myIdx});
+  $Res call({List<User> users, bool isLoading});
 }
 
 /// @nodoc
@@ -54,7 +53,6 @@ class _$UsersStateCopyWithImpl<$Res, $Val extends UsersState>
   $Res call({
     Object? users = null,
     Object? isLoading = null,
-    Object? myIdx = null,
   }) {
     return _then(_value.copyWith(
       users: null == users
@@ -65,10 +63,6 @@ class _$UsersStateCopyWithImpl<$Res, $Val extends UsersState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      myIdx: null == myIdx
-          ? _value.myIdx
-          : myIdx // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -81,7 +75,7 @@ abstract class _$$_UsersStateCopyWith<$Res>
       __$$_UsersStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<User> users, bool isLoading, String myIdx});
+  $Res call({List<User> users, bool isLoading});
 }
 
 /// @nodoc
@@ -97,7 +91,6 @@ class __$$_UsersStateCopyWithImpl<$Res>
   $Res call({
     Object? users = null,
     Object? isLoading = null,
-    Object? myIdx = null,
   }) {
     return _then(_$_UsersState(
       users: null == users
@@ -108,10 +101,6 @@ class __$$_UsersStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      myIdx: null == myIdx
-          ? _value.myIdx
-          : myIdx // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -119,10 +108,7 @@ class __$$_UsersStateCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_UsersState implements _UsersState {
-  _$_UsersState(
-      {final List<User> users = const [],
-      this.isLoading = false,
-      this.myIdx = ''})
+  _$_UsersState({final List<User> users = const [], this.isLoading = false})
       : _users = users;
 
   factory _$_UsersState.fromJson(Map<String, dynamic> json) =>
@@ -140,13 +126,10 @@ class _$_UsersState implements _UsersState {
   @override
   @JsonKey()
   final bool isLoading;
-  @override
-  @JsonKey()
-  final String myIdx;
 
   @override
   String toString() {
-    return 'UsersState(users: $users, isLoading: $isLoading, myIdx: $myIdx)';
+    return 'UsersState(users: $users, isLoading: $isLoading)';
   }
 
   @override
@@ -156,14 +139,13 @@ class _$_UsersState implements _UsersState {
             other is _$_UsersState &&
             const DeepCollectionEquality().equals(other._users, _users) &&
             (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            (identical(other.myIdx, myIdx) || other.myIdx == myIdx));
+                other.isLoading == isLoading));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(_users), isLoading, myIdx);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_users), isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -180,10 +162,8 @@ class _$_UsersState implements _UsersState {
 }
 
 abstract class _UsersState implements UsersState {
-  factory _UsersState(
-      {final List<User> users,
-      final bool isLoading,
-      final String myIdx}) = _$_UsersState;
+  factory _UsersState({final List<User> users, final bool isLoading}) =
+      _$_UsersState;
 
   factory _UsersState.fromJson(Map<String, dynamic> json) =
       _$_UsersState.fromJson;
@@ -192,8 +172,6 @@ abstract class _UsersState implements UsersState {
   List<User> get users;
   @override
   bool get isLoading;
-  @override
-  String get myIdx;
   @override
   @JsonKey(ignore: true)
   _$$_UsersStateCopyWith<_$_UsersState> get copyWith =>

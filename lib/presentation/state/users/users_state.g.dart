@@ -13,12 +13,10 @@ _$_UsersState _$$_UsersStateFromJson(Map<String, dynamic> json) =>
               .toList() ??
           const [],
       isLoading: json['isLoading'] as bool? ?? false,
-      myIdx: json['myIdx'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_UsersStateToJson(_$_UsersState instance) =>
     <String, dynamic>{
       'users': instance.users,
       'isLoading': instance.isLoading,
-      'myIdx': instance.myIdx,
     };

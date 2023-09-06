@@ -48,17 +48,7 @@ class _MatchPageState extends State<MatchPage> {
                     child: const Text("disConnect")),
               ],
             ),
-            // StreamBuilder(
-            //   stream: _channel.stream,
-            //   builder: (context, snapshot) {
-            //     Logger().d(_channel.protocol);
-            //     Logger().d("socket data: ${snapshot.data}");
-            //     return Padding(
-            //       padding: const EdgeInsets.symmetric(vertical: 24.0),
-            //       child: Text(snapshot.hasData ? '${snapshot.data}' : ''),
-            //     );
-            //   },
-            // ),
+
             Text('myId:$_userId, workerIdx:$_helperIdx'),
           ],
         ),

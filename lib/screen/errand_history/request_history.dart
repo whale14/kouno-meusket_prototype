@@ -5,6 +5,7 @@ import 'package:blinking_text/blinking_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -136,255 +137,6 @@ class _RequestHistoryState extends State<RequestHistory> {
       _tappedIndex = index;
       _getMyRequests(index);
     });
-  }
-
-  void onRequestTap(Request request) {
-    if (_tappedIndex == 0) {
-      //부름이 활동 요청서 조회
-      switch (request.status) {
-        case 0:
-          //드림이 모집중
-          goRecruitmentConfirmPage(request);
-          break;
-        case 1:
-          //수락 대기중
-          workingStateModal(
-            request,
-            const Padding(
-              padding: EdgeInsets.only(right: 8),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.cancel_outlined),
-                  Text(
-                    "심부름 취소",
-                    style: TextStyle(fontSize: 8),
-                  ),
-                ],
-              ),
-            ), //Action,
-            NaverMap(
-              options: NaverMapViewOptions(
-                indoorEnable: false,
-                locationButtonEnable: false,
-                consumeSymbolTapEvents: false,
-                scrollGesturesEnable: false,
-                initialCameraPosition: NCameraPosition(target: NLatLng(request.latitude, request.longitude), zoom: 15),
-              ),
-              onMapReady: (controller) {
-                controller.addOverlay(NMarker(id: 'destination', position: NLatLng(request.latitude, request.longitude)));
-              },
-            ),
-            Container(),
-          );
-          break;
-        case 2:
-          //진행대기중
-          workingStateModal(
-            request,
-            const Padding(
-              padding: EdgeInsets.only(right: 8),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.cancel_outlined),
-                  Text(
-                    "심부름 취소",
-                    style: TextStyle(fontSize: 8),
-                  ),
-                ],
-              ),
-            ),
-            NaverMap(
-              options: NaverMapViewOptions(
-                indoorEnable: false,
-                locationButtonEnable: false,
-                consumeSymbolTapEvents: false,
-                scrollGesturesEnable: false,
-                initialCameraPosition: NCameraPosition(target: NLatLng(request.latitude, request.longitude), zoom: 15),
-              ),
-              onMapReady: (controller) {
-                controller.addOverlay(NMarker(id: 'destination', position: NLatLng(request.latitude, request.longitude)));
-              },
-            ),
-            Container(),
-          );
-          break;
-        case 3:
-          //진행중
-          workingStateModal(
-            request,
-            const Padding(
-              padding: EdgeInsets.only(right: 8),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.cancel_outlined),
-                  Text(
-                    "심부름 취소",
-                    style: TextStyle(fontSize: 8),
-                  ),
-                ],
-              ),
-            ),
-            Stack(children: [
-              NaverMap(
-                options: NaverMapViewOptions(
-                  indoorEnable: false,
-                  locationButtonEnable: false,
-                  consumeSymbolTapEvents: false,
-                  scrollGesturesEnable: false,
-                  initialCameraPosition: NCameraPosition(target: NLatLng(request.latitude, request.longitude), zoom: 15),
-                ),
-                onMapReady: (controller) {
-                  controller.addOverlay(NMarker(id: 'destination', position: NLatLng(request.latitude, request.longitude)));
-                },
-              ),
-              Positioned(
-                bottom: 1,
-                right: 1,
-                child: Container(
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
-                  color: Colors.white,
-                  child: const Icon(Icons.location_on_outlined),
-                ),
-              ),
-            ]),
-            Container(),
-          );
-          break;
-        //진행중
-        case 4:
-        //진행종료
-        default:
-        //취소된 심부름
-      }
-    } else {
-      switch (request.status) {
-        //드림이 활동 요청서 조회
-        case 0:
-          //지원한 요청서
-          workingStateModal(
-            request,
-            Container(),
-            NaverMap(
-              options: NaverMapViewOptions(
-                indoorEnable: false,
-                locationButtonEnable: false,
-                consumeSymbolTapEvents: false,
-                scrollGesturesEnable: false,
-                initialCameraPosition: NCameraPosition(target: NLatLng(request.latitude, request.longitude), zoom: 15),
-              ),
-              onMapReady: (controller) {
-                controller.addOverlay(NMarker(id: 'destination', position: NLatLng(request.latitude, request.longitude)));
-              },
-            ),
-            Container(),
-          );
-          break;
-        case 1:
-          //지정요청서
-          workingStateModal(
-            request,
-            Container(),
-            NaverMap(
-              options: NaverMapViewOptions(
-                indoorEnable: false,
-                locationButtonEnable: false,
-                consumeSymbolTapEvents: false,
-                scrollGesturesEnable: false,
-                initialCameraPosition: NCameraPosition(target: NLatLng(request.latitude, request.longitude), zoom: 15),
-              ),
-              onMapReady: (controller) {
-                controller.addOverlay(NMarker(id: 'destination', position: NLatLng(request.latitude, request.longitude)));
-              },
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: GestureDetector(
-                    child: Container(
-                      alignment: Alignment.center,
-                      padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: const Text(
-                        '거절',
-                        style: TextStyle(color: Colors.white, fontSize: 24),
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: GestureDetector(
-                    child: Container(
-                      alignment: Alignment.center,
-                      padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Color(0xffF8A239),
-                        border: Border.all(color: Color(0xffF8A239)),
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      child: const Text(
-                        '수락',
-                        style: TextStyle(color: Colors.white, fontSize: 24),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-          break;
-        case 2:
-          //진행대기
-          workingStateModal(
-            request,
-            Container(),
-            NaverMap(
-              options: NaverMapViewOptions(
-                indoorEnable: false,
-                locationButtonEnable: false,
-                consumeSymbolTapEvents: false,
-                scrollGesturesEnable: false,
-                initialCameraPosition: NCameraPosition(target: NLatLng(request.latitude, request.longitude), zoom: 15),
-              ),
-              onMapReady: (controller) {
-                controller.addOverlay(NMarker(id: 'destination', position: NLatLng(request.latitude, request.longitude)));
-              },
-            ),
-            GestureDetector(
-              onTap: () async {
-                await _requestViewModel.onRequestEvent(RequestEvent.startRequest(request.idx.toString()));
-              },
-              child: Container(
-                alignment: Alignment.center,
-                width: double.maxFinite,
-                padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Color(0xffF8A239),
-                  border: Border.all(color: Color(0xffF8A239)),
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: const Text(
-                  '심부름 시작',
-                  style: TextStyle(color: Colors.white, fontSize: 24),
-                ),
-              ),
-            ),
-          );
-          break;
-        case 3:
-        //진행중
-        case 4:
-        //완료됨
-        default:
-        //취소된 심부름
-      }
-    }
   }
 
   void goRecruitmentConfirmPage(Request request) {
@@ -594,7 +346,7 @@ class _RequestHistoryState extends State<RequestHistory> {
                     height: 16,
                   ),
                   Container(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     child: bottomBtn,
                   )
                 ],
@@ -634,204 +386,75 @@ class _RequestHistoryState extends State<RequestHistory> {
   }
 
   requestCard(Request request) {
-    Widget statusContainer;
+    Color requestCardBorderColor = const Color(0xffE9E9E9);
+    Color requestCardFillColor = Colors.white;
+    Color requestStateColor = Colors.redAccent;
+    String requestStateText;
     if (_tappedIndex == 0) {
       // 부름이 활동 내역
       switch (request.status) {
         case 0:
-          {
-            //드림이 모집중(일반요청)
-            statusContainer = const Column(
-              children: [
-                Text("드림이 모집중"),
-              ],
-            );
-            break;
+          //드림이 모집중(일반요청)
+
+          if (request.requestType == 0) {
+            requestStateText = '드림이 모집중';
+          } else {
+            requestStateText = '드림이 찾는중';
           }
+          requestCardBorderColor = const Color(0xffF8A239);
+          requestStateColor = const Color(0xffF8A239);
+          break;
+
         case 1:
-          {
-            //수락대기 (지정요청)
-            statusContainer = Column(
-              children: [
-                const Text("수락 대기중"),
-                ClipOval(
-                    child: Image.network(
-                  "http://${request.workerImgUrl}",
-                  cacheWidth: 1080,
-                  width: 54,
-                )),
-                Text(request.workerName),
-              ],
-            );
-            break;
-          }
+          //수락대기 (지정요청)
+          requestStateText = '진행대기';
+          break;
         case 2:
-          {
-            //진행대기
-            statusContainer = Column(
-              children: [
-                const Text("진행 대기중"),
-                ClipOval(
-                    child: Image.network(
-                  "http://${request.workerImgUrl}",
-                  cacheWidth: 1080,
-                  width: 54,
-                )),
-                Text(request.workerName),
-              ],
-            );
-            break;
-          }
+          //진행대기
+          requestStateText = '진행중';
+          break;
         case 3:
-          {
-            //진행중
-            statusContainer = Column(
-              children: [
-                const BlinkText("진행중", beginColor: Colors.redAccent, endColor: Colors.transparent, duration: Duration(seconds: 1)),
-                ClipOval(
-                    child: Image.network(
-                  "http://${request.workerImgUrl}",
-                  cacheWidth: 1080,
-                  width: 54,
-                )),
-                Text(request.workerName),
-              ],
-            );
-            break;
-          }
-        case 4:
-          {
-            //완료된 심부름
-            statusContainer = Column(
-              children: [
-                const Text("완료된 심부름"),
-                ClipOval(
-                    child: Image.network(
-                  "http://${request.workerImgUrl}",
-                  cacheWidth: 1080,
-                  width: 54,
-                )),
-                Text(request.workerName),
-              ],
-            );
-            break;
-          }
+          //진행중
+          requestStateText = '완료된 심부름';
+          requestCardFillColor = const Color(0xffA1A1A1);
+          requestCardBorderColor = const Color(0xffA1A1A1);
+          break;
         default:
-          //취소된 심부름
-          statusContainer = const Column(
-            children: [
-              Text("취소된 심부름"),
-            ],
-          );
+          requestCardFillColor = const Color(0xffA1A1A1);
+          requestCardBorderColor = const Color(0xffA1A1A1);
+          requestStateText = '취소된 심부름';
       }
     } else {
       // 드림이 활동 내역
       switch (request.status) {
         case 0:
-          {
-            //내가 지원한 요청서
-            statusContainer = Column(
-              children: [
-                const Text("지원한 요청"),
-                ClipOval(
-                    child: Image.network(
-                  "http://${request.requesterImgUrl}",
-                  cacheWidth: 1080,
-                  width: 54,
-                )),
-                Text(request.requesterName),
-              ],
-            );
+          if (request.requestType == 0) {
+            requestCardBorderColor = const Color(0xffF8A239);
+            requestStateColor = const Color(0xffF8A239);
+            requestStateText = '드림이 지원중';
             break;
+          } else {
+            requestStateText = '수락 대기중';
           }
+
+          break;
         case 1:
-          {
-            //지정요청서 열람
-            statusContainer = Column(
-              children: [
-                const Text("수락 대기중"),
-                ClipOval(
-                    child: Image.network(
-                  "http://${request.requesterImgUrl}",
-                  cacheWidth: 1080,
-                  width: 54,
-                )),
-                Text(request.requesterName),
-              ],
-            );
-            break;
-          }
+          //지정요청서 열람
+          requestStateText = '진행 대기중';
+          break;
         case 2:
-          {
-            statusContainer = Column(
-              children: [
-                const Text(
-                  "진행 대기중",
-                ),
-                ClipOval(
-                    child: Image.network(
-                  "http://${request.requesterImgUrl}",
-                  cacheWidth: 1080,
-                  width: 54,
-                )),
-                Text(request.requesterName),
-              ],
-            );
-            break;
-          }
+          requestStateText = '진행중';
+          break;
         case 3:
-          {
-            statusContainer = Column(
-              children: [
-                const BlinkText(
-                  "진행중",
-                  beginColor: Colors.redAccent,
-                  endColor: Colors.transparent,
-                  duration: Duration(seconds: 1),
-                ),
-                ClipOval(
-                    child: Image.network(
-                  "http://${request.requesterImgUrl}",
-                  cacheWidth: 1080,
-                  width: 54,
-                )),
-                Text(request.requesterName),
-              ],
-            );
-            break;
-          }
-        case 4:
-          {
-            statusContainer = Column(
-              children: [
-                const Text(
-                  "완료된 심부름",
-                ),
-                ClipOval(
-                    child: Image.network(
-                  "http://${request.requesterImgUrl}",
-                  cacheWidth: 1080,
-                  width: 54,
-                )),
-                Text(request.requesterName),
-              ],
-            );
-            break;
-          }
+          requestCardFillColor = const Color(0xffA1A1A1);
+          requestCardBorderColor = const Color(0xffA1A1A1);
+          requestStateText = '완료된 심부름';
+          break;
         default:
-          {
-            statusContainer = const Column(
-              children: [
-                BlinkText(
-                  "취소된 심부름",
-                  beginColor: Colors.redAccent,
-                  endColor: Colors.transparent,
-                  duration: Duration(seconds: 1),
-                ),
-              ],
-            );
-            break;
-          }
+          requestCardFillColor = const Color(0xffA1A1A1);
+          requestCardBorderColor = const Color(0xffA1A1A1);
+          requestStateText = '취소된 심부름';
+          break;
       }
     }
     return GestureDetector(
@@ -848,7 +471,8 @@ class _RequestHistoryState extends State<RequestHistory> {
             );
       }, //onRequestTap(request),
       child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15), side: const BorderSide(color: Color(0xffF0F0F0))),
+        color: requestCardFillColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15), side: BorderSide(color: requestCardBorderColor)),
         margin: const EdgeInsets.only(top: 16),
         elevation: 4,
         child: Container(
@@ -864,40 +488,87 @@ class _RequestHistoryState extends State<RequestHistory> {
                     children: [
                       Text(
                         request.title,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
                       ),
                       const SizedBox(
                         width: 8,
                       ),
-                      Text("카테고리${request.workCategoryIdx.toString()}"),
+                      Container(
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(50), border: Border.all(color: const Color(0xffF8A239))),
+                        padding: EdgeInsets.all(4),
+                        child: Text(
+                          WorkCategory().categories[request.workCategoryIdx],
+                          style: TextStyle(fontSize: 10, color: const Color(0xffF8A239)),
+                        ),
+                      ),
                     ],
                   ),
                   const SizedBox(
-                    height: 8,
+                    height: 16,
                   ),
-                  Text(request.address),
-                  const SizedBox(
-                    width: 8,
+                  Row(
+                    children: [
+                      Text('주소 : '),
+                      Text(
+                        request.address,
+                        style: TextStyle(fontWeight: FontWeight.w200),
+                      ),
+                    ],
                   ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  Text(request.workDate != null ? "null" : "notnull"),
                   const SizedBox(
                     height: 8,
                   ),
                   Row(
                     children: [
-                      const Text("심부름비"),
-                      const SizedBox(
-                        width: 8,
+                      Text('일시 : '),
+                      Text(
+                        "${DateFormat("yyyy-MM-dd").format(request.workDate!)} (${'월화수목금토일'[request.workDate!.weekday]}) "
+                        "${'${request.workDate!.hour}'.padLeft(2, '0')}:${'${request.workDate!.minute}'.padLeft(2, '0')}",
+                        style: TextStyle(fontWeight: FontWeight.w300),
                       ),
-                      Text("${request.reward.toString()}원"),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Row(
+                    children: [
+                      const Text("심부름비 : "),
+                      Text(
+                        "${request.reward.toString()}원",
+                        style: TextStyle(fontWeight: FontWeight.w300),
+                      ),
                     ],
                   ),
                 ],
               ),
-              statusContainer,
+              Column(
+                children: [
+                  Text(
+                    requestStateText,
+                    style: TextStyle(color: requestStateColor),
+                  ),
+                  if (_tappedIndex == 0) ...[
+                    if (request.workerIdx != 0) ...[
+                      ClipOval(
+                          child: Image.network(
+                        "http://${request.workerImgUrl}",
+                        cacheWidth: 1080,
+                        width: 54,
+                      )),
+                      Text(request.workerName),
+                    ]
+                  ] else ...[
+                    ClipOval(
+                        child: Image.network(
+                      "http://${request.requesterImgUrl}",
+                      cacheWidth: 1080,
+                      width: 54,
+                    )),
+                    Text(request.requesterName),
+                  ],
+                ],
+              ),
             ],
           ),
         ),

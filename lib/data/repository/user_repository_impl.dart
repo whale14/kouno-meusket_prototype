@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:logger/logger.dart';
 import 'package:test_project/data/source/remote/user_api.dart';
 import 'package:test_project/domain/model/user/user.dart';
+import 'package:test_project/domain/model/user/wallet.dart';
 import 'package:test_project/domain/repository/user_repository.dart';
 
 
@@ -13,19 +14,19 @@ class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl(this.api);
 
   @override
-  Future<List<User>> getAroundHelpers() async {
+  Future<List<User>> getAroundHelpers(String idx, List<bool> categoryCheckValues, List<bool> ageCheckValues, List<bool> genderCheckValues, int distance) async {
     // TODO: implement getAroundHelpers
-    final response = await api.getAroundHelpers();
+    final response = await api.getAroundHelpers(idx, categoryCheckValues, ageCheckValues, genderCheckValues, distance);
     Logger().d("getAH_repo_res:${response.body}");
     final Iterable json = jsonDecode(response.body);
     return json.map((e) => User.fromJson(e)).toList();
   }
 
   @override
-  Future insert(String id, String name, double latitude, double longitude, String fcmToken) async {
+  Future insert(String id, String name, String bio, double latitude, double longitude, String fcmToken) async {
     // TODO: implement insert
     Logger().d("repo data: $id, $name, $latitude, $longitude, $fcmToken");
-    await api.insert(id, name, latitude, longitude, fcmToken);
+    await api.insert(id, name, bio, latitude, longitude, fcmToken);
   }
 
   @override
@@ -39,9 +40,9 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future insertRequest(String reqIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, DateTime date, String runningTime, String reward) async {
+  Future insertRequest(String reqIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, String date, String runningTime, String reward, List<Map<String, dynamic>> waypointsLocation, List<String> waypointsContent, int requestType, int secondType) async {
     // TODO: implement insertRequest
-    await api.insertRequest(reqIdx, categoryIdx, title, content, address, latitude, longitude, date, runningTime, reward);
+    await api.insertRequest(reqIdx, categoryIdx, title, content, address, latitude, longitude, date, runningTime, reward, waypointsLocation, waypointsContent, requestType, secondType);
   }
 
   @override
@@ -123,9 +124,9 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future sendRequestToWorker(String reqIdx,String workerIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, String fcmToken) async{
+  Future sendRequestToWorker(String reqIdx,String workerIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, String date, String runningTime, String reword, List<Map<String, dynamic>> waypointsLocation, List<String> waypointsContent, String fcmToken, int requestType, int secondType) async{
     // TODO: implement sendRequestToWorker
-    await api.sendRequestToWorker(reqIdx, workerIdx, categoryIdx, title, content, address, latitude, longitude, fcmToken);
+    await api.sendRequestToWorker(reqIdx, workerIdx, categoryIdx, title, content, address, latitude, longitude, date, runningTime, reword, waypointsLocation, waypointsContent, fcmToken, requestType, secondType);
   }
 
   @override
@@ -144,5 +145,16 @@ class UserRepositoryImpl implements UserRepository {
   Future updateNotWorkableState(String idx) async{
     // TODO: implement updateNotWorkableState
     await api.updateNotWorkableState(idx);
+  }
+
+  @override
+  Future myWallet(String idx) async{
+    // TODO: implement myWallet
+    final response = await api.myWallet(idx);
+    Logger().d("id : $idx, myWallet:${response.body}");
+    final Iterable json = jsonDecode(response.body);
+    Logger().d('json: ${json.first}');
+    Wallet wallet =  Wallet.fromJson(json.first);
+    return wallet;
   }
 }

@@ -7,7 +7,9 @@ class ChatApi {
   // static const baseUrl = 'http://192.168.33.7:9001/chat';  //작업실
   // static const baseUrl = 'http://172.30.1.69:9001/chat';  //집
   // static const baseUrl = 'http://192.168.101.2:9001/chat'; //기기 사용 3층
-  static const baseUrl = 'http://192.168.100.42:9001/chat'; //기기 사용 5층
+  // static const baseUrl = 'http://192.168.100.42:9001/chat'; //기기 사용 5층
+  static const baseUrl = 'http://203.229.171.79:84/chat'; //기기 사용 5층
+  // static const baseUrl = 'http://192.168.0.168:9001/chat'; //5층 소셜캠퍼스
 
   ChatApi({http.Client? client}) : _client = (client ?? http.Client());
 

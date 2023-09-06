@@ -8,6 +8,7 @@ import 'package:test_project/domain/model/request/request.dart';
 import 'package:test_project/domain/model/request/request_recruitment.dart';
 import 'package:test_project/presentation/event/request/request_event.dart';
 import 'package:test_project/presentation/state/request/request_recruitment_state.dart';
+import 'package:test_project/presentation/state/request/request_state.dart';
 import 'package:test_project/presentation/vm/request_view_model.dart';
 
 class RecruitmentConfirmPage extends StatefulWidget {
@@ -21,6 +22,7 @@ class RecruitmentConfirmPage extends StatefulWidget {
 
 class _RecruitmentConfirmPageState extends State<RecruitmentConfirmPage> {
   late RequestViewModel _requestViewModel;
+  late RequestState _requestState;
   late RequestRecruitmentState _recruitmentState;
 
   Future _getRecruitments() async {
@@ -39,12 +41,32 @@ class _RecruitmentConfirmPageState extends State<RecruitmentConfirmPage> {
   @override
   Widget build(BuildContext context) {
     _requestViewModel = context.watch<RequestViewModel>();
-
+    _requestState = _requestViewModel.requestState;
     _recruitmentState = _requestViewModel.recruitmentState;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('지원서 확인'),
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 8),
+            child: GestureDetector(
+              onTap: () {
+                warningCancelRequest(0, _requestState.request!, _requestState.request!.requesterIdx.toString());
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.cancel_outlined),
+                  Text(
+                    "심부름 취소",
+                    style: TextStyle(fontSize: 8),
+                  ),
+                ],
+              ),
+            ),
+          ), //Action,
+        ],
       ),
       body: Column(
         children: [
@@ -360,10 +382,11 @@ class _RecruitmentConfirmPageState extends State<RecruitmentConfirmPage> {
                                               ),
                                             ),
                                           ),
-                                        ).then((value) async{
+                                        ).then((value) async {
                                           Logger().d(value);
                                           if (value == false) {
-                                            await _requestViewModel.onRequestEvent(RequestEvent.getMyRequestsRequesterSide(widget.request.requesterIdx.toString()));
+                                            await _requestViewModel
+                                                .onRequestEvent(RequestEvent.getMyRequestsRequesterSide(widget.request.requesterIdx.toString()));
                                             Navigator.of(context).pop(true);
                                           }
                                         });
@@ -397,7 +420,9 @@ class _RecruitmentConfirmPageState extends State<RecruitmentConfirmPage> {
     );
   }
 
-  onRequestTap(request) {
+  onRequestTap(Request request) {
+
+    request.latitude;
     showModalBottomSheet(
       enableDrag: false,
       context: context,
@@ -463,6 +488,27 @@ class _RecruitmentConfirmPageState extends State<RecruitmentConfirmPage> {
             ),
           );
         });
+      },
+    );
+  }
+
+  warningCancelRequest(int tappedIndex, Request request, String userIdx) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("심부름 취소하시겠습니까?"),
+          actions: [
+            TextButton(
+                onPressed: () async {
+                  await _requestViewModel
+                      .onRequestEvent(RequestEvent.requestCancel(_requestState.request!.idx.toString(), "취소 이유", _requestState.request!.status.toString(), userIdx, tappedIndex.toString()))
+                      .then((value) => Navigator.of(context).pop());
+                },
+                child: Text('확인')),
+            TextButton(onPressed: () => Navigator.of(context).pop(), child: Text('취소'),),
+          ],
+        );
       },
     );
   }

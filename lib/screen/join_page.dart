@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
@@ -11,7 +12,6 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
 import 'package:test_project/presentation/state/users/user_state.dart';
-import 'package:test_project/presentation/state/users/users_state.dart';
 import 'package:test_project/screen/look_around.dart';
 
 import '../controller/shared_preferences.dart';
@@ -34,17 +34,22 @@ class _JoinPageState extends State<JoinPage> {
 
   late SharedPreferences prefs;
 
-  late UsersState usersState;
+  late UserState userState;
 
   final _bioController = TextEditingController();
 
   XFile? _profileImage;
 
   Future<void> _getCurrentLocation() async {
-    WidgetsFlutterBinding.ensureInitialized();
-    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-    latitude = position.latitude;
-    longitude = position.longitude;
+    try {
+      WidgetsFlutterBinding.ensureInitialized();
+      Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+      latitude = position.latitude;
+      longitude = position.longitude;
+    } catch(e) {
+      Logger().d('##############getCurrentLocation Error: $e');
+      Fluttertoast.showToast(msg: "모바일 기기의 위치기능을 활성화해주세요");
+    }
   }
 
   @override
@@ -52,10 +57,12 @@ class _JoinPageState extends State<JoinPage> {
     // TODO: implement initState
     super.initState();
     _getCurrentLocation();
+    _getToken();
   }
 
   @override
   Widget build(BuildContext context) {
+
     final viewModel = context.watch<UserViewModel>();
     _userId = widget.userId;
     return Scaffold(
@@ -145,20 +152,20 @@ class _JoinPageState extends State<JoinPage> {
                     ),
                     onTap: () async {
                       String? fcmToken = await FirebaseMessaging.instance.getToken();
-                      await viewModel.onUsersEvent(UsersEvent.insert(_userId, _nameController.value.text.trim(), latitude, longitude, fcmToken!));
+                      await viewModel.onUsersEvent(UsersEvent.insert(_userId, _nameController.value.text.trim(),_bioController.value.text.trim(), latitude, longitude, fcmToken!));
 
-                      await viewModel.onUsersEvent(UsersEvent.getAroundHelpers(_userId));
-                      usersState = viewModel.usersState;
-                      Logger().d('!!!!!!!!!!!!!!!!!!!!!!!!!join idx:${usersState.myIdx.toString()}');
-                      SharedPreferencesService().setIdx(usersState.myIdx);
-                      SharedPreferencesService().setLoggedIn(true);
-                      SharedPreferencesService().setUserId(_userId);
-                      Logger().d("id : $_userId, name : ${_nameController.value.text.trim()}, latitude : $latitude, longitude : $longitude");
-                      Navigator.pushReplacement(
+                      await viewModel.onUsersEvent(UsersEvent.getUser(_userId));
+                      userState = viewModel.userState;
+                      // Logger().d('!!!!!!!!!!!!!!!!!!!!!!!!!join idx:${usersState.myIdx.toString()}');
+                      await SharedPreferencesService().setIdx(userState.user!.idx.toString());
+                      await SharedPreferencesService().setLoggedIn(true);
+                      await SharedPreferencesService().setUserId(_userId).then((value) => Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => LookAround(_userId),
-                          ));
+                          )));
+                      Logger().d("id : $_userId, name : ${_nameController.value.text.trim()}, latitude : $latitude, longitude : $longitude");
+
                     }),
               ],
             ),
@@ -276,5 +283,9 @@ class _JoinPageState extends State<JoinPage> {
         _profileImage = XFile(croppedFile.path);
       });
     }
+  }
+
+  Future _getToken() async{
+    Logger().d('FCM token : ${await FirebaseMessaging.instance.getToken()}');
   } //이미지 자르기(정방형)
 }

@@ -13,6 +13,8 @@ class RequestReview with _$RequestReview {
     required String comment,
     required int toIdx,
     required int isRequester,
+    required String? reviewerImageUrl,
+    required String reviewerName,
   }) = _RequestReview;
 
   factory RequestReview.fromJson(Map<String, dynamic> json) => _$RequestReviewFromJson(json);

@@ -4,6 +4,7 @@ import 'package:logger/logger.dart';
 import 'package:test_project/data/source/remote/errand_api.dart';
 import 'package:test_project/domain/model/request/request.dart';
 import 'package:test_project/domain/model/request/request_recruitment.dart';
+import 'package:test_project/domain/model/request/waypoint.dart';
 import 'package:test_project/domain/repository/errand_repository.dart';
 
 class ErrandRepositoryImpl implements ErrandRepository {
@@ -104,6 +105,26 @@ class ErrandRepositoryImpl implements ErrandRepository {
   Future crateRequestReview(String reqIdx, String fromIdx, String toIdx, double score, String comment) async{
     // TODO: implement crateRequestReview
     await api.crateRequestReview(reqIdx, fromIdx, toIdx, score, comment);
+  }
+
+  @override
+  Future<List<Waypoint>> getWaypoint(String idx) async{
+    // TODO: implement getWaypoint
+    final response = await api.getWaypoint(idx);
+    final Iterable json = jsonDecode(response.body);
+    return json.map((e) => Waypoint.fromJson(e)).toList();
+  }
+
+  @override
+  Future requestCancel(String requestIdx, String content, String requestStatus, String userIdx, String isRequester) async{
+    // TODO: implement requestCancel
+    await api.requestCancel(requestIdx, content, requestStatus, userIdx, isRequester);
+  }
+
+  @override
+  Future successCheckConfirm(String requestIdx, String requesterIdx, String workerIdx, String reward) async{
+    // TODO: implement successCheckConfirm
+    await api.successCheckConfirm(requestIdx, requesterIdx, workerIdx, reward);
   }
 
 }

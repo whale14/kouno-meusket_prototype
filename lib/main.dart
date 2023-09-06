@@ -8,9 +8,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:test_project/data/repository/chat_repository_impl.dart';
+import 'package:test_project/data/repository/review_repository_impl.dart';
 import 'package:test_project/data/repository/user_repository_impl.dart';
 import 'package:test_project/data/source/remote/chat_api.dart';
 import 'package:test_project/controller/shared_preferences.dart';
+import 'package:test_project/data/source/remote/review_api.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
 import 'package:test_project/presentation/state/users/user_state.dart';
 import 'package:test_project/presentation/vm/chat_view_model.dart';
@@ -24,6 +26,7 @@ import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:test_project/data/source/remote/errand_api.dart';
+import 'package:test_project/presentation/vm/review_view_model.dart';
 import 'package:test_project/presentation/vm/user_view_model.dart';
 import 'package:test_project/screen/join_page.dart';
 import 'package:test_project/screen/look_around.dart';
@@ -90,6 +93,7 @@ Future main() async {
       ChangeNotifierProvider(create: (_) => UserViewModel(UserRepositoryImpl(UserAPI()))),
       ChangeNotifierProvider(create: (_) => RequestViewModel(ErrandRepositoryImpl(ErrandApi()))),
       ChangeNotifierProvider(create: (_) => ChatViewModel(ChatRepositoryImpl(ChatApi()))),
+      ChangeNotifierProvider(create: (_) => ReviewViewModel(ReviewRepositoryImpl(ReviewApi()))),
     ],
     child: MyApp(),
   ));
@@ -207,17 +211,33 @@ class _LoginPageState extends State<LoginPage> {
       User user = await UserApi.instance.me();
       String userId = 'id${user.id}';
       //
-      await _viewModel.onUsersEvent(UsersEvent.getUser(userId)).then((value) {
-        _isLogin = true;
-        _userId = userId;
-      });
 
-      // final url = Uri.https('kap.kakao.com', '/v2/user/me');
-      //
-      // final response = await http.get(url, headers: {
-      //   HttpHeaders.authorizationHeader: 'Bearer${token.accessToken}'
-      // });
-      // final profileInfo = json.decode(response.body);
+      try {
+        await _viewModel.onUsersEvent(UsersEvent.getUser(userId)).then((value) {
+          _isLogin = true;
+          _userId = userId;
+        });
+      } catch(e) {
+        Logger().d(e.hashCode);
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => JoinPage(userId),
+            ));
+      }
+      if (_isLogin) {
+        if (_state.user != null) {
+          Navigator.pushReplacement(context, MaterialPageRoute(
+            builder: (context) {
+              SharedPreferencesService().setIdx(_state.user!.idx.toString());
+              SharedPreferencesService().setLoggedIn(true);
+              SharedPreferencesService().setUserId(_state.user!.id);
+              return LookAround(_state.user!.id);
+            },
+          ));
+        }
+      }
+
     } catch (e) {
       Logger().d("Login Failed...${e.toString()}");
     }
@@ -227,25 +247,6 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     _viewModel = context.watch<UserViewModel>();
     _state = _viewModel.userState;
-
-    if (_isLogin) {
-      if (_state.user != null) {
-        Navigator.pushReplacement(context, MaterialPageRoute(
-          builder: (context) {
-            SharedPreferencesService().setIdx(_state.user!.idx.toString());
-            SharedPreferencesService().setLoggedIn(true);
-            SharedPreferencesService().setUserId(_state.user!.id);
-            return LookAround(_state.user!.id);
-          },
-        ));
-      } else {
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => JoinPage(_userId),
-            ));
-      }
-    }
 
     return Scaffold(
       body: Column(

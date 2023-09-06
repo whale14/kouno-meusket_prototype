@@ -10,6 +10,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:test_project/main.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
 import 'package:test_project/presentation/state/users/user_state.dart';
+import 'package:test_project/presentation/state/users/wallet_state.dart';
 import 'package:test_project/presentation/vm/user_view_model.dart';
 import 'package:test_project/screen/fcm_test_page.dart';
 import 'package:test_project/screen/mypage/my_page_screen.dart';
@@ -81,6 +82,7 @@ class _LookAroundState extends State<LookAround> {
     _userViewModel = context.watch<UserViewModel>();
     _userState = _userViewModel.userState;
     _userId = widget.userId;
+
 
     return Scaffold(
       appBar: appBarLA(),
@@ -248,10 +250,9 @@ class _LookAroundState extends State<LookAround> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  "10000원",
+                  "${_userState.user!.money}원",
                   style: TextStyle(fontSize: 24),
                 ),
-                Text("100 coin"),
               ],
             ),
           )
@@ -308,7 +309,7 @@ class _LookAroundState extends State<LookAround> {
   }
 
   Widget workContainer() {
-    final categories = ["동행", "안심귀가", "교통약자", "돌봄", "우편/민원", "펫시팅", "가사", "배달/운송", "조립/설치", "일일알바", "기타/대행", "전체 서비스"];
+    final categories = ["동행", "안심귀가", "교통약자", "돌봄", "우편/민원", "펫시팅", "가사", "배달/운송", "조립/설치", "시간알바", "기타/대행", "전체 서비스"];
     final icons = [
       "icon_01.svg",
       "icon_02.svg",
@@ -321,7 +322,7 @@ class _LookAroundState extends State<LookAround> {
       "icon_09.svg",
       "icon_10.svg",
       "icon_11.svg",
-      "icon_12(all).svg"
+      "icon_12.svg"
     ];
     return Container(
       padding: const EdgeInsets.all(16),
@@ -488,7 +489,7 @@ class _LookAroundState extends State<LookAround> {
       "icon_09.svg",
       "icon_10.svg",
       "icon_11.svg",
-      "icon_12(all).svg",
+      "icon_12.svg",
     ];
 
     RenderBox renderBox = _priceInfoKey.currentContext!.findRenderObject() as RenderBox;

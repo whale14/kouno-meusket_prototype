@@ -26,6 +26,8 @@ mixin _$RequestReview {
   String get comment => throw _privateConstructorUsedError;
   int get toIdx => throw _privateConstructorUsedError;
   int get isRequester => throw _privateConstructorUsedError;
+  String? get reviewerImageUrl => throw _privateConstructorUsedError;
+  String get reviewerName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +47,9 @@ abstract class $RequestReviewCopyWith<$Res> {
       double score,
       String comment,
       int toIdx,
-      int isRequester});
+      int isRequester,
+      String? reviewerImageUrl,
+      String reviewerName});
 }
 
 /// @nodoc
@@ -67,6 +71,8 @@ class _$RequestReviewCopyWithImpl<$Res, $Val extends RequestReview>
     Object? comment = null,
     Object? toIdx = null,
     Object? isRequester = null,
+    Object? reviewerImageUrl = freezed,
+    Object? reviewerName = null,
   }) {
     return _then(_value.copyWith(
       idx: null == idx
@@ -93,6 +99,14 @@ class _$RequestReviewCopyWithImpl<$Res, $Val extends RequestReview>
           ? _value.isRequester
           : isRequester // ignore: cast_nullable_to_non_nullable
               as int,
+      reviewerImageUrl: freezed == reviewerImageUrl
+          ? _value.reviewerImageUrl
+          : reviewerImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      reviewerName: null == reviewerName
+          ? _value.reviewerName
+          : reviewerName // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -111,7 +125,9 @@ abstract class _$$_RequestReviewCopyWith<$Res>
       double score,
       String comment,
       int toIdx,
-      int isRequester});
+      int isRequester,
+      String? reviewerImageUrl,
+      String reviewerName});
 }
 
 /// @nodoc
@@ -131,6 +147,8 @@ class __$$_RequestReviewCopyWithImpl<$Res>
     Object? comment = null,
     Object? toIdx = null,
     Object? isRequester = null,
+    Object? reviewerImageUrl = freezed,
+    Object? reviewerName = null,
   }) {
     return _then(_$_RequestReview(
       idx: null == idx
@@ -157,6 +175,14 @@ class __$$_RequestReviewCopyWithImpl<$Res>
           ? _value.isRequester
           : isRequester // ignore: cast_nullable_to_non_nullable
               as int,
+      reviewerImageUrl: freezed == reviewerImageUrl
+          ? _value.reviewerImageUrl
+          : reviewerImageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      reviewerName: null == reviewerName
+          ? _value.reviewerName
+          : reviewerName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -170,7 +196,9 @@ class _$_RequestReview implements _RequestReview {
       required this.score,
       required this.comment,
       required this.toIdx,
-      required this.isRequester});
+      required this.isRequester,
+      required this.reviewerImageUrl,
+      required this.reviewerName});
 
   factory _$_RequestReview.fromJson(Map<String, dynamic> json) =>
       _$$_RequestReviewFromJson(json);
@@ -187,10 +215,14 @@ class _$_RequestReview implements _RequestReview {
   final int toIdx;
   @override
   final int isRequester;
+  @override
+  final String? reviewerImageUrl;
+  @override
+  final String reviewerName;
 
   @override
   String toString() {
-    return 'RequestReview(idx: $idx, requestIdx: $requestIdx, score: $score, comment: $comment, toIdx: $toIdx, isRequester: $isRequester)';
+    return 'RequestReview(idx: $idx, requestIdx: $requestIdx, score: $score, comment: $comment, toIdx: $toIdx, isRequester: $isRequester, reviewerImageUrl: $reviewerImageUrl, reviewerName: $reviewerName)';
   }
 
   @override
@@ -205,13 +237,17 @@ class _$_RequestReview implements _RequestReview {
             (identical(other.comment, comment) || other.comment == comment) &&
             (identical(other.toIdx, toIdx) || other.toIdx == toIdx) &&
             (identical(other.isRequester, isRequester) ||
-                other.isRequester == isRequester));
+                other.isRequester == isRequester) &&
+            (identical(other.reviewerImageUrl, reviewerImageUrl) ||
+                other.reviewerImageUrl == reviewerImageUrl) &&
+            (identical(other.reviewerName, reviewerName) ||
+                other.reviewerName == reviewerName));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, idx, requestIdx, score, comment, toIdx, isRequester);
+  int get hashCode => Object.hash(runtimeType, idx, requestIdx, score, comment,
+      toIdx, isRequester, reviewerImageUrl, reviewerName);
 
   @JsonKey(ignore: true)
   @override
@@ -234,7 +270,9 @@ abstract class _RequestReview implements RequestReview {
       required final double score,
       required final String comment,
       required final int toIdx,
-      required final int isRequester}) = _$_RequestReview;
+      required final int isRequester,
+      required final String? reviewerImageUrl,
+      required final String reviewerName}) = _$_RequestReview;
 
   factory _RequestReview.fromJson(Map<String, dynamic> json) =
       _$_RequestReview.fromJson;
@@ -251,6 +289,10 @@ abstract class _RequestReview implements RequestReview {
   int get toIdx;
   @override
   int get isRequester;
+  @override
+  String? get reviewerImageUrl;
+  @override
+  String get reviewerName;
   @override
   @JsonKey(ignore: true)
   _$$_RequestReviewCopyWith<_$_RequestReview> get copyWith =>

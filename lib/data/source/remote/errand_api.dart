@@ -8,11 +8,13 @@ class ErrandApi {
   // static const baseUrl = 'http://192.168.33.7:9001/errand';  //작업실
   // static const baseUrl = 'http://172.30.1.69:9001/errand';  //집
   // static const baseUrl = 'http://192.168.101.2:9001/errand'; //기기 사용 3층
-  static const baseUrl = 'http://192.168.100.42:9001/errand'; //기기 사용 5층
+  static const baseUrl = 'http://203.229.171.79:84/errand'; //기기 사용 5층
+  // static const baseUrl = 'http://192.168.0.168:9001/errand'; //5층 소셜캠퍼스
 
   ErrandApi({http.Client? client}) : _client = (client ?? http.Client());
 
   Future<http.Response> getRequests(String idx) async{
+    Logger().d("getRequests ##### idx : $idx");
     String url = '$baseUrl/get_requests.php';
     Map<String, dynamic> data = {
       'idx' : idx,
@@ -152,6 +154,43 @@ class ErrandApi {
 
     final response = await _client.post(Uri.parse(url), body: data);
     Logger().d('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!${response.body}');
+  }
+
+  Future<http.Response> getWaypoint(String idx) async{
+    String url = '$baseUrl/get_waypoints.php';
+    Map<String, dynamic> data = {
+      'requestIdx' : idx,
+    };
+
+    final response = await _client.post(Uri.parse(url), body: data);
+    return response;
+  }
+
+  Future requestCancel(String requestIdx, String content, String requestStatus, String userIdx, String isRequester) async{
+    String url = '$baseUrl/request_cancel.php';
+    Map<String, dynamic> data = {
+      'requestIdx' : requestIdx,
+      'content' : content,
+      'requestStatus' : requestStatus,
+      'userIdx' : userIdx,
+      'isRequester' : isRequester,
+    };
+
+    final response = await _client.post(Uri.parse(url), body: data);
+    Logger().d("requestCancel############ ${response.body}");
+  }
+
+  Future successCheckConfirm(String requestIdx, String requesterIdx, String workerIdx, String reward) async{
+    String url = '$baseUrl/success_check_confirm.php';
+    Map<String, dynamic> data = {
+      'requestIdx' : requestIdx,
+      'requesterIdx' : requesterIdx,
+      'workerIdx' : workerIdx,
+      'reward' : reward,
+    };
+
+    final response = await _client.post(Uri.parse(url), body: data);
+    Logger().d("#############successCheckConfirm ${response.body}");
   }
 
 }

@@ -17,4 +17,7 @@ abstract class RequestEvent<T> with _$RequestEvent<T> {
   const factory RequestEvent.finishRequest(String idx) = FinishRequest;
   const factory RequestEvent.recruitmentRequest(String idx, String workerIdx) = RecruitmentRequest;
   const factory RequestEvent.createRequestReview(String reqIdx, String fromIdx, String toIdx, double score, String comment) = createRequestReview;
+  const factory RequestEvent.getWaypoints(String idx) = GetWaypoints;
+  const factory RequestEvent.requestCancel(String requestIdx, String content, String requestStatus, String userIdx, String isRequest) = RequestCancel;
+  const factory RequestEvent.successCheckConfirm(String requestIdx, String requesterIdx, String workerIdx, String reward) = SuccessCheckConfirm;
 }

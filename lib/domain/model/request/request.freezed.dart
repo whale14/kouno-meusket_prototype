@@ -41,6 +41,10 @@ mixin _$Request {
   int get recruitmentStatus => throw _privateConstructorUsedError;
   int? get reviewRequesterIdx => throw _privateConstructorUsedError;
   int? get reviewWorkerIdx => throw _privateConstructorUsedError;
+  int get successCheck => throw _privateConstructorUsedError;
+  int get requestType => throw _privateConstructorUsedError;
+  int get secondType => throw _privateConstructorUsedError;
+  int get isReported => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -73,7 +77,11 @@ abstract class $RequestCopyWith<$Res> {
       String? workerImgUrl,
       int recruitmentStatus,
       int? reviewRequesterIdx,
-      int? reviewWorkerIdx});
+      int? reviewWorkerIdx,
+      int successCheck,
+      int requestType,
+      int secondType,
+      int isReported});
 }
 
 /// @nodoc
@@ -110,6 +118,10 @@ class _$RequestCopyWithImpl<$Res, $Val extends Request>
     Object? recruitmentStatus = null,
     Object? reviewRequesterIdx = freezed,
     Object? reviewWorkerIdx = freezed,
+    Object? successCheck = null,
+    Object? requestType = null,
+    Object? secondType = null,
+    Object? isReported = null,
   }) {
     return _then(_value.copyWith(
       idx: null == idx
@@ -196,6 +208,22 @@ class _$RequestCopyWithImpl<$Res, $Val extends Request>
           ? _value.reviewWorkerIdx
           : reviewWorkerIdx // ignore: cast_nullable_to_non_nullable
               as int?,
+      successCheck: null == successCheck
+          ? _value.successCheck
+          : successCheck // ignore: cast_nullable_to_non_nullable
+              as int,
+      requestType: null == requestType
+          ? _value.requestType
+          : requestType // ignore: cast_nullable_to_non_nullable
+              as int,
+      secondType: null == secondType
+          ? _value.secondType
+          : secondType // ignore: cast_nullable_to_non_nullable
+              as int,
+      isReported: null == isReported
+          ? _value.isReported
+          : isReported // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -228,7 +256,11 @@ abstract class _$$_RequestCopyWith<$Res> implements $RequestCopyWith<$Res> {
       String? workerImgUrl,
       int recruitmentStatus,
       int? reviewRequesterIdx,
-      int? reviewWorkerIdx});
+      int? reviewWorkerIdx,
+      int successCheck,
+      int requestType,
+      int secondType,
+      int isReported});
 }
 
 /// @nodoc
@@ -262,6 +294,10 @@ class __$$_RequestCopyWithImpl<$Res>
     Object? recruitmentStatus = null,
     Object? reviewRequesterIdx = freezed,
     Object? reviewWorkerIdx = freezed,
+    Object? successCheck = null,
+    Object? requestType = null,
+    Object? secondType = null,
+    Object? isReported = null,
   }) {
     return _then(_$_Request(
       idx: null == idx
@@ -348,6 +384,22 @@ class __$$_RequestCopyWithImpl<$Res>
           ? _value.reviewWorkerIdx
           : reviewWorkerIdx // ignore: cast_nullable_to_non_nullable
               as int?,
+      successCheck: null == successCheck
+          ? _value.successCheck
+          : successCheck // ignore: cast_nullable_to_non_nullable
+              as int,
+      requestType: null == requestType
+          ? _value.requestType
+          : requestType // ignore: cast_nullable_to_non_nullable
+              as int,
+      secondType: null == secondType
+          ? _value.secondType
+          : secondType // ignore: cast_nullable_to_non_nullable
+              as int,
+      isReported: null == isReported
+          ? _value.isReported
+          : isReported // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -376,7 +428,11 @@ class _$_Request implements _Request {
       required this.workerImgUrl,
       required this.recruitmentStatus,
       required this.reviewRequesterIdx,
-      required this.reviewWorkerIdx});
+      required this.reviewWorkerIdx,
+      required this.successCheck,
+      required this.requestType,
+      required this.secondType,
+      required this.isReported});
 
   factory _$_Request.fromJson(Map<String, dynamic> json) =>
       _$$_RequestFromJson(json);
@@ -423,10 +479,18 @@ class _$_Request implements _Request {
   final int? reviewRequesterIdx;
   @override
   final int? reviewWorkerIdx;
+  @override
+  final int successCheck;
+  @override
+  final int requestType;
+  @override
+  final int secondType;
+  @override
+  final int isReported;
 
   @override
   String toString() {
-    return 'Request(idx: $idx, requesterIdx: $requesterIdx, workerIdx: $workerIdx, workCategoryIdx: $workCategoryIdx, title: $title, content: $content, address: $address, latitude: $latitude, longitude: $longitude, workDate: $workDate, runningTime: $runningTime, status: $status, regDate: $regDate, reward: $reward, requesterName: $requesterName, workerName: $workerName, requesterImgUrl: $requesterImgUrl, workerImgUrl: $workerImgUrl, recruitmentStatus: $recruitmentStatus, reviewRequesterIdx: $reviewRequesterIdx, reviewWorkerIdx: $reviewWorkerIdx)';
+    return 'Request(idx: $idx, requesterIdx: $requesterIdx, workerIdx: $workerIdx, workCategoryIdx: $workCategoryIdx, title: $title, content: $content, address: $address, latitude: $latitude, longitude: $longitude, workDate: $workDate, runningTime: $runningTime, status: $status, regDate: $regDate, reward: $reward, requesterName: $requesterName, workerName: $workerName, requesterImgUrl: $requesterImgUrl, workerImgUrl: $workerImgUrl, recruitmentStatus: $recruitmentStatus, reviewRequesterIdx: $reviewRequesterIdx, reviewWorkerIdx: $reviewWorkerIdx, successCheck: $successCheck, requestType: $requestType, secondType: $secondType, isReported: $isReported)';
   }
 
   @override
@@ -468,7 +532,15 @@ class _$_Request implements _Request {
             (identical(other.reviewRequesterIdx, reviewRequesterIdx) ||
                 other.reviewRequesterIdx == reviewRequesterIdx) &&
             (identical(other.reviewWorkerIdx, reviewWorkerIdx) ||
-                other.reviewWorkerIdx == reviewWorkerIdx));
+                other.reviewWorkerIdx == reviewWorkerIdx) &&
+            (identical(other.successCheck, successCheck) ||
+                other.successCheck == successCheck) &&
+            (identical(other.requestType, requestType) ||
+                other.requestType == requestType) &&
+            (identical(other.secondType, secondType) ||
+                other.secondType == secondType) &&
+            (identical(other.isReported, isReported) ||
+                other.isReported == isReported));
   }
 
   @JsonKey(ignore: true)
@@ -495,7 +567,11 @@ class _$_Request implements _Request {
         workerImgUrl,
         recruitmentStatus,
         reviewRequesterIdx,
-        reviewWorkerIdx
+        reviewWorkerIdx,
+        successCheck,
+        requestType,
+        secondType,
+        isReported
       ]);
 
   @JsonKey(ignore: true)
@@ -534,7 +610,11 @@ abstract class _Request implements Request {
       required final String? workerImgUrl,
       required final int recruitmentStatus,
       required final int? reviewRequesterIdx,
-      required final int? reviewWorkerIdx}) = _$_Request;
+      required final int? reviewWorkerIdx,
+      required final int successCheck,
+      required final int requestType,
+      required final int secondType,
+      required final int isReported}) = _$_Request;
 
   factory _Request.fromJson(Map<String, dynamic> json) = _$_Request.fromJson;
 
@@ -580,6 +660,14 @@ abstract class _Request implements Request {
   int? get reviewRequesterIdx;
   @override
   int? get reviewWorkerIdx;
+  @override
+  int get successCheck;
+  @override
+  int get requestType;
+  @override
+  int get secondType;
+  @override
+  int get isReported;
   @override
   @JsonKey(ignore: true)
   _$$_RequestCopyWith<_$_Request> get copyWith =>

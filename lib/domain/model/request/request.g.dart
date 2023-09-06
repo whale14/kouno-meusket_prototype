@@ -30,6 +30,10 @@ _$_Request _$$_RequestFromJson(Map<String, dynamic> json) => _$_Request(
       recruitmentStatus: json['recruitmentStatus'] as int,
       reviewRequesterIdx: json['reviewRequesterIdx'] as int?,
       reviewWorkerIdx: json['reviewWorkerIdx'] as int?,
+      successCheck: json['successCheck'] as int,
+      requestType: json['requestType'] as int,
+      secondType: json['secondType'] as int,
+      isReported: json['isReported'] as int,
     );
 
 Map<String, dynamic> _$$_RequestToJson(_$_Request instance) =>
@@ -55,4 +59,8 @@ Map<String, dynamic> _$$_RequestToJson(_$_Request instance) =>
       'recruitmentStatus': instance.recruitmentStatus,
       'reviewRequesterIdx': instance.reviewRequesterIdx,
       'reviewWorkerIdx': instance.reviewWorkerIdx,
+      'successCheck': instance.successCheck,
+      'requestType': instance.requestType,
+      'secondType': instance.secondType,
+      'isReported': instance.isReported,
     };
