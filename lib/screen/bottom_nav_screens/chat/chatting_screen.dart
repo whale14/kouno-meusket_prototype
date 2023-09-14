@@ -58,7 +58,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
     Logger().d('>>>idx: $idx');
   }
 
-  Future _getChatContents(String roomIdx) async {
+  Future _getChatContents(String roomIdx) async { // 채팅내역 가져오기
     await _chatViewModel.onChatEvent(ChatEvent.getChatContents(roomIdx));
   }
 
@@ -83,7 +83,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
               builder: (BuildContext context, AsyncSnapshot<List<ChatContent>> sbSnapshot) {
                 if (sbSnapshot.hasData) {
                   final docs = sbSnapshot.data!;
-                  WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+                  WidgetsBinding.instance.addPostFrameCallback((timeStamp) { // 채팅방 입장후 스크롤 최하단으로 내리는 코드
                     if (scrollController.hasClients) {
                       scrollController.jumpTo(scrollController.position.maxScrollExtent);
                     }
@@ -95,7 +95,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
                       itemBuilder: (context, index) {
                         final chatContent = docs[index];
                         if (chatContent.isRead == 0 && chatContent.userIdx.toString() != idx) {
-                          _chatViewModel.onChatEvent(ChatEvent.updateChatRead(chatContent));
+                          _chatViewModel.onChatEvent(ChatEvent.updateChatRead(chatContent)); // 읽지않은 채팅 읽은채팅으로 수정
                           Map<String, Object> mapData = {"userIdx": idx!, "roomIdx":widget.chatRoom.idx.toString()};
                           widget.socket.emit("readChat", mapData);
                         }
@@ -138,7 +138,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
       );
   }
 
-  sendMessage(String roomIdx, String myIdx, String message) {
+  sendMessage(String roomIdx, String myIdx, String message) { // 메세지 전송
     sendTextController.clear();
     //채팅 소켓연결
     widget.socket.emit('sendMessage', {'roomIdx': roomIdx, 'message': message, 'userIdx': myIdx});
@@ -149,7 +149,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
     }
   }
 
-  Widget chatBubble(ChatContent chatContent) {
+  Widget chatBubble(ChatContent chatContent) { //말풍선 컨테이너
     Color color = Color(0xffE9E9E9);
     Alignment alignment = Alignment.center;
     MainAxisAlignment rowAlign = MainAxisAlignment.center;
@@ -241,13 +241,13 @@ class _ChattingScreenState extends State<ChattingScreen> {
     }
   }
 
-  void loadChatMessage() {
+  void loadChatMessage() { //채팅 내역 가져오기
     widget.socket.on("loadChatMessage", (data) {
 
       var jsonData = jsonEncode(data);
       Map<String, dynamic> jsonMap = jsonDecode(jsonData);
       Logger().d("result: ${jsonMap['result']}, userIdx: ${jsonMap['userIdx']}");
-      if (idx != jsonMap['userId']) {
+      if (idx != jsonMap['userId']) { // 상대방이 메세지를 보냈을경우
         _chatViewModel.onChatEvent(ChatEvent.getChatContents(widget.chatRoom.idx.toString()));
       } else {
         Logger().d("같아 아무것도 안할거야");
@@ -256,7 +256,7 @@ class _ChattingScreenState extends State<ChattingScreen> {
   }
 
   void readChatMessage() {
-    widget.socket.on("readChat", (userIdx) {
+    widget.socket.on("readChat", (userIdx) { // 상대방이 채팅을 읽었는지를 표시하기위해 실행되는 함수
       if(userIdx != idx) {
         setState(() {
           initialize = _initialize();

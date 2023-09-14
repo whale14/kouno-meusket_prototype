@@ -55,7 +55,7 @@ class _LookAroundState extends State<LookAround> {
     // TODO: implement initState
     super.initState();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) { // 화면이 빌드되고 나서 수행
       initialize = _initialize();
       FirebaseMessaging.instance.getInitialMessage().then(
             (value) => setState(
@@ -85,7 +85,7 @@ class _LookAroundState extends State<LookAround> {
 
 
     return Scaffold(
-      appBar: appBarLA(),
+      appBar: appBarLA(), //앱바
       body: SingleChildScrollView(
         controller: _scrollController,
         child: FutureBuilder(
@@ -101,16 +101,16 @@ class _LookAroundState extends State<LookAround> {
                     SizedBox(
                       height: 8,
                     ),
-                    walletContainer(),
+                    walletContainer(), //지갑
                     SizedBox(
                       height: 10,
                     ),
-                    carousel(),
+                    carousel(), //캐로셀 슬라이더
                     SizedBox(
                       height: 8,
                     ),
-                    workContainer(),
-                    Container(
+                    workContainer(), // 카테고리별 심부름 그리드뷰
+                    Container( // 미어켓 강점 부각
                       width: double.maxFinite,
                       margin: const EdgeInsets.only(top: 16),
                       padding: const EdgeInsets.only(right: 16, left: 16, top: 18, bottom: 18),
@@ -137,7 +137,7 @@ class _LookAroundState extends State<LookAround> {
                         ],
                       ),
                     ),
-                    footer()
+                    footer() //푸터
                   ],
                 );
               } else {

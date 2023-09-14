@@ -66,7 +66,7 @@ class _WorkInfoPageState extends State<WorkInfoPage> {
     _tappedIndex = widget.tappedIndex;
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       getRequest();
-      if (_tappedIndex == 0) {
+      if (_tappedIndex == 0) { //드림이 모집중인 심부름이라면 지원서 확인 페이지로 이동
         if (_requestState.request!.status == 0) {
           Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (context) => RecruitmentConfirmPage(_requestState.request!),

@@ -62,19 +62,19 @@ class _BodyHelperState extends State<BodyHelper> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("드림이"),
+        title: const Text("드림이"),
       ),
       body: _userState.user!.accountState == 0
           ? Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text("드림이 활동 여부"),
-                    SizedBox(
+                    const Text("드림이 활동 여부"),
+                    const SizedBox(
                       width: 8,
                     ),
                     GestureDetector(
@@ -87,14 +87,14 @@ class _BodyHelperState extends State<BodyHelper> {
                       },
                       child: doingButton(_userState.user!),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 16,
                     )
                   ],
                 ),
                 Expanded(
                   child: ListView.builder(
-                    padding: EdgeInsets.only(left: 16, right: 16),
+                    padding: const EdgeInsets.only(left: 16, right: 16),
                     itemCount: _requestState.requests.length,
                     itemBuilder: (context, index) {
                       final request = _requestState.requests[index];
@@ -104,11 +104,11 @@ class _BodyHelperState extends State<BodyHelper> {
                         )),
                         child: Card(
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                          margin: EdgeInsets.only(top: 16),
+                          margin: const EdgeInsets.only(top: 16),
                           elevation: 4,
                           child: Container(
                             width: double.maxFinite,
-                            padding: EdgeInsets.all(24),
+                            padding: const EdgeInsets.all(24),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -119,26 +119,26 @@ class _BodyHelperState extends State<BodyHelper> {
                                       children: [
                                         Text(
                                           request.title,
-                                          style: TextStyle(fontWeight: FontWeight.bold),
+                                          style: const TextStyle(fontWeight: FontWeight.bold),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 8,
                                         ),
                                         Text(WorkCategory().categories[request.workCategoryIdx]),
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 16,
                                     ),
                                     Row(
                                       children: [
                                         Text(request.address),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 8,
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 8,
                                     ),
                                     Text(
@@ -147,13 +147,13 @@ class _BodyHelperState extends State<BodyHelper> {
                                       "${request.workDate!.hour >= 13 ? request.workDate!.hour - 12 : request.workDate!.hour}시"
                                       "${request.workDate!.minute != 0 ? '${request.workDate!.minute}분' : ''}",
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 16,
                                     ),
                                     Row(
                                       children: [
-                                        Text("심부름비"),
-                                        SizedBox(
+                                        const Text("심부름비"),
+                                        const SizedBox(
                                           width: 8,
                                         ),
                                         Text("${request.reward.toString()}원"),
@@ -184,7 +184,7 @@ class _BodyHelperState extends State<BodyHelper> {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 8,
                                       ),
                                       Text(request.requesterName)
@@ -201,198 +201,20 @@ class _BodyHelperState extends State<BodyHelper> {
                 ),
               ],
             )
-          : Center(
+          : const Center(
               child: Text('회원님의 계정이 차단상태입니다.'),
             ),
     );
-
-    // return FutureBuilder(
-    //     future: initialize,
-    //     builder: (context, snapshot) {
-    //       if (snapshot.connectionState == ConnectionState.done) {
-    //         Logger().d(_requestState.requests);
-    //         return Scaffold(
-    //           appBar: AppBar(
-    //             title: Text("드림이"),
-    //           ),
-    //           body: Column(
-    //             children: [
-    //               SizedBox(
-    //                 height: 16,
-    //               ),
-    //               Row(
-    //                 mainAxisAlignment: MainAxisAlignment.end,
-    //                 children: [
-    //                   Text("드림이 활동 여부"),
-    //                   SizedBox(
-    //                     width: 8,
-    //                   ),
-    //                   GestureDetector(
-    //                     onTap: () {
-    //                       if (_userState.user!.doingState == 0) {
-    //                         _userViewModel.onUsersEvent(UsersEvent.updateWorkableState(_userState.user!.idx.toString()));
-    //                       } else {
-    //                         _userViewModel.onUsersEvent(UsersEvent.updateNotWorkableState(_userState.user!.idx.toString()));
-    //                       }
-    //                     },
-    //                     child: doingButton(_userState.user!),
-    //                   ),
-    //                   SizedBox(
-    //                     width: 16,
-    //                   )
-    //                 ],
-    //               ),
-    //               Expanded(
-    //                 child: ListView.builder(
-    //                   padding: EdgeInsets.only(left: 16, right: 16),
-    //                   itemCount: _requestState.requests.length,
-    //                   itemBuilder: (context, index) {
-    //                     final request = _requestState.requests[index];
-    //                     return GestureDetector(
-    //                       onTap: () {
-    //                         Logger().d('title tapped');
-    //                         showDialog(
-    //                           context: context,
-    //                           builder: (context) {
-    //                             return AlertDialog(
-    //                               title: Text(request.title),
-    //                               content: Column(
-    //                                 children: [
-    //                                   Row(
-    //                                     children: [const Text("content : "), Text(request.content)],
-    //                                   ),
-    //                                   Row(
-    //                                     children: [const Text("address : "), Text(request.address)],
-    //                                   ),
-    //                                   Row(
-    //                                     children: [const Text("reward : "), Text(request.reward.toString())],
-    //                                   ),
-    //                                 ],
-    //                               ),
-    //                               actions: [
-    //                                 TextButton(
-    //                                     onPressed: () async {
-    //                                       await _requestViewModel
-    //                                           .onRequestEvent(RequestEvent.acceptRequest(request.idx.toString(), _userState.user!.idx.toString()));
-    //                                       Navigator.pop(context);
-    //                                     },
-    //                                     child: const Text('지원하기')),
-    //                                 TextButton(
-    //                                     onPressed: () {
-    //                                       Navigator.of(context).pop();
-    //                                     },
-    //                                     child: const Text('취소')),
-    //                               ],
-    //                             );
-    //                           },
-    //                         );
-    //                       },
-    //                       child: Card(
-    //                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-    //                         margin: EdgeInsets.only(top: 16),
-    //                         elevation: 4,
-    //                         child: Container(
-    //                           width: double.maxFinite,
-    //                           padding: EdgeInsets.all(24),
-    //                           child: Row(
-    //                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //                             children: [
-    //                               Column(
-    //                                 crossAxisAlignment: CrossAxisAlignment.start,
-    //                                 children: [
-    //                                   Row(
-    //                                     children: [
-    //                                       Text(
-    //                                         request.title,
-    //                                         style: TextStyle(fontWeight: FontWeight.bold),
-    //                                       ),
-    //                                       SizedBox(
-    //                                         width: 8,
-    //                                       ),
-    //                                       Text("카테고리${request.workCategoryIdx.toString()}"),
-    //                                     ],
-    //                                   ),
-    //                                   SizedBox(
-    //                                     height: 16,
-    //                                   ),
-    //                                   Row(
-    //                                     children: [
-    //                                       Text(request.address),
-    //                                       SizedBox(
-    //                                         width: 8,
-    //                                       ),
-    //                                       Text("날짜"),
-    //                                     ],
-    //                                   ),
-    //                                   SizedBox(
-    //                                     height: 16,
-    //                                   ),
-    //                                   Row(
-    //                                     children: [
-    //                                       Text("심부름비"),
-    //                                       SizedBox(
-    //                                         width: 8,
-    //                                       ),
-    //                                       Text("${request.reward.toString()}원"),
-    //                                     ],
-    //                                   ),
-    //                                 ],
-    //                               ),
-    //                               Container(
-    //                                 alignment: Alignment.center,
-    //                                 child: Column(
-    //                                   children: [
-    //                                     Container(
-    //                                       width: 54,
-    //                                       height: 54,
-    //                                       decoration: const BoxDecoration(shape: BoxShape.circle),
-    //                                       child: ClipOval(
-    //                                         child: Image.network(
-    //                                           "http://${request.requesterImgUrl}",
-    //                                           cacheWidth: 1080,
-    //                                           loadingBuilder: (context, child, loadingProgress) {
-    //                                             if (loadingProgress == null) return child;
-    //                                             return CircularProgressIndicator(
-    //                                               value: loadingProgress.expectedTotalBytes != null
-    //                                                   ? loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
-    //                                                   : null,
-    //                                             );
-    //                                           },
-    //                                         ),
-    //                                       ),
-    //                                     ),
-    //                                     SizedBox(
-    //                                       height: 8,
-    //                                     ),
-    //                                     Text(request.requesterName)
-    //                                   ],
-    //                                 ),
-    //                               ),
-    //                             ],
-    //                           ),
-    //                         ),
-    //                       ),
-    //                     );
-    //                   },
-    //                 ),
-    //               ),
-    //             ],
-    //           ),
-    //         );
-    //       } else {
-    //         return const CircularProgressIndicator();
-    //       }
-    //     });
   }
 
   Widget doingButton(User user) {
     if (user.doingState == 0) {
       return Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.all(3),
+        padding: const EdgeInsets.all(3),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             colors: [Color(0xff999999), Color(0xffD1D1D1)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -400,16 +222,16 @@ class _BodyHelperState extends State<BodyHelper> {
         ),
         child: Container(
           alignment: Alignment.center,
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
               colors: [Color(0xffD1D1D1), Color(0xff999999)],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
           ),
-          child: Text(
+          child: const Text(
             "활동중",
             style: TextStyle(color: Colors.white),
           ),
@@ -418,10 +240,10 @@ class _BodyHelperState extends State<BodyHelper> {
     } else {
       return Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.all(3),
+        padding: const EdgeInsets.all(3),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          gradient: LinearGradient(
+          gradient: const LinearGradient(
             colors: [Color(0xffEB8229), Color(0xffF8A239)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -429,16 +251,16 @@ class _BodyHelperState extends State<BodyHelper> {
         ),
         child: Container(
           alignment: Alignment.center,
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            gradient: LinearGradient(
+            gradient: const LinearGradient(
               colors: [Color(0xffF8A239), Color(0xffEB8229)],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
           ),
-          child: Text(
+          child: const Text(
             "활동중",
             style: TextStyle(color: Colors.white),
           ),

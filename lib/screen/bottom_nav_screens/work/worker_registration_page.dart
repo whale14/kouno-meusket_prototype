@@ -449,7 +449,7 @@ class _InputPicturePageState extends State<InputPicturePage> {
     );
   }
 
-  _showSelectPhotoSheet() {
+  _showSelectPhotoSheet() { //사진촬영 or 라이브러리에서 사진 가져오기 선택 모달
     return showModalBottomSheet(
         context: context,
         shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(25))),
@@ -704,7 +704,7 @@ class _InputWorkerInfoPageState extends State<InputWorkerInfoPage> {
               minWidth: double.maxFinite,
               color: Colors.orange,
               child: const Text(
-                "부름이 등록 요청",
+                "드림이 등록 요청",
                 style: TextStyle(color: Colors.white),
               ),
             ),
@@ -804,7 +804,7 @@ class _InputWorkerInfoPageState extends State<InputWorkerInfoPage> {
                         : () => showDialog(
                               context: context,
                               builder: (context) => AlertDialog(
-                                title: const Text("작성한 내용으로 부름이 지원하시겠습니까?"),
+                                title: const Text("작성한 내용으로 드림이 지원하시겠습니까?"),
                                 actions: [
                                   TextButton(
                                     onPressed: () async {
@@ -877,5 +877,5 @@ class _InputWorkerInfoPageState extends State<InputWorkerInfoPage> {
     );
   }
 
-//이미지틀
+
 }

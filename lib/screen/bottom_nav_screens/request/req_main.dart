@@ -69,6 +69,7 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
 
   int _selectedCategory = 0;
 
+  //심부름 날짜 기본값 (오늘)
   DateTime _pickedDate = DateTime.now();
 
   bool _showCalendar = false;
@@ -128,7 +129,7 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
     initialize = _initialize();
   }
 
-  Future _getHelpers() async {
+  Future _getHelpers() async { //지도에 띄울 드림이 리스트 가져오기
     Logger().d('reqMain getHelpers: do');
     try {
       await _viewModel.onUsersEvent(
@@ -146,12 +147,12 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
     _backupGenderValues = List.from(_genderCheckValues);
     _backupDistanceIndex = _distanceIndex;
     _innerBackupCategories = List.from(_workCategoryCheckValues);
-    await NaverMapSdk.instance.initialize(
+    await NaverMapSdk.instance.initialize( //네이버 맵 sdk 초기화
       clientId: 'w1vo0mp1hb',
-      onAuthFailed: (ex) => print("!!!!!!naver map auth error : $ex !!!!!!"),
+      onAuthFailed: (ex) => Logger().d("!!!!!!naver map auth error : $ex !!!!!!"),
     );
-    await _getCurrentLocation();
-    await _getHelpers();
+    await _getCurrentLocation(); // L.1033
+    await _getHelpers(); // L.132
   }
 
   @override
@@ -169,20 +170,20 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
         child: AppBar(
           title: const Text("부름이"),
           actions: <Widget>[
-            TextButton(
-                onPressed: () {
+            TextButton( //요청내역 버튼
+                onPressed: () { //심부름 내역 페이지로 이동
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const RequestHistory(),
+                        builder: (context) => const RequestHistory(), //request_history.dart
                       ));
                 },
                 child: const Text(
                   '요청내역',
                 )),
-            IconButton(
+            IconButton( // 마이페이지 버튼
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MyPageScreen()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MyPageScreen())); // my_page_screen.dart
               },
               icon: const Icon(Icons.account_circle),
             ),
@@ -230,7 +231,7 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
                                 ),
                               ),
                               GestureDetector(
-                                onTap: () {
+                                onTap: () { //검색 카테고리 버튼
                                   setState(() {
                                     _isServiceTab = false;
                                     _appBarBottomHeight = AppBar().preferredSize.height * 2;
@@ -257,7 +258,7 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
                           ),
                         ),
                         Expanded(
-                          child: Visibility(
+                          child: Visibility( //아이템 숨기는 위젯
                             visible: _isServiceTab,
                             child: GestureDetector(
                               onTap: () => showModalBottomSheet(
@@ -730,6 +731,8 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
               _myIdx = _userState.user!.idx.toString();
               Logger().d(_myIdx);
 
+              //context.watch로 호출한 viewModel은 NotifyListeners(); 실행하면 변화를 감지하고 변화가있다면 화면을 다시 빌드.
+              //지도에 찍혀있는 마커들을 카테고리 변경시 다시 불러오고 새로 마커를 찍는 코드.
               final List<NMarker> markerList = [];
               Logger().d("state : ${_usersState.users}");
               for (int i = 0; i < _usersState.users.length; i++) {
@@ -740,6 +743,7 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
               }
               _markerList = List.from(markerList);
               for (NMarker marker in _markerList) {
+                //마커 탭 이벤트 L.861
                 marker.setOnTapListener((marker) => _viewModel.onUsersEvent(UsersEvent.getOtherUser(marker.info.id)).then((value) => onMarkerTap(marker)));
               }
               if (addOverlay != null) {
@@ -755,16 +759,16 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
                           locationButtonEnable: true,
                           consumeSymbolTapEvents: false,
                           initialCameraPosition: NCameraPosition(target: _latLng, zoom: 15)),
-                      onMapReady: (controller) async {
-                        _mapController = controller;
+                      onMapReady: (controller) async { //지도가 처음 생성될때 한번 실행
+                        _mapController = controller; //외부에서 지도를 컨트롤 하기 위한 컨트롤러 정의
 
-                        _mapController.latLngToScreenLocation(_latLng);
+                        _mapController.latLngToScreenLocation(_latLng); //자신의 위치로 지도 스크린 이동
 
-                        _mapController.setLocationTrackingMode(NLocationTrackingMode.follow);
+                        _mapController.setLocationTrackingMode(NLocationTrackingMode.follow); //지도에 내위치 지속적으로 표시
 
                         addOverlay = (markerList) {
-                          _mapController.clearOverlays();
-                          _mapController.addOverlayAll(markerList.toSet());
+                          _mapController.clearOverlays(); //기존에 찍혀있는 마커 모두 제거
+                          _mapController.addOverlayAll(markerList.toSet()); //마커리스트의 마커 세팅
                         };
 
                         addOverlay!(_markerList);
@@ -783,7 +787,7 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
               );
             }
           }),
-      //플로팅 버튼(일반 요청서작성)
+      //플로팅 버튼(일반 요청서 작성 버튼)
       floatingActionButton: Stack(
         alignment: Alignment.center,
         children: [
@@ -793,13 +797,14 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
               heroTag: "write request",
               onPressed: () {
                 if (_userState.user!.isRequesterRegist == 0) {
-                  //요청신원 등록
+                  //최초 요청서 작성시 부름이 등록 유도
                   alertRequestRegist();
                 } else {
-                  _showBottomModalSheet().then((value) {
+                  _showBottomModalSheet().then((value) { //요청서 작성후 실질적으로 db에 심부름테이블을 insert하는 코드 value를 리턴받아 사용.
+                    // 모집과 즉시수행이 시간 설정만 다르게 되어있습니다. 즉시 수행의 경우 선착순 매칭을 구현해야합니다.
                     Logger().d(value);
                     if (value == 'ok') {
-                      final int requestType = 0;
+                      const int requestType = 0;
                       var title = _titleController.value.text.trim();
                       var content = _contentController.value.text.trim();
                       var runningTime = "$_runningTimeHourValue시간$_runningTimeMinuetValue분";
@@ -857,7 +862,7 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
     OtherUserState otherUserState = _viewModel.otherUserState;
     tappedWorkerIdx = int.parse(marker.info.id);
     Logger().d("tappedHelperIdx: $tappedWorkerIdx");
-    showModalBottomSheet(
+    showModalBottomSheet( //해당 드림이의 정보를 보여주는 바텀 모달
       shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(25))),
       context: context,
       builder: (context) => Padding(
@@ -873,7 +878,7 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
               child: Row(
                 children: [
                   InkWell(
-                    onTap: () async {
+                    onTap: () async { // 회원 정보 조회 페이지 이동
                       await _viewModel
                           .onUsersEvent(UsersEvent.getOtherUser(otherUserState.user!.idx.toString()))
                           .then((value) => Navigator.of(context).push(MaterialPageRoute(
@@ -968,12 +973,13 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
               ),
             ),
             const SizedBox(height: 30),
-            Container(
+            Container( //요청서 작성 버튼
               width: double.maxFinite,
               margin: const EdgeInsets.all(10),
               child: MaterialButton(
                 onPressed: () {
                   if (_userState.user!.isRequesterRegist == 0) {
+                    // 최초 요청서 작성시 부름이 등록 유도
                     alertRequestRegist();
                   } else {
                     _showBottomModalSheet().then((value) {
@@ -1024,20 +1030,15 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
     );
   }
 
-  Future<void> _getCurrentLocation() async {
+  Future<void> _getCurrentLocation() async { //내위치 받아오기
     Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
     _latLng = NLatLng(position.latitude, position.longitude);
     Logger().d("set latlng : ${_latLng.toString()}");
   }
 
-  void onTabBarTapped(int index) {
-    setState(() {
-      _tabIndex = index;
-    });
-  }
-
-  void alertRequestRegist() {
+  void alertRequestRegist() { //부름이 등록 유도 경고창
+    //부름이 등록 절차는 구현X - db의 등록여부 컬럼만 수정.
     showDialog(
       context: context,
       builder: (context) {
@@ -1075,7 +1076,7 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
     );
   }
 
-  Future _showBottomModalSheet() async {
+  Future _showBottomModalSheet() async { // 심부름 요청서 작성 모달
     return _userState.user!.accountState == 0
         ? showModalBottomSheet(
             enableDrag: false,
@@ -1357,11 +1358,11 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
                                             });
                                           },
                                           child: Container(
+                                            margin: const EdgeInsets.only(left: 4),
                                             child: const Icon(
                                               Icons.remove_circle,
                                               color: Colors.grey,
                                             ),
-                                            margin: const EdgeInsets.only(left: 4),
                                           ),
                                         ),
                                       ],
@@ -1422,14 +1423,14 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
                                       alignment: Alignment.center,
                                       padding: const EdgeInsets.fromLTRB(12, 17, 12, 17),
                                       decoration: BoxDecoration(
-                                        color: isReservation ? Color(0xffB5B5B5) : Colors.black87,
+                                        color: isReservation ? const Color(0xffB5B5B5) : Colors.black87,
                                         borderRadius: BorderRadius.circular(5),
                                       ),
                                       width: double.maxFinite,
-                                      child: Text('바로 수행', style: TextStyle(color: Colors.white),),
+                                      child: const Text('바로 수행', style: TextStyle(color: Colors.white),),
                                     ),
                                   ),
-                                  SizedBox(height: 8,),
+                                  const SizedBox(height: 8,),
                                   GestureDetector(
                                     onTap: () {
                                       setState(() {
@@ -1440,14 +1441,14 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
                                       alignment: Alignment.center,
                                       padding: const EdgeInsets.fromLTRB(12, 17, 12, 17),
                                       decoration: BoxDecoration(
-                                        color: !isReservation ? Color(0xffB5B5B5) : Colors.black87,
+                                        color: !isReservation ? const Color(0xffB5B5B5) : Colors.black87,
                                         borderRadius: BorderRadius.circular(5),
                                       ),
                                       width: double.maxFinite,
-                                      child: Text('일정 예약',  style: TextStyle(color: Colors.white),),
+                                      child: const Text('일정 예약',  style: TextStyle(color: Colors.white),),
                                     ),
                                   ),
-                                  SizedBox(height: 8,),
+                                  const SizedBox(height: 8,),
                                   Visibility(
                                     visible: isReservation,
                                     child: Column(
@@ -1479,7 +1480,7 @@ class _BodyReqState extends State<BodyReq> with TickerProviderStateMixin {
                                             ),
                                           ),
                                         ),
-                                        SizedBox(height: 8,),
+                                        const SizedBox(height: 8,),
                                         Visibility(
                                           visible: _showCalendar,
                                           child: Column(

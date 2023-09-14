@@ -33,16 +33,16 @@ class MyPageScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          InkWell(
+          InkWell( // 회원정보페이지로 이동
             onTap: () async {
               await viewModel
                   .onUsersEvent(UsersEvent.getOtherUser(state.user!.idx.toString()))
                   .then((value) => Navigator.push(context, MaterialPageRoute(builder: (context) => const UserInfoScreen())));
             },
-            child: accountContainer(state),
+            child: accountContainer(state), //L.78
           ),
           for (var element in tabsString) ...[
-            InkWell(
+            InkWell( // 다른 탭 리스트 탭 이벤트 구현해야합니다.
               onTap: () async {
                 switch (element) {
                   case '내지갑':
@@ -75,7 +75,7 @@ class MyPageScreen extends StatelessWidget {
     );
   }
 
-  accountContainer(UserState state) {
+  accountContainer(UserState state) { //회원정보 컨테이너
     User user = state.user!;
     return Container(
       decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black12, width: 12))),

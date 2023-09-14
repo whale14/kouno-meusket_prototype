@@ -75,7 +75,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> with TickerProviderStat
       appBar: AppBar(
         title: const Text("회원정보"),
       ),
-      body: NestedScrollView(
+      body: NestedScrollView( //스크롤 내부의 스크롤뷰 혹은 탭뷰를 구현하기위한 스크롤뷰 https://api.flutter.dev/flutter/widgets/NestedScrollView-class.html
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
             SliverToBoxAdapter(
@@ -217,7 +217,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> with TickerProviderStat
               ),
             ),
             if (_otherUserState.user!.idx == _userState.user!.idx)
-              SliverToBoxAdapter(
+              SliverToBoxAdapter(//회원정보 수정 버튼
                 child: Container(
                   decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black12))),
                   padding: const EdgeInsets.all(16),
@@ -225,7 +225,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> with TickerProviderStat
                     onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const UpdateUserInfo(),
+                        builder: (context) => const UpdateUserInfo(), //update_user_info.dart
                       ),
                     ),
                     color: Colors.black87,
@@ -268,105 +268,11 @@ class _UserInfoScreenState extends State<UserInfoScreen> with TickerProviderStat
             ),
           ];
         },
-        body: TabBarView(
+        body: TabBarView(//자기소개, 사진 탭바
           controller: _tabController,
           children: [
             if (_otherUserState.user!.isWorkerRegist == 1)
               Container()
-            /*SafeArea(
-                top: false,
-                bottom: false,
-                child: Builder(builder: (context) {
-                  return SingleChildScrollView(
-                    physics: const NeverScrollableScrollPhysics(),
-                    child: Column(
-                      children: [
-                        Container(
-                          width: double.maxFinite,
-                          padding: const EdgeInsets.all(20),
-                          decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black12, width: 10))),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text("자기소개", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                              const SizedBox(height: 20),
-                              if (_userState.user!.introduce != null) Text(_userState.user!.introduce!),
-                            ],
-                          ),
-                        ), //자기소개
-                        Container(
-                          width: double.maxFinite,
-                          padding: const EdgeInsets.all(20),
-                          decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black12, width: 10))),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              if (true)
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Text("이동수단", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                                    const SizedBox(
-                                      height: 20,
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                        for (String transportation in transportations) ...[
-                                          Container(
-                                            padding: const EdgeInsets.all(5),
-                                            decoration: BoxDecoration(
-                                                borderRadius: const BorderRadius.all(Radius.circular(20)), border: Border.all(color: Colors.black45)),
-                                            child: Text(
-                                              transportation,
-                                              style: const TextStyle(color: Colors.black45),
-                                            ),
-                                          ),
-                                        ],
-                                      ],
-                                    ),
-                                  ],
-                                )
-                              else
-                                const Row(),
-                            ],
-                          ),
-                        ), //이동수단
-                        Container(
-                          width: double.maxFinite,
-                          padding: const EdgeInsets.all(20),
-                          decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black12, width: 10))),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text("심부름 가능 항목", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                              const SizedBox(height: 20),
-                              for (String category in categories) ...[
-                                ListTile(
-                                  title: Text(category),
-                                )
-                              ]
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: double.maxFinite,
-                          padding: const EdgeInsets.all(20),
-                          decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black12, width: 10))),
-                          child: const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              if (true) Text("자격증", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)) else const Row(),
-                              SizedBox(height: 20),
-                              Text("자격증")
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                }),
-              )*/
             else
               const Center(child: Text("부름이 등록후 작성 가능합니다.")),
             ListView.builder(

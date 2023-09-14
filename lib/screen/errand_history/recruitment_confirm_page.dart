@@ -197,9 +197,9 @@ class _RecruitmentConfirmPageState extends State<RecruitmentConfirmPage> {
                         Row(
                           children: [
                             Expanded(
-                              child: GestureDetector(
-                                onTap: recruitment.isRejected == 0
-                                    ? () {
+                              child: GestureDetector( //심부름 반려 버튼
+                                onTap: recruitment.isRejected == 0 //반려된 지원서는 탭 이벤트 비활성화
+                                    ? () { //반려되지않은 지원서
                                         showGeneralDialog(
                                           context: context,
                                           pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) => Dialog(
@@ -292,7 +292,7 @@ class _RecruitmentConfirmPageState extends State<RecruitmentConfirmPage> {
                                 ),
                               ),
                             ),
-                            Expanded(
+                            Expanded( // 심부름 선택 버튼
                               child: GestureDetector(
                                 onTap: recruitment.isRejected == 0
                                     ? () {
@@ -358,7 +358,7 @@ class _RecruitmentConfirmPageState extends State<RecruitmentConfirmPage> {
                                                         ),
                                                         Expanded(
                                                           child: GestureDetector(
-                                                            onTap: () async {
+                                                            onTap: () async { // 심부름 선택하고 드림이와 매칭만 구현되어있는상태 - 다른 심부름들을 반려시키고 알림을 보내는 코드를 추가해야함
                                                               String reqIdx = widget.request.idx.toString();
                                                               String workerIdx = recruitment.userIdx.toString();
                                                               await _requestViewModel.onRequestEvent(RequestEvent.acceptApplication(reqIdx, workerIdx));
@@ -420,8 +420,7 @@ class _RecruitmentConfirmPageState extends State<RecruitmentConfirmPage> {
     );
   }
 
-  onRequestTap(Request request) {
-
+  onRequestTap(Request request) { // 심부름 정보 컨테이너 탭 이벤트 - 심부름 정보 조회 (바텀 모달)
     request.latitude;
     showModalBottomSheet(
       enableDrag: false,
@@ -492,7 +491,7 @@ class _RecruitmentConfirmPageState extends State<RecruitmentConfirmPage> {
     );
   }
 
-  warningCancelRequest(int tappedIndex, Request request, String userIdx) {
+  warningCancelRequest(int tappedIndex, Request request, String userIdx) { // 심부름 취소
     showDialog(
       context: context,
       builder: (context) {

@@ -44,11 +44,11 @@ class _BodyChatState extends State<BodyChat> {
     Logger().d('>>>idx: $idx');
   }
 
-  Future _getMyChatRooms() async {
+  Future _getMyChatRooms() async { //채팅방 가져오기
     await _viewModel.onChatEvent(ChatEvent.getChatRooms(idx!));
   }
 
-  void roomNotification() {
+  void roomNotification() { // 새로운 채팅 감지
     widget.socket.on('notificationChatRoom', (data) {
       _getMyChatRooms();
       Logger().d(data);
@@ -60,10 +60,10 @@ class _BodyChatState extends State<BodyChat> {
     _viewModel = context.watch<ChatViewModel>();
     _chatRoomState = _viewModel.chatRoomState;
 
-    // chat room list view
+
     return Scaffold(
       appBar: AppBar(title: Text("채팅"),),
-      body: ListView.builder(
+      body: ListView.builder( // 채팅방 리스트뷰
         itemCount: _chatRoomState.chatRooms.length,
         itemBuilder: (context, index) {
           final chatRoom = _chatRoomState.chatRooms[index];
@@ -83,10 +83,10 @@ class _BodyChatState extends State<BodyChat> {
                         chatRoom.stackedMessages.toString(),
                         style: const TextStyle(color: Colors.white),
                       )),
-                  onTap: () => Navigator.push(
+                  onTap: () => Navigator.push( // 해당 채팅방 입장
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ChattingScreen(chatRoom, widget.socket),
+                        builder: (context) => ChattingScreen(chatRoom, widget.socket), // chatting_screen.dart
                       )).then((value) => _viewModel.onChatEvent(ChatEvent.getChatRooms(idx!)))
               ),
             );

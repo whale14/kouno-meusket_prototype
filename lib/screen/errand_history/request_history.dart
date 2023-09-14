@@ -139,15 +139,6 @@ class _RequestHistoryState extends State<RequestHistory> {
     });
   }
 
-  void goRecruitmentConfirmPage(Request request) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => RecruitmentConfirmPage(request),
-      ),
-    );
-  }
-
   void workingStateModal(Request request, Widget action, Widget map, Widget bottomBtn) {
     showModalBottomSheet(
       enableDrag: false,
@@ -458,12 +449,12 @@ class _RequestHistoryState extends State<RequestHistory> {
       }
     }
     return GestureDetector(
-      onTap: () async {
+      onTap: () async { //심부름 정보 페이지로 이동
         await _requestViewModel.onRequestEvent(RequestEvent.getRequest(request.idx.toString())).then(
               (value) => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => WorkInfoPage(request, _tappedIndex),
+                  builder: (context) => WorkInfoPage(request, _tappedIndex), // work_info_page.dart
                 ),
               ).then((value) {
                 _getMyRequests(_tappedIndex);
@@ -577,7 +568,7 @@ class _RequestHistoryState extends State<RequestHistory> {
   }
 }
 
-class realTimeLocation extends StatefulWidget {
+class realTimeLocation extends StatefulWidget { // 실시간 위치 확인 페이지
   final Request request;
 
   const realTimeLocation(this.request, {Key? key}) : super(key: key);
@@ -599,7 +590,7 @@ class _realTimeLocationState extends State<realTimeLocation> {
     // TODO: implement initState
     super.initState();
     const Duration(seconds: 3);
-    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 3), (timer) { // 3초마다 db에서 위치정보 select
       _userViewModel.onUsersEvent(UsersEvent.getOtherUser(widget.request.workerIdx.toString()));
     });
   }
@@ -616,7 +607,7 @@ class _realTimeLocationState extends State<realTimeLocation> {
         title: const Text("실시간 위치 확인"),
       ),
       body: NaverMap(
-        onMapReady: (controller) {
+        onMapReady: (controller) { // mapController를 새로 정의해서 빌드될때마다 마커를 새로찍는 로직을 작성해야함
           final destMarker = NMarker(id: "destination", position: destination);
           final destinationInfo = NInfoWindow.onMarker(
             id: "destInfo",

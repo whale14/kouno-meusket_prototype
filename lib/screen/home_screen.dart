@@ -3,8 +3,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:test_project/domain/model/user/user.dart';
-import 'package:test_project/presentation/event/request/request_event.dart';
-import 'package:test_project/presentation/state/request/request_state.dart';
 import 'package:test_project/presentation/state/users/user_state.dart';
 import 'package:test_project/presentation/vm/request_view_model.dart';
 import 'package:test_project/presentation/vm/user_view_model.dart';
@@ -16,8 +14,6 @@ import 'bottom_nav_screens/chat/chat_main.dart';
 import 'bottom_nav_screens/work/work_main.dart';
 import 'bottom_nav_screens/request/req_main.dart';
 import 'bottom_nav_screens//body_shopping.dart';
-import 'mypage/my_page_screen.dart';
-import 'errand_history/request_history.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class TabPage extends StatefulWidget {
@@ -132,54 +128,17 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
         builder: (context, snapShot) {
           if (snapShot.connectionState == ConnectionState.done) {
             return Scaffold(
-              /*appBar: AppBar(
-                leading: IconButton(
-                  onPressed: () => Navigator.pop(context),
-                  icon: const Icon(
-                    Icons.home,
-                  ),
-                ),
-                title: Text(_barTitles[_bottomNavIndex]),
-                actions: <Widget>[
-                  // if(_bottomNavIndex == 1)Switch(
-                  //   value: workState,
-                  //   onChanged: (value) {
-                  //     setState(() {
-                  //       workState = value;
-                  //     });
-                  //     Logger().d(workState);
-                  //   },
-                  // ),
-                  TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const RequestHistory(),
-                            ));
-                      },
-                      child: const Text(
-                        '요청내역',
-                      )),
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => MyPageScreen()));
-                    },
-                    icon: const Icon(Icons.account_circle),
-                  ),
-                ],
-              ),*/
-              body: [
-                BodyReq(socket, widget.category),
-                workerTab(_userState.user!),
-                const BodyShopping(),
-                BodyChat(socket)
+              body: [ //탭바 뷰 구현을 위한 페이지 리스트
+                BodyReq(socket, widget.category), //bottom_nav_screens/request/request_main.dart
+                workerTab(_userState.user!), //L.175
+                const BodyShopping(), //bottom_nav_screens/body_shopping.dart
+                BodyChat(socket) //bottom_nav_screens/chat/chat_main.dart
               ][_bottomNavIndex], //_pages[_bottomNavIndex],
               bottomNavigationBar: BottomNavigationBar(
                 type: BottomNavigationBarType.fixed,
                 onTap: _onItemTapped,
                 currentIndex: _bottomNavIndex,
-                items: const <BottomNavigationBarItem>[
+                items: const <BottomNavigationBarItem>[ //바텀 내비게이션 탭 아이콘 리스트
                   BottomNavigationBarItem(icon: Icon(Icons.live_help), label: '부름이'),
                   BottomNavigationBarItem(icon: Icon(Icons.check_box_rounded), label: '드림이'),
                   BottomNavigationBarItem(icon: Icon(Icons.shopping_bag_rounded), label: '쇼핑'),
@@ -210,12 +169,12 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
   }
 
   Widget workerTab(User user) {
-    if (user.isWorkerRegist == 0) {
+    if (user.isWorkerRegist == 0) { // 최초 클릭시 드림이 등록 유도
       return AlertDialog(
-        title: const Text("부름이 등록"),
+        title: const Text("드림이 등록"),
         content:  Wrap(
           children: const [
-            Text("심부름을 수행하기 위해선 계정을 부름이로 등록해야합니다."),
+            Text("심부름을 수행하기 위해선 계정을 드림이로 등록해야합니다."),
             Padding(
               padding: EdgeInsets.only(top: 20),
               child: Text("등록하시겠습니까?"),
@@ -237,7 +196,7 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
         ],
       );
     } else {
-      return BodyHelper(user);
+      return BodyHelper(user); //bottom_nam_screens/work/work_main.dart
     }
   }
 }

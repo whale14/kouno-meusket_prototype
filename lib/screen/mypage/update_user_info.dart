@@ -3,8 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
-import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
 import 'package:test_project/presentation/state/users/user_state.dart';
@@ -91,7 +89,8 @@ class _UpdateUserInfoState extends State<UpdateUserInfo> {
                     height: 16,
                   ),
                   GestureDetector(
-                    onTap: () => _showSelectPhotoSheet(), //찍기 또는 선택 모달팝업 연결
+                    //찍기 또는 선택 모달팝업 연결
+                    onTap: () => _showSelectPhotoSheet(), //L.434
                     child: Stack(
                       children: [
                         _imageContainer(100),
@@ -168,7 +167,7 @@ class _UpdateUserInfoState extends State<UpdateUserInfo> {
                         const SizedBox(
                           height: 16,
                         ),
-                        if(_userState.user!.isWorkerRegist == 1)Row(                                                                      //!!!!!!!!!!!!!!!!INTRODUCE!!!!!!!!!!!!!!!!!!!
+                        if(_userState.user!.isWorkerRegist == 1)Row(                               //!!!!!!!!!!!!!!!!INTRODUCE!!!!!!!!!!!!!!!!!!!
                           children: [
                             const SizedBox(width: 80, child: Text("자기소개")),
                             Expanded(
@@ -192,7 +191,7 @@ class _UpdateUserInfoState extends State<UpdateUserInfo> {
                         const SizedBox(
                           height: 16,
                         ),
-                        if(_userState.user!.isWorkerRegist == 1)Container(                                                                      //!!!!!!!!!!!!!!!!TRANSPORTATION!!!!!!!!!!!!!!!!!!!
+                        if(_userState.user!.isWorkerRegist == 1)Container(                        //!!!!!!!!!!!!!!!!TRANSPORTATION!!!!!!!!!!!!!!!!!!!
                           decoration: const BoxDecoration(border: Border(top: BorderSide(color: Colors.black12))),
                           child: Row(
                             children: [
@@ -223,7 +222,7 @@ class _UpdateUserInfoState extends State<UpdateUserInfo> {
                             ],
                           ),
                         ),
-                        if(_userState.user!.isWorkerRegist == 1)Container(                                                                      //!!!!!!!!!!!!!!!!WORK CATEGORY!!!!!!!!!!!!!!!!!!!
+                        if(_userState.user!.isWorkerRegist == 1)Container(                          //!!!!!!!!!!!!!!!!WORK CATEGORY!!!!!!!!!!!!!!!!!!!
                           decoration: const BoxDecoration(border: Border(top: BorderSide(color: Colors.black12))),
                           child: Row(
                             children: [
@@ -266,12 +265,12 @@ class _UpdateUserInfoState extends State<UpdateUserInfo> {
             child: MaterialButton(
               color: Colors.orange,
               onPressed: () async {
-
+                //클릭 이벤트
                 bool changCheck = false;
 
 
 
-                if(_userState.user!.isWorkerRegist == 0) {
+                if(_userState.user!.isWorkerRegist == 0) { //드림이 등록 유저가 아닌경우
                   //프로필 이미지 변경
                   if (_profileImage != null) {
                     final sendData = _profileImage!.path;
@@ -302,7 +301,7 @@ class _UpdateUserInfoState extends State<UpdateUserInfo> {
                   } else {
                     Navigator.pop(context);
                   }
-                } else {
+                } else { //드림이 등록된 유저인 경우
                   if (_profileImage != null) {
                     final sendData = _profileImage!.path;
                     final fileViewModel = FileViewModel();
@@ -432,7 +431,7 @@ class _UpdateUserInfoState extends State<UpdateUserInfo> {
 
 
 
-  _showSelectPhotoSheet() {
+  _showSelectPhotoSheet() { //사진 찍기 or 라이브러리 사진 불러오기 선택
     return showModalBottomSheet(
         context: context,
         shape: const RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(25))),
@@ -441,8 +440,8 @@ class _UpdateUserInfoState extends State<UpdateUserInfo> {
             mainAxisSize: MainAxisSize.min,
             children: [
               InkWell(
-                onTap: () {
-                  _takePicture().then((value) => Navigator.pop(context));
+                onTap: () { //사진찍기
+                  _takePicture().then((value) => Navigator.pop(context)); //L.478
                 },
                 child: Container(
                   alignment: Alignment.center,
@@ -456,7 +455,7 @@ class _UpdateUserInfoState extends State<UpdateUserInfo> {
                 ),
               ),
               InkWell(
-                onTap: () => _selectPhoto().then((value) => Navigator.pop(context)),
+                onTap: () => _selectPhoto().then((value) => Navigator.pop(context)), //L.494
                 child: Container(
                   alignment: Alignment.center,
                   padding: const EdgeInsets.only(top: 10, bottom: 10),
@@ -475,7 +474,7 @@ class _UpdateUserInfoState extends State<UpdateUserInfo> {
 
 
 
-
+// 이미지 피커 공식문서 https://pub.dev/packages/image_picker
   _takePicture() async {
     await ImagePicker().pickImage(source: ImageSource.camera, maxHeight: 2000, maxWidth: 2000, imageQuality: 50).then((value) {
       if (value != null) {
@@ -502,7 +501,7 @@ class _UpdateUserInfoState extends State<UpdateUserInfo> {
 
 
 
-
+// 이미지 크로퍼 공식문서 https://pub.dev/packages/image_cropper
   _cropImage(File file) async {
     final croppedFile = await ImageCropper().cropImage(
       sourcePath: file.path,
