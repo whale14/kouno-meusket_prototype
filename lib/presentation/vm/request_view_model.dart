@@ -22,24 +22,26 @@ class RequestViewModel with ChangeNotifier {
   }
 
   Future onRequestEvent(RequestEvent event) async {
-    await event.when(
-      getRequests: _getRequests,
-      acceptRequest: _acceptRequest,
-      getMyRequestsRequesterSide: _getMyRequestsRequesterSide,
-      getMyRequestsWorkerSide: _getMyRequestsWorkerSide,
-      startRequest: _startRequest,
-      requestComplete:  _requestComplete,
-      getRecruitments: _getRecruitments,
-      rejectApplication: _rejectApplication,
-      acceptApplication: _acceptApplication,
-      getRequest: _getRequest,
-      finishRequest: _finishRequest,
-      recruitmentRequest: _recruitmentRequest,
-      createRequestReview: _createRequestReview,
-      getWaypoints: _getWaypoints,
-      requestCancel: _requestCancel,
-      successCheckConfirm: _successCheckConfirm,
-    );
+
+    switch (event) {
+      case GetRequests(): _getRequests(event.idx);
+
+    case AcceptRequest(): _acceptRequest(event.idx, event.workerIdx);
+    case GetMyRequestsRequesterSide(): _getMyRequestsRequesterSide(event.idx);
+    case GetMyRequestsWorkerSide(): _getMyRequestsWorkerSide(event.idx);
+    case StartRequest(): _startRequest(event.idx);
+    case RequestComplete():  _requestComplete(event.idx);
+    case GetRecruitments(): _getRecruitments(event.idx);
+    case RejectApplication(): _rejectApplication(event.idx);
+    case AcceptApplication(): _acceptApplication(event.idx, event.workerIdx);
+    case GetRequest(): _getRequest(event.idx);
+    case FinishRequest(): _finishRequest(event.idx);
+    case RecruitmentRequest(): _recruitmentRequest(event.idx, event.workerIdx);
+    case CreateRequestReview(): _createRequestReview(event.idx, event.fromIdx, event.toIdx, event.score, event.comment);
+    case GetWaypoints(): _getWaypoints(event.idx);
+    case RequestCancel(): _requestCancel(event.requestIdx, event.content, event.requestStatus, event.userIdx, event.isRequest);
+    case SuccessCheckConfirm(): _successCheckConfirm(event.requestIdx, event.requesterIdx, event.workerIdx, event.reward);
+    }
   }
 
   Future _getMyRequestsRequesterSide(String idx) async {
@@ -65,9 +67,10 @@ class RequestViewModel with ChangeNotifier {
 
   Future _getRequests(String idx) async {
     final result = _errandRepository.getRequests(idx);
-    Logger().d("!!!!!!!!!!!!!logger");
+    final _result = await result;
+    Logger().d("!!!!!!!!!!!!!logger $_result");
     _requestState = requestState.copyWith(
-      requests: await result,
+      requests: _result,
     );
     notifyListeners();
   }

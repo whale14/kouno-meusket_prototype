@@ -12,9 +12,9 @@ class ReviewViewModel with ChangeNotifier {
   ReviewViewModel(this._reviewRepository);
 
   Future onReviewEvent(RequestReviewEvent event) async {
-    await event.when(
-      getReviews: _getReviews,
-    );
+    switch (event) {
+      case GetReviews() : _getReviews(event.toIdx);
+    }
   }
 
   Future _getReviews(String toIdx) async{

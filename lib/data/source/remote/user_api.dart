@@ -121,6 +121,7 @@ class UserAPI {
   Future<void> insertRequest(String reqIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, String date,
       String runningTime, String reward, List<Map<String, dynamic>> waypointsLocation, List<String> waypointsContent, int requestType, int secondType) async {
     String url = '$baseUrl/insert_request.php';
+    Logger().d('parse url data : $reqIdx, $categoryIdx, $title, $content, $address, $latitude, $longitude, $date, $runningTime, $reward, $requestType, $secondType');
     Map<String, dynamic> data = {
       'reqIdx': reqIdx,
       'category': categoryIdx,
@@ -132,8 +133,8 @@ class UserAPI {
       'date': date,
       'runningTime': runningTime,
       'reward': reward,
-      'requestType': requestType,
-      'secondType': secondType
+      'requestType': '$requestType',
+      'secondType': '$secondType'
     };
     final response = await _client.post(Uri.parse(url), body: data);
 

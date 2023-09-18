@@ -1,8 +1,10 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+sealed class RequestReviewEvent<T> {
+  factory RequestReviewEvent.getReviews(String toIdx)= GetReviews;
 
-part 'request_review_event.freezed.dart';
+}
 
-@freezed
-abstract class RequestReviewEvent<T> with _$RequestReviewEvent<T> {
-  const factory RequestReviewEvent.getReviews(String toIdx)= GetReviews;
+class GetReviews<T> implements RequestReviewEvent<T> {
+  final String toIdx;
+
+  GetReviews(this.toIdx);
 }

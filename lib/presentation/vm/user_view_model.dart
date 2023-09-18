@@ -29,27 +29,29 @@ class UserViewModel with ChangeNotifier {
 
   Future onUsersEvent(UsersEvent event) async {
     // event.when(getTests: _getTests);
-    await event.when(
-      getAroundHelpers: _getAroundHelpers,
-      insert: _insert,
-      insertRequest: _insertRequest,
-      getUser: _getUser,
-      updateLocation: _updateLocation,
-      requesterRegistration: _requesterRegistration,
-      workerRegistration: _workerRegistration,
-      updateUserPhoto: _updateUserPhoto,
-      updateUserName: _updateUserName,
-      updateUserBio: _updateUserBio,
-      updateUserIntroduce: _updateUserIntroduce,
-      updateUserTransportation: _updateUserTransportation,
-      updateUserWorkCategory: _updateUserWorkCategory,
-      workerRegistration1: _workerRegistration1,
-      getOtherUser: _getOtherUser,
-      sendRequestToWorker: _sendRequestToWorker,
-      updateWorkableState:  _updateWorkableState,
-      updateNotWorkableState: _updateNotWorkableState,
-      myWallet: _myWallet,
-    );
+
+
+    switch(event) {
+    case GetAroundHelpers(): _getAroundHelpers(event.id, event.workCategoryCheckValues, event.ageGroupCheckValues, event.genderCheckValues, event.distanceIndex);
+    case Insert(): _insert(event.id, event.name, event.bio, event.latitude, event.longitude, event.fcmToken);
+    case InsertRequest(): _insertRequest(event.reqIdx, event.categoryIdx, event.title, event.content, event.address, event.latitude, event.longitude, event.date, event.runningTime, event.reward, event.waypointsLocation, event.waypointsContent, event.requestType, event.secondType);
+    case GetUser(): _getUser(event.id);
+    case UpdateLocation(): _updateLocation(event.idx, event.latitude, event.longitude);
+    case RequesterRegistration(): _requesterRegistration(event.idx);
+    case WorkerRegistration(): _workerRegistration(event.idx);
+    case UpdateUserPhoto(): _updateUserPhoto(event.idx, event.filename);
+    case UpdateUserName(): _updateUserName(event.idx, event.name);
+    case UpdateUserBio(): _updateUserBio(event.idx, event.bio);
+    case UpdateUserIntroduce(): _updateUserIntroduce(event.idx, event.introduce);
+    case UpdateUserTransportation(): _updateUserTransportation(event.idx, event.transportation);
+    case UpdateUserWorkCategory(): _updateUserWorkCategory(event.idx, event.workCategory);
+    case WorkerRegistration1(): _workerRegistration1(event.idx, event.idCardPath, event.faceCheckPath, event.infs);
+    case GetOtherUser(): _getOtherUser(event.tappedWorkerIdx);
+    case SendRequestToWorker(): _sendRequestToWorker(event.reqIdx, event.workerIdx, event.categoryIdx, event.title, event.content, event.address, event.latitude, event.longitude, event.date, event.runningTime, event.reword, event.waypointsLocation, event.waypointsContent, event.fcmToken, event.requestType, event.secondType);
+    case UpdateWorkableState():  _updateWorkableState(event.idx);
+    case UpdateNotWorkableState(): _updateNotWorkableState(event.idx);
+    case MyWallet(): _myWallet(event.idx);
+    }
   }
 
   Future _insert(String id, String name, String bio, double latitude, double longitude, String fcmToken) async {

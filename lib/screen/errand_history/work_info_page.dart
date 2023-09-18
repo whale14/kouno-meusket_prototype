@@ -18,6 +18,7 @@ import 'package:test_project/presentation/state/request/waypoint_state.dart';
 import 'package:test_project/presentation/vm/request_view_model.dart';
 import 'package:test_project/presentation/vm/user_view_model.dart';
 import 'package:test_project/screen/errand_history/recruitment_confirm_page.dart';
+import 'package:test_project/screen/errand_history/request_history.dart';
 import 'package:test_project/screen/mypage/user_info_screen.dart';
 import 'package:test_project/screen/review/request_feedback_page.dart';
 
@@ -183,17 +184,33 @@ class _WorkInfoPageState extends State<WorkInfoPage> {
               ),
             ),
           ); //Action,
-          _map = NaverMap(
-            options: NaverMapViewOptions(
-              indoorEnable: false,
-              locationButtonEnable: false,
-              consumeSymbolTapEvents: false,
-              scrollGesturesEnable: false,
-              initialCameraPosition: NCameraPosition(target: NLatLng(_requestState.request!.latitude, _requestState.request!.longitude), zoom: 15),
-            ),
-            onMapReady: (controller) {
-              controller.addOverlay(NMarker(id: 'destination', position: NLatLng(_requestState.request!.latitude, _requestState.request!.longitude)));
-            },
+          _map = Stack(
+            children: [
+              NaverMap(
+                options: NaverMapViewOptions(
+                  indoorEnable: false,
+                  locationButtonEnable: false,
+                  consumeSymbolTapEvents: false,
+                  scrollGesturesEnable: false,
+                  initialCameraPosition: NCameraPosition(target: NLatLng(_requestState.request!.latitude, _requestState.request!.longitude), zoom: 15),
+                ),
+                onMapReady: (controller) {
+                  controller.addOverlay(NMarker(id: 'destination', position: NLatLng(_requestState.request!.latitude, _requestState.request!.longitude)));
+                },
+              ),
+              Positioned(
+                bottom: 1,
+                right: 1,
+                child: MaterialButton(
+                  onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => RealTimeLocation(widget.request),
+                    ),
+                  ),
+                  child: Text('실시간 위치 확인'),
+                ),
+              ),
+            ],
           );
           _bottomBtn = Container();
           break;

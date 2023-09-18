@@ -568,22 +568,23 @@ class _RequestHistoryState extends State<RequestHistory> {
   }
 }
 
-class realTimeLocation extends StatefulWidget { // 실시간 위치 확인 페이지
+class RealTimeLocation extends StatefulWidget { // 실시간 위치 확인 페이지
   final Request request;
 
-  const realTimeLocation(this.request, {Key? key}) : super(key: key);
+  const RealTimeLocation(this.request, {Key? key}) : super(key: key);
 
   @override
-  State<realTimeLocation> createState() => _realTimeLocationState();
+  State<RealTimeLocation> createState() => _RealTimeLocationState();
 }
 
-class _realTimeLocationState extends State<realTimeLocation> {
+class _RealTimeLocationState extends State<RealTimeLocation> {
   late UserViewModel _userViewModel;
   late UserState _userState;
   late OtherUserState _otherUserState;
   late RequestViewModel _requestViewModel;
   late RequestState _requestState;
   late Timer _timer;
+  late final NaverMapController _nMapController;
 
   @override
   void initState() {
@@ -592,6 +593,7 @@ class _realTimeLocationState extends State<realTimeLocation> {
     const Duration(seconds: 3);
     _timer = Timer.periodic(const Duration(seconds: 3), (timer) { // 3초마다 db에서 위치정보 select
       _userViewModel.onUsersEvent(UsersEvent.getOtherUser(widget.request.workerIdx.toString()));
+      Logger().d('timer is working..');
     });
   }
 
@@ -608,6 +610,7 @@ class _realTimeLocationState extends State<realTimeLocation> {
       ),
       body: NaverMap(
         onMapReady: (controller) { // mapController를 새로 정의해서 빌드될때마다 마커를 새로찍는 로직을 작성해야함
+          _nMapController = controller;
           final destMarker = NMarker(id: "destination", position: destination);
           final destinationInfo = NInfoWindow.onMarker(
             id: "destInfo",
@@ -619,11 +622,15 @@ class _realTimeLocationState extends State<realTimeLocation> {
           // final distance = workerLocation.distanceTo(destination);
           // final distanceInfo = NInfoWindow.onMap(id: "distanceInfo", text: "거리 : ${distance}M", position: NLatLng((workerLocation.latitude + destination.latitude) /2, (workerLocation.longitude + destination.longitude)/2));
 
-          controller.addOverlay(destMarker);
-          controller.addOverlay(workerMarker);
+          _nMapController.addOverlay(destMarker);
+          _nMapController.addOverlay(workerMarker);
+          // controller.addOverlay(destMarker);
+          // controller.addOverlay(workerMarker);
           destMarker.openInfoWindow(destinationInfo);
           workerMarker.openInfoWindow(workerInfo);
-          controller.addOverlay(path);
+          _nMapController.addOverlay(path);
+          // controller.addOverlay(path);
+
           // controller.addOverlay(distanceInfo);
         },
         options: NaverMapViewOptions(initialCameraPosition: NCameraPosition(target: workerLocation, zoom: 14)),

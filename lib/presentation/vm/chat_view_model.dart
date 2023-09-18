@@ -17,7 +17,11 @@ class ChatViewModel with ChangeNotifier {
   ChatViewModel(this._chatRepository);
 
   Future onChatEvent(ChatEvent event) async{
-   await event.when(getChatRooms: _getChatRooms, getChatContents: _getChatContents, updateChatRead: _updateChatRead);
+    switch (event) {
+      case GetChatRooms() : _getChatRooms(event.idx);
+      case GetChatContents() : _getChatContents(event.roomidx);
+      case UpdateChatRead() : _updateChatRead(event.chatContent);
+    }
   }
 
   Future _getChatRooms(String idx) async{
