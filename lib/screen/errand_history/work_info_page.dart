@@ -184,6 +184,39 @@ class _WorkInfoPageState extends State<WorkInfoPage> {
               ),
             ),
           ); //Action,
+          _map = NaverMap(
+            options: NaverMapViewOptions(
+              indoorEnable: false,
+              locationButtonEnable: false,
+              consumeSymbolTapEvents: false,
+              scrollGesturesEnable: false,
+              initialCameraPosition: NCameraPosition(target: NLatLng(_requestState.request!.latitude, _requestState.request!.longitude), zoom: 15),
+            ),
+            onMapReady: (controller) {
+              controller.addOverlay(NMarker(id: 'destination', position: NLatLng(_requestState.request!.latitude, _requestState.request!.longitude)));
+            },
+          );
+          _bottomBtn = Container();
+          break;
+        case 2:
+          _action = Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: GestureDetector(
+              onTap: () {
+                warningCancelRequest(_tappedIndex, _requestState.request!, userIdx);
+              },
+              child: const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.cancel_outlined),
+                  Text(
+                    "심부름 취소",
+                    style: TextStyle(fontSize: 8),
+                  ),
+                ],
+              ),
+            ),
+          ); //Action,
           _map = Stack(
             children: [
               NaverMap(
@@ -211,39 +244,6 @@ class _WorkInfoPageState extends State<WorkInfoPage> {
                 ),
               ),
             ],
-          );
-          _bottomBtn = Container();
-          break;
-        case 2:
-          _action = Padding(
-            padding: const EdgeInsets.only(right: 8),
-            child: GestureDetector(
-              onTap: () {
-                warningCancelRequest(_tappedIndex, _requestState.request!, userIdx);
-              },
-              child: const Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.cancel_outlined),
-                  Text(
-                    "심부름 취소",
-                    style: TextStyle(fontSize: 8),
-                  ),
-                ],
-              ),
-            ),
-          ); //Action,
-          _map = NaverMap(
-            options: NaverMapViewOptions(
-              indoorEnable: false,
-              locationButtonEnable: false,
-              consumeSymbolTapEvents: false,
-              scrollGesturesEnable: false,
-              initialCameraPosition: NCameraPosition(target: NLatLng(_requestState.request!.latitude, _requestState.request!.longitude), zoom: 15),
-            ),
-            onMapReady: (controller) {
-              controller.addOverlay(NMarker(id: 'destination', position: NLatLng(_requestState.request!.latitude, _requestState.request!.longitude)));
-            },
           );
           _bottomBtn = Container();
           break;
