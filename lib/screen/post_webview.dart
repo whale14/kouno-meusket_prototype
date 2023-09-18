@@ -34,7 +34,7 @@ class _PostWebViewState extends State<PostWebView> {
           );
         },
         initialUrlRequest:
-            URLRequest(url: Uri.parse('http://192.168.100.42:3000/post')),
+            URLRequest(url: Uri.parse('http://203.229.171.79:85/post')),
       ),
     );
     // return WebView(initialUrl:
