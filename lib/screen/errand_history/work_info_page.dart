@@ -90,6 +90,10 @@ class _WorkInfoPageState extends State<WorkInfoPage> {
     _userViewModel = context.watch<UserViewModel>();
 
     if (_tappedIndex == 0) {
+      //tappedIndex 는 부름이인지 드림이인지 구별하기위함
+      //심부름의 type에 따라 다른 화면이 나와야한다. (requestType, secondType)
+      //일반-예약, 일반-즉시, 지정-예약, 지정-즉시
+      //매칭단계를 넘어가면 달라지는것은 딱히 없음.
       String userIdx = _requestState.request!.requesterIdx.toString();
       switch (_requestState.request!.status) {
         case 0:
@@ -165,7 +169,7 @@ class _WorkInfoPageState extends State<WorkInfoPage> {
             _bottomBtn = Container();
           }
           break;
-        case 1:
+        case 1://진행대기
           _action = Padding(
             padding: const EdgeInsets.only(right: 8),
             child: GestureDetector(
@@ -199,6 +203,7 @@ class _WorkInfoPageState extends State<WorkInfoPage> {
           _bottomBtn = Container();
           break;
         case 2:
+          //진행중
           _action = Padding(
             padding: const EdgeInsets.only(right: 8),
             child: GestureDetector(
