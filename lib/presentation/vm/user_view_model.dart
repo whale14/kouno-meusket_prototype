@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:test_project/domain/repository/user_repository.dart';
+import 'package:test_project/presentation/state/users/announcement_state.dart';
 import 'package:test_project/presentation/state/users/other_user_state.dart';
 import 'package:test_project/presentation/state/users/user_state.dart';
 import 'package:test_project/presentation/state/users/users_state.dart';
@@ -15,6 +16,7 @@ class UserViewModel with ChangeNotifier {
   var _userState = UserState();
   var _otherUserState = OtherUserState();
   var _walletState = WalletState();
+  var _announcementState = AnnouncementState();
 
   // TestState get testState => _testState;
   UserState get userState => _userState;
@@ -24,6 +26,8 @@ class UserViewModel with ChangeNotifier {
   OtherUserState get otherUserState => _otherUserState;
 
   WalletState get walletState => _walletState;
+
+  AnnouncementState get announcementState => _announcementState;
 
   UserViewModel(this._userRepository);
 
@@ -51,6 +55,7 @@ class UserViewModel with ChangeNotifier {
     case UpdateWorkableState():  _updateWorkableState(event.idx);
     case UpdateNotWorkableState(): _updateNotWorkableState(event.idx);
     case MyWallet(): _myWallet(event.idx);
+      case GetAnnouncement(): _getAnnouncement(event.type, event.search);
     }
   }
 
@@ -178,6 +183,12 @@ class UserViewModel with ChangeNotifier {
   Future _myWallet(String idx) async{
     final result = _userRepository.myWallet(idx);
     _walletState = walletState.copyWith(wallet: await result);
+    notifyListeners();
+  }
+
+  Future _getAnnouncement(String type, String search) async{
+    final result = _userRepository.getAnnouncement(type, search);
+    _announcementState = announcementState.copyWith(announcement: await result);
     notifyListeners();
   }
 }

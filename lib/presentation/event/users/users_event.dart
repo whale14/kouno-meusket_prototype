@@ -67,6 +67,8 @@ sealed class UsersEvent<T> {
   factory UsersEvent.updateNotWorkableState(String idx) = UpdateNotWorkableState;
 
   factory UsersEvent.myWallet(String idx) = MyWallet;
+
+  factory UsersEvent.getAnnouncement(String type, String search) = GetAnnouncement;
 }
 
 class GetAroundHelpers<T> implements UsersEvent<T> {
@@ -231,4 +233,11 @@ class MyWallet<T> implements UsersEvent<T> {
   final String idx;
 
   MyWallet(this.idx);
+}
+
+class GetAnnouncement<T> implements UsersEvent<T>{
+  final String type;
+  final String search;
+
+  GetAnnouncement(this.type, this.search);
 }
