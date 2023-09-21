@@ -409,4 +409,11 @@ class UserAPI {
     Logger().d('#########myWalletApi : ${response.body}');
     return response;
   }
+
+  Future<http.Response> getAnnouncement(String type, String search) async {
+    String url = '$baseUrl/announcement.php';
+    Map<String, dynamic> data={'type': type, 'search': search};
+    final response = await _client.post(Uri.parse(url), body: data);
+    return response;
+  }
 }
