@@ -309,8 +309,8 @@ class UserAPI {
       'date': date,
       'runningTime': runningTime,
       'reword': reword,
-      'requestType' : requestType,
-      'secondType' : secondType,
+      'requestType' : '$requestType',
+      'secondType' : '$secondType',
     };
     final response = await _client.post(Uri.parse(url), body: data);
     String requestIdx = jsonDecode(response.body).first['LAST_INSERT_ID()'].toString();

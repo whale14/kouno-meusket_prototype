@@ -14,7 +14,7 @@ class GetChatRooms<T> implements ChatEvent<T> {
 
 class GetChatContents<T> implements ChatEvent<T> {
   final String roomidx;
-
+  
   GetChatContents(this.roomidx);
 }
 

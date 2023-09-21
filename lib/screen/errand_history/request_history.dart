@@ -449,9 +449,29 @@ class _RequestHistoryState extends State<RequestHistory> {
       }
     }
     return GestureDetector(
-      onTap: () async { //심부름 정보 페이지로 이동
-        await _requestViewModel.onRequestEvent(RequestEvent.getRequest(request.idx.toString())).then(
-              (value) => Navigator.push(
+      onTap: () async {
+        //심부름 정보 페이지로
+        if (request.status == 0) {
+          if (request.requestType == 0) {
+            if (request.secondType == 1) {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => RecruitmentConfirmPage(request),
+              ));
+            }else {
+              await _requestViewModel.onRequestEvent(RequestEvent.getRequest(request.idx.toString())).then(
+                    (value) => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => WorkInfoPage(request, _tappedIndex), // work_info_page.dart
+                  ),
+                ).then((value) {
+                  _getMyRequests(_tappedIndex);
+                }),
+              );
+            }
+          }else {
+            await _requestViewModel.onRequestEvent(RequestEvent.getRequest(request.idx.toString())).then(
+                  (value) => Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => WorkInfoPage(request, _tappedIndex), // work_info_page.dart
@@ -460,6 +480,19 @@ class _RequestHistoryState extends State<RequestHistory> {
                 _getMyRequests(_tappedIndex);
               }),
             );
+          }
+        }else {
+          await _requestViewModel.onRequestEvent(RequestEvent.getRequest(request.idx.toString())).then(
+                (value) => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => WorkInfoPage(request, _tappedIndex), // work_info_page.dart
+                  ),
+                ).then((value) {
+                  _getMyRequests(_tappedIndex);
+                }),
+              );
+        }
       }, //onRequestTap(request),
       child: Card(
         color: requestCardFillColor,
@@ -568,7 +601,8 @@ class _RequestHistoryState extends State<RequestHistory> {
   }
 }
 
-class RealTimeLocation extends StatefulWidget { // 실시간 위치 확인 페이지
+class RealTimeLocation extends StatefulWidget {
+  // 실시간 위치 확인 페이지
   final Request request;
 
   const RealTimeLocation(this.request, {Key? key}) : super(key: key);
@@ -591,7 +625,8 @@ class _RealTimeLocationState extends State<RealTimeLocation> {
     // TODO: implement initState
     super.initState();
     const Duration(seconds: 3);
-    _timer = Timer.periodic(const Duration(seconds: 3), (timer) { // 3초마다 db에서 위치정보 select
+    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+      // 3초마다 db에서 위치정보 select
       _userViewModel.onUsersEvent(UsersEvent.getOtherUser(widget.request.workerIdx.toString()));
       Logger().d('timer is working..');
     });
@@ -609,7 +644,8 @@ class _RealTimeLocationState extends State<RealTimeLocation> {
         title: const Text("실시간 위치 확인"),
       ),
       body: NaverMap(
-        onMapReady: (controller) { // mapController를 새로 정의해서 빌드될때마다 마커를 새로찍는 로직을 작성해야함
+        onMapReady: (controller) {
+          // mapController를 새로 정의해서 빌드될때마다 마커를 새로찍는 로직을 작성해야함
           _nMapController = controller;
           final destMarker = NMarker(id: "destination", position: destination);
           final destinationInfo = NInfoWindow.onMarker(

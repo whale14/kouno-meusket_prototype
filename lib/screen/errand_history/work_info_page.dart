@@ -69,9 +69,13 @@ class _WorkInfoPageState extends State<WorkInfoPage> {
       getRequest();
       if (_tappedIndex == 0) { //드림이 모집중인 심부름이라면 지원서 확인 페이지로 이동
         if (_requestState.request!.status == 0) {
-          Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (context) => RecruitmentConfirmPage(_requestState.request!),
-          ));
+          if(_requestState.request!.requestType == 0) {
+            if(_requestState.request!.secondType == 1) {
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                builder: (context) => RecruitmentConfirmPage(_requestState.request!),
+              ));
+            }
+          }
         }
 
         if (_requestState.request!.status == 3 && _requestState.request!.successCheck == 0) {
