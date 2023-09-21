@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:logger/logger.dart';
 import 'package:test_project/data/source/remote/user_api.dart';
+import 'package:test_project/domain/model/user/announcement.dart';
 import 'package:test_project/domain/model/user/user.dart';
 import 'package:test_project/domain/model/user/wallet.dart';
 import 'package:test_project/domain/repository/user_repository.dart';
@@ -157,4 +158,16 @@ class UserRepositoryImpl implements UserRepository {
     Wallet wallet =  Wallet.fromJson(json.first);
     return wallet;
   }
+
+  @override
+  Future getAnnouncement(String type, String search) async{
+    // TODO: implement getAnnouncement
+    final response = await api.getAnnouncement(type, search);
+    Logger().d("type :  $type, announcements:${response.body}");
+    final Iterable json = jsonDecode(response.body);
+    Logger().d('json: ${json}');
+    return json.map((e) => Announcement.fromJson(e)).toList();
+  }
+
+
 }
