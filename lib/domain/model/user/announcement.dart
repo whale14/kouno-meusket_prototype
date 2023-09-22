@@ -10,7 +10,7 @@ class Announcement with _$Announcement {
     required int idx,
     required String type,
     required String author,
-    required String announcement,
+    required String announceAt,
     required String content,
     required String title,
   }) = _Announcement;

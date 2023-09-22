@@ -29,7 +29,9 @@ class UserViewModel with ChangeNotifier {
 
   AnnouncementState get announcementState => _announcementState;
 
-  UserViewModel(this._userRepository);
+  UserViewModel(this._userRepository) {
+    _getAnnouncement();
+  }
 
   Future onUsersEvent(UsersEvent event) async {
     // event.when(getTests: _getTests);
@@ -188,7 +190,7 @@ class UserViewModel with ChangeNotifier {
 
   Future _getAnnouncement() async{
     final result = _userRepository.getAnnouncement();
-    _announcementState = announcementState.copyWith(announcement: await result);
+    _announcementState = announcementState.copyWith(announcements: await result);
     notifyListeners();
   }
 }

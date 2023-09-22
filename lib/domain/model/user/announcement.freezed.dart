@@ -23,7 +23,7 @@ mixin _$Announcement {
   int get idx => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   String get author => throw _privateConstructorUsedError;
-  String get announcement => throw _privateConstructorUsedError;
+  String get announceAt => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
 
@@ -43,7 +43,7 @@ abstract class $AnnouncementCopyWith<$Res> {
       {int idx,
       String type,
       String author,
-      String announcement,
+      String announceAt,
       String content,
       String title});
 }
@@ -64,7 +64,7 @@ class _$AnnouncementCopyWithImpl<$Res, $Val extends Announcement>
     Object? idx = null,
     Object? type = null,
     Object? author = null,
-    Object? announcement = null,
+    Object? announceAt = null,
     Object? content = null,
     Object? title = null,
   }) {
@@ -81,9 +81,9 @@ class _$AnnouncementCopyWithImpl<$Res, $Val extends Announcement>
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as String,
-      announcement: null == announcement
-          ? _value.announcement
-          : announcement // ignore: cast_nullable_to_non_nullable
+      announceAt: null == announceAt
+          ? _value.announceAt
+          : announceAt // ignore: cast_nullable_to_non_nullable
               as String,
       content: null == content
           ? _value.content
@@ -109,7 +109,7 @@ abstract class _$$_AnnouncementCopyWith<$Res>
       {int idx,
       String type,
       String author,
-      String announcement,
+      String announceAt,
       String content,
       String title});
 }
@@ -128,7 +128,7 @@ class __$$_AnnouncementCopyWithImpl<$Res>
     Object? idx = null,
     Object? type = null,
     Object? author = null,
-    Object? announcement = null,
+    Object? announceAt = null,
     Object? content = null,
     Object? title = null,
   }) {
@@ -145,9 +145,9 @@ class __$$_AnnouncementCopyWithImpl<$Res>
           ? _value.author
           : author // ignore: cast_nullable_to_non_nullable
               as String,
-      announcement: null == announcement
-          ? _value.announcement
-          : announcement // ignore: cast_nullable_to_non_nullable
+      announceAt: null == announceAt
+          ? _value.announceAt
+          : announceAt // ignore: cast_nullable_to_non_nullable
               as String,
       content: null == content
           ? _value.content
@@ -168,7 +168,7 @@ class _$_Announcement implements _Announcement {
       {required this.idx,
       required this.type,
       required this.author,
-      required this.announcement,
+      required this.announceAt,
       required this.content,
       required this.title});
 
@@ -182,7 +182,7 @@ class _$_Announcement implements _Announcement {
   @override
   final String author;
   @override
-  final String announcement;
+  final String announceAt;
   @override
   final String content;
   @override
@@ -190,7 +190,7 @@ class _$_Announcement implements _Announcement {
 
   @override
   String toString() {
-    return 'Announcement(idx: $idx, type: $type, author: $author, announcement: $announcement, content: $content, title: $title)';
+    return 'Announcement(idx: $idx, type: $type, author: $author, announceAt: $announceAt, content: $content, title: $title)';
   }
 
   @override
@@ -201,8 +201,8 @@ class _$_Announcement implements _Announcement {
             (identical(other.idx, idx) || other.idx == idx) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.author, author) || other.author == author) &&
-            (identical(other.announcement, announcement) ||
-                other.announcement == announcement) &&
+            (identical(other.announceAt, announceAt) ||
+                other.announceAt == announceAt) &&
             (identical(other.content, content) || other.content == content) &&
             (identical(other.title, title) || other.title == title));
   }
@@ -210,7 +210,7 @@ class _$_Announcement implements _Announcement {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, idx, type, author, announcement, content, title);
+      Object.hash(runtimeType, idx, type, author, announceAt, content, title);
 
   @JsonKey(ignore: true)
   @override
@@ -231,7 +231,7 @@ abstract class _Announcement implements Announcement {
       {required final int idx,
       required final String type,
       required final String author,
-      required final String announcement,
+      required final String announceAt,
       required final String content,
       required final String title}) = _$_Announcement;
 
@@ -245,7 +245,7 @@ abstract class _Announcement implements Announcement {
   @override
   String get author;
   @override
-  String get announcement;
+  String get announceAt;
   @override
   String get content;
   @override

@@ -56,11 +56,16 @@ class MyPageScreen extends StatelessWidget {
                         );
                     break;
                   case '결제 수단 관리':
+                    break;
                   case '심부름 내역 관리':
+                    break;
                   case '포인트/쿠폰확인':
+                    break;
                   case '공지사항':
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => AnnouncementPage()));
+                    break;
                   case '문의하기':
+                    break;
                 }
               },
               child: Container(
