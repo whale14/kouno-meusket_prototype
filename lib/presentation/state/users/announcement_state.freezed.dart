@@ -21,6 +21,8 @@ AnnouncementState _$AnnouncementStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AnnouncementState {
   Announcement? get announcement => throw _privateConstructorUsedError;
+  List<List<Announcement>> get announcements =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +36,8 @@ abstract class $AnnouncementStateCopyWith<$Res> {
           AnnouncementState value, $Res Function(AnnouncementState) then) =
       _$AnnouncementStateCopyWithImpl<$Res, AnnouncementState>;
   @useResult
-  $Res call({Announcement? announcement});
+  $Res call(
+      {Announcement? announcement, List<List<Announcement>> announcements});
 
   $AnnouncementCopyWith<$Res>? get announcement;
 }
@@ -53,12 +56,17 @@ class _$AnnouncementStateCopyWithImpl<$Res, $Val extends AnnouncementState>
   @override
   $Res call({
     Object? announcement = freezed,
+    Object? announcements = null,
   }) {
     return _then(_value.copyWith(
       announcement: freezed == announcement
           ? _value.announcement
           : announcement // ignore: cast_nullable_to_non_nullable
               as Announcement?,
+      announcements: null == announcements
+          ? _value.announcements
+          : announcements // ignore: cast_nullable_to_non_nullable
+              as List<List<Announcement>>,
     ) as $Val);
   }
 
@@ -83,7 +91,8 @@ abstract class _$$_AnnouncementStateCopyWith<$Res>
       __$$_AnnouncementStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Announcement? announcement});
+  $Res call(
+      {Announcement? announcement, List<List<Announcement>> announcements});
 
   @override
   $AnnouncementCopyWith<$Res>? get announcement;
@@ -101,12 +110,17 @@ class __$$_AnnouncementStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? announcement = freezed,
+    Object? announcements = null,
   }) {
     return _then(_$_AnnouncementState(
       announcement: freezed == announcement
           ? _value.announcement
           : announcement // ignore: cast_nullable_to_non_nullable
               as Announcement?,
+      announcements: null == announcements
+          ? _value._announcements
+          : announcements // ignore: cast_nullable_to_non_nullable
+              as List<List<Announcement>>,
     ));
   }
 }
@@ -114,17 +128,28 @@ class __$$_AnnouncementStateCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AnnouncementState implements _AnnouncementState {
-  _$_AnnouncementState({this.announcement});
+  _$_AnnouncementState(
+      {this.announcement,
+      final List<List<Announcement>> announcements = const []})
+      : _announcements = announcements;
 
   factory _$_AnnouncementState.fromJson(Map<String, dynamic> json) =>
       _$$_AnnouncementStateFromJson(json);
 
   @override
   final Announcement? announcement;
+  final List<List<Announcement>> _announcements;
+  @override
+  @JsonKey()
+  List<List<Announcement>> get announcements {
+    if (_announcements is EqualUnmodifiableListView) return _announcements;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_announcements);
+  }
 
   @override
   String toString() {
-    return 'AnnouncementState(announcement: $announcement)';
+    return 'AnnouncementState(announcement: $announcement, announcements: $announcements)';
   }
 
   @override
@@ -133,12 +158,15 @@ class _$_AnnouncementState implements _AnnouncementState {
         (other.runtimeType == runtimeType &&
             other is _$_AnnouncementState &&
             (identical(other.announcement, announcement) ||
-                other.announcement == announcement));
+                other.announcement == announcement) &&
+            const DeepCollectionEquality()
+                .equals(other._announcements, _announcements));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, announcement);
+  int get hashCode => Object.hash(runtimeType, announcement,
+      const DeepCollectionEquality().hash(_announcements));
 
   @JsonKey(ignore: true)
   @override
@@ -156,14 +184,17 @@ class _$_AnnouncementState implements _AnnouncementState {
 }
 
 abstract class _AnnouncementState implements AnnouncementState {
-  factory _AnnouncementState({final Announcement? announcement}) =
-      _$_AnnouncementState;
+  factory _AnnouncementState(
+      {final Announcement? announcement,
+      final List<List<Announcement>> announcements}) = _$_AnnouncementState;
 
   factory _AnnouncementState.fromJson(Map<String, dynamic> json) =
       _$_AnnouncementState.fromJson;
 
   @override
   Announcement? get announcement;
+  @override
+  List<List<Announcement>> get announcements;
   @override
   @JsonKey(ignore: true)
   _$$_AnnouncementStateCopyWith<_$_AnnouncementState> get copyWith =>

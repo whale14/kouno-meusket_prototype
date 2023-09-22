@@ -9,6 +9,7 @@ part 'announcement_state.g.dart';
 class AnnouncementState with _$AnnouncementState {
 factory AnnouncementState({
   Announcement? announcement,
+  @Default([]) List<List<Announcement>> announcements,
 }) = _AnnouncementState;
 
 factory AnnouncementState.fromJson(Map<String, dynamic> json) => _$AnnouncementStateFromJson(json);

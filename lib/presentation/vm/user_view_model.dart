@@ -55,7 +55,7 @@ class UserViewModel with ChangeNotifier {
     case UpdateWorkableState():  _updateWorkableState(event.idx);
     case UpdateNotWorkableState(): _updateNotWorkableState(event.idx);
     case MyWallet(): _myWallet(event.idx);
-      case GetAnnouncement(): _getAnnouncement(event.type, event.search);
+    case GetAnnouncement(): _getAnnouncement();
     }
   }
 
@@ -186,8 +186,8 @@ class UserViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Future _getAnnouncement(String type, String search) async{
-    final result = _userRepository.getAnnouncement(type, search);
+  Future _getAnnouncement() async{
+    final result = _userRepository.getAnnouncement();
     _announcementState = announcementState.copyWith(announcement: await result);
     notifyListeners();
   }

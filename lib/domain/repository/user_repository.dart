@@ -43,5 +43,5 @@ abstract class UserRepository {
 
   Future myWallet(String idx);
 
-  Future getAnnouncement(String type, String search);
+  Future getAnnouncement();
 }

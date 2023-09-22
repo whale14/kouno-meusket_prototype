@@ -4,6 +4,7 @@ import 'package:test_project/domain/model/user/user.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
 import 'package:test_project/presentation/state/users/user_state.dart';
 import 'package:test_project/presentation/vm/user_view_model.dart';
+import 'package:test_project/screen/mypage/announcement_page.dart';
 import 'package:test_project/screen/mypage/user_info_screen.dart';
 import 'package:test_project/screen/mypage/wallet_page.dart';
 
@@ -58,6 +59,7 @@ class MyPageScreen extends StatelessWidget {
                   case '심부름 내역 관리':
                   case '포인트/쿠폰확인':
                   case '공지사항':
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => AnnouncementPage()));
                   case '문의하기':
                 }
               },

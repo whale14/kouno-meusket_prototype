@@ -410,10 +410,9 @@ class UserAPI {
     return response;
   }
 
-  Future<http.Response> getAnnouncement(String type, String search) async {
+  Future<http.Response> getAnnouncement() async {
     String url = '$baseUrl/announcement.php';
-    Map<String, dynamic> data={'type': type, 'search': search};
-    final response = await _client.post(Uri.parse(url), body: data);
+    final response = await _client.post(Uri.parse(url));
     return response;
   }
 }
