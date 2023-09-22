@@ -65,13 +65,13 @@ class AnnouncementPage extends StatelessWidget {
                                     context)),
                         SliverFixedExtentList(
                             delegate: SliverChildBuilderDelegate(
-                              childCount:
-                                  announcementState.announcements.length,
                               (BuildContext context, int index) {
+                                final curAnnouncements = tappedList[index];
                                 return ListTile(
-                                  title: Text('$index'),
+                                  title: Text('$curAnnouncements.title'),
                                 );
                               },
+                              childCount: tappedList.length,
                             ),
                             itemExtent: 48.0)
                       ],
