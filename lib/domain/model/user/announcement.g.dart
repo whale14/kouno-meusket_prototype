@@ -13,6 +13,7 @@ _$_Announcement _$$_AnnouncementFromJson(Map<String, dynamic> json) =>
       author: json['author'] as String,
       announcement: json['announcement'] as String,
       content: json['content'] as String,
+      title: json['title'] as String,
     );
 
 Map<String, dynamic> _$$_AnnouncementToJson(_$_Announcement instance) =>
@@ -22,4 +23,5 @@ Map<String, dynamic> _$$_AnnouncementToJson(_$_Announcement instance) =>
       'author': instance.author,
       'announcement': instance.announcement,
       'content': instance.content,
+      'title': instance.title,
     };

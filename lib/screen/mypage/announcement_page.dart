@@ -37,10 +37,13 @@ class AnnouncementPage extends StatelessWidget {
                       switch(tapIndex) {
                         case 0:
                           tappedList = announcementState.announcements[0];
+                          break;
                         case 1:
                           tappedList = announcementState.announcements[1];
+                          break;
                         case 2:
                           tappedList = announcementState.announcements[2];
+                          break;
                       }
                     },
                   ),
@@ -65,10 +68,8 @@ class AnnouncementPage extends StatelessWidget {
                               childCount:
                                   announcementState.announcements.length,
                               (BuildContext context, int index) {
-                                final sysAnnounce =
-                                    announcementState.announcements[index];
                                 return ListTile(
-                                  title: Text('1'),
+                                  title: Text('$index'),
                                 );
                               },
                             ),
@@ -84,8 +85,6 @@ class AnnouncementPage extends StatelessWidget {
       ),
     );
   }
-
-  onTabBarTap() {}
 }
 
 /*

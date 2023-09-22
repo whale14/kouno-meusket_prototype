@@ -25,6 +25,7 @@ mixin _$Announcement {
   String get author => throw _privateConstructorUsedError;
   String get announcement => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +44,8 @@ abstract class $AnnouncementCopyWith<$Res> {
       String type,
       String author,
       String announcement,
-      String content});
+      String content,
+      String title});
 }
 
 /// @nodoc
@@ -64,6 +66,7 @@ class _$AnnouncementCopyWithImpl<$Res, $Val extends Announcement>
     Object? author = null,
     Object? announcement = null,
     Object? content = null,
+    Object? title = null,
   }) {
     return _then(_value.copyWith(
       idx: null == idx
@@ -86,6 +89,10 @@ class _$AnnouncementCopyWithImpl<$Res, $Val extends Announcement>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -103,7 +110,8 @@ abstract class _$$_AnnouncementCopyWith<$Res>
       String type,
       String author,
       String announcement,
-      String content});
+      String content,
+      String title});
 }
 
 /// @nodoc
@@ -122,6 +130,7 @@ class __$$_AnnouncementCopyWithImpl<$Res>
     Object? author = null,
     Object? announcement = null,
     Object? content = null,
+    Object? title = null,
   }) {
     return _then(_$_Announcement(
       idx: null == idx
@@ -144,6 +153,10 @@ class __$$_AnnouncementCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -156,7 +169,8 @@ class _$_Announcement implements _Announcement {
       required this.type,
       required this.author,
       required this.announcement,
-      required this.content});
+      required this.content,
+      required this.title});
 
   factory _$_Announcement.fromJson(Map<String, dynamic> json) =>
       _$$_AnnouncementFromJson(json);
@@ -171,10 +185,12 @@ class _$_Announcement implements _Announcement {
   final String announcement;
   @override
   final String content;
+  @override
+  final String title;
 
   @override
   String toString() {
-    return 'Announcement(idx: $idx, type: $type, author: $author, announcement: $announcement, content: $content)';
+    return 'Announcement(idx: $idx, type: $type, author: $author, announcement: $announcement, content: $content, title: $title)';
   }
 
   @override
@@ -187,13 +203,14 @@ class _$_Announcement implements _Announcement {
             (identical(other.author, author) || other.author == author) &&
             (identical(other.announcement, announcement) ||
                 other.announcement == announcement) &&
-            (identical(other.content, content) || other.content == content));
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.title, title) || other.title == title));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, idx, type, author, announcement, content);
+      Object.hash(runtimeType, idx, type, author, announcement, content, title);
 
   @JsonKey(ignore: true)
   @override
@@ -215,7 +232,8 @@ abstract class _Announcement implements Announcement {
       required final String type,
       required final String author,
       required final String announcement,
-      required final String content}) = _$_Announcement;
+      required final String content,
+      required final String title}) = _$_Announcement;
 
   factory _Announcement.fromJson(Map<String, dynamic> json) =
       _$_Announcement.fromJson;
@@ -230,6 +248,8 @@ abstract class _Announcement implements Announcement {
   String get announcement;
   @override
   String get content;
+  @override
+  String get title;
   @override
   @JsonKey(ignore: true)
   _$$_AnnouncementCopyWith<_$_Announcement> get copyWith =>

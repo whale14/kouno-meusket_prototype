@@ -12,6 +12,7 @@ class Announcement with _$Announcement {
     required String author,
     required String announcement,
     required String content,
+    required String title,
   }) = _Announcement;
 
 factory Announcement.fromJson(Map<String, dynamic> json) => _$AnnouncementFromJson(json);
