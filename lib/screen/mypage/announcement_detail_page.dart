@@ -9,7 +9,7 @@ class AnnouncementDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = context.watch<UserViewModel>();
     final announcementState = viewModel.announcementState;
-    final List<String> announcementTypeTab = <String>['공지사항', 'FAQ', '이벤트'];
+
     return Scaffold(
       appBar: AppBar(
         title: announcementState.isLoading
@@ -47,7 +47,7 @@ class AnnouncementDetailPage extends StatelessWidget {
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          child: Text('돌아가기')))
+                          child: const Text('돌아가기')))
                 ],
               ),
             )),
