@@ -8,6 +8,7 @@ part of 'announcement_state.dart';
 
 _$_AnnouncementState _$$_AnnouncementStateFromJson(Map<String, dynamic> json) =>
     _$_AnnouncementState(
+      isLoading: json['isLoading'] as bool? ?? false,
       announcement: json['announcement'] == null
           ? null
           : Announcement.fromJson(json['announcement'] as Map<String, dynamic>),
@@ -22,6 +23,7 @@ _$_AnnouncementState _$$_AnnouncementStateFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_AnnouncementStateToJson(
         _$_AnnouncementState instance) =>
     <String, dynamic>{
+      'isLoading': instance.isLoading,
       'announcement': instance.announcement,
       'announcements': instance.announcements,
     };

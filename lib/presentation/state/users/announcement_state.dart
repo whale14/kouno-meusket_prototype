@@ -8,6 +8,7 @@ part 'announcement_state.g.dart';
 @freezed
 class AnnouncementState with _$AnnouncementState {
 factory AnnouncementState({
+  @Default(false) bool isLoading,
   Announcement? announcement,
   @Default([]) List<List<Announcement>> announcements,
 }) = _AnnouncementState;

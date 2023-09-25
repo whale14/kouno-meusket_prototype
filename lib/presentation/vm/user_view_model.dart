@@ -58,6 +58,7 @@ class UserViewModel with ChangeNotifier {
     case UpdateNotWorkableState(): _updateNotWorkableState(event.idx);
     case MyWallet(): _myWallet(event.idx);
     case GetAnnouncement(): _getAnnouncement();
+    case GetAnnouncementByIdx(): _getAnnouncementByIdx(event.idx);
     }
   }
 
@@ -191,6 +192,15 @@ class UserViewModel with ChangeNotifier {
   Future _getAnnouncement() async{
     final result = _userRepository.getAnnouncement();
     _announcementState = announcementState.copyWith(announcements: await result);
+    notifyListeners();
+  }
+
+  Future _getAnnouncementByIdx(int idx) async{
+    _announcementState = announcementState.copyWith(isLoading: true);
+    notifyListeners();
+
+    final result = _userRepository.getAnnouncementByIdx(idx);
+    _announcementState = announcementState.copyWith(announcement: await result, isLoading: false);
     notifyListeners();
   }
 }

@@ -163,10 +163,25 @@ class UserRepositoryImpl implements UserRepository {
   Future getAnnouncement() async{
     // TODO: implement getAnnouncement
     final response = await api.getAnnouncement();
-    Logger().d('####################announcements:${response.body}############');
+    Logger().d('#############announcements:${response.body}############');
     final Iterable json = jsonDecode(response.body);
     List<List<Announcement>> result = [];
-    for(List list in json) {result.add(list.map((e) => Announcement.fromJson(e)).toList());}
+    // for(List list in json) {result.add(list.map((e) => Announcement.fromJson(e)).toList());}
+    for (List list in json) {
+      final filledList = list.map((e) {
+        // 비어있는 필드를 빈 문자열로 채우기
+        final filledMap = {
+          'idx': e['idx'] ?? 0, // 필요에 따라 기본값 변경 가능
+          'type': e['type'] ?? "",
+          'author': e['author'] ?? "",
+          'announceAt': e['announceAt'] ?? "",
+          'content': e['content'] ?? "",
+          'title': e['title'] ?? "",
+        };
+        return Announcement.fromJson(filledMap);
+      }).toList();
+      result.add(filledList);
+    }
     return result;
   }
 
