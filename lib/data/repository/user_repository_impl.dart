@@ -162,15 +162,22 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future getAnnouncement() async{
     // TODO: implement getAnnouncement
-    Logger().d('#############getAnnouncement Called!!!###########');
     final response = await api.getAnnouncement();
     Logger().d('####################announcements:${response.body}############');
     final Iterable json = jsonDecode(response.body);
-    Logger().d('#############json: $json#############');
     List<List<Announcement>> result = [];
     for(List list in json) {result.add(list.map((e) => Announcement.fromJson(e)).toList());}
     return result;
   }
 
+  @override
+  Future getAnnouncementByIdx(int idx) async {
+    // TODO: implement getAnnouncementByIdx
+    final response = await api.getAnnouncementByIdx(idx);
+    Logger().d('##########announcement:${response.body}#########');
+    final Iterable json = jsonDecode(response.body);
+    Announcement announcement = Announcement.fromJson(json.first);
+    return announcement;
+  }
 
 }

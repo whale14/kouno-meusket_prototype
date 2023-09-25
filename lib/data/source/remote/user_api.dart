@@ -415,4 +415,11 @@ class UserAPI {
     final response = await _client.post(Uri.parse(url));
     return response;
   }
+
+  Future<http.Response> getAnnouncementByIdx(int idx) async{
+    String url = '$baseUrl/announcement_idx.php';
+    Map<String, dynamic> data = {'idx': idx};
+    final response = await _client.post(Uri.parse(url), body:data);
+    return response;
+  }
 }
