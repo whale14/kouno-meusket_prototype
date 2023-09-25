@@ -185,11 +185,14 @@ class _AnnouncementPageState extends State<AnnouncementPage>
                   (BuildContext context, int index) {
                     final curAnnouncements = tappedList[index];
                     return GestureDetector(
-                      child: Card(
-                        child: ListTile(
-                          title: Text(curAnnouncements.title),
-                          subtitle: Text(
-                              curAnnouncements.announceAt.substring(0, 10)),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0,),
+                        child: Card(
+                          child: ListTile(
+                            title: Text(curAnnouncements.title),
+                            subtitle: Text(
+                                curAnnouncements.announceAt.substring(0, 10)),
+                          ),
                         ),
                       ),
                       onTap: () {
