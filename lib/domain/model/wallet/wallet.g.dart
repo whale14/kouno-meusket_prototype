@@ -9,13 +9,13 @@ part of 'wallet.dart';
 _$_Wallet _$$_WalletFromJson(Map<String, dynamic> json) => _$_Wallet(
       idx: json['idx'] as int,
       userIdx: json['userIdx'] as int,
-      money: json['money'] as int,
-      preMoney: json['preMoney'] as int,
+      income: json['income'] as int,
+      deposit: json['deposit'] as int,
     );
 
 Map<String, dynamic> _$$_WalletToJson(_$_Wallet instance) => <String, dynamic>{
       'idx': instance.idx,
       'userIdx': instance.userIdx,
-      'money': instance.money,
-      'preMoney': instance.preMoney,
+      'income': instance.income,
+      'deposit': instance.deposit,
     };

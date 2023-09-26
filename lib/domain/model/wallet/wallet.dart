@@ -9,8 +9,8 @@ class Wallet with _$Wallet {
   factory Wallet({
     required int idx,
     required int userIdx,
-    required int money,
-    required int preMoney,
+    required int income,
+    required int deposit,
   }) = _Wallet;
 
   factory Wallet.fromJson(Map<String, dynamic> json) => _$WalletFromJson(json);

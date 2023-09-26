@@ -402,13 +402,6 @@ class UserAPI {
     await _client.post(Uri.parse(url), body: data);
   }
 
-  Future<http.Response> myWallet(String idx) async {
-    String url = '$baseUrl/my_wallet.php';
-    Map<String, dynamic> data = {'idx': idx};
-    final response = await _client.post(Uri.parse(url), body: data);
-    Logger().d('#########myWalletApi : ${response.body}');
-    return response;
-  }
 
   Future<http.Response> getAnnouncement() async {
     String url = '$baseUrl/announcement.php';

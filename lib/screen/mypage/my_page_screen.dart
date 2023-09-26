@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_project/domain/model/user/user.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
+import 'package:test_project/presentation/event/wallet/wallet_event.dart';
 import 'package:test_project/presentation/state/users/user_state.dart';
 import 'package:test_project/presentation/vm/user_view_model.dart';
+import 'package:test_project/presentation/vm/wallet_view_model.dart';
 import 'package:test_project/screen/mypage/announcement_page.dart';
 import 'package:test_project/screen/mypage/user_info_screen.dart';
 import 'package:test_project/screen/mypage/wallet_page.dart';
@@ -23,6 +25,7 @@ class MyPageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<UserViewModel>();
+    final walletViewModel = context.watch<WalletViewModel>();
     var state = viewModel.userState;
     return Scaffold(
       appBar: AppBar(
@@ -47,7 +50,7 @@ class MyPageScreen extends StatelessWidget {
               onTap: () async {
                 switch (element) {
                   case '충전/사용내역':
-                    viewModel.onUsersEvent(UsersEvent.myWallet(state.user!.idx.toString())).then(
+                    walletViewModel.onWalletEvent(WalletEvent.myWallet(state.user!.idx.toString())).then(
                           (value) => Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => WalletPage(),

@@ -22,8 +22,8 @@ Wallet _$WalletFromJson(Map<String, dynamic> json) {
 mixin _$Wallet {
   int get idx => throw _privateConstructorUsedError;
   int get userIdx => throw _privateConstructorUsedError;
-  int get money => throw _privateConstructorUsedError;
-  int get preMoney => throw _privateConstructorUsedError;
+  int get income => throw _privateConstructorUsedError;
+  int get deposit => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $WalletCopyWith<$Res> {
   factory $WalletCopyWith(Wallet value, $Res Function(Wallet) then) =
       _$WalletCopyWithImpl<$Res, Wallet>;
   @useResult
-  $Res call({int idx, int userIdx, int money, int preMoney});
+  $Res call({int idx, int userIdx, int income, int deposit});
 }
 
 /// @nodoc
@@ -53,8 +53,8 @@ class _$WalletCopyWithImpl<$Res, $Val extends Wallet>
   $Res call({
     Object? idx = null,
     Object? userIdx = null,
-    Object? money = null,
-    Object? preMoney = null,
+    Object? income = null,
+    Object? deposit = null,
   }) {
     return _then(_value.copyWith(
       idx: null == idx
@@ -65,13 +65,13 @@ class _$WalletCopyWithImpl<$Res, $Val extends Wallet>
           ? _value.userIdx
           : userIdx // ignore: cast_nullable_to_non_nullable
               as int,
-      money: null == money
-          ? _value.money
-          : money // ignore: cast_nullable_to_non_nullable
+      income: null == income
+          ? _value.income
+          : income // ignore: cast_nullable_to_non_nullable
               as int,
-      preMoney: null == preMoney
-          ? _value.preMoney
-          : preMoney // ignore: cast_nullable_to_non_nullable
+      deposit: null == deposit
+          ? _value.deposit
+          : deposit // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -83,7 +83,7 @@ abstract class _$$_WalletCopyWith<$Res> implements $WalletCopyWith<$Res> {
       __$$_WalletCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int idx, int userIdx, int money, int preMoney});
+  $Res call({int idx, int userIdx, int income, int deposit});
 }
 
 /// @nodoc
@@ -98,8 +98,8 @@ class __$$_WalletCopyWithImpl<$Res>
   $Res call({
     Object? idx = null,
     Object? userIdx = null,
-    Object? money = null,
-    Object? preMoney = null,
+    Object? income = null,
+    Object? deposit = null,
   }) {
     return _then(_$_Wallet(
       idx: null == idx
@@ -110,13 +110,13 @@ class __$$_WalletCopyWithImpl<$Res>
           ? _value.userIdx
           : userIdx // ignore: cast_nullable_to_non_nullable
               as int,
-      money: null == money
-          ? _value.money
-          : money // ignore: cast_nullable_to_non_nullable
+      income: null == income
+          ? _value.income
+          : income // ignore: cast_nullable_to_non_nullable
               as int,
-      preMoney: null == preMoney
-          ? _value.preMoney
-          : preMoney // ignore: cast_nullable_to_non_nullable
+      deposit: null == deposit
+          ? _value.deposit
+          : deposit // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -128,8 +128,8 @@ class _$_Wallet implements _Wallet {
   _$_Wallet(
       {required this.idx,
       required this.userIdx,
-      required this.money,
-      required this.preMoney});
+      required this.income,
+      required this.deposit});
 
   factory _$_Wallet.fromJson(Map<String, dynamic> json) =>
       _$$_WalletFromJson(json);
@@ -139,13 +139,13 @@ class _$_Wallet implements _Wallet {
   @override
   final int userIdx;
   @override
-  final int money;
+  final int income;
   @override
-  final int preMoney;
+  final int deposit;
 
   @override
   String toString() {
-    return 'Wallet(idx: $idx, userIdx: $userIdx, money: $money, preMoney: $preMoney)';
+    return 'Wallet(idx: $idx, userIdx: $userIdx, income: $income, deposit: $deposit)';
   }
 
   @override
@@ -155,14 +155,13 @@ class _$_Wallet implements _Wallet {
             other is _$_Wallet &&
             (identical(other.idx, idx) || other.idx == idx) &&
             (identical(other.userIdx, userIdx) || other.userIdx == userIdx) &&
-            (identical(other.money, money) || other.money == money) &&
-            (identical(other.preMoney, preMoney) ||
-                other.preMoney == preMoney));
+            (identical(other.income, income) || other.income == income) &&
+            (identical(other.deposit, deposit) || other.deposit == deposit));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, idx, userIdx, money, preMoney);
+  int get hashCode => Object.hash(runtimeType, idx, userIdx, income, deposit);
 
   @JsonKey(ignore: true)
   @override
@@ -182,8 +181,8 @@ abstract class _Wallet implements Wallet {
   factory _Wallet(
       {required final int idx,
       required final int userIdx,
-      required final int money,
-      required final int preMoney}) = _$_Wallet;
+      required final int income,
+      required final int deposit}) = _$_Wallet;
 
   factory _Wallet.fromJson(Map<String, dynamic> json) = _$_Wallet.fromJson;
 
@@ -192,9 +191,9 @@ abstract class _Wallet implements Wallet {
   @override
   int get userIdx;
   @override
-  int get money;
+  int get income;
   @override
-  int get preMoney;
+  int get deposit;
   @override
   @JsonKey(ignore: true)
   _$$_WalletCopyWith<_$_Wallet> get copyWith =>
