@@ -9,6 +9,7 @@ part 'income.g.dart';
 class Income with _$Income {
   factory Income({
     required int idx,
+    required int userIdx,
     required int requestIdx,
     required int income,
     required String incomeAt,

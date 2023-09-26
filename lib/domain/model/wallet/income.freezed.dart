@@ -21,6 +21,7 @@ Income _$IncomeFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Income {
   int get idx => throw _privateConstructorUsedError;
+  int get userIdx => throw _privateConstructorUsedError;
   int get requestIdx => throw _privateConstructorUsedError;
   int get income => throw _privateConstructorUsedError;
   String get incomeAt => throw _privateConstructorUsedError;
@@ -35,7 +36,8 @@ abstract class $IncomeCopyWith<$Res> {
   factory $IncomeCopyWith(Income value, $Res Function(Income) then) =
       _$IncomeCopyWithImpl<$Res, Income>;
   @useResult
-  $Res call({int idx, int requestIdx, int income, String incomeAt});
+  $Res call(
+      {int idx, int userIdx, int requestIdx, int income, String incomeAt});
 }
 
 /// @nodoc
@@ -52,6 +54,7 @@ class _$IncomeCopyWithImpl<$Res, $Val extends Income>
   @override
   $Res call({
     Object? idx = null,
+    Object? userIdx = null,
     Object? requestIdx = null,
     Object? income = null,
     Object? incomeAt = null,
@@ -60,6 +63,10 @@ class _$IncomeCopyWithImpl<$Res, $Val extends Income>
       idx: null == idx
           ? _value.idx
           : idx // ignore: cast_nullable_to_non_nullable
+              as int,
+      userIdx: null == userIdx
+          ? _value.userIdx
+          : userIdx // ignore: cast_nullable_to_non_nullable
               as int,
       requestIdx: null == requestIdx
           ? _value.requestIdx
@@ -83,7 +90,8 @@ abstract class _$$_IncomeCopyWith<$Res> implements $IncomeCopyWith<$Res> {
       __$$_IncomeCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int idx, int requestIdx, int income, String incomeAt});
+  $Res call(
+      {int idx, int userIdx, int requestIdx, int income, String incomeAt});
 }
 
 /// @nodoc
@@ -97,6 +105,7 @@ class __$$_IncomeCopyWithImpl<$Res>
   @override
   $Res call({
     Object? idx = null,
+    Object? userIdx = null,
     Object? requestIdx = null,
     Object? income = null,
     Object? incomeAt = null,
@@ -105,6 +114,10 @@ class __$$_IncomeCopyWithImpl<$Res>
       idx: null == idx
           ? _value.idx
           : idx // ignore: cast_nullable_to_non_nullable
+              as int,
+      userIdx: null == userIdx
+          ? _value.userIdx
+          : userIdx // ignore: cast_nullable_to_non_nullable
               as int,
       requestIdx: null == requestIdx
           ? _value.requestIdx
@@ -127,6 +140,7 @@ class __$$_IncomeCopyWithImpl<$Res>
 class _$_Income implements _Income {
   _$_Income(
       {required this.idx,
+      required this.userIdx,
       required this.requestIdx,
       required this.income,
       required this.incomeAt});
@@ -137,6 +151,8 @@ class _$_Income implements _Income {
   @override
   final int idx;
   @override
+  final int userIdx;
+  @override
   final int requestIdx;
   @override
   final int income;
@@ -145,7 +161,7 @@ class _$_Income implements _Income {
 
   @override
   String toString() {
-    return 'Income(idx: $idx, requestIdx: $requestIdx, income: $income, incomeAt: $incomeAt)';
+    return 'Income(idx: $idx, userIdx: $userIdx, requestIdx: $requestIdx, income: $income, incomeAt: $incomeAt)';
   }
 
   @override
@@ -154,6 +170,7 @@ class _$_Income implements _Income {
         (other.runtimeType == runtimeType &&
             other is _$_Income &&
             (identical(other.idx, idx) || other.idx == idx) &&
+            (identical(other.userIdx, userIdx) || other.userIdx == userIdx) &&
             (identical(other.requestIdx, requestIdx) ||
                 other.requestIdx == requestIdx) &&
             (identical(other.income, income) || other.income == income) &&
@@ -164,7 +181,7 @@ class _$_Income implements _Income {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, idx, requestIdx, income, incomeAt);
+      Object.hash(runtimeType, idx, userIdx, requestIdx, income, incomeAt);
 
   @JsonKey(ignore: true)
   @override
@@ -183,6 +200,7 @@ class _$_Income implements _Income {
 abstract class _Income implements Income {
   factory _Income(
       {required final int idx,
+      required final int userIdx,
       required final int requestIdx,
       required final int income,
       required final String incomeAt}) = _$_Income;
@@ -191,6 +209,8 @@ abstract class _Income implements Income {
 
   @override
   int get idx;
+  @override
+  int get userIdx;
   @override
   int get requestIdx;
   @override

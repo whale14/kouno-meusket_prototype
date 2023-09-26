@@ -23,16 +23,16 @@ class WalletApi {
     return response;
   }
 
-  Future<http.Response> getIncomeHistory(String idx) async {
+  Future<http.Response> getIncomeHistory(String idx, String month) async {
     String url = '$baseUrl/income_history.php';
-    Map<String, dynamic> data = {'idx': idx};
+    Map<String, dynamic> data = {'idx': idx, 'incomeAt': month};
     final response = await _client.post(Uri.parse(url), body: data);
     return response;
   }
 
-  Future<http.Response> getDepositHistory(String idx) async {
+  Future<http.Response> getDepositHistory(String idx, String month) async {
     String url = '$baseUrl/deposit_history.php';
-    Map<String, dynamic> data = {'idx': idx};
+    Map<String, dynamic> data = {'idx': idx, 'depositAt': month};
     final response = await _client.post(Uri.parse(url), body: data);
     return response;
   }

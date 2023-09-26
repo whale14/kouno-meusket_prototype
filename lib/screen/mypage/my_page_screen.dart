@@ -37,26 +37,33 @@ class MyPageScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          InkWell( // 회원정보페이지로 이동
+          InkWell(
+            // 회원정보페이지로 이동
             onTap: () async {
               await viewModel
-                  .onUsersEvent(UsersEvent.getOtherUser(state.user!.idx.toString()))
-                  .then((value) => Navigator.push(context, MaterialPageRoute(builder: (context) => const UserInfoScreen())));
+                  .onUsersEvent(
+                      UsersEvent.getOtherUser(state.user!.idx.toString()))
+                  .then((value) => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const UserInfoScreen())));
             },
             child: accountContainer(state), //L.78
           ),
           for (var element in tabsString) ...[
-            InkWell( // 다른 탭 리스트 탭 이벤트 구현해야합니다.
+            InkWell(
+              // 다른 탭 리스트 탭 이벤트 구현해야합니다.
               onTap: () async {
                 switch (element) {
                   case '충전/사용내역':
-                    walletViewModel.onWalletEvent(WalletEvent.myWallet(state.user!.idx.toString())).then(
-                          (value) => Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => WalletPage(),
-                            ),
-                          ),
-                        );
+                    await walletViewModel
+                        .onWalletEvent(
+                            WalletEvent.myWallet(state.user!.idx.toString()))
+                        .then((value) =>
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => WalletPage(
+                                      userIdx: state.user!.idx.toString(),
+                                    ))));
                     break;
                   case '결제 수단 관리':
                     break;
@@ -65,17 +72,23 @@ class MyPageScreen extends StatelessWidget {
                   case '포인트/쿠폰확인':
                     break;
                   case '공지사항':
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => AnnouncementPage()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => AnnouncementPage()));
                     break;
                   case '문의하기':
                     break;
                 }
               },
               child: Container(
-                decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black12, width: 1))),
+                decoration: const BoxDecoration(
+                    border: Border(
+                        bottom: BorderSide(color: Colors.black12, width: 1))),
                 padding: const EdgeInsets.all(10),
                 child: Row(
-                  children: [Expanded(child: Text(element)), const Icon(Icons.chevron_right)],
+                  children: [
+                    Expanded(child: Text(element)),
+                    const Icon(Icons.chevron_right)
+                  ],
                 ),
               ),
             )
@@ -85,10 +98,12 @@ class MyPageScreen extends StatelessWidget {
     );
   }
 
-  accountContainer(UserState state) { //회원정보 컨테이너
+  accountContainer(UserState state) {
+    //회원정보 컨테이너
     User user = state.user!;
     return Container(
-      decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black12, width: 12))),
+      decoration: const BoxDecoration(
+          border: Border(bottom: BorderSide(color: Colors.black12, width: 12))),
       padding: const EdgeInsets.all(10),
       child: Row(
         children: [
@@ -97,7 +112,10 @@ class MyPageScreen extends StatelessWidget {
               children: [
                 if (user.profileImageUrl == null)
                   Container(
-                    decoration: const BoxDecoration(shape: BoxShape.circle, border: Border.fromBorderSide(BorderSide(color: Colors.orange, width: 2.5))),
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.fromBorderSide(
+                            BorderSide(color: Colors.orange, width: 2.5))),
                     margin: const EdgeInsets.only(right: 10),
                     child: const Icon(
                       Icons.person,

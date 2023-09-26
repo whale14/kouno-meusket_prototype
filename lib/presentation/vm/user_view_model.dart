@@ -15,7 +15,7 @@ class UserViewModel with ChangeNotifier {
   var _usersState = UsersState();
   var _userState = UserState();
   var _otherUserState = OtherUserState();
-  // var _walletState = WalletState();
+  var _walletState = WalletState();
   var _announcementState = AnnouncementState();
 
   // TestState get testState => _testState;
@@ -25,7 +25,7 @@ class UserViewModel with ChangeNotifier {
 
   OtherUserState get otherUserState => _otherUserState;
 
-  // WalletState get walletState => _walletState;
+  WalletState get walletState => _walletState;
 
   AnnouncementState get announcementState => _announcementState;
 

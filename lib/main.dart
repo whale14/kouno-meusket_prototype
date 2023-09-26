@@ -10,9 +10,11 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:test_project/data/repository/chat_repository_impl.dart';
 import 'package:test_project/data/repository/review_repository_impl.dart';
 import 'package:test_project/data/repository/user_repository_impl.dart';
+import 'package:test_project/data/repository/wallet_repository_impl.dart';
 import 'package:test_project/data/source/remote/chat_api.dart';
 import 'package:test_project/controller/shared_preferences.dart';
 import 'package:test_project/data/source/remote/review_api.dart';
+import 'package:test_project/data/source/remote/wallet_api.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
 import 'package:test_project/presentation/state/users/user_state.dart';
 import 'package:test_project/presentation/vm/chat_view_model.dart';
@@ -28,6 +30,7 @@ import 'package:provider/provider.dart';
 import 'package:test_project/data/source/remote/errand_api.dart';
 import 'package:test_project/presentation/vm/review_view_model.dart';
 import 'package:test_project/presentation/vm/user_view_model.dart';
+import 'package:test_project/presentation/vm/wallet_view_model.dart';
 import 'package:test_project/screen/join_page.dart';
 import 'package:test_project/screen/look_around.dart';
 import 'package:test_project/data/source/remote/user_api.dart';
@@ -95,6 +98,7 @@ Future main() async {
       ChangeNotifierProvider(create: (_) => RequestViewModel(ErrandRepositoryImpl(ErrandApi()))),
       ChangeNotifierProvider(create: (_) => ChatViewModel(ChatRepositoryImpl(ChatApi()))),
       ChangeNotifierProvider(create: (_) => ReviewViewModel(ReviewRepositoryImpl(ReviewApi()))),
+      ChangeNotifierProvider(create: (_) => WalletViewModel(WalletRepositoryImpl(WalletApi()))),
     ],
     child: MyApp(), //앱실행 L.126
   ));

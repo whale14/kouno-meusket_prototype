@@ -24,18 +24,18 @@ class WalletRepositoryImpl implements WalletRepository {
   }
 
   @override
-  Future getIncomeHistory(String idx) async {
+  Future getIncomeHistory(String idx, String month) async {
     // TODO: implement getIncomeHistory
-    final response = await api.getIncomeHistory(idx);
+    final response = await api.getIncomeHistory(idx, month);
     Logger().d("idx: $idx, income_history: ${response.body}");
     final Iterable json = jsonDecode(response.body);
     return json.map((e) => Income.fromJson(e)).toList();
   }
 
   @override
-  Future getDepositHistory(String idx) async {
+  Future getDepositHistory(String idx, String month) async {
     // TODO: implement getDepositHistory
-    final response = await api.getDepositHistory(idx);
+    final response = await api.getDepositHistory(idx, month);
     Logger().d("idx: $idx, deposit_history: ${response.body}");
     final Iterable json = jsonDecode(response.body);
     return json.map((e) => Deposit.fromJson(e)).toList();

@@ -15,8 +15,8 @@ class WalletViewModel with ChangeNotifier {
 
     switch(event){
       case MyWallet(): _myWallet(event.idx);
-      case GetIncomeHistory(): _getIncomeHistory(event.idx);
-      case GetDepositHistory(): _getDepositHistory(event.idx);
+      case GetIncomeHistory(): _getIncomeHistory(event.idx, event.month);
+      case GetDepositHistory(): _getDepositHistory(event.idx, event.month);
     }
   }
 
@@ -26,14 +26,14 @@ class WalletViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  Future _getIncomeHistory(String idx) async{
-    final result = _walletRepository.getIncomeHistory(idx);
+  Future _getIncomeHistory(String idx, String month) async{
+    final result = _walletRepository.getIncomeHistory(idx, month);
     _walletState = walletState.copyWith(incomes: await result);
     notifyListeners();
   }
 
-  Future _getDepositHistory(String idx) async{
-    final result = _walletRepository.getDepositHistory(idx);
+  Future _getDepositHistory(String idx, String month) async{
+    final result = _walletRepository.getDepositHistory(idx, month);
     _walletState = walletState.copyWith(deposits: await result);
     notifyListeners();
   }

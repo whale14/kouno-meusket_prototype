@@ -1,9 +1,9 @@
 sealed class WalletEvent<T> {
   factory WalletEvent.myWallet(String idx) = MyWallet;
 
-  factory WalletEvent.getIncomeHistory(String idx) = GetIncomeHistory;
+  factory WalletEvent.getIncomeHistory(String idx, String month) = GetIncomeHistory;
 
-  factory WalletEvent.getDepositHistory(String idx) = GetDepositHistory;
+  factory WalletEvent.getDepositHistory(String idx, String month) = GetDepositHistory;
 }
 
 class MyWallet<T> implements WalletEvent<T> {
@@ -14,12 +14,14 @@ class MyWallet<T> implements WalletEvent<T> {
 
 class GetIncomeHistory<T> implements WalletEvent<T> {
   final String idx;
+  final String month;
 
-  GetIncomeHistory(this.idx);
+  GetIncomeHistory(this.idx, this.month);
 }
 
 class GetDepositHistory<T> implements WalletEvent<T> {
   final String idx;
+  final String month;
 
-  GetDepositHistory(this.idx);
+  GetDepositHistory(this.idx, this.month);
 }
