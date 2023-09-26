@@ -6,7 +6,7 @@ import 'package:test_project/presentation/state/users/other_user_state.dart';
 import 'package:test_project/presentation/state/users/user_state.dart';
 import 'package:test_project/presentation/state/users/users_state.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
-import 'package:test_project/presentation/state/users/wallet_state.dart';
+import 'package:test_project/presentation/state/wallet/wallet_state.dart';
 
 class UserViewModel with ChangeNotifier {
   // final TestRepository _testRepository;
@@ -15,7 +15,7 @@ class UserViewModel with ChangeNotifier {
   var _usersState = UsersState();
   var _userState = UserState();
   var _otherUserState = OtherUserState();
-  var _walletState = WalletState();
+  // var _walletState = WalletState();
   var _announcementState = AnnouncementState();
 
   // TestState get testState => _testState;
@@ -25,7 +25,7 @@ class UserViewModel with ChangeNotifier {
 
   OtherUserState get otherUserState => _otherUserState;
 
-  WalletState get walletState => _walletState;
+  // WalletState get walletState => _walletState;
 
   AnnouncementState get announcementState => _announcementState;
 
@@ -56,7 +56,6 @@ class UserViewModel with ChangeNotifier {
     case SendRequestToWorker(): _sendRequestToWorker(event.reqIdx, event.workerIdx, event.categoryIdx, event.title, event.content, event.address, event.latitude, event.longitude, event.date, event.runningTime, event.reword, event.waypointsLocation, event.waypointsContent, event.fcmToken, event.requestType, event.secondType);
     case UpdateWorkableState():  _updateWorkableState(event.idx);
     case UpdateNotWorkableState(): _updateNotWorkableState(event.idx);
-    case MyWallet(): _myWallet(event.idx);
     case GetAnnouncement(): _getAnnouncement();
     case GetAnnouncementByIdx(): _getAnnouncementByIdx(event.idx);
     }
@@ -181,12 +180,6 @@ class UserViewModel with ChangeNotifier {
 
   Future<bool> _checkId(id) async{
     return _userRepository.checkId(id);
-  }
-
-  Future _myWallet(String idx) async{
-    final result = _userRepository.myWallet(idx);
-    _walletState = walletState.copyWith(wallet: await result);
-    notifyListeners();
   }
 
   Future _getAnnouncement() async{

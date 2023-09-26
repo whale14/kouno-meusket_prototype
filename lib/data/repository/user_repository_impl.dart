@@ -4,10 +4,8 @@ import 'package:logger/logger.dart';
 import 'package:test_project/data/source/remote/user_api.dart';
 import 'package:test_project/domain/model/user/announcement.dart';
 import 'package:test_project/domain/model/user/user.dart';
-import 'package:test_project/domain/model/user/wallet.dart';
+import 'package:test_project/domain/model/wallet/wallet.dart';
 import 'package:test_project/domain/repository/user_repository.dart';
-
-
 
 class UserRepositoryImpl implements UserRepository {
   UserAPI api;
@@ -15,16 +13,23 @@ class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl(this.api);
 
   @override
-  Future<List<User>> getAroundHelpers(String idx, List<bool> categoryCheckValues, List<bool> ageCheckValues, List<bool> genderCheckValues, int distance) async {
+  Future<List<User>> getAroundHelpers(
+      String idx,
+      List<bool> categoryCheckValues,
+      List<bool> ageCheckValues,
+      List<bool> genderCheckValues,
+      int distance) async {
     // TODO: implement getAroundHelpers
-    final response = await api.getAroundHelpers(idx, categoryCheckValues, ageCheckValues, genderCheckValues, distance);
+    final response = await api.getAroundHelpers(
+        idx, categoryCheckValues, ageCheckValues, genderCheckValues, distance);
     Logger().d("getAH_repo_res:${response.body}");
     final Iterable json = jsonDecode(response.body);
     return json.map((e) => User.fromJson(e)).toList();
   }
 
   @override
-  Future insert(String id, String name, String bio, double latitude, double longitude, String fcmToken) async {
+  Future insert(String id, String name, String bio, double latitude,
+      double longitude, String fcmToken) async {
     // TODO: implement insert
     Logger().d("repo data: $id, $name, $latitude, $longitude, $fcmToken");
     await api.insert(id, name, bio, latitude, longitude, fcmToken);
@@ -41,9 +46,37 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future insertRequest(String reqIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, String date, String runningTime, String reward, List<Map<String, dynamic>> waypointsLocation, List<String> waypointsContent, int requestType, int secondType) async {
+  Future insertRequest(
+      String reqIdx,
+      String categoryIdx,
+      String title,
+      String content,
+      String address,
+      String latitude,
+      String longitude,
+      String date,
+      String runningTime,
+      String reward,
+      List<Map<String, dynamic>> waypointsLocation,
+      List<String> waypointsContent,
+      int requestType,
+      int secondType) async {
     // TODO: implement insertRequest
-    await api.insertRequest(reqIdx, categoryIdx, title, content, address, latitude, longitude, date, runningTime, reward, waypointsLocation, waypointsContent, requestType, secondType);
+    await api.insertRequest(
+        reqIdx,
+        categoryIdx,
+        title,
+        content,
+        address,
+        latitude,
+        longitude,
+        date,
+        runningTime,
+        reward,
+        waypointsLocation,
+        waypointsContent,
+        requestType,
+        secondType);
   }
 
   @override
@@ -56,19 +89,19 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future updateLocation(String idx, double latitude, double longitude) async{
+  Future updateLocation(String idx, double latitude, double longitude) async {
     // TODO: implement updateLocation
     await api.updateLocation(idx, latitude, longitude);
   }
 
   @override
-  Future requestRegistration(String idx) async{
+  Future requestRegistration(String idx) async {
     // TODO: implement requestRegistration
     await api.requestRegistration(idx);
   }
 
   @override
-  Future getUserFromIdx(String idx) async{
+  Future getUserFromIdx(String idx) async {
     // TODO: implement getUserFromIdx
     final response = await api.getUserFromIdx(idx);
     Logger().d("id : $idx, getUser_repo_res:${response.body}");
@@ -77,90 +110,112 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future workerRegistration(String idx) async{
+  Future workerRegistration(String idx) async {
     // TODO: implement workerRegistration
     await api.workerRegistration(idx);
   }
 
   @override
-  Future updateUserInfo(String idx, String fileName) async{
+  Future updateUserInfo(String idx, String fileName) async {
     // TODO: implement updateUserInfo
     await api.updateUserInfo(idx, fileName);
   }
 
   @override
-  Future updateUserName(String idx, String name) async{
+  Future updateUserName(String idx, String name) async {
     // TODO: implement updateUserName
     await api.updateUserName(idx, name);
   }
 
   @override
-  Future updateUserBio(String idx, String bio) async{
+  Future updateUserBio(String idx, String bio) async {
     // TODO: implement updateUserBio
     await api.updateUserBio(idx, bio);
   }
 
   @override
-  Future updateUserIntroduce(String idx, String introduce) async{
+  Future updateUserIntroduce(String idx, String introduce) async {
     // TODO: implement updateUserIntroduce
     await api.updateUserIntroduce(idx, introduce);
   }
 
   @override
-  Future updateUserTransportation(String idx, String transportation) async{
+  Future updateUserTransportation(String idx, String transportation) async {
     // TODO: implement updateUserTransportation
     await api.updateUserTransportation(idx, transportation);
   }
 
   @override
-  Future updateUserWorkCategory(String idx, String workCategory) async{
+  Future updateUserWorkCategory(String idx, String workCategory) async {
     // TODO: implement updateUserWorkCategory
     await api.updateUserWorkCategory(idx, workCategory);
   }
 
   @override
-  Future workerRegistration1(String idx, String idCardPath, String faceCheckPath, List<String> infs) async{
+  Future workerRegistration1(String idx, String idCardPath,
+      String faceCheckPath, List<String> infs) async {
     // TODO: implement workerRegistration1
     await api.workerRegistration1(idx, idCardPath, faceCheckPath, infs);
   }
 
   @override
-  Future sendRequestToWorker(String reqIdx,String workerIdx, String categoryIdx, String title, String content, String address, String latitude, String longitude, String date, String runningTime, String reword, List<Map<String, dynamic>> waypointsLocation, List<String> waypointsContent, String fcmToken, int requestType, int secondType) async{
+  Future sendRequestToWorker(
+      String reqIdx,
+      String workerIdx,
+      String categoryIdx,
+      String title,
+      String content,
+      String address,
+      String latitude,
+      String longitude,
+      String date,
+      String runningTime,
+      String reword,
+      List<Map<String, dynamic>> waypointsLocation,
+      List<String> waypointsContent,
+      String fcmToken,
+      int requestType,
+      int secondType) async {
     // TODO: implement sendRequestToWorker
-    await api.sendRequestToWorker(reqIdx, workerIdx, categoryIdx, title, content, address, latitude, longitude, date, runningTime, reword, waypointsLocation, waypointsContent, fcmToken, requestType, secondType);
+    await api.sendRequestToWorker(
+        reqIdx,
+        workerIdx,
+        categoryIdx,
+        title,
+        content,
+        address,
+        latitude,
+        longitude,
+        date,
+        runningTime,
+        reword,
+        waypointsLocation,
+        waypointsContent,
+        fcmToken,
+        requestType,
+        secondType);
   }
 
   @override
-  Future<bool> checkId(id) async{
+  Future<bool> checkId(id) async {
     // TODO: implement checkId
     return await api.checkId(id);
   }
 
   @override
-  Future updateWorkableState(String idx) async{
+  Future updateWorkableState(String idx) async {
     // TODO: implement updateWorkableState
     await api.updateWorkableState(idx);
   }
 
   @override
-  Future updateNotWorkableState(String idx) async{
+  Future updateNotWorkableState(String idx) async {
     // TODO: implement updateNotWorkableState
     await api.updateNotWorkableState(idx);
   }
 
   @override
-  Future myWallet(String idx) async{
-    // TODO: implement myWallet
-    final response = await api.myWallet(idx);
-    Logger().d("id : $idx, myWallet:${response.body}");
-    final Iterable json = jsonDecode(response.body);
-    Logger().d('json: ${json.first}');
-    Wallet wallet =  Wallet.fromJson(json.first);
-    return wallet;
-  }
-
-  @override
-  Future getAnnouncement() async{
+  Future getAnnouncement() async {
     // TODO: implement getAnnouncement
     final response = await api.getAnnouncement();
     Logger().d('#############announcements:${response.body}############');
@@ -194,5 +249,4 @@ class UserRepositoryImpl implements UserRepository {
     Announcement announcement = Announcement.fromJson(json.first);
     return announcement;
   }
-
 }

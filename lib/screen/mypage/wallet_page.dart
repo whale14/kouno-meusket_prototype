@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:test_project/presentation/vm/user_view_model.dart';
+import 'package:test_project/presentation/vm/wallet_view_model.dart';
 
 class WalletPage extends StatelessWidget {
 
@@ -10,7 +10,7 @@ class WalletPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<UserViewModel>();
+    final viewModel = context.watch<WalletViewModel>();
     final walletState = viewModel.walletState;
 
 
@@ -19,7 +19,7 @@ class WalletPage extends StatelessWidget {
         title: Text('내지갑'),
       ),
       body: Center(
-        child: Text('포인트 : ${walletState.wallet!.money}'),
+        child: Text('포인트 : ${walletState.wallet!.deposit}'),
       ),
     );
   }

@@ -10,7 +10,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:test_project/main.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
 import 'package:test_project/presentation/state/users/user_state.dart';
-import 'package:test_project/presentation/state/users/wallet_state.dart';
+import 'package:test_project/presentation/state/wallet/wallet_state.dart';
 import 'package:test_project/presentation/vm/user_view_model.dart';
 import 'package:test_project/screen/fcm_test_page.dart';
 import 'package:test_project/screen/mypage/my_page_screen.dart';
@@ -250,7 +250,8 @@ class _LookAroundState extends State<LookAround> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  "${_userState.user!.money ?? 0}원",
+                  // "${_userState.user!.money ?? 0}원",
+                  "0원",
                   style: TextStyle(fontSize: 24),
                 ),
               ],
