@@ -1,6 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:test_project/domain/model/wallet/wallet.dart';
 
+import '../../../domain/model/wallet/deposit.dart';
+import '../../../domain/model/wallet/income.dart';
+
 part 'wallet_state.freezed.dart';
 
 part 'wallet_state.g.dart';
@@ -9,6 +12,8 @@ part 'wallet_state.g.dart';
 class WalletState with _$WalletState {
   factory WalletState({
     Wallet? wallet,
+    @Default([]) List<Deposit> deposits,
+    @Default([]) List<Income> incomes,
   }) = _WalletState;
 
   factory WalletState.fromJson(Map<String, dynamic> json) => _$WalletStateFromJson(json);

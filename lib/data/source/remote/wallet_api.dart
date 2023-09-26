@@ -22,4 +22,18 @@ class WalletApi {
     Logger().d('#########myWalletApi : ${response.body}');
     return response;
   }
+
+  Future<http.Response> getIncomeHistory(String idx) async {
+    String url = '$baseUrl/income_history.php';
+    Map<String, dynamic> data = {'idx': idx};
+    final response = await _client.post(Uri.parse(url), body: data);
+    return response;
+  }
+
+  Future<http.Response> getDepositHistory(String idx) async {
+    String url = '$baseUrl/deposit_history.php';
+    Map<String, dynamic> data = {'idx': idx};
+    final response = await _client.post(Uri.parse(url), body: data);
+    return response;
+  }
 }

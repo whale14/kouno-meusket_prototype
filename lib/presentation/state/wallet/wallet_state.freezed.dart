@@ -21,6 +21,8 @@ WalletState _$WalletStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$WalletState {
   Wallet? get wallet => throw _privateConstructorUsedError;
+  List<Deposit> get deposits => throw _privateConstructorUsedError;
+  List<Income> get incomes => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +36,7 @@ abstract class $WalletStateCopyWith<$Res> {
           WalletState value, $Res Function(WalletState) then) =
       _$WalletStateCopyWithImpl<$Res, WalletState>;
   @useResult
-  $Res call({Wallet? wallet});
+  $Res call({Wallet? wallet, List<Deposit> deposits, List<Income> incomes});
 
   $WalletCopyWith<$Res>? get wallet;
 }
@@ -53,12 +55,22 @@ class _$WalletStateCopyWithImpl<$Res, $Val extends WalletState>
   @override
   $Res call({
     Object? wallet = freezed,
+    Object? deposits = null,
+    Object? incomes = null,
   }) {
     return _then(_value.copyWith(
       wallet: freezed == wallet
           ? _value.wallet
           : wallet // ignore: cast_nullable_to_non_nullable
               as Wallet?,
+      deposits: null == deposits
+          ? _value.deposits
+          : deposits // ignore: cast_nullable_to_non_nullable
+              as List<Deposit>,
+      incomes: null == incomes
+          ? _value.incomes
+          : incomes // ignore: cast_nullable_to_non_nullable
+              as List<Income>,
     ) as $Val);
   }
 
@@ -83,7 +95,7 @@ abstract class _$$_WalletStateCopyWith<$Res>
       __$$_WalletStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Wallet? wallet});
+  $Res call({Wallet? wallet, List<Deposit> deposits, List<Income> incomes});
 
   @override
   $WalletCopyWith<$Res>? get wallet;
@@ -101,12 +113,22 @@ class __$$_WalletStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? wallet = freezed,
+    Object? deposits = null,
+    Object? incomes = null,
   }) {
     return _then(_$_WalletState(
       wallet: freezed == wallet
           ? _value.wallet
           : wallet // ignore: cast_nullable_to_non_nullable
               as Wallet?,
+      deposits: null == deposits
+          ? _value._deposits
+          : deposits // ignore: cast_nullable_to_non_nullable
+              as List<Deposit>,
+      incomes: null == incomes
+          ? _value._incomes
+          : incomes // ignore: cast_nullable_to_non_nullable
+              as List<Income>,
     ));
   }
 }
@@ -114,17 +136,39 @@ class __$$_WalletStateCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_WalletState implements _WalletState {
-  _$_WalletState({this.wallet});
+  _$_WalletState(
+      {this.wallet,
+      final List<Deposit> deposits = const [],
+      final List<Income> incomes = const []})
+      : _deposits = deposits,
+        _incomes = incomes;
 
   factory _$_WalletState.fromJson(Map<String, dynamic> json) =>
       _$$_WalletStateFromJson(json);
 
   @override
   final Wallet? wallet;
+  final List<Deposit> _deposits;
+  @override
+  @JsonKey()
+  List<Deposit> get deposits {
+    if (_deposits is EqualUnmodifiableListView) return _deposits;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_deposits);
+  }
+
+  final List<Income> _incomes;
+  @override
+  @JsonKey()
+  List<Income> get incomes {
+    if (_incomes is EqualUnmodifiableListView) return _incomes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_incomes);
+  }
 
   @override
   String toString() {
-    return 'WalletState(wallet: $wallet)';
+    return 'WalletState(wallet: $wallet, deposits: $deposits, incomes: $incomes)';
   }
 
   @override
@@ -132,12 +176,18 @@ class _$_WalletState implements _WalletState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_WalletState &&
-            (identical(other.wallet, wallet) || other.wallet == wallet));
+            (identical(other.wallet, wallet) || other.wallet == wallet) &&
+            const DeepCollectionEquality().equals(other._deposits, _deposits) &&
+            const DeepCollectionEquality().equals(other._incomes, _incomes));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, wallet);
+  int get hashCode => Object.hash(
+      runtimeType,
+      wallet,
+      const DeepCollectionEquality().hash(_deposits),
+      const DeepCollectionEquality().hash(_incomes));
 
   @JsonKey(ignore: true)
   @override
@@ -154,13 +204,20 @@ class _$_WalletState implements _WalletState {
 }
 
 abstract class _WalletState implements WalletState {
-  factory _WalletState({final Wallet? wallet}) = _$_WalletState;
+  factory _WalletState(
+      {final Wallet? wallet,
+      final List<Deposit> deposits,
+      final List<Income> incomes}) = _$_WalletState;
 
   factory _WalletState.fromJson(Map<String, dynamic> json) =
       _$_WalletState.fromJson;
 
   @override
   Wallet? get wallet;
+  @override
+  List<Deposit> get deposits;
+  @override
+  List<Income> get incomes;
   @override
   @JsonKey(ignore: true)
   _$$_WalletStateCopyWith<_$_WalletState> get copyWith =>

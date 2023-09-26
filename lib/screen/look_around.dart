@@ -250,7 +250,8 @@ class _LookAroundState extends State<LookAround> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  "${_userState.user!.money ?? 0}원",
+                  // "${_userState.user!.money ?? 0}원",
+                  "0원",
                   style: TextStyle(fontSize: 24),
                 ),
               ],
