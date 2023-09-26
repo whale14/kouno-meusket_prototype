@@ -67,6 +67,10 @@ sealed class UsersEvent<T> {
   factory UsersEvent.updateNotWorkableState(String idx) = UpdateNotWorkableState;
 
   factory UsersEvent.myWallet(String idx) = MyWallet;
+
+  factory UsersEvent.getAnnouncement() = GetAnnouncement;
+
+  factory UsersEvent.getAnnouncementByIdx(int idx) = GetAnnouncementByIdx;
 }
 
 class GetAroundHelpers<T> implements UsersEvent<T> {
@@ -231,4 +235,15 @@ class MyWallet<T> implements UsersEvent<T> {
   final String idx;
 
   MyWallet(this.idx);
+}
+
+class GetAnnouncement<T> implements UsersEvent<T>{
+
+  GetAnnouncement();
+}
+
+class GetAnnouncementByIdx<T> implements UsersEvent<T>{
+  final int idx;
+
+  GetAnnouncementByIdx(this.idx);
 }

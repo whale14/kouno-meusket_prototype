@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:test_project/domain/repository/user_repository.dart';
+import 'package:test_project/presentation/state/users/announcement_state.dart';
 import 'package:test_project/presentation/state/users/other_user_state.dart';
 import 'package:test_project/presentation/state/users/user_state.dart';
 import 'package:test_project/presentation/state/users/users_state.dart';
@@ -15,6 +16,7 @@ class UserViewModel with ChangeNotifier {
   var _userState = UserState();
   var _otherUserState = OtherUserState();
   var _walletState = WalletState();
+  var _announcementState = AnnouncementState();
 
   // TestState get testState => _testState;
   UserState get userState => _userState;
@@ -25,7 +27,11 @@ class UserViewModel with ChangeNotifier {
 
   WalletState get walletState => _walletState;
 
-  UserViewModel(this._userRepository);
+  AnnouncementState get announcementState => _announcementState;
+
+  UserViewModel(this._userRepository) {
+    _getAnnouncement();
+  }
 
   Future onUsersEvent(UsersEvent event) async {
     // event.when(getTests: _getTests);
@@ -51,6 +57,8 @@ class UserViewModel with ChangeNotifier {
     case UpdateWorkableState():  _updateWorkableState(event.idx);
     case UpdateNotWorkableState(): _updateNotWorkableState(event.idx);
     case MyWallet(): _myWallet(event.idx);
+    case GetAnnouncement(): _getAnnouncement();
+    case GetAnnouncementByIdx(): _getAnnouncementByIdx(event.idx);
     }
   }
 
@@ -178,6 +186,21 @@ class UserViewModel with ChangeNotifier {
   Future _myWallet(String idx) async{
     final result = _userRepository.myWallet(idx);
     _walletState = walletState.copyWith(wallet: await result);
+    notifyListeners();
+  }
+
+  Future _getAnnouncement() async{
+    final result = _userRepository.getAnnouncement();
+    _announcementState = announcementState.copyWith(announcements: await result);
+    notifyListeners();
+  }
+
+  Future _getAnnouncementByIdx(int idx) async{
+    _announcementState = announcementState.copyWith(isLoading: true);
+    notifyListeners();
+
+    final result = _userRepository.getAnnouncementByIdx(idx);
+    _announcementState = announcementState.copyWith(announcement: await result, isLoading: false);
     notifyListeners();
   }
 }

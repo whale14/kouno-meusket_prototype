@@ -42,4 +42,8 @@ abstract class UserRepository {
   Future updateNotWorkableState(String idx);
 
   Future myWallet(String idx);
+
+  Future getAnnouncement();
+
+  Future getAnnouncementByIdx(int idx);
 }
