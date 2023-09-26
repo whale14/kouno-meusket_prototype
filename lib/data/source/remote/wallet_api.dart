@@ -10,7 +10,7 @@ import 'package:test_project/domain/model/work_category.dart';
 class WalletApi {
   final http.Client _client;
 
-  static const baseUrl = 'http://203.229.171.79:84/user'; //기기 사용 5층
+  static const baseUrl = 'http://203.229.171.79:84/wallet'; //기기 사용 5층
 
   WalletApi({http.Client? client}) : _client = (client ?? http.Client());
 
