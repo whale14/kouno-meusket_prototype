@@ -21,6 +21,7 @@ class _WalletPageState extends State<WalletPage> {
   final String userIdx;
   DateTime curDate = DateTime.now();
   String type = '2';
+  final List<String> payList = ["전체내역", "충전내역", "사용내역"];
 
   _WalletPageState({required this.userIdx});
 
@@ -53,68 +54,107 @@ class _WalletPageState extends State<WalletPage> {
       appBar: AppBar(
         title: const Text('충전/사용내역'),
       ),
-      body: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return [
-            SliverToBoxAdapter(
-              key: Key('Card${curDate.year}-${curDate.month}'),
-              child: Card(
-                child: Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text('보유 예치금'),
-                          Text('${walletState.wallet?.deposit ?? 0}원')
-                        ],
-                      ),
-                      const SizedBox(height: 12),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text('보유 수익금'),
-                          Text('${walletState.wallet?.income ?? 0}원')
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            SliverToBoxAdapter(
-              key: Key('Tab${curDate.year}-${curDate.month}'),
-              child: ClipRRect(
-                borderRadius: BorderRadius.zero,
-                child: Container(
-                  color: Colors.grey[200],
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12.0, vertical: 1.0),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          onPressed: (() => previousMonth(viewModel)),
-                          icon: const Icon(Icons.chevron_left),
+      body: walletState.isLoading
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : NestedScrollView(
+              headerSliverBuilder:
+                  (BuildContext context, bool innerBoxIsScrolled) {
+                return [
+                  SliverToBoxAdapter(
+                    key: Key('Card${curDate.year}-${curDate.month}'),
+                    child: Card(
+                      child: Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text('보유 예치금'),
+                                Text('${walletState.wallet?.deposit ?? 0}원')
+                              ],
+                            ),
+                            const SizedBox(height: 12),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text('보유 수익금'),
+                                Text('${walletState.wallet?.income ?? 0}원')
+                              ],
+                            ),
+                          ],
                         ),
-                        Expanded(
-                            child: Center(
-                                child: Text(
-                                    "${curDate.year}년 ${curDate.month}월"))),
-                        IconButton(
-                          onPressed: (() => nextMonth(viewModel)),
-                          icon: const Icon(Icons.chevron_right),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
+                  SliverToBoxAdapter(
+                    key: Key('Tab${curDate.year}-${curDate.month}'),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.zero,
+                      child: Container(
+                        color: Colors.grey[200],
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12.0, vertical: 1.0),
+                          child: Row(
+                            children: [
+                              IconButton(
+                                onPressed: (() => previousMonth(viewModel)),
+                                icon: const Icon(Icons.chevron_left),
+                              ),
+                              Expanded(
+                                  child: Center(
+                                      child: Text(
+                                          "${curDate.year}년 ${curDate.month}월"))),
+                              IconButton(
+                                onPressed:
+                                    (curDate.month == DateTime.now().month)
+                                        ? null
+                                        : (() => nextMonth(viewModel)),
+                                icon: const Icon(Icons.chevron_right),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ];
+              },
+              body: buildListView(walletState),
+            ),
+      floatingActionButton: FloatingActionButton.extended(
+        icon: const Icon(
+          Icons.sort,
+          color: Colors.white,
+        ),
+        label: Text(
+          payList[0],
+          style: TextStyle(color: Colors.white),
+        ),
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (BuildContext context) {
+              return Container(
+                child: Column(
+                  children: [
+                    ListTile(
+                      title: Text('조회하기'),
+                    ),
+                    Divider(),
+                  ]..addAll(payList.map((String value) {
+                      return ListTile(
+                        title: Text(value),
+                      );
+                    }).toList()),
                 ),
-              ),
-            )
-          ];
+              );
+            },
+          );
         },
-        body: buildListView(walletState),
       ),
     );
   }
@@ -137,11 +177,11 @@ class _WalletPageState extends State<WalletPage> {
                   subtitle: Text(deposit.depositAt),
                   trailing: Text(
                     '${deposit.deposit}원',
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(color: deposit.deposit < 0 ? Colors.red : Colors.green),
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: deposit.deposit < 0 ? Colors.red : Colors.green),
                   ),
                 );
               },
-
             ),
     );
   }

@@ -20,6 +20,7 @@ WalletState _$WalletStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WalletState {
+  bool get isLoading => throw _privateConstructorUsedError;
   Wallet? get wallet => throw _privateConstructorUsedError;
   List<Deposit> get deposits => throw _privateConstructorUsedError;
   List<Income> get incomes => throw _privateConstructorUsedError;
@@ -36,7 +37,11 @@ abstract class $WalletStateCopyWith<$Res> {
           WalletState value, $Res Function(WalletState) then) =
       _$WalletStateCopyWithImpl<$Res, WalletState>;
   @useResult
-  $Res call({Wallet? wallet, List<Deposit> deposits, List<Income> incomes});
+  $Res call(
+      {bool isLoading,
+      Wallet? wallet,
+      List<Deposit> deposits,
+      List<Income> incomes});
 
   $WalletCopyWith<$Res>? get wallet;
 }
@@ -54,11 +59,16 @@ class _$WalletStateCopyWithImpl<$Res, $Val extends WalletState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isLoading = null,
     Object? wallet = freezed,
     Object? deposits = null,
     Object? incomes = null,
   }) {
     return _then(_value.copyWith(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       wallet: freezed == wallet
           ? _value.wallet
           : wallet // ignore: cast_nullable_to_non_nullable
@@ -95,7 +105,11 @@ abstract class _$$_WalletStateCopyWith<$Res>
       __$$_WalletStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Wallet? wallet, List<Deposit> deposits, List<Income> incomes});
+  $Res call(
+      {bool isLoading,
+      Wallet? wallet,
+      List<Deposit> deposits,
+      List<Income> incomes});
 
   @override
   $WalletCopyWith<$Res>? get wallet;
@@ -112,11 +126,16 @@ class __$$_WalletStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isLoading = null,
     Object? wallet = freezed,
     Object? deposits = null,
     Object? incomes = null,
   }) {
     return _then(_$_WalletState(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       wallet: freezed == wallet
           ? _value.wallet
           : wallet // ignore: cast_nullable_to_non_nullable
@@ -137,7 +156,8 @@ class __$$_WalletStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_WalletState implements _WalletState {
   _$_WalletState(
-      {this.wallet,
+      {this.isLoading = false,
+      this.wallet,
       final List<Deposit> deposits = const [],
       final List<Income> incomes = const []})
       : _deposits = deposits,
@@ -146,6 +166,9 @@ class _$_WalletState implements _WalletState {
   factory _$_WalletState.fromJson(Map<String, dynamic> json) =>
       _$$_WalletStateFromJson(json);
 
+  @override
+  @JsonKey()
+  final bool isLoading;
   @override
   final Wallet? wallet;
   final List<Deposit> _deposits;
@@ -168,7 +191,7 @@ class _$_WalletState implements _WalletState {
 
   @override
   String toString() {
-    return 'WalletState(wallet: $wallet, deposits: $deposits, incomes: $incomes)';
+    return 'WalletState(isLoading: $isLoading, wallet: $wallet, deposits: $deposits, incomes: $incomes)';
   }
 
   @override
@@ -176,6 +199,8 @@ class _$_WalletState implements _WalletState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_WalletState &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
             (identical(other.wallet, wallet) || other.wallet == wallet) &&
             const DeepCollectionEquality().equals(other._deposits, _deposits) &&
             const DeepCollectionEquality().equals(other._incomes, _incomes));
@@ -185,6 +210,7 @@ class _$_WalletState implements _WalletState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      isLoading,
       wallet,
       const DeepCollectionEquality().hash(_deposits),
       const DeepCollectionEquality().hash(_incomes));
@@ -205,13 +231,16 @@ class _$_WalletState implements _WalletState {
 
 abstract class _WalletState implements WalletState {
   factory _WalletState(
-      {final Wallet? wallet,
+      {final bool isLoading,
+      final Wallet? wallet,
       final List<Deposit> deposits,
       final List<Income> incomes}) = _$_WalletState;
 
   factory _WalletState.fromJson(Map<String, dynamic> json) =
       _$_WalletState.fromJson;
 
+  @override
+  bool get isLoading;
   @override
   Wallet? get wallet;
   @override

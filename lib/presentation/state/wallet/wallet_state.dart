@@ -11,6 +11,7 @@ part 'wallet_state.g.dart';
 @freezed
 class WalletState with _$WalletState {
   factory WalletState({
+    @Default(false) bool isLoading,
     Wallet? wallet,
     @Default([]) List<Deposit> deposits,
     @Default([]) List<Income> incomes,

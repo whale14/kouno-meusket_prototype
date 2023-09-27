@@ -8,6 +8,7 @@ part of 'wallet_state.dart';
 
 _$_WalletState _$$_WalletStateFromJson(Map<String, dynamic> json) =>
     _$_WalletState(
+      isLoading: json['isLoading'] as bool? ?? false,
       wallet: json['wallet'] == null
           ? null
           : Wallet.fromJson(json['wallet'] as Map<String, dynamic>),
@@ -23,6 +24,7 @@ _$_WalletState _$$_WalletStateFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_WalletStateToJson(_$_WalletState instance) =>
     <String, dynamic>{
+      'isLoading': instance.isLoading,
       'wallet': instance.wallet,
       'deposits': instance.deposits,
       'incomes': instance.incomes,
