@@ -129,7 +129,6 @@ class _AnnouncementPageState extends State<AnnouncementPage>
     final viewModel = context.watch<UserViewModel>();
     final announcementState = viewModel.announcementState;
     final List<String> announcementTypeTab = <String>['공지사항', 'FAQ', '이벤트'];
-    List<Announcement> tappedList = announcementState.announcements[0];
 
     return DefaultTabController(
       length: announcementTypeTab.length,

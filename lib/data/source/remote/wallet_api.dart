@@ -19,20 +19,20 @@ class WalletApi {
     String url = '$baseUrl/my_wallet.php';
     Map<String, dynamic> data = {'idx': idx};
     final response = await _client.post(Uri.parse(url), body: data);
-    Logger().d('#########myWalletApi : ${response.body}');
+    Logger().d('myWalletApi : ${response.body}');
     return response;
   }
 
   Future<http.Response> getIncomeHistory(String idx, String month, String type) async {
     String url = '$baseUrl/income_history.php';
-    Map<String, dynamic> data = {'idx': idx, 'incomeAt': month, 'type': type};
+    Map<String, dynamic> data = {'idx': idx, 'month': month, 'type': type};
     final response = await _client.post(Uri.parse(url), body: data);
     return response;
   }
 
   Future<http.Response> getDepositHistory(String idx, String month, String type) async {
     String url = '$baseUrl/deposit_history.php';
-    Map<String, dynamic> data = {'idx': idx, 'depositAt': month, 'type': type};
+    Map<String, dynamic> data = {'idx': idx, 'month': month, 'type': type};
     final response = await _client.post(Uri.parse(url), body: data);
     return response;
   }

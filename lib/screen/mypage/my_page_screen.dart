@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:test_project/domain/model/user/user.dart';
 import 'package:test_project/presentation/event/users/users_event.dart';
@@ -56,14 +57,17 @@ class MyPageScreen extends StatelessWidget {
               onTap: () async {
                 switch (element) {
                   case '충전/사용내역':
-                    await walletViewModel
-                        .onWalletEvent(
-                            WalletEvent.myWallet(state.user!.idx.toString()))
-                        .then((value) =>
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => WalletPage(
-                                      userIdx: state.user!.idx.toString(),
-                                    ))));
+                    await walletViewModel.onWalletEvent(
+                        WalletEvent.myWallet(state.user!.idx.toString()));
+                    await walletViewModel.onWalletEvent(
+                        WalletEvent.getDepositHistory(
+                            state.user!.idx.toString(),
+                            DateFormat('yyyy-MM').format(DateTime.now()),
+                            '2'));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => WalletPage(
+                              userIdx: state.user!.idx.toString(),
+                            )));
                     break;
                   case '결제 수단 관리':
                     break;
